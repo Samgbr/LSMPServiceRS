@@ -26,3 +26,7 @@ Tools/Languages used in this project are:
 + Connect the database and create a data access layer -- Processing
 
 ================================
+# Operational Model
+https://drive.google.com/open?id=1zYD-7Usdf8q3bc2zK9e0cRaoYAmPgLHg
+# Database schema
+https://drive.google.com/open?id=1aQAzSQvIsakS18C4bLQyMqiDbjHGuFBJ
