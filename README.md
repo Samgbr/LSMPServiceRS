@@ -14,15 +14,15 @@ Tools/Languages used in this project are:
     
 # To-do list
 
-+ Setup the repository and give access to collaborators: -------------------------------- done
++ Setup the repository and give access to collaborators: -- done
       ==> 1. Hussaini, Nasrullah    2. Samuel Habte
-+ As a starting point use HRServicesRS template source code for the project ------------- done
++ As a starting point use HRServicesRS template source code for the project -- done
 + Create a branch for each tier or functionality and 
-    feature instead of committing it to master ------------------------------------------ done
-+ Create an Operational Model for the appliction ---------------------------------------- done
-+ Create a database schema for the application ------------------------------------------ done
-+ Create a aws account free tier -------------------------------------------------------- Processing
-+ Create an instance of mysql aws RDS --------------------------------------------------- Processing
-+ Connect the database and create a data access layer ----------------------------------- Processing
+    feature instead of committing it to master -- done
++ Create an Operational Model for the appliction -- done
++ Create a database schema for the application -- done
++ Create a aws account free tier -- Processing
++ Create an instance of mysql aws RDS -- Processing
++ Connect the database and create a data access layer -- Processing
 
 ================================
