@@ -24,6 +24,7 @@ Tools/Languages used in this project are:
 + Create a aws account free tier -- Processing
 + Create an instance of mysql aws RDS -- Processing
 + Connect the database and create a data access layer -- Processing
++ Create model classes for the application -- done
 
 ================================
 # Operational Model
