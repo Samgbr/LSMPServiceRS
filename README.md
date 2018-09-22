@@ -28,5 +28,9 @@ Tools/Languages used in this project are:
 ================================
 # Operational Model
 https://drive.google.com/open?id=1zYD-7Usdf8q3bc2zK9e0cRaoYAmPgLHg
++ On the OM foreign key are not used on the model class instance variables instead used on database schema
++ For Payment - not yet decided in need of model class because Paypal api is used and may not need to store card information to our database.
++ Classes that have association/composition characteristics, used list data structre.
+
 # Database schema
 https://drive.google.com/open?id=1aQAzSQvIsakS18C4bLQyMqiDbjHGuFBJ
