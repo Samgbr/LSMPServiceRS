@@ -37,3 +37,4 @@ https://drive.google.com/open?id=1zYD-7Usdf8q3bc2zK9e0cRaoYAmPgLHg
 
 # Database schema
 https://drive.google.com/open?id=1aQAzSQvIsakS18C4bLQyMqiDbjHGuFBJ
++ MySql DB on AWS is used to create DB and connect
