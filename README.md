@@ -21,7 +21,7 @@ Tools/Languages used in this project are:
     feature instead of committing it to master -- done
 + Create an Operational Model for the appliction -- done
 + Create a database schema for the application -- done
-+ Create a aws account free tier -- Processing
++ Create a aws account free tier -- done
 + Create an instance of mysql aws RDS -- Processing
 + Connect the database and create a data access layer -- Processing
 + Create model classes for the application -- done
