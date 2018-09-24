@@ -1,5 +1,9 @@
 package com.lsmp.dal;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 /**
  * This class is responsible for DB Connection on the AWS Cloud
  * @author samzi
@@ -8,5 +12,24 @@ package com.lsmp.dal;
 
 public class DBConnect {
 
-	//To-do: JDBC Connection with provider done here
+	public static Connection getDatabaseConnection() {
+		return openConnection();
+	}
+	
+	private static Connection openConnection() {
+		Connection connection = null;
+		DBConfig config = new DBConfig();
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			connection = DriverManager.getConnection(config.getDatabaseURL(),config.getUsername(),config.getPassword());
+			
+		}catch(SQLException exception) {
+			exception.printStackTrace();
+		}catch(ClassNotFoundException cnException) {
+			cnException.printStackTrace();
+		}
+		
+		return connection;
+	}
+	
 }
