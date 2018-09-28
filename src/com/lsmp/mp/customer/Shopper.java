@@ -1,10 +1,9 @@
 package com.lsmp.mp.customer;
 
-import java.util.List;
 import java.util.Set;
 
 import com.lsmp.mp.order.Order;
-import com.lsmp.mp.product.ProductReview;
+import com.lsmp.mp.product.review.ProductReview;
 
 /**
  * This Shopper model class
@@ -14,25 +13,25 @@ import com.lsmp.mp.product.ProductReview;
 public class Shopper extends Customer {
 
 	//Instances
-	private String shopperType;
-	private List<Order> orders;
+	private Set<Order> orders;
 	private Set<ProductReview> reviews;
-		
-	public List<Order> getOrders() {
+
+	public Set<ProductReview> getReviews() {
+		return reviews;
+	}
+
+	public void setReviews(Set<ProductReview> reviews) {
+		this.reviews = reviews;
+	}
+
+	public Set<Order> getOrders() {
 		return orders;
 	}
 
-	public void setOrders(List<Order> orders) {
+	public void setOrders(Set<Order> orders) {
 		this.orders = orders;
 	}
-	
-	public String getShopperType() {
-		return shopperType;
-	}
 
-	public void setShopperType(String shopperType) {
-		this.shopperType = shopperType;
-	}
 	
 	
 }

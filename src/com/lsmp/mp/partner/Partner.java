@@ -1,6 +1,6 @@
 package com.lsmp.mp.partner;
 
-import java.util.List;
+import java.util.Set;
 
 import com.lsmp.mp.customer.Customer;
 import com.lsmp.mp.product.Product;
@@ -15,12 +15,12 @@ public class Partner extends Customer{
 	//Instances
 	private String sellerLevel;
 	private String sellerName;
-	private List<Product> products;
-	
-	public List<Product> getProducts() {
+	private Set<Product> products;
+		
+	public Set<Product> getProducts() {
 		return products;
 	}
-	public void setProducts(List<Product> products) {
+	public void setProducts(Set<Product> products) {
 		this.products = products;
 	}
 	public String getSellerLevel() {

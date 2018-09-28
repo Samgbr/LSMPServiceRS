@@ -1,6 +1,6 @@
 package com.lsmp.mp.order;
 
-import java.util.List;
+import java.util.Set;
 
 import com.lsmp.mp.product.Product;
 
@@ -16,12 +16,12 @@ public class Order {
 	private String orderNumber;
 	private double quantity;
 	private double unitprice;
-	private List<Product> products;
-	
-	public List<Product> getProducts() {
+	private Set<Product> products;
+		
+	public Set<Product> getProducts() {
 		return products;
 	}
-	public void setProducts(List<Product> products) {
+	public void setProducts(Set<Product> products) {
 		this.products = products;
 	}
 	public String getOrderNumber() {

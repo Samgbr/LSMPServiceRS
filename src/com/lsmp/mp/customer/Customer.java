@@ -1,6 +1,5 @@
 package com.lsmp.mp.customer;
 
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -11,16 +10,30 @@ import java.util.Set;
 public class Customer {
 
 	//Customer instance variables
+	private String customerID;
 	private String loginID;
 	private String firstName;
 	private String middleName;
 	private String lastName;
 	private String email;
 	private String password;
+	private String shopperType;
 	private Set<Address> addresses;
 	private Set<Phone> phones;
 	private Set<Bill> billingsInfo;
 		
+	public String getShopperType() {
+		return shopperType;
+	}
+	public void setShopperType(String shopperType) {
+		this.shopperType = shopperType;
+	}
+	public String getCustomerID() {
+		return customerID;
+	}
+	public void setCustomerID(String customerID) {
+		this.customerID = customerID;
+	}
 	public Set<Address> getAddresses() {
 		return addresses;
 	}

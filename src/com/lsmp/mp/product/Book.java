@@ -2,6 +2,8 @@ package com.lsmp.mp.product;
 
 import java.util.Set;
 
+import com.lsmp.mp.product.review.ProductReview;
+
 /**
  * This is a Book model class and one of product types
  * @author samzi

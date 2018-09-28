@@ -1,6 +1,5 @@
 package com.lsmp.mp.product;
 
-import java.util.List;
 
 /**
  * This is a product model class

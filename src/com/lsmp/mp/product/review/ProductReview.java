@@ -1,4 +1,4 @@
-package com.lsmp.mp.product;
+package com.lsmp.mp.product.review;
 
 /**
  * This class is a product review model class
