@@ -2,7 +2,7 @@ package com.lsmp.mp.partner;
 
 import java.util.Set;
 
-import com.lsmp.mp.customer.Customer;
+import com.lsmp.mp.customer.Profile;
 import com.lsmp.mp.product.Product;
 
 /**
@@ -10,7 +10,7 @@ import com.lsmp.mp.product.Product;
  * @author samzi
  *
  */
-public class Partner extends Customer{
+public class Partner extends Profile{
 
 	//Instances
 	private String sellerLevel;

@@ -9,94 +9,208 @@ import java.util.Random;
 import java.util.Set;
 
 import com.lsmp.dal.DBConnect;
-import com.lsmp.dal.product.ProductDAO;
+import com.lsmp.dal.customer.AddressDAO;
+import com.lsmp.dal.customer.BillingDAO;
+import com.lsmp.dal.customer.PhoneDAO;
 import com.lsmp.mp.customer.Address;
 import com.lsmp.mp.customer.Bill;
-import com.lsmp.mp.customer.Customer;
 import com.lsmp.mp.customer.Phone;
 import com.lsmp.mp.partner.Partner;
-import com.lsmp.mp.product.Product;
 
 public class PartnerDAO {
 	
-	private ProductDAO productDAO;
+	private AddressDAO addressDAO;
+	private PhoneDAO phoneDAO;
+	private BillingDAO billInfoDAO;
 	
 	public PartnerDAO() {
-		productDAO = new ProductDAO();
+		addressDAO = new AddressDAO();
+		phoneDAO = new PhoneDAO();
+		billInfoDAO = new BillingDAO();
 	}
+	
+	//get, update, insert and delete goes here
+		public Partner getPartnerProfile(String id) {
+			String loginID="";
+			String firstName = "";
+			String middleName = "";
+			String lastName = "";
+			String email = "";
+			String sellerLevel="";
+			String sellerName="";
+			Set<Address> addresses = new HashSet<>();
+			Set<Phone> phones = new HashSet<>();
+			Set<Bill> billInfos = new HashSet<>();
+			Connection connection = DBConnect.getDatabaseConnection();
+			
+			
+			try {
+				Statement selectStatement = connection.createStatement();
+				
+				String selectQuery = "SELECT * from partner where profileID='" + id +"'";
+				ResultSet resultSet = selectStatement.executeQuery(selectQuery);
+				resultSet.next();
+				loginID= resultSet.getString("loginID");
+				lastName = resultSet.getString("lastName");
+				middleName = resultSet.getString("middleName");
+				firstName = resultSet.getString("firstName");
+				email = resultSet.getString("email");
+				sellerLevel = resultSet.getString("sellerLevel");
+				sellerName = resultSet.getString("sellerName");
+				
+				addresses = addressDAO.getAddresses(id);
+				phones  = phoneDAO.getPhones(id);
+				billInfos = billInfoDAO.getBillingInfos(id);
+				
+			}catch(SQLException se) {
+				se.printStackTrace();
+			}finally {
+				if(connection != null) {
+					try {
+						connection.close();
+					} catch (SQLException e) {}
+				}
+			}
+			Partner partner = new Partner();
+			partner.setLoginID(loginID);
+			partner.setFirstName(firstName);
+			partner.setMiddleName(middleName);
+			partner.setLastName(lastName);
+			partner.setEmail(email);
+			partner.setSellerLevel(sellerLevel);
+			partner.setSellerName(sellerName);
+			partner.setAddresses(addresses);
+			partner.setPhones(phones);
+			partner.setBillingsInfo(billInfos);
+			return partner;	
+		}
+		
+		public Set<Partner> getAllPartnerProfiles() {
+			
+			Connection connection = DBConnect.getDatabaseConnection();
+			Set<Partner> partners = new HashSet<>();
+			
+			try {
+				Statement selectStatement = connection.createStatement();
+				
+				String selectQuery = "SELECT * from partner";
+				ResultSet resultSet = selectStatement.executeQuery(selectQuery);
+				
+				while(resultSet.next()) {
+					String profileID = resultSet.getString("profileID");
+					Partner partner = getPartnerProfile(profileID);
+					if(partner != null) {
+						partners.add(partner);
+					}
+				}
+				
+			}catch(SQLException se) {
+				se.printStackTrace();
+			}finally {
+				if(connection != null) {
+					try {
+						connection.close();
+					} catch (SQLException e) {}
+				}
+			}
+			
+			return partners;
+			
+		}
+		
+	public Partner addPartnerProfile(String loginID, String firstName, String middleName, String lastName,
+				String email,String password,String sellerLevel, String sellerName, Set<Address> addresses,Set<Phone> phones,Set<Bill> bills) {
+			
+			Partner partner = new Partner();
+			
+			Random randomGenerator = new Random();
+		    int randomInt = randomGenerator.nextInt(10000);
+		    String id = "PA" + randomInt;
+		    
+			partner.setProfileID(id);
+			partner.setLoginID(loginID);
+			partner.setFirstName(firstName);
+			partner.setMiddleName(middleName);
+			partner.setLastName(lastName);
+			partner.setEmail(email);
+			partner.setPassword(password);
+			partner.setSellerLevel(sellerLevel);
+			partner.setSellerName(sellerName);
+			partner.setAddresses(addresses);
+			partner.setPhones(phones);
+			partner.setBillingsInfo(bills);
+			
+			Connection connection = DBConnect.getDatabaseConnection();
+			try {
+				Statement insertStatement = connection.createStatement();
+				
+				String insertQuery = "INSERT INTO * shopper (profileID,loginID,firstName,middleName,lastName,email,password,sellerLevel,sellerName)"
+						+ "VALUES('"+id+"','"+loginID+"','"+firstName+"','"+middleName+"','"+lastName+"','"+email+"','"+password+"','"+sellerLevel+"','"+sellerName+"')";
+				insertStatement.executeUpdate(insertQuery);
+				
+				addressDAO.insertAddresses(id, addresses);
+				phoneDAO.insertPhones(id, phones);
+				billInfoDAO.insertBillingInfos(id, bills);
+			
+				
+			}catch(SQLException se) {
+				se.printStackTrace();
+			}finally {
+				if(connection != null) {
+					try {
+						connection.close();
+					} catch (SQLException e) {}
+				}
+			}
+			
+			return partner;
+		}
 
-	public Partner getPartner(String id) {
-		String sellerLevel="";
-		String sellerName="";
-		Set<Product> products = new HashSet<>();
-		
-		Connection connection = DBConnect.getDatabaseConnection();
-		
-		
-		try {
-			Statement selectStatement = connection.createStatement();
-			
-			String selectQuery = "SELECT * from partner where customerID='" + id +"'";
-			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
-			resultSet.next();
-			sellerLevel= resultSet.getString("sellerName");
-			sellerName = resultSet.getString("sellerName");
-			
-			products = productDAO.getProducts(id);
-			
-		}catch(SQLException se) {
-			se.printStackTrace();
-		}finally {
-			if(connection != null) {
-				try {
-					connection.close();
-				} catch (SQLException e) {}
+		public void updatePartnerProfile(String id,String loginID, String firstName, String middleName, String lastName,
+				String email,String password,String sellerLevel, String sellerName, Set<Address> addresses,Set<Phone> phones,Set<Bill> bills) {
+			Connection connection = DBConnect.getDatabaseConnection();
+			try {
+				Statement updateStatement = connection.createStatement();
+				
+				String updateQuery = "UPDATE partner SET loginID='"+loginID+"', firstName='"+firstName+"', middleName='"+middleName+"',lastName='"+lastName+"',email='"+email+"',password='"+password+"',sellerLevel='"+sellerLevel+"',sellerName='"+sellerName+"'  WHERE profileID='"+id+"')";
+				updateStatement.executeUpdate(updateQuery);	
+				addressDAO.updateAddress(id, addresses);
+				phoneDAO.updatePhone(id, phones);
+				billInfoDAO.updateBillingInfos(id, bills);
+				
+			}catch(SQLException se) {
+				se.printStackTrace();
+			}finally {
+				if(connection != null) {
+					try {
+						connection.close();
+					} catch (SQLException e) {}
+				}
 			}
 		}
 		
-		Partner partner = new Partner();
-		partner.setSellerLevel(sellerLevel);
-		partner.setSellerName(sellerName);
-		partner.setProducts(products);
-		
-		return partner;	
-	}
-	/*
-	public Partner addPartner(String sellerLevel, String sellerType, Set<Product> products) {
-		
-		Partner partner = new Partner();
-		
-		Random randomGenerator = new Random();
-	    int randomInt = randomGenerator.nextInt(10000);
-	    String id = "XY" + randomInt;
-	    
-		partner.setSellerLevel(sellerLevel);
-		partner.setSellerName(sellerType);
-		partner.setProducts(products);
-		
-		Connection connection = DBConnect.getDatabaseConnection();
-		try {
-			Statement insertStatement = connection.createStatement();
-			
-			String insertQuery = "INSERT INTO * partner (customerID,loginID,firstName,middleName,lastName,email,password,shopperType)"
-					+ "VALUES('"+id+"','"+loginID+"','"+firstName+"','"+middleName+"','"+lastName+"','"+email+"','"+password+"','"+shopperType+"')";
-			insertStatement.executeUpdate(insertQuery);
-			
-			addressDAO.insertAddresses(id, addresses);
-			phoneDAO.insertPhones(id, phones);
-			billInfoDAO.insertBillingInfos(id, bills);
-		
-			
-		}catch(SQLException se) {
-			se.printStackTrace();
-		}finally {
-			if(connection != null) {
-				try {
-					connection.close();
-				} catch (SQLException e) {}
+		public void deletePartnerProfile(String id) {
+			Connection connection = DBConnect.getDatabaseConnection();
+			try {
+				Statement deleteStatement = connection.createStatement();
+				
+				String deleteQuery = "DELETE FROM partner WHERE profileID='"+id+"')";
+				deleteStatement.executeUpdate(deleteQuery);	
+				
+				addressDAO.deleteAddress(id);
+				phoneDAO.deletePhone(id);
+				billInfoDAO.deleteBillingInfo(id);
+				
+			}catch(SQLException se) {
+				se.printStackTrace();
+			}finally {
+				if(connection != null) {
+					try {
+						connection.close();
+					} catch (SQLException e) {}
+				}
 			}
 		}
-		
-		return customer;
-	}  */
+		 
+	
 }

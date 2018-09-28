@@ -10,11 +10,20 @@ import com.lsmp.mp.product.review.ProductReview;
  * @author samzi
  *
  */
-public class Shopper extends Customer {
+public class Shopper extends Profile {
 
 	//Instances
+	private String shopperType;
 	private Set<Order> orders;
 	private Set<ProductReview> reviews;
+
+	public String getShopperType() {
+		return shopperType;
+	}
+
+	public void setShopperType(String shopperType) {
+		this.shopperType = shopperType;
+	}
 
 	public Set<ProductReview> getReviews() {
 		return reviews;

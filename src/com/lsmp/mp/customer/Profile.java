@@ -7,32 +7,25 @@ import java.util.Set;
  * @author samzi
  *
  */
-public class Customer {
+public class Profile {
 
 	//Customer instance variables
-	private String customerID;
+	private String profileID;
 	private String loginID;
 	private String firstName;
 	private String middleName;
 	private String lastName;
 	private String email;
 	private String password;
-	private String shopperType;
 	private Set<Address> addresses;
 	private Set<Phone> phones;
 	private Set<Bill> billingsInfo;
 		
-	public String getShopperType() {
-		return shopperType;
+	public String getProfileID() {
+		return profileID;
 	}
-	public void setShopperType(String shopperType) {
-		this.shopperType = shopperType;
-	}
-	public String getCustomerID() {
-		return customerID;
-	}
-	public void setCustomerID(String customerID) {
-		this.customerID = customerID;
+	public void setProfileID(String profileID) {
+		this.profileID = profileID;
 	}
 	public Set<Address> getAddresses() {
 		return addresses;

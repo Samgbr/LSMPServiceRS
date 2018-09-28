@@ -10,13 +10,14 @@ import java.util.Map;
 
 public class Inventory {
 
-	private Map<Product,Double> qtyOnHandMap;
+	//ProductID and qtyOnHand Map
+	private Map<String,Double> qtyOnHandMap;
 
-	public Map<Product, Double> getQtyOnHandMap() {
+	public Map<String, Double> getQtyOnHandMap() {
 		return qtyOnHandMap;
 	}
 
-	public void setQtyOnHandMap(Map<Product, Double> qtyOnHandMap) {
+	public void setQtyOnHandMap(Map<String, Double> qtyOnHandMap) {
 		this.qtyOnHandMap = qtyOnHandMap;
 	}
 	

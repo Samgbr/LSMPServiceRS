@@ -2,7 +2,7 @@ package com.lsmp.mp.customer;
 
 import java.util.Set;
 
-import com.lsmp.dal.customer.CustomerDAO;
+import com.lsmp.dal.customer.ShopperDAO;
 
 /**
  * Manager class for Customer Profile
@@ -12,28 +12,28 @@ import com.lsmp.dal.customer.CustomerDAO;
 
 public class CustomerManager {
 
-	//Customer DAO
-	private static CustomerDAO cDAO = new CustomerDAO();
+	//Shopper DAO
+	private static ShopperDAO sDAO = new ShopperDAO();
 	
-	public Customer getCustomer(String id) {
-		return cDAO.getCustomer(id);
+	public Shopper getShopperProfile(String id) {
+		return sDAO.getShopperProfile(id);
 	}
 	
-	public Customer addCustomer(String loginID, String firstName, String middleName, String lastName,
+	public Shopper addShopperProfile(String loginID, String firstName, String middleName, String lastName,
 			String email,String password,String shopperType, Set<Address> addresses,Set<Phone> phones,Set<Bill> bills) {
 		
-		Customer customer = cDAO.addCustomer(loginID, firstName, middleName, lastName, email, password, shopperType, addresses, phones,bills);
+		Shopper shopper = sDAO.addShopperProfile(loginID, firstName, middleName, lastName, email, password, shopperType, addresses, phones,bills);
 		
-		return customer;
+		return shopper;
 	}
 
-	public void updateCustomer(String id,String loginID, String firstName, String middleName, String lastName,
+	public void updateShopperProfile(String id,String loginID, String firstName, String middleName, String lastName,
 			String email,String password,String shopperType, Set<Address> addresses,Set<Phone> phones, Set<Bill> bills) {
-		cDAO.updateCustomer(id, loginID, firstName, middleName, lastName, email, password, shopperType, addresses, phones,bills);
+		sDAO.updateShopperProfile(id, loginID, firstName, middleName, lastName, email, password, shopperType, addresses, phones,bills);
 	}
 
-	public void deleteCustomer(String id) {
-		cDAO.deleteCustomer(id);
+	public void deleteShopperProfile(String id) {
+		sDAO.deleteShopperProfile(id);
 	}
 	
 }

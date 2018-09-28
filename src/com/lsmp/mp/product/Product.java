@@ -13,7 +13,6 @@ public class Product {
 	private String productName;
 	private String description;
 	private double purchasePrice;
-	private double quantityOnHand;
 	private double sellingPrice;
 	private double discount;
 		
@@ -40,12 +39,6 @@ public class Product {
 	}
 	public void setPurchasePrice(double purchasePrice) {
 		this.purchasePrice = purchasePrice;
-	}
-	public double getQuantityOnHand() {
-		return quantityOnHand;
-	}
-	public void setQuantityOnHand(double quantityOnHand) {
-		this.quantityOnHand = quantityOnHand;
 	}
 	public double getSellingPrice() {
 		return sellingPrice;
