@@ -213,27 +213,4 @@ public Shopper addShopperProfile(String loginID, String firstName, String middle
 			}
 		}
 	}
-	
-
-	public Shopper getShopperOrders(String id) {
-		Set<Order> orders = new HashSet<>();
-					
-		orders = orderDAO.getOrders(id);
-		
-		Shopper shopper = new Shopper();
-		shopper.setOrders(orders);
-		return shopper;	
-	
-	}
-	
-	public Shopper getShopperReviews(String id) {
-		Set<ProductReview> reviews = new HashSet<>();
-					
-		reviews = productReviewDAO.getProductReviews(id);
-		
-		Shopper shopper = new Shopper();
-		shopper.setReviews(reviews);
-		return shopper;	
-	
-	}
 }
