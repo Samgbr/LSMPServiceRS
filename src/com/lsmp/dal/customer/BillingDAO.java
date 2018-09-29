@@ -21,7 +21,7 @@ public Set<Bill> getBillingInfos(String id) {
 		try {
 			Statement selectStatement = connection.createStatement();
 			
-			String selectQuery = "SELECT * from bill WHERE customerID='"+id+"'";
+			String selectQuery = "SELECT * from bill WHERE profileID='"+id+"'";
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			
 			while(resultSet.next()) {
@@ -62,7 +62,7 @@ public void insertBillingInfos(String id, Set<Bill> bills) {
 			while(billIterator.hasNext()) {
 				Bill currentBillInfo = billIterator.next();
 				
-				String insertQuery = "INSERT INTO * bill (creditCardNumber, cvv, expiryMonth, expiryYear)"
+				String insertQuery = "INSERT INTO * bill (profileID, creditCardNumber, cvv, expiryMonth, expiryYear)"
 						+ "VALUES('"+id+"','"+currentBillInfo.getCreditCardNumber()+"','"+currentBillInfo.getCvv()+"','"+currentBillInfo.getExpiryMonth()+"','"+currentBillInfo.getExpiryYear()+"')";
 				insertStatement.executeUpdate(insertQuery);
 				
@@ -85,7 +85,7 @@ public void insertBillingInfos(String id, Set<Bill> bills) {
 		try {
 			Statement deleteStatement = connection.createStatement();
 			
-			String deleteQuery = "DELETE FROM bill WHERE customerID='"+id+"')";
+			String deleteQuery = "DELETE FROM bill WHERE profileID='"+id+"')";
 			deleteStatement.executeUpdate(deleteQuery);	
 						
 		}catch(SQLException se) {
@@ -110,7 +110,7 @@ public void insertBillingInfos(String id, Set<Bill> bills) {
 			while(billIterator.hasNext()) {
 				Bill currentBillInfo = billIterator.next();
 				
-				String updateQuery = "UPDATE bill SET creditCardNumber='"+currentBillInfo.getCreditCardNumber()+"', cvv='"+currentBillInfo.getCvv()+"', expiryMonth='"+currentBillInfo.getExpiryMonth()+"',expiryYear='"+currentBillInfo.getExpiryYear()+"'  WHERE customerID='"+id+"')";
+				String updateQuery = "UPDATE bill SET creditCardNumber='"+currentBillInfo.getCreditCardNumber()+"', cvv='"+currentBillInfo.getCvv()+"', expiryMonth='"+currentBillInfo.getExpiryMonth()+"',expiryYear='"+currentBillInfo.getExpiryYear()+"'  WHERE profileID='"+id+"')";
 				updateStatement.executeUpdate(updateQuery);
 				
 			}			

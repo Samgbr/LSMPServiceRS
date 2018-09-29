@@ -21,7 +21,7 @@ public class PhoneDAO {
 		try {
 			Statement selectStatement = connection.createStatement();
 			
-			String selectQuery = "SELECT * from phone WHERE customerID='"+id+"'";
+			String selectQuery = "SELECT * from phone WHERE profileID='"+id+"'";
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			
 			while(resultSet.next()) {
@@ -57,7 +57,7 @@ public void insertPhones(String id, Set<Phone> phones) {
 			while(phoneIterator.hasNext()) {
 				Phone currentPhone = phoneIterator.next();
 				
-				String insertQuery = "INSERT INTO * phone (customerID, type,phoneNumber)"
+				String insertQuery = "INSERT INTO * phone (profileID, type,phoneNumber)"
 						+ "VALUES('"+id+"','"+currentPhone.getType()+"','"+currentPhone.getPhoneNumber()+"')";
 				insertStatement.executeUpdate(insertQuery);
 				
@@ -80,7 +80,7 @@ public void insertPhones(String id, Set<Phone> phones) {
 		try {
 			Statement deleteStatement = connection.createStatement();
 			
-			String deleteQuery = "DELETE FROM phone WHERE customerID='"+id+"')";
+			String deleteQuery = "DELETE FROM phone WHERE profileID='"+id+"')";
 			deleteStatement.executeUpdate(deleteQuery);	
 						
 		}catch(SQLException se) {
@@ -105,7 +105,7 @@ public void insertPhones(String id, Set<Phone> phones) {
 			while(phoneIterator.hasNext()) {
 				Phone currentPhone = phoneIterator.next();
 				
-				String updateQuery = "UPDATE phone SET type='"+currentPhone.getType()+"', city='"+currentPhone.getPhoneNumber()+"'  WHERE customerID='"+id+"')";
+				String updateQuery = "UPDATE phone SET type='"+currentPhone.getType()+"', city='"+currentPhone.getPhoneNumber()+"'  WHERE profileID='"+id+"')";
 				updateStatement.executeUpdate(updateQuery);
 				
 			}			

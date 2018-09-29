@@ -21,7 +21,7 @@ public class AddressDAO {
 		try {
 			Statement selectStatement = connection.createStatement();
 			
-			String selectQuery = "SELECT * from address WHERE customerID='"+id+"'";
+			String selectQuery = "SELECT * from address WHERE profileID='"+id+"'";
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			
 			while(resultSet.next()) {
@@ -62,7 +62,7 @@ public void insertAddresses(String id, Set<Address> addresses) {
 			while(addressIterator.hasNext()) {
 				Address currentAddress = addressIterator.next();
 				
-				String insertQuery = "INSERT INTO * address (customerID, street,city,state,zipcode)"
+				String insertQuery = "INSERT INTO * address (profileID, street,city,state,zipcode)"
 						+ "VALUES('"+id+"','"+currentAddress.getStreet()+"','"+currentAddress.getCity()+"','"+currentAddress.getState()+"','"+currentAddress.getZipcode()+"')";
 				insertStatement.executeUpdate(insertQuery);
 				
@@ -85,7 +85,7 @@ public void insertAddresses(String id, Set<Address> addresses) {
 		try {
 			Statement deleteStatement = connection.createStatement();
 			
-			String deleteQuery = "DELETE FROM address WHERE customerID='"+id+"')";
+			String deleteQuery = "DELETE FROM address WHERE profileID='"+id+"')";
 			deleteStatement.executeUpdate(deleteQuery);	
 						
 		}catch(SQLException se) {
@@ -110,7 +110,7 @@ public void insertAddresses(String id, Set<Address> addresses) {
 			while(addressIterator.hasNext()) {
 				Address currentAddress = addressIterator.next();
 				
-				String updateQuery = "UPDATE address SET street='"+currentAddress.getStreet()+"', city='"+currentAddress.getCity()+"', state='"+currentAddress.getState()+"',zipcode='"+currentAddress.getZipcode()+"'  WHERE customerID='"+id+"')";
+				String updateQuery = "UPDATE address SET street='"+currentAddress.getStreet()+"', city='"+currentAddress.getCity()+"', state='"+currentAddress.getState()+"',zipcode='"+currentAddress.getZipcode()+"'  WHERE profileID='"+id+"')";
 				updateStatement.executeUpdate(updateQuery);
 				
 			}			

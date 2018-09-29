@@ -16,8 +16,15 @@ public class Order {
 	private String orderNumber;
 	private double quantity;
 	private double unitprice;
+	private String profileID;
 	private Set<Product> products;
 		
+	public String getProfileID() {
+		return profileID;
+	}
+	public void setProfileID(String profileID) {
+		this.profileID = profileID;
+	}
 	public Set<Product> getProducts() {
 		return products;
 	}
