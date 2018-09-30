@@ -1,9 +1,5 @@
 package com.lsmp.mp.product;
 
-import java.util.Set;
-
-import com.lsmp.mp.product.review.ProductReview;
-
 /**
  * This is a smartphone model class and one of product types
  * @author samzi
@@ -18,14 +14,7 @@ public class Smartphone extends Product {
 	private String ramSize;
 	private String os;
 	private String storageSize;
-	private Set<ProductReview> reviews;
 	
-	public Set<ProductReview> getReviews() {
-		return reviews;
-	}
-	public void setReviews(Set<ProductReview> reviews) {
-		this.reviews = reviews;
-	}
 	public String getDisplayInch() {
 		return displayInch;
 	}

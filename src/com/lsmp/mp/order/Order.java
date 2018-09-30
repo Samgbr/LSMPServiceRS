@@ -2,7 +2,7 @@ package com.lsmp.mp.order;
 
 import java.util.Set;
 
-import com.lsmp.mp.product.Product;
+import com.lsmp.mp.order.status.OrderStatus;
 
 /**
  * This is an order model class
@@ -13,42 +13,73 @@ import com.lsmp.mp.product.Product;
 public class Order {
 
 	//Instances
-	private String orderNumber;
-	private double quantity;
-	private double unitprice;
+	private String orderID;
 	private String profileID;
-	private Set<Product> products;
-		
+	private String orderDate;
+	private String shipAddressID;
+	private Set<OrderDetail> orderDetails;
+	
+	
+	public String getShipAddressID() {
+		return shipAddressID;
+	}
+
+
+	public void setShipAddressID(String shipAddressID) {
+		this.shipAddressID = shipAddressID;
+	}
+
+
+	public Set<OrderDetail> getOrderDetails() {
+		return orderDetails;
+	}
+
+
+	public void setOrderDetails(Set<OrderDetail> orderDetails) {
+		this.orderDetails = orderDetails;
+	}
+
+
+	public String getOrderID() {
+		return orderID;
+	}
+
+
+	public void setOrderID(String orderID) {
+		this.orderID = orderID;
+	}
+
+
+	public String getOrderDate() {
+		return orderDate;
+	}
+
+
+	public void setOrderDate(String orderDate) {
+		this.orderDate = orderDate;
+	}
+	private OrderStatus status;
+	
+	public Order() {
+		status=null;
+	}
+	
+	
+	public OrderStatus getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(OrderStatus status) {
+		this.status = status;
+	}
+
+
 	public String getProfileID() {
 		return profileID;
 	}
 	public void setProfileID(String profileID) {
 		this.profileID = profileID;
 	}
-	public Set<Product> getProducts() {
-		return products;
-	}
-	public void setProducts(Set<Product> products) {
-		this.products = products;
-	}
-	public String getOrderNumber() {
-		return orderNumber;
-	}
-	public void setOrderNumber(String orderNumber) {
-		this.orderNumber = orderNumber;
-	}
-	public double getQuantity() {
-		return quantity;
-	}
-	public void setQuantity(double quantity) {
-		this.quantity = quantity;
-	}
-	public double getUnitprice() {
-		return unitprice;
-	}
-	public void setUnitprice(double unitprice) {
-		this.unitprice = unitprice;
-	}
-	
 	
 }

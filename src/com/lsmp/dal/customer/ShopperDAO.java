@@ -9,19 +9,14 @@ import java.util.Random;
 import java.util.Set;
 
 import com.lsmp.dal.DBConnect;
-import com.lsmp.dal.order.OrderDAO;
-import com.lsmp.dal.product.review.ProductReviewDAO;
+
 import com.lsmp.mp.customer.Address;
 import com.lsmp.mp.customer.Bill;
 import com.lsmp.mp.customer.Phone;
 import com.lsmp.mp.customer.Shopper;
-import com.lsmp.mp.order.Order;
-import com.lsmp.mp.product.review.ProductReview;
 
 public class ShopperDAO {
 	
-	private OrderDAO orderDAO;
-	private ProductReviewDAO productReviewDAO;
 	private AddressDAO addressDAO;
 	private PhoneDAO phoneDAO;
 	private BillingDAO billInfoDAO;
@@ -31,8 +26,6 @@ public class ShopperDAO {
 		addressDAO = new AddressDAO();
 		phoneDAO = new PhoneDAO();
 		billInfoDAO = new BillingDAO();
-		orderDAO = new OrderDAO();
-		productReviewDAO = new ProductReviewDAO();
 	}
 
 	//get, update, insert and delete goes here
@@ -176,8 +169,8 @@ public Shopper addShopperProfile(String loginID, String firstName, String middle
 			
 			String updateQuery = "UPDATE shopper SET loginID='"+loginID+"', firstName='"+firstName+"', middleName='"+middleName+"',lastName='"+lastName+"',email='"+email+"',password='"+password+"',shopperType='"+shopperType+"'  WHERE profileID='"+id+"')";
 			updateStatement.executeUpdate(updateQuery);	
-			addressDAO.updateAddress(id, addresses);
-			phoneDAO.updatePhone(id, phones);
+			addressDAO.updateAddresses(id, addresses);
+			phoneDAO.updatePhones(id, phones);
 			billInfoDAO.updateBillingInfos(id, bills);
 			
 		}catch(SQLException se) {

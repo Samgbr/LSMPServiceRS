@@ -7,11 +7,18 @@ package com.lsmp.mp.customer;
  */
 public class Bill {
 
+	private String billID;
 	private String creditCardNumber;
 	private int cvv;
 	private int expiryMonth;
 	private int expiryYear;
 		
+	public String getBillID() {
+		return billID;
+	}
+	public void setBillID(String billID) {
+		this.billID = billID;
+	}
 	public String getCreditCardNumber() {
 		return creditCardNumber;
 	}

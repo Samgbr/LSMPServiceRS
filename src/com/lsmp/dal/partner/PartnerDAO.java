@@ -174,8 +174,8 @@ public class PartnerDAO {
 				
 				String updateQuery = "UPDATE partner SET loginID='"+loginID+"', firstName='"+firstName+"', middleName='"+middleName+"',lastName='"+lastName+"',email='"+email+"',password='"+password+"',sellerLevel='"+sellerLevel+"',sellerName='"+sellerName+"'  WHERE profileID='"+id+"')";
 				updateStatement.executeUpdate(updateQuery);	
-				addressDAO.updateAddress(id, addresses);
-				phoneDAO.updatePhone(id, phones);
+				addressDAO.updateAddresses(id, addresses);
+				phoneDAO.updatePhones(id, phones);
 				billInfoDAO.updateBillingInfos(id, bills);
 				
 			}catch(SQLException se) {
@@ -211,6 +211,8 @@ public class PartnerDAO {
 				}
 			}
 		}
+		
+		
 		 
 	
 }

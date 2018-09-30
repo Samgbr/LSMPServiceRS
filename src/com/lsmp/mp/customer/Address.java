@@ -8,11 +8,18 @@ package com.lsmp.mp.customer;
 public class Address {
 
 	//Instance variables
+	private String addressID;
 	private String street;
 	private String city;
 	private String state;
 	private String zipcode;
 	
+	public String getAddressID() {
+		return addressID;
+	}
+	public void setAddressID(String addressID) {
+		this.addressID = addressID;
+	}
 	public String getStreet() {
 		return street;
 	}

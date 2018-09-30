@@ -9,17 +9,9 @@ import java.util.Random;
 import java.util.Set;
 
 import com.lsmp.dal.DBConnect;
-import com.lsmp.dal.product.review.ProductReviewDAO;
 import com.lsmp.mp.product.Smartphone;
 
 public class SmartphoneDAO {
-	
-private ProductReviewDAO productReviewDAO;
-	
-	public SmartphoneDAO() {
-		//Initialization goes here
-		productReviewDAO = new ProductReviewDAO();
-	}
 
 	//get, update, insert and delete goes here
 	public Smartphone getSmartphone(String id) {

@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Random;
 import java.util.Set;
 
 import com.lsmp.dal.DBConnect;
@@ -25,9 +26,11 @@ public class PhoneDAO {
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			
 			while(resultSet.next()) {
+				String phoneID= resultSet.getString("phoneID");
 				String type = resultSet.getString("type");
 				String phoneNumber = resultSet.getString("phoneNumber");
 				Phone phone = new Phone();
+				phone.setPhoneID(phoneID);
 				phone.setType(type);
 				phone.setPhoneNumber(phoneNumber);
 				phones.add(phone);
@@ -46,7 +49,7 @@ public class PhoneDAO {
 		return phones;
 	}
 	
-public void insertPhones(String id, Set<Phone> phones) {
+	public void insertPhones(String id, Set<Phone> phones) {
 		
 		Connection connection = DBConnect.getDatabaseConnection();
 		try {
@@ -55,10 +58,13 @@ public void insertPhones(String id, Set<Phone> phones) {
 			Iterator<Phone> phoneIterator = phones.iterator();
 			
 			while(phoneIterator.hasNext()) {
+				Random randomGenerator = new Random();
+			    int randomInt = randomGenerator.nextInt(10000);
+			    String phoneID = "PH" + randomInt;
 				Phone currentPhone = phoneIterator.next();
 				
-				String insertQuery = "INSERT INTO * phone (profileID, type,phoneNumber)"
-						+ "VALUES('"+id+"','"+currentPhone.getType()+"','"+currentPhone.getPhoneNumber()+"')";
+				String insertQuery = "INSERT INTO * phone (phoneID, profileID, type,phoneNumber)"
+						+ "VALUES('"+phoneID+"','"+id+"','"+currentPhone.getType()+"','"+currentPhone.getPhoneNumber()+"')";
 				insertStatement.executeUpdate(insertQuery);
 				
 			}		
@@ -74,6 +80,33 @@ public void insertPhones(String id, Set<Phone> phones) {
 		}
 				
 	}
+
+	public void insertPhone(String id, Phone phone) {
+		
+		Connection connection = DBConnect.getDatabaseConnection();
+		try {
+			Statement insertStatement = connection.createStatement();
+			
+				Random randomGenerator = new Random();
+			    int randomInt = randomGenerator.nextInt(10000);
+			    String phoneID = "PH" + randomInt;
+				
+				String insertQuery = "INSERT INTO * phone (phoneID, profileID, type,phoneNumber)"
+						+ "VALUES('"+phoneID+"','"+id+"','"+phone.getType()+"','"+phone.getPhoneNumber()+"')";
+				insertStatement.executeUpdate(insertQuery);	
+			
+		}catch(SQLException se) {
+			se.printStackTrace();
+		}finally {
+			if(connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {}
+			}
+		}
+				
+	}
+
 
 	public void deletePhone(String id) {
 		Connection connection = DBConnect.getDatabaseConnection();
@@ -95,7 +128,7 @@ public void insertPhones(String id, Set<Phone> phones) {
 		
 	}
 	
-	public void updatePhone(String id, Set<Phone> phones) {
+	public void updatePhones(String id, Set<Phone> phones) {
 		Connection connection = DBConnect.getDatabaseConnection();
 		try {
 			Statement updateStatement = connection.createStatement();
@@ -120,4 +153,23 @@ public void insertPhones(String id, Set<Phone> phones) {
 			}
 		}
 	}
+	
+	public void updatePhone(String id, String phoneID, Phone phone) {
+		Connection connection = DBConnect.getDatabaseConnection();
+		try {
+			Statement updateStatement = connection.createStatement();
+			
+			String updateQuery = "UPDATE phone SET type='"+phone.getType()+"', city='"+phone.getPhoneNumber()+"'  WHERE profileID='"+id+"' AND phoneID='"+phoneID+"')";
+			updateStatement.executeUpdate(updateQuery);			
+			
+		}catch(SQLException se) {
+			se.printStackTrace();
+		}finally {
+			if(connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {}
+			}
+		}
+	}  
 }

@@ -9,17 +9,10 @@ import java.util.Random;
 import java.util.Set;
 
 import com.lsmp.dal.DBConnect;
-import com.lsmp.dal.product.review.ProductReviewDAO;
 import com.lsmp.mp.product.Book;
 
 public class BookDAO {
-	private ProductReviewDAO productReviewDAO;
 	
-	public BookDAO() {
-		//Initialization goes here
-		productReviewDAO = new ProductReviewDAO();
-	}
-
 	//get, update, insert and delete goes here
 	public Book getBook(String id) {
 		String productName="";

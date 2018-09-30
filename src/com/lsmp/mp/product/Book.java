@@ -1,9 +1,5 @@
 package com.lsmp.mp.product;
 
-import java.util.Set;
-
-import com.lsmp.mp.product.review.ProductReview;
-
 /**
  * This is a Book model class and one of product types
  * @author samzi
@@ -18,14 +14,7 @@ public class Book extends Product {
 	private String author;
 	private String edition;
 	private String bookType;
-	private Set<ProductReview> reviews;
 		
-	public Set<ProductReview> getReviews() {
-		return reviews;
-	}
-	public void setReviews(Set<ProductReview> reviews) {
-		this.reviews = reviews;
-	}
 	public String getTitle() {
 		return title;
 	}

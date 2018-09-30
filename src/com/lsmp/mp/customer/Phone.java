@@ -8,9 +8,16 @@ package com.lsmp.mp.customer;
 public class Phone {
 
 	// Instances
+	private String phoneID;
 	private String type;
 	private String phoneNumber;
 	
+	public String getPhoneID() {
+		return phoneID;
+	}
+	public void setPhoneID(String phoneID) {
+		this.phoneID = phoneID;
+	}
 	public String getType() {
 		return type;
 	}

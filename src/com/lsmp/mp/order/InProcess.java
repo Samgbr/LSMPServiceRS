@@ -1,11 +1,13 @@
 package com.lsmp.mp.order;
 
+import com.lsmp.mp.order.status.OrderStatus;
+
 /**
  * This is a process order model class
  * @author samzi
  *
  */
-public class InProcess extends Order {
+public class InProcess extends Order implements OrderStatus{
 
 	private boolean isPicked;
 	private boolean isPacked;
@@ -28,6 +30,13 @@ public class InProcess extends Order {
 	}
 	public void setDeliverdToPickupLocation(boolean deliverdToPickupLocation) {
 		this.deliverdToPickupLocation = deliverdToPickupLocation;
+	}
+	
+	
+	@Override
+	public void status(Order order) {
+		// Inprocess status goes here
+		order.setStatus(this);
 	}
 	
 }

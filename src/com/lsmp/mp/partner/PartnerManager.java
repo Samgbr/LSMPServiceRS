@@ -3,6 +3,7 @@ package com.lsmp.mp.partner;
 import java.util.Set;
 
 import com.lsmp.dal.partner.PartnerDAO;
+import com.lsmp.dal.partner.PartnerProductDAO;
 import com.lsmp.mp.customer.Address;
 import com.lsmp.mp.customer.Bill;
 import com.lsmp.mp.customer.Phone;
@@ -10,6 +11,7 @@ import com.lsmp.mp.customer.Phone;
 public class PartnerManager {
 
 private static PartnerDAO pDAO = new PartnerDAO();
+private static PartnerProductDAO ppDAO = new PartnerProductDAO();
 	
 	public Partner getPartnerProfile(String id) {
 		return pDAO.getPartnerProfile(id);
@@ -31,4 +33,25 @@ private static PartnerDAO pDAO = new PartnerDAO();
 	public void deletePartnerProfile(String id) {
 		pDAO.deletePartnerProfile(id);
 	}
+	
+	//------------------------------------------
+	public PartnerProduct getPartnerProductProfileBYProductID(String id) {
+		return ppDAO.getPartnerProductProfileBYProductID(id);
+	}
+	
+	public PartnerProduct addPartnerProduct(String id, String profileID) {
+		
+		PartnerProduct partnerProduct = ppDAO.addPartnerProduct(id, profileID);
+		
+		return partnerProduct;
+	}
+	
+	public void updatePartnerProduct(String id, String profileID) {
+		ppDAO.updatePartnerProduct(id, profileID);
+	}
+	
+	public void deletePartnerProduct(String id) {
+		ppDAO.deletePartnerProduct(id);
+	}
+	
 }
