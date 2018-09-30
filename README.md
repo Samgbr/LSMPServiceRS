@@ -23,15 +23,14 @@ Tools/Languages used in this project are:
 + Create a database schema for the application -- done
 + Create aws account free tier -- done
 + Create an instance of mysql aws RDS and connect on MySql Workbench -- done
-+ Connect the database and create a data access layer -- on progress
-+ Create model classes for the application, categorizing modules and build business logic -- on progress
++ Connect the database and create a data access layer -- done
++ Create model classes for the application, categorizing modules and build business logic -- done
 + Create tables on the DB -- on progress
++ create the main method -- on progress
 
 ================================
 # Operational Model
-https://drive.google.com/open?id=1-zfonii7rhZ0iTLw8nfWVxGoP5j7q0U7
-+ On the OM foreign key are not used on the model class instance variables instead used on database schema
-+ For Payment - not yet decided in need of model class because Paypal api is used and may not need to store card information to our database.
+https://drive.google.com/open?id=1HThbxD_x_JkXtQuXd7rrshiakwjpBaX9
 + Classes that have association/composition characteristics, used set data structre.
 
 # Database schema
