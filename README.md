@@ -37,3 +37,6 @@ https://drive.google.com/open?id=1HThbxD_x_JkXtQuXd7rrshiakwjpBaX9
 https://drive.google.com/open?id=1ecISjmnJ3ldyt_-aye9fiaOL1rarQDNb
 + MySql DB on AWS is used to create DB and connect
 + Updated and revised DB schema as per the operational model compatible with OM
+# DB DDL
+https://drive.google.com/open?id=1gKjU8BXtycJypRo7HUS38supncaXSLe-
+
