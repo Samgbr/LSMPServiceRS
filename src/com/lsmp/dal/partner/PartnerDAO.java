@@ -144,7 +144,7 @@ public class PartnerDAO {
 			try {
 				Statement insertStatement = connection.createStatement();
 				
-				String insertQuery = "INSERT INTO * shopper (profileID,loginID,firstName,middleName,lastName,email,password,sellerLevel,sellerName)"
+				String insertQuery = "INSERT INTO * partner (profileID,loginID,firstName,middleName,lastName,email,password,sellerLevel,sellerName)"
 						+ "VALUES('"+id+"','"+loginID+"','"+firstName+"','"+middleName+"','"+lastName+"','"+email+"','"+password+"','"+sellerLevel+"','"+sellerName+"')";
 				insertStatement.executeUpdate(insertQuery);
 				

@@ -25,7 +25,7 @@ public class PartnerProductDAO {
 		try {
 			Statement selectStatement = connection.createStatement();
 			
-			String selectQuery = "SELECT * from partnerProduct where productID='" + id +"'";
+			String selectQuery = "SELECT * from partnerproduct where productID='" + id +"'";
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			resultSet.next();
 			profileID= resultSet.getString("profileID");
@@ -54,7 +54,7 @@ public class PartnerProductDAO {
 		try {
 			Statement selectStatement = connection.createStatement();
 			
-			String selectQuery = "SELECT * from partnerProduct";
+			String selectQuery = "SELECT * from partnerproduct";
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			
 			while(resultSet.next()) {
@@ -93,7 +93,7 @@ public class PartnerProductDAO {
 			try {
 				Statement insertStatement = connection.createStatement();
 				
-				String insertQuery = "INSERT INTO * productPartner (productID,profileID)"
+				String insertQuery = "INSERT INTO * productpartner (productID,profileID)"
 						+ "VALUES('"+id+"','"+profileID+"')";
 				insertStatement.executeUpdate(insertQuery);
 			
@@ -116,7 +116,7 @@ public class PartnerProductDAO {
 		try {
 			Statement updateStatement = connection.createStatement();
 			
-			String updateQuery = "UPDATE partnerProduct SET profileID='"+profileID+"'  WHERE productID='"+id+"')";
+			String updateQuery = "UPDATE partnerproduct SET profileID='"+profileID+"'  WHERE productID='"+id+"')";
 			updateStatement.executeUpdate(updateQuery);	
 			
 		}catch(SQLException se) {
@@ -135,7 +135,7 @@ public class PartnerProductDAO {
 		try {
 			Statement deleteStatement = connection.createStatement();
 			
-			String deleteQuery = "DELETE FROM partnerProduct WHERE productID='"+id+"')";
+			String deleteQuery = "DELETE FROM partnerproduct WHERE productID='"+id+"')";
 			deleteStatement.executeUpdate(deleteQuery);	
 			
 		}catch(SQLException se) {

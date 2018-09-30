@@ -25,7 +25,7 @@ public class OrderDetailDAO {
 		try {
 			Statement selectStatement = connection.createStatement();
 			
-			String selectQuery = "SELECT * from orderDetail where orderDetailID='" + id +"'";
+			String selectQuery = "SELECT * from orderdetail where orderDetailID='" + id +"'";
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			resultSet.next();
 			orderID= resultSet.getString("orderID");
@@ -56,7 +56,7 @@ public class OrderDetailDAO {
 		try {
 			Statement selectStatement = connection.createStatement();
 			
-			String selectQuery = "SELECT * from orderDetail WHERE profileID='"+pid+"'";
+			String selectQuery = "SELECT * from orderdetail WHERE profileID='"+pid+"'";
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			
 			while(resultSet.next()) {
@@ -89,7 +89,7 @@ public class OrderDetailDAO {
 			try {
 				Statement selectStatement = connection.createStatement();
 				
-				String selectQuery = "SELECT * from orderDetail WHERE orderID='"+id+"'";
+				String selectQuery = "SELECT * from orderdetail WHERE orderID='"+id+"'";
 				ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 				
 				while(resultSet.next()) {
@@ -131,7 +131,7 @@ public class OrderDetailDAO {
 			try {
 				Statement insertStatement = connection.createStatement();
 				
-				String insertQuery = "INSERT INTO * orderDetail (orderDetailID,orderID,productID,orderedQuantity)"
+				String insertQuery = "INSERT INTO * orderdetail (orderDetailID,orderID,productID,orderedQuantity)"
 						+ "VALUES('"+id+"','"+orderID+"','"+productID+"','"+orderedQuantity+"')";
 				insertStatement.executeUpdate(insertQuery);
 			
@@ -154,7 +154,7 @@ public class OrderDetailDAO {
 		try {
 			Statement updateStatement = connection.createStatement();
 			
-			String updateQuery = "UPDATE orderDetail SET orderID='"+orderID+"', productID='"+productID+"', orderedQuantity='"+orderedQuantity+"'  WHERE orderDetailID='"+id+"')";
+			String updateQuery = "UPDATE orderdetail SET orderID='"+orderID+"', productID='"+productID+"', orderedQuantity='"+orderedQuantity+"'  WHERE orderDetailID='"+id+"')";
 			updateStatement.executeUpdate(updateQuery);	
 			
 		}catch(SQLException se) {
@@ -173,7 +173,7 @@ public class OrderDetailDAO {
 		try {
 			Statement deleteStatement = connection.createStatement();
 			
-			String deleteQuery = "DELETE FROM orderDetail WHERE orderDetailID='"+id+"')";
+			String deleteQuery = "DELETE FROM orderdetail WHERE orderDetailID='"+id+"')";
 			deleteStatement.executeUpdate(deleteQuery);	
 			
 		}catch(SQLException se) {
@@ -201,7 +201,7 @@ public class OrderDetailDAO {
 			    String orderDetailID = "OD" + randomInt;
 				OrderDetail currentOrderDetail = orderDetailsIterator.next();
 				
-				String insertQuery = "INSERT INTO * orderDetail (orderDetailID,orderID,productID,orderedQuantity)"
+				String insertQuery = "INSERT INTO * orderdetail (orderDetailID,orderID,productID,orderedQuantity)"
 						+ "VALUES('"+orderDetailID+"','"+currentOrderDetail.getOrderID()+"','"+currentOrderDetail.getProductID()+"','"+currentOrderDetail.getOrderedQuantity()+"')";
 				insertStatement.executeUpdate(insertQuery);
 				
