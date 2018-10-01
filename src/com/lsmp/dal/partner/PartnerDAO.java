@@ -144,7 +144,7 @@ public class PartnerDAO {
 			try {
 				Statement insertStatement = connection.createStatement();
 				
-				String insertQuery = "INSERT INTO * partner (profileID,loginID,firstName,middleName,lastName,email,password,sellerLevel,sellerName)"
+				String insertQuery = "INSERT INTO * partner (profileID,loginID,firstName,middleName,lastName,email,p_password,sellerLevel,sellerName)"
 						+ "VALUES('"+id+"','"+loginID+"','"+firstName+"','"+middleName+"','"+lastName+"','"+email+"','"+password+"','"+sellerLevel+"','"+sellerName+"')";
 				insertStatement.executeUpdate(insertQuery);
 				
@@ -172,7 +172,7 @@ public class PartnerDAO {
 			try {
 				Statement updateStatement = connection.createStatement();
 				
-				String updateQuery = "UPDATE partner SET loginID='"+loginID+"', firstName='"+firstName+"', middleName='"+middleName+"',lastName='"+lastName+"',email='"+email+"',password='"+password+"',sellerLevel='"+sellerLevel+"',sellerName='"+sellerName+"'  WHERE profileID='"+id+"')";
+				String updateQuery = "UPDATE partner SET loginID='"+loginID+"', firstName='"+firstName+"', middleName='"+middleName+"',lastName='"+lastName+"',email='"+email+"',p_password='"+password+"',sellerLevel='"+sellerLevel+"',sellerName='"+sellerName+"'  WHERE profileID='"+id+"')";
 				updateStatement.executeUpdate(updateQuery);	
 				addressDAO.updateAddresses(id, addresses);
 				phoneDAO.updatePhones(id, phones);

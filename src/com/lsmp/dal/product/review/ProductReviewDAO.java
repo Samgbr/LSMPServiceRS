@@ -24,7 +24,7 @@ public class ProductReviewDAO {
 		try {
 			Statement selectStatement = connection.createStatement();
 			
-			String selectQuery = "SELECT * from productreview where productID='" + id +"' AND profileID='" + pid +"'";
+			String selectQuery = "SELECT * from productReview where productID='" + id +"' AND profileID='" + pid +"'";
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			resultSet.next();
 			productID= resultSet.getString("productID");
@@ -57,7 +57,7 @@ public class ProductReviewDAO {
 		try {
 			Statement selectStatement = connection.createStatement();
 			
-			String selectQuery = "SELECT * from productreview";
+			String selectQuery = "SELECT * from productReview";
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			
 			while(resultSet.next()) {
@@ -95,7 +95,7 @@ public class ProductReviewDAO {
 			try {
 				Statement insertStatement = connection.createStatement();
 				
-				String insertQuery = "INSERT INTO * productreview (productID,profileID,review,rating)"
+				String insertQuery = "INSERT INTO * productReview (productID,profileID,review,rating)"
 						+ "VALUES('"+id+"','"+pid+"','"+review+"','"+rating+"')";
 				insertStatement.executeUpdate(insertQuery);
 			
@@ -118,7 +118,7 @@ public class ProductReviewDAO {
 		try {
 			Statement updateStatement = connection.createStatement();
 			
-			String updateQuery = "UPDATE productreview SET review='"+review+"', rating='"+rating+"'  WHERE productID='"+id+"' AND profileID='"+pid+"')";
+			String updateQuery = "UPDATE productReview SET review='"+review+"', rating='"+rating+"'  WHERE productID='"+id+"' AND profileID='"+pid+"')";
 			updateStatement.executeUpdate(updateQuery);	
 			
 		}catch(SQLException se) {
@@ -137,7 +137,7 @@ public class ProductReviewDAO {
 		try {
 			Statement deleteStatement = connection.createStatement();
 			
-			String deleteQuery = "DELETE FROM productreview WHERE productID='"+id+"' AND profileID='"+pid+"')";
+			String deleteQuery = "DELETE FROM productReview WHERE productID='"+id+"' AND profileID='"+pid+"')";
 			deleteStatement.executeUpdate(deleteQuery);	
 			
 		}catch(SQLException se) {

@@ -1,14 +1,13 @@
 # LSMPServiceRS
 COMP433
 
-# Customer Module is finalized
+# All Modules finalized
 The following activities performed.
 + A Manager Class used to connect with the service layer.
-+ Data access layer for customer module done
++ Data access layer for all modules done
 
 # To-do
-+ Partner Module
-+ Order Module
-+ Product Module
-+ Product Review Module
++ Create tables and add data
++ Main method to test and deploy to AWs
++ Update wiki for documentation
 

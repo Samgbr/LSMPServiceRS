@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Random;
 import java.util.Set;
 
 import com.lsmp.dal.DBConnect;
@@ -25,7 +26,7 @@ public class PartnerProductDAO {
 		try {
 			Statement selectStatement = connection.createStatement();
 			
-			String selectQuery = "SELECT * from partnerproduct where productID='" + id +"'";
+			String selectQuery = "SELECT * from productPartner where productID='" + id +"'";
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			resultSet.next();
 			profileID= resultSet.getString("profileID");
@@ -54,7 +55,7 @@ public class PartnerProductDAO {
 		try {
 			Statement selectStatement = connection.createStatement();
 			
-			String selectQuery = "SELECT * from partnerproduct";
+			String selectQuery = "SELECT * from productPartner";
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			
 			while(resultSet.next()) {
@@ -92,9 +93,12 @@ public class PartnerProductDAO {
 			Connection connection = DBConnect.getDatabaseConnection();
 			try {
 				Statement insertStatement = connection.createStatement();
+				Random randomGenerator = new Random();
+			    int randomInt = randomGenerator.nextInt(10000);
+			    String pid = "PP" + randomInt;
 				
-				String insertQuery = "INSERT INTO * productpartner (productID,profileID)"
-						+ "VALUES('"+id+"','"+profileID+"')";
+				String insertQuery = "INSERT INTO * productPartner (productPartnerID,productID,profileID)"
+						+ "VALUES('"+pid+"','"+id+"','"+profileID+"')";
 				insertStatement.executeUpdate(insertQuery);
 			
 				
@@ -116,7 +120,7 @@ public class PartnerProductDAO {
 		try {
 			Statement updateStatement = connection.createStatement();
 			
-			String updateQuery = "UPDATE partnerproduct SET profileID='"+profileID+"'  WHERE productID='"+id+"')";
+			String updateQuery = "UPDATE productPartner SET profileID='"+profileID+"'  WHERE productID='"+id+"')";
 			updateStatement.executeUpdate(updateQuery);	
 			
 		}catch(SQLException se) {
@@ -135,7 +139,7 @@ public class PartnerProductDAO {
 		try {
 			Statement deleteStatement = connection.createStatement();
 			
-			String deleteQuery = "DELETE FROM partnerproduct WHERE productID='"+id+"')";
+			String deleteQuery = "DELETE FROM productPartner WHERE productID='"+id+"')";
 			deleteStatement.executeUpdate(deleteQuery);	
 			
 		}catch(SQLException se) {

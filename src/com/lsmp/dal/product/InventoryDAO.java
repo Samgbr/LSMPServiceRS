@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Random;
 import java.util.Set;
 
 import com.lsmp.dal.DBConnect;
@@ -25,7 +26,7 @@ public class InventoryDAO {
 		try {
 			Statement selectStatement = connection.createStatement();
 			
-			String selectQuery = "SELECT * from inventory where productID='" + id +"'";
+			String selectQuery = "SELECT * from Inventory where productID='" + id +"'";
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			resultSet.next();
 			qtyOnHand= resultSet.getDouble("qtyOnHand");
@@ -54,7 +55,7 @@ public class InventoryDAO {
 		try {
 			Statement selectStatement = connection.createStatement();
 			
-			String selectQuery = "SELECT * from inventory";
+			String selectQuery = "SELECT * from Inventory";
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			
 			while(resultSet.next()) {
@@ -92,9 +93,12 @@ public class InventoryDAO {
 			Connection connection = DBConnect.getDatabaseConnection();
 			try {
 				Statement insertStatement = connection.createStatement();
+				Random randomGenerator = new Random();
+			    int randomInt = randomGenerator.nextInt(10000);
+			    String iID = "IN" + randomInt;
 				
-				String insertQuery = "INSERT INTO * inventory (productID,qtyOnHand)"
-						+ "VALUES('"+id+"','"+qtyOnHand+"')";
+				String insertQuery = "INSERT INTO * Inventory (InventoryID,productID,qtyOnHand)"
+						+ "VALUES('"+iID+"','"+id+"','"+qtyOnHand+"')";
 				insertStatement.executeUpdate(insertQuery);
 			
 				
@@ -116,7 +120,7 @@ public class InventoryDAO {
 		try {
 			Statement updateStatement = connection.createStatement();
 			
-			String updateQuery = "UPDATE inventory SET qtyOnHand='"+qtyOnHand+"'  WHERE productID='"+id+"')";
+			String updateQuery = "UPDATE Inventory SET qtyOnHand='"+qtyOnHand+"'  WHERE productID='"+id+"')";
 			updateStatement.executeUpdate(updateQuery);	
 			
 		}catch(SQLException se) {
@@ -135,7 +139,7 @@ public class InventoryDAO {
 		try {
 			Statement deleteStatement = connection.createStatement();
 			
-			String deleteQuery = "DELETE FROM inventory WHERE productID='"+id+"')";
+			String deleteQuery = "DELETE FROM Inventory WHERE productID='"+id+"')";
 			deleteStatement.executeUpdate(deleteQuery);	
 			
 		}catch(SQLException se) {

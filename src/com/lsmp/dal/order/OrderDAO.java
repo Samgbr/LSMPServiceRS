@@ -32,7 +32,7 @@ public class OrderDAO {
 		try {
 			Statement selectStatement = connection.createStatement();
 			
-			String selectQuery = "SELECT * from order where orderID='" + id +"'";
+			String selectQuery = "SELECT * from orderT where orderID='" + id +"'";
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			resultSet.next();
 			profileID= resultSet.getString("profileID");
@@ -77,8 +77,8 @@ public class OrderDAO {
 			try {
 				Statement insertStatement = connection.createStatement();
 				
-				String insertQuery = "INSERT INTO * order (orderID,profileID,orderDate,shipAddressID)"
-						+ "VALUES('"+id+"','"+profileID+"','"+orderDate+"','"+shipAddressID+"')";
+				String insertQuery = "INSERT INTO * orderT (orderID,profileID,orderDate,shipAddressID,refund,isPicked,isPacked,deliveredToPickUpLocation,isDelivered,pickUpLocation)"
+						+ "VALUES('"+id+"','"+profileID+"','"+orderDate+"','"+shipAddressID+"','false','false','false','false','false','NA')";
 				insertStatement.executeUpdate(insertQuery);
 			
 				orderDetailDAO.addOrderDetails(orderDetails);
@@ -101,7 +101,7 @@ public class OrderDAO {
 		try {
 			Statement updateStatement = connection.createStatement();
 			
-			String updateQuery = "UPDATE order SET profileID='"+profileID+"', orderDate='"+orderDate+"', shipAddressID='"+shipAddressID+"'  WHERE orderID='"+id+"')";
+			String updateQuery = "UPDATE orderT SET profileID='"+profileID+"', orderDate='"+orderDate+"', shipAddressID='"+shipAddressID+"'  WHERE orderID='"+id+"')";
 			updateStatement.executeUpdate(updateQuery);	
 			
 		}catch(SQLException se) {
@@ -120,7 +120,7 @@ public class OrderDAO {
 		try {
 			Statement deleteStatement = connection.createStatement();
 			
-			String deleteQuery = "DELETE FROM order WHERE orderID='"+id+"')";
+			String deleteQuery = "DELETE FROM orderT WHERE orderID='"+id+"')";
 			deleteStatement.executeUpdate(deleteQuery);	
 			
 		}catch(SQLException se) {

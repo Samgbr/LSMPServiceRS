@@ -139,7 +139,7 @@ public Shopper addShopperProfile(String loginID, String firstName, String middle
 		try {
 			Statement insertStatement = connection.createStatement();
 			
-			String insertQuery = "INSERT INTO * shopper (profileID,loginID,firstName,middleName,lastName,email,password,shopperType)"
+			String insertQuery = "INSERT INTO * shopper (profileID,loginID,firstName,middleName,lastName,email,s_password,shopperType)"
 					+ "VALUES('"+id+"','"+loginID+"','"+firstName+"','"+middleName+"','"+lastName+"','"+email+"','"+password+"','"+shopperType+"')";
 			insertStatement.executeUpdate(insertQuery);
 			
@@ -167,7 +167,7 @@ public Shopper addShopperProfile(String loginID, String firstName, String middle
 		try {
 			Statement updateStatement = connection.createStatement();
 			
-			String updateQuery = "UPDATE shopper SET loginID='"+loginID+"', firstName='"+firstName+"', middleName='"+middleName+"',lastName='"+lastName+"',email='"+email+"',password='"+password+"',shopperType='"+shopperType+"'  WHERE profileID='"+id+"')";
+			String updateQuery = "UPDATE shopper SET loginID='"+loginID+"', firstName='"+firstName+"', middleName='"+middleName+"',lastName='"+lastName+"',email='"+email+"',s_password='"+password+"',shopperType='"+shopperType+"'  WHERE profileID='"+id+"')";
 			updateStatement.executeUpdate(updateQuery);	
 			addressDAO.updateAddresses(id, addresses);
 			phoneDAO.updatePhones(id, phones);
