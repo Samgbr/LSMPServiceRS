@@ -25,8 +25,8 @@ Tools/Languages used in this project are:
 + Create an instance of mysql aws RDS and connect on MySql Workbench -- done
 + Connect the database and create a data access layer -- done
 + Create model classes for the application, categorizing modules and build business logic -- done
-+ Create tables on the DB -- on progress
-+ create the main method -- on progress
++ Create tables on the DB -- done
++ create the main method -- done
 
 ================================
 # Operational Model
