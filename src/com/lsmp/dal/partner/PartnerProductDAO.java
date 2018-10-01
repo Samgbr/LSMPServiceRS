@@ -80,7 +80,7 @@ public class PartnerProductDAO {
 		
 	}
 	
-	public PartnerProduct addPartnerProduct(String id, String profileID) {
+	public PartnerProduct addPartnerProduct(String ppid, String id, String profileID) {
 			
 		Map<String,String> partnerProductMap = new HashMap<>();
 			
@@ -93,12 +93,13 @@ public class PartnerProductDAO {
 			Connection connection = DBConnect.getDatabaseConnection();
 			try {
 				Statement insertStatement = connection.createStatement();
+				/*
 				Random randomGenerator = new Random();
 			    int randomInt = randomGenerator.nextInt(10000);
-			    String pid = "PP" + randomInt;
+			    String pid = "PP" + randomInt;  */
 				
 				String insertQuery = "INSERT INTO * productPartner (productPartnerID,productID,profileID)"
-						+ "VALUES('"+pid+"','"+id+"','"+profileID+"')";
+						+ "VALUES('"+ppid+"','"+id+"','"+profileID+"')";
 				insertStatement.executeUpdate(insertQuery);
 			
 				

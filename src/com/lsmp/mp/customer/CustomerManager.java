@@ -36,4 +36,47 @@ public class CustomerManager {
 		sDAO.deleteShopperProfile(id);
 	}
 	
+	public Shopper createShopper(String profileID, String loginID, String firstName, String middleName, String lastName,
+			String email, String password, String shoppertype) {
+		Shopper shopper = new Shopper();
+		shopper.setProfileID(profileID);
+		shopper.setLoginID(loginID);
+		shopper.setFirstName(firstName);
+		shopper.setMiddleName(middleName);
+		shopper.setLastName(lastName);
+		shopper.setEmail(email);
+		shopper.setPassword(password);
+		shopper.setShopperType(shoppertype);
+		return shopper;
+	}
+	
+	public Address createAddress(String addressID, String street, String city, String state, String zipcode) {
+		Address address = new Address();
+		address.setAddressID(addressID);
+		address.setStreet(street);
+		address.setCity(city);
+		address.setState(state);
+		address.setZipcode(zipcode);
+		return address;
+	}
+	
+	public Phone createPhone(String phoneID, String type, String phoneNumber) {
+		Phone phone = new Phone();
+		phone.setPhoneID(phoneID);
+		phone.setType(type);
+		phone.setPhoneNumber(phoneNumber);
+		return phone;
+	}
+	
+	public Bill createBill(String billID, String creditCardNumber, int cvv, int expiryMonth, int expiryYear) {
+		Bill bill = new Bill();
+		bill.setBillID(billID);
+		bill.setCreditCardNumber(creditCardNumber);
+		bill.setCvv(cvv);
+		bill.setExpiryMonth(expiryMonth);
+		bill.setExpiryYear(expiryYear);
+		return bill;
+	}
+	
+	
 }

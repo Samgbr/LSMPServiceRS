@@ -14,10 +14,10 @@ private static InventoryDAO iDAO = new InventoryDAO();
 		return bDAO.getBook(id);
 	}
 	
-	public Book addBook(String bid,String productName, String description, double purchasePrice, double sellingPrice, 
-			double discount, String title, String isbn, String publisher, String author, String edition, String bookType) {
+	public Book addBook(String productID, String isbn, String publisher, String author, String edition, 
+			String booktype, String productName, String description, double purchasePrice, double sellingPrice, double discount,String title) {
 		
-		Book book = bDAO.addBook(bid, productName, description, purchasePrice, sellingPrice, discount, title, isbn, publisher, author, edition, bookType);
+		Book book = bDAO.addBook(productID, productName, description, purchasePrice, sellingPrice, discount, title, isbn, publisher, author, edition, booktype);
 		
 		return book;
 	}
@@ -74,6 +74,4 @@ private static InventoryDAO iDAO = new InventoryDAO();
 	public void deleteProductQtyOnHand(String id) {
 		iDAO.deleteProductQtyOnHand(id);
 	}
-
-
 }

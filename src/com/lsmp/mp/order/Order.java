@@ -19,6 +19,12 @@ public class Order {
 	private String shipAddressID;
 	private Set<OrderDetail> orderDetails;
 	
+	private OrderStatus status;
+	
+	public Order() {
+		status=null;
+	}
+	
 	
 	public String getShipAddressID() {
 		return shipAddressID;
@@ -57,13 +63,7 @@ public class Order {
 
 	public void setOrderDate(String orderDate) {
 		this.orderDate = orderDate;
-	}
-	private OrderStatus status;
-	
-	public Order() {
-		status=null;
-	}
-	
+	}	
 	
 	public OrderStatus getStatus() {
 		return status;

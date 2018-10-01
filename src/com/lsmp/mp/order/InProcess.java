@@ -35,7 +35,8 @@ public class InProcess extends Order implements OrderStatus{
 	
 	@Override
 	public void status(Order order) {
-		// Inprocess status goes here
+		// In process status goes here
+		System.out.println("Processing Order");
 		order.setStatus(this);
 	}
 	
