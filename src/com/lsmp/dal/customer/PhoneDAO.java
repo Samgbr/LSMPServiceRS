@@ -58,13 +58,14 @@ public class PhoneDAO {
 			Iterator<Phone> phoneIterator = phones.iterator();
 			
 			while(phoneIterator.hasNext()) {
+				/*
 				Random randomGenerator = new Random();
 			    int randomInt = randomGenerator.nextInt(10000);
-			    String phoneID = "PH" + randomInt;
-				Phone currentPhone = phoneIterator.next();
+			    String phoneID = "PH" + randomInt;*/
+				Phone currentPhone = phoneIterator.next(); 
 				
 				String insertQuery = "INSERT INTO * phone (phoneID, profileID, type,phoneNumber)"
-						+ "VALUES('"+phoneID+"','"+id+"','"+currentPhone.getType()+"','"+currentPhone.getPhoneNumber()+"')";
+						+ "VALUES('"+currentPhone.getPhoneID()+"','"+id+"','"+currentPhone.getType()+"','"+currentPhone.getPhoneNumber()+"')";
 				insertStatement.executeUpdate(insertQuery);
 				
 			}		

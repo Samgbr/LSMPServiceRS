@@ -80,7 +80,7 @@ public class InventoryDAO {
 		
 	}
 	
-	public Inventory addProductQtyOnHand(String id, double qtyOnHand) {
+	public Inventory addProductQtyOnHand(String iid, String id, double qtyOnHand) {
 			
 			Map<String,Double> qtyOnHandMap = new HashMap<>();
 			
@@ -92,13 +92,15 @@ public class InventoryDAO {
 			
 			Connection connection = DBConnect.getDatabaseConnection();
 			try {
+				
 				Statement insertStatement = connection.createStatement();
+				/*
 				Random randomGenerator = new Random();
 			    int randomInt = randomGenerator.nextInt(10000);
-			    String iID = "IN" + randomInt;
+			    String iID = "IN" + randomInt; */
 				
 				String insertQuery = "INSERT INTO * Inventory (InventoryID,productID,qtyOnHand)"
-						+ "VALUES('"+iID+"','"+id+"','"+qtyOnHand+"')";
+						+ "VALUES('"+iid+"','"+id+"','"+qtyOnHand+"')";
 				insertStatement.executeUpdate(insertQuery);
 			
 				

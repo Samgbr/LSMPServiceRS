@@ -14,9 +14,9 @@ public class OrderManager {
 		return oDAO.getOrderWithDetail(id);
 	}
 	
-	public Order addOrder(String profileID, String orderDate, String shipAddressID, Set<OrderDetail> orderDetails) {
+	public Order addOrder(String oid, String profileID, String orderDate, String shipAddressID, Set<OrderDetail> orderDetails) {
 		
-		Order order = oDAO.addOrder(profileID, orderDate, shipAddressID, orderDetails);
+		Order order = oDAO.addOrder(oid, profileID, orderDate, shipAddressID, orderDetails);
 		
 		return order;
 	}
@@ -42,8 +42,8 @@ public class OrderManager {
 		return odDAO.getAllOrderDetailsByOrderID(id);
 	}
 	
-	public OrderDetail addOrderDetail(String orderID, String productID, double orderedQuantity) {
-		return odDAO.addOrderDetail(orderID, productID, orderedQuantity);
+	public OrderDetail addOrderDetail(String odid, String orderID, String productID, double orderedQuantity) {
+		return odDAO.addOrderDetail(odid, orderID, productID, orderedQuantity);
 	}
 	
 	public void addOrderDetails(Set<OrderDetail> orderDetails) {

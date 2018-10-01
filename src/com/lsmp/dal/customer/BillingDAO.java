@@ -71,7 +71,7 @@ public void insertBillingInfos(String id, Set<Bill> bills) {
 				Bill currentBillInfo = billIterator.next();
 				
 				String insertQuery = "INSERT INTO * bill (billID, profileID, creditCardNumber, cvv, expiryMonth, expiryYear)"
-						+ "VALUES('"+billID+"','"+id+"','"+currentBillInfo.getCreditCardNumber()+"','"+currentBillInfo.getCvv()+"','"+currentBillInfo.getExpiryMonth()+"','"+currentBillInfo.getExpiryYear()+"')";
+						+ "VALUES('"+currentBillInfo.getBillID()+"','"+id+"','"+currentBillInfo.getCreditCardNumber()+"','"+currentBillInfo.getCvv()+"','"+currentBillInfo.getExpiryMonth()+"','"+currentBillInfo.getExpiryYear()+"')";
 				insertStatement.executeUpdate(insertQuery);
 				
 			}		

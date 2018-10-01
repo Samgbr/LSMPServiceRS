@@ -63,15 +63,15 @@ public void insertAddresses(String id, Set<Address> addresses) {
 			Iterator<Address> addressIterator = addresses.iterator();
 			
 			while(addressIterator.hasNext()) {
-				
+				/*
 				Random randomGenerator = new Random();
 			    int randomInt = randomGenerator.nextInt(10000);
-			    String addressID = "AD" + randomInt;
+			    String addressID = "AD" + randomInt; */
 			    
 				Address currentAddress = addressIterator.next();
 				
 				String insertQuery = "INSERT INTO * address (addressID, profileID, street,city,state,zipcode)"
-						+ "VALUES('"+addressID+"','"+id+"','"+currentAddress.getStreet()+"','"+currentAddress.getCity()+"','"+currentAddress.getState()+"','"+currentAddress.getZipcode()+"')";
+						+ "VALUES('"+currentAddress.getAddressID()+"','"+id+"','"+currentAddress.getStreet()+"','"+currentAddress.getCity()+"','"+currentAddress.getState()+"','"+currentAddress.getZipcode()+"')";
 				insertStatement.executeUpdate(insertQuery);
 				
 			}		
@@ -88,18 +88,18 @@ public void insertAddresses(String id, Set<Address> addresses) {
 				
 	}
 
-	public void insertAddress(String id, Address address) {
+	public void insertAddress(String aid, String id, Address address) {
 		
 		Connection connection = DBConnect.getDatabaseConnection();
 		try {
 			Statement insertStatement = connection.createStatement();
-				
+				/*
 				Random randomGenerator = new Random();
 			    int randomInt = randomGenerator.nextInt(10000);
-			    String addressID = "AD" + randomInt;
+			    String addressID = "AD" + randomInt; */
 				
 				String insertQuery = "INSERT INTO * address (addressID, profileID, street,city,state,zipcode)"
-						+ "VALUES('"+addressID+"','"+id+"','"+address.getStreet()+"','"+address.getCity()+"','"+address.getState()+"','"+address.getZipcode()+"')";
+						+ "VALUES('"+aid+"','"+id+"','"+address.getStreet()+"','"+address.getCity()+"','"+address.getState()+"','"+address.getZipcode()+"')";
 				insertStatement.executeUpdate(insertQuery);	
 			
 		}catch(SQLException se) {

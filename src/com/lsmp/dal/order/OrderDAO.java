@@ -59,15 +59,15 @@ public class OrderDAO {
 		return order;	
 	}
 	
-	public Order addOrder(String profileID, String orderDate, String shipAddressID, Set<OrderDetail> orderDetails) {
+	public Order addOrder(String oid, String profileID, String orderDate, String shipAddressID, Set<OrderDetail> orderDetails) {
 			
 			Order order = new Order();
-			
+			/*
 			Random randomGenerator = new Random();
 		    int randomInt = randomGenerator.nextInt(10000);
-		    String id = "OR" + randomInt;
+		    String id = "OR" + randomInt; */
 		    
-		    order.setOrderID(id);
+		    order.setOrderID(oid);
 		    order.setOrderDate(orderDate);
 		    order.setProfileID(profileID);
 		    order.setShipAddressID(shipAddressID);
@@ -78,7 +78,7 @@ public class OrderDAO {
 				Statement insertStatement = connection.createStatement();
 				
 				String insertQuery = "INSERT INTO * orderT (orderID,profileID,orderDate,shipAddressID,refund,isPicked,isPacked,deliveredToPickUpLocation,isDelivered,pickUpLocation)"
-						+ "VALUES('"+id+"','"+profileID+"','"+orderDate+"','"+shipAddressID+"','false','false','false','false','false','NA')";
+						+ "VALUES('"+oid+"','"+profileID+"','"+orderDate+"','"+shipAddressID+"','false','false','false','false','false','NA')";
 				insertStatement.executeUpdate(insertQuery);
 			
 				orderDetailDAO.addOrderDetails(orderDetails);

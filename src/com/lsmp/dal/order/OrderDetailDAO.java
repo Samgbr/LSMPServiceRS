@@ -114,15 +114,15 @@ public class OrderDetailDAO {
 			
 		}
 	
-	public OrderDetail addOrderDetail(String orderID, String productID, double orderedQuantity) {
+	public OrderDetail addOrderDetail(String odid,String orderID, String productID, double orderedQuantity) {
 			
 			OrderDetail orderDetail = new OrderDetail();
-			
+			/*
 			Random randomGenerator = new Random();
 		    int randomInt = randomGenerator.nextInt(10000);
-		    String id = "OD" + randomInt;
+		    String id = "OD" + randomInt; */
 		    
-		    orderDetail.setOrderDetailID(id);
+		    orderDetail.setOrderDetailID(odid);
 		    orderDetail.setOrderID(orderID);
 		    orderDetail.setProductID(productID);
 		    orderDetail.setOrderedQuantity(orderedQuantity);
@@ -132,7 +132,7 @@ public class OrderDetailDAO {
 				Statement insertStatement = connection.createStatement();
 				
 				String insertQuery = "INSERT INTO * orderDetail (orderDetailID,orderID,productID,orderedQuantity)"
-						+ "VALUES('"+id+"','"+orderID+"','"+productID+"','"+orderedQuantity+"')";
+						+ "VALUES('"+odid+"','"+orderID+"','"+productID+"','"+orderedQuantity+"')";
 				insertStatement.executeUpdate(insertQuery);
 			
 				
