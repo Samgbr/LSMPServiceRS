@@ -20,7 +20,7 @@ public class DBConnect {
 		Connection connection = null;
 		DBConfig config = new DBConfig();
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");  //com.mysql.jdbc.Driver - deprecated
 			connection = DriverManager.getConnection(config.getDatabaseURL(),config.getUsername(),config.getPassword());
 			
 		}catch(SQLException exception) {

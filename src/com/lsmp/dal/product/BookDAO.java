@@ -131,7 +131,7 @@ public class BookDAO {
 			try {
 				Statement insertStatement = connection.createStatement();
 				
-				String insertQuery = "INSERT INTO * book (productID,isbn,publisher,author,edition,bookType,productName,description,purchasePrice,sellingPrice,discount,title)"
+				String insertQuery = "INSERT INTO book(productID,isbn,publisher,author,edition,bookType,productName,description,purchasePrice,sellingPrice,discount,title) "
 						+ "VALUES('"+bid+"','"+isbn+"','"+publisher+"','"+author+"','"+edition+"','"+bookType+"','"+productName+"','"+description+"','"+purchasePrice+"','"+sellingPrice+"','"+discount+"','"+title+"')";
 				insertStatement.executeUpdate(insertQuery);
 			

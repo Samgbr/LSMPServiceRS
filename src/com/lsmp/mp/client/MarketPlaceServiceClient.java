@@ -100,7 +100,7 @@ public class MarketPlaceServiceClient {
 	private static Order oManager(OrderManager orderManager) {
 		//Order and order detail creation
 		OrderDetail orderDetail1 = orderManager.addOrderDetail("OD45698", "OR78954", "BO89743", 2.0);
-		OrderDetail orderDetail2 = orderManager.addOrderDetail("OD45698", "OR78954", "BO89789", 3.0);
+		OrderDetail orderDetail2 = orderManager.addOrderDetail("OD45697", "OR78954", "BO89789", 3.0);
 		Set<OrderDetail> details = new HashSet<>();
 		details.add(orderDetail1);
 		details.add(orderDetail2);

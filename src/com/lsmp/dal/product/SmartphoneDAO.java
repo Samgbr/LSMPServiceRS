@@ -127,8 +127,8 @@ public class SmartphoneDAO {
 			try {
 				Statement insertStatement = connection.createStatement();
 				
-				String insertQuery = "INSERT INTO * smartphone (productID,productName,description,purchasePrice,sellingPrice,discount,displayInch,brand,ramSize,os,storageSize)"
-						+ "VALUES('"+id+"','"+productName+"','"+description+"','"+purchasePrice+"','"+sellingPrice+"','"+discount+"','"+displayInch+"','"+brand+"','"+ramSize+"','"+os+"','"+storageSize+"')";
+				String insertQuery = "INSERT INTO smartphone(productID,displayInch,brand,ramSize,os,storageSize,productName,description,purchasePrice,sellingPrice,discount) "
+						+ "VALUES('"+id+"','"+displayInch+"','"+brand+"','"+ramSize+"','"+os+"','"+storageSize+"','"+productName+"','"+description+"','"+purchasePrice+"','"+sellingPrice+"','"+discount+"')";
 				insertStatement.executeUpdate(insertQuery);
 			
 				

@@ -70,7 +70,7 @@ public void insertBillingInfos(String id, Set<Bill> bills) {
 				
 				Bill currentBillInfo = billIterator.next();
 				
-				String insertQuery = "INSERT INTO * bill (billID, profileID, creditCardNumber, cvv, expiryMonth, expiryYear)"
+				String insertQuery = "INSERT INTO bill(billID, profileID, creditCardNumber, cvv, expiryMonth, expiryYear) "
 						+ "VALUES('"+currentBillInfo.getBillID()+"','"+id+"','"+currentBillInfo.getCreditCardNumber()+"','"+currentBillInfo.getCvv()+"','"+currentBillInfo.getExpiryMonth()+"','"+currentBillInfo.getExpiryYear()+"')";
 				insertStatement.executeUpdate(insertQuery);
 				
@@ -98,7 +98,7 @@ public void insertBillingInfos(String id, Set<Bill> bills) {
 			    int randomInt = randomGenerator.nextInt(10000);
 			    String billID = "BI" + randomInt;
 	
-				String insertQuery = "INSERT INTO * bill (billID, profileID, creditCardNumber, cvv, expiryMonth, expiryYear)"
+				String insertQuery = "INSERT INTO bill(billID, profileID, creditCardNumber, cvv, expiryMonth, expiryYear) "
 						+ "VALUES('"+billID+"','"+id+"','"+bill.getCreditCardNumber()+"','"+bill.getCvv()+"','"+bill.getExpiryMonth()+"','"+bill.getExpiryYear()+"')";
 				insertStatement.executeUpdate(insertQuery);
 			

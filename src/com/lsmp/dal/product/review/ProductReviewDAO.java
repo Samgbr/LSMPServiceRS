@@ -95,7 +95,7 @@ public class ProductReviewDAO {
 			try {
 				Statement insertStatement = connection.createStatement();
 				
-				String insertQuery = "INSERT INTO * productReview (productID,profileID,review,rating)"
+				String insertQuery = "INSERT INTO productReview(productID,profileID,review,rating) "
 						+ "VALUES('"+id+"','"+pid+"','"+review+"','"+rating+"')";
 				insertStatement.executeUpdate(insertQuery);
 			

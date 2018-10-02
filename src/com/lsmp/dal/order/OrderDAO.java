@@ -77,8 +77,8 @@ public class OrderDAO {
 			try {
 				Statement insertStatement = connection.createStatement();
 				
-				String insertQuery = "INSERT INTO * orderT (orderID,profileID,orderDate,shipAddressID,refund,isPicked,isPacked,deliveredToPickUpLocation,isDelivered,pickUpLocation)"
-						+ "VALUES('"+oid+"','"+profileID+"','"+orderDate+"','"+shipAddressID+"','false','false','false','false','false','NA')";
+				String insertQuery = "INSERT INTO orderT(orderID,profileID,orderDate,shipAddressID,refund,isPicked,isPacked,deliveredToPickUpLocation,isDelivered,pickUpLocation) "
+						+ "VALUES('"+oid+"','"+profileID+"','"+orderDate+"','"+shipAddressID+"',0 , 0, 0, 0, 0,'NA')";
 				insertStatement.executeUpdate(insertQuery);
 			
 				orderDetailDAO.addOrderDetails(orderDetails);

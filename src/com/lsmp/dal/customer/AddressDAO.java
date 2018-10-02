@@ -70,7 +70,7 @@ public void insertAddresses(String id, Set<Address> addresses) {
 			    
 				Address currentAddress = addressIterator.next();
 				
-				String insertQuery = "INSERT INTO * address (addressID, profileID, street,city,state,zipcode)"
+				String insertQuery = "INSERT INTO address(addressID, profileID, street,city,state,zipcode) "
 						+ "VALUES('"+currentAddress.getAddressID()+"','"+id+"','"+currentAddress.getStreet()+"','"+currentAddress.getCity()+"','"+currentAddress.getState()+"','"+currentAddress.getZipcode()+"')";
 				insertStatement.executeUpdate(insertQuery);
 				
@@ -98,7 +98,7 @@ public void insertAddresses(String id, Set<Address> addresses) {
 			    int randomInt = randomGenerator.nextInt(10000);
 			    String addressID = "AD" + randomInt; */
 				
-				String insertQuery = "INSERT INTO * address (addressID, profileID, street,city,state,zipcode)"
+				String insertQuery = "INSERT INTO address(addressID, profileID, street,city,state,zipcode) "
 						+ "VALUES('"+aid+"','"+id+"','"+address.getStreet()+"','"+address.getCity()+"','"+address.getState()+"','"+address.getZipcode()+"')";
 				insertStatement.executeUpdate(insertQuery);	
 			

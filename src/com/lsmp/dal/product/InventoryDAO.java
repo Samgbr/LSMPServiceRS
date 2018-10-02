@@ -99,7 +99,7 @@ public class InventoryDAO {
 			    int randomInt = randomGenerator.nextInt(10000);
 			    String iID = "IN" + randomInt; */
 				
-				String insertQuery = "INSERT INTO * Inventory (InventoryID,productID,qtyOnHand)"
+				String insertQuery = "INSERT INTO Inventory(InventoryID,productID,qtyOnHand) "
 						+ "VALUES('"+iid+"','"+id+"','"+qtyOnHand+"')";
 				insertStatement.executeUpdate(insertQuery);
 			

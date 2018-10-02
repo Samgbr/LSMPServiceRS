@@ -131,7 +131,7 @@ public class OrderDetailDAO {
 			try {
 				Statement insertStatement = connection.createStatement();
 				
-				String insertQuery = "INSERT INTO * orderDetail (orderDetailID,orderID,productID,orderedQuantity)"
+				String insertQuery = "INSERT INTO orderDetail(orderDetailID,orderID,productID,orderedQuantity) "
 						+ "VALUES('"+odid+"','"+orderID+"','"+productID+"','"+orderedQuantity+"')";
 				insertStatement.executeUpdate(insertQuery);
 			
@@ -201,7 +201,7 @@ public class OrderDetailDAO {
 			    String orderDetailID = "OD" + randomInt;
 				OrderDetail currentOrderDetail = orderDetailsIterator.next();
 				
-				String insertQuery = "INSERT INTO * orderdetail (orderDetailID,orderID,productID,orderedQuantity)"
+				String insertQuery = "INSERT INTO orderDetail(orderDetailID,orderID,productID,orderedQuantity) "
 						+ "VALUES('"+orderDetailID+"','"+currentOrderDetail.getOrderID()+"','"+currentOrderDetail.getProductID()+"','"+currentOrderDetail.getOrderedQuantity()+"')";
 				insertStatement.executeUpdate(insertQuery);
 				

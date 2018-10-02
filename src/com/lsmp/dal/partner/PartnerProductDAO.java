@@ -98,7 +98,7 @@ public class PartnerProductDAO {
 			    int randomInt = randomGenerator.nextInt(10000);
 			    String pid = "PP" + randomInt;  */
 				
-				String insertQuery = "INSERT INTO * productPartner (productPartnerID,productID,profileID)"
+				String insertQuery = "INSERT INTO productPartner(productPartnerID,productID,profileID) "
 						+ "VALUES('"+ppid+"','"+id+"','"+profileID+"')";
 				insertStatement.executeUpdate(insertQuery);
 			

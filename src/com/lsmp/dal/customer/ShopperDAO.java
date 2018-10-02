@@ -139,7 +139,7 @@ public Shopper addShopperProfile(String id,String loginID, String firstName, Str
 		try {
 			Statement insertStatement = connection.createStatement();
 			
-			String insertQuery = "INSERT INTO * shopper (profileID,loginID,firstName,middleName,lastName,email,s_password,shopperType)"
+			String insertQuery = "INSERT INTO shopper(profileID,loginID,firstName,middleName,lastName,email,s_password,shopperType) "
 					+ "VALUES('"+id+"','"+loginID+"','"+firstName+"','"+middleName+"','"+lastName+"','"+email+"','"+password+"','"+shopperType+"')";
 			insertStatement.executeUpdate(insertQuery);
 			
