@@ -35,23 +35,42 @@ private static PartnerProductDAO ppDAO = new PartnerProductDAO();
 	}
 	
 	//------------------------------------------
-	public PartnerProduct getPartnerProductProfileBYProductID(String id) {
-		return ppDAO.getPartnerProductProfileBYProductID(id);
+	public PartnerProduct getPartnerBookProfileBYProductID(String id) {
+		return ppDAO.getPartnerBookProfileBYProductID(id);
 	}
 	
-	public PartnerProduct addPartnerProduct(String ppid, String id, String profileID) {
+	public PartnerProduct getPartnerSmarphoneProfileBYProductID(String id) {
+		return ppDAO.getPartnerSmarphoneProfileBYProductID(id);
+	}
+	
+	public PartnerProduct addPartnerBook(String ppid, String id, String profileID) {
 		
-		PartnerProduct partnerProduct = ppDAO.addPartnerProduct(ppid, id, profileID);
+		PartnerProduct partnerProduct = ppDAO.addPartnerBook(ppid, id, profileID);
 		
 		return partnerProduct;
 	}
 	
-	public void updatePartnerProduct(String id, String profileID) {
-		ppDAO.updatePartnerProduct(id, profileID);
+	public PartnerProduct addPartnerSmartphone(String ppid, String id, String profileID) {
+		
+		PartnerProduct partnerProduct = ppDAO.addPartnerSmartphone(ppid, id, profileID);
+		
+		return partnerProduct;
 	}
 	
-	public void deletePartnerProduct(String id) {
-		ppDAO.deletePartnerProduct(id);
+	public void updatePartnerBook(String id, String profileID) {
+		ppDAO.updatePartnerBook(id, profileID);
+	}
+	
+	public void updatePartnerSmartphone(String id, String profileID) {
+		ppDAO.updatePartnerSmartphone(id, profileID);
+	}
+	
+	public void deletePartnerBook(String id) {
+		ppDAO.deletePartnerBook(id);
+	}
+	
+	public void deletePartnerSmartphone(String id) {
+		ppDAO.deletePartnerSmartphone(id);
 	}
 	
 }

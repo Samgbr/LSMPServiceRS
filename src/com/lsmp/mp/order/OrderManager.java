@@ -14,9 +14,16 @@ public class OrderManager {
 		return oDAO.getOrderWithDetail(id);
 	}
 	
-	public Order addOrder(String oid, String profileID, String orderDate, String shipAddressID, Set<OrderDetail> orderDetails) {
+	public Order addBookOrder(String oid, String profileID, String orderDate, String shipAddressID, Set<OrderDetail> orderDetails) {
 		
-		Order order = oDAO.addOrder(oid, profileID, orderDate, shipAddressID, orderDetails);
+		Order order = oDAO.addBookOrder(oid, profileID, orderDate, shipAddressID, orderDetails);
+		
+		return order;
+	}
+	
+	public Order addSmartphoneOrder(String oid, String profileID, String orderDate, String shipAddressID, Set<OrderDetail> orderDetails) {
+		
+		Order order = oDAO.addSmartphoneOrder(oid, profileID, orderDate, shipAddressID, orderDetails);
 		
 		return order;
 	}
@@ -42,20 +49,47 @@ public class OrderManager {
 		return odDAO.getAllOrderDetailsByOrderID(id);
 	}
 	
-	public OrderDetail addOrderDetail(String odid, String orderID, String productID, double orderedQuantity) {
-		return odDAO.addOrderDetail(odid, orderID, productID, orderedQuantity);
+	public OrderDetail addBookOrderDetail(String odid, String orderID, String productID, double orderedQuantity) {
+		return odDAO.addBookOrderDetail(odid, orderID, productID, orderedQuantity);
 	}
 	
-	public void addOrderDetails(Set<OrderDetail> orderDetails) {
-		odDAO.addOrderDetails(orderDetails);
+	public OrderDetail addSmartphoneOrderDetail(String odid, String orderID, String productID, double orderedQuantity) {
+		return odDAO.addSmartphoneOrderDetail(odid, orderID, productID, orderedQuantity);
 	}
 	
-	public void updateOrderDetail(String id, String orderID, String productID, double orderedQuantity) {
-		odDAO.updateOrderDetail(id, orderID, productID, orderedQuantity);
+	public void addBookOrderDetails(Set<OrderDetail> orderDetails) {
+		odDAO.addBookOrderDetails(orderDetails);
+	}
+	public void addSmartphoneOrderDetails(Set<OrderDetail> orderDetails) {
+		odDAO.addSmartphoneOrderDetails(orderDetails);
+	}
+	
+	public void updateBookOrderDetail(String id, String orderID, String productID, double orderedQuantity) {
+		odDAO.updateBookOrderDetail(id, orderID, productID, orderedQuantity);
+	}
+	
+	public void updateSmartphoneOrderDetail(String id, String orderID, String productID, double orderedQuantity) {
+		odDAO.updateSmartphoneOrderDetail(id, orderID, productID, orderedQuantity);
 	}
 	
 	public void deleteOrderDetail(String id) {
 		odDAO.deleteOrderDetail(id);
+	}
+	
+	public OrderDetail createBookOrderDetail(String orderID, String productID, double orderedQuantity) {
+		OrderDetail orderDetail = new OrderDetail();
+		orderDetail.setBookProductID(productID);
+		orderDetail.setOrderID(orderID);
+		orderDetail.setOrderedQuantity(orderedQuantity);
+		return orderDetail;
+	}
+	
+	public OrderDetail createSmartphoneOrderDetail(String orderID, String productID, double orderedQuantity) {
+		OrderDetail orderDetail = new OrderDetail();
+		orderDetail.setSmartphoneProductID(productID);
+		orderDetail.setOrderID(orderID);
+		orderDetail.setOrderedQuantity(orderedQuantity);
+		return orderDetail;
 	}
 	
 }

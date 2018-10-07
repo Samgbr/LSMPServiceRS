@@ -4,9 +4,22 @@ public class OrderDetail {
 
 	private String orderDetailID;
 	private String orderID;
-	private String productID;
+	private String bookProductID;
+	private String smartphoneProductID;
 	private double orderedQuantity;
 	
+	public String getBookProductID() {
+		return bookProductID;
+	}
+	public void setBookProductID(String bookProductID) {
+		this.bookProductID = bookProductID;
+	}
+	public String getSmartphoneProductID() {
+		return smartphoneProductID;
+	}
+	public void setSmartphoneProductID(String smartphoneProductID) {
+		this.smartphoneProductID = smartphoneProductID;
+	}
 	public String getOrderDetailID() {
 		return orderDetailID;
 	}
@@ -19,12 +32,7 @@ public class OrderDetail {
 	public void setOrderID(String orderID) {
 		this.orderID = orderID;
 	}
-	public String getProductID() {
-		return productID;
-	}
-	public void setProductID(String productID) {
-		this.productID = productID;
-	}
+	
 	public double getOrderedQuantity() {
 		return orderedQuantity;
 	}

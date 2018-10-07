@@ -57,9 +57,9 @@ public class PartnerDAO {
 				sellerLevel = resultSet.getString("sellerLevel");
 				sellerName = resultSet.getString("sellerName");
 				
-				addresses = addressDAO.getAddresses(id);
-				phones  = phoneDAO.getPhones(id);
-				billInfos = billInfoDAO.getBillingInfos(id);
+				addresses = addressDAO.getPartnerAddresses(id);
+				phones  = phoneDAO.getPartnerPhones(id);
+				billInfos = billInfoDAO.getPartnerBillingInfos(id);
 				
 			}catch(SQLException se) {
 				se.printStackTrace();
@@ -147,9 +147,9 @@ public class PartnerDAO {
 						+ "VALUES('"+pid+"','"+loginID+"','"+firstName+"','"+middleName+"','"+lastName+"','"+email+"','"+password+"','"+sellerLevel+"','"+sellerName+"')";
 				insertStatement.executeUpdate(insertQuery);
 				
-				addressDAO.insertAddresses(pid, addresses);
-				phoneDAO.insertPhones(pid, phones);
-				billInfoDAO.insertBillingInfos(pid, bills);
+				addressDAO.insertPartnerAddresses(pid, addresses);
+				phoneDAO.insertPartnerPhones(pid, phones);
+				billInfoDAO.insertPartnerBillingInfos(pid, bills);
 			
 				
 			}catch(SQLException se) {
@@ -173,9 +173,9 @@ public class PartnerDAO {
 				
 				String updateQuery = "UPDATE partner SET loginID='"+loginID+"', firstName='"+firstName+"', middleName='"+middleName+"',lastName='"+lastName+"',email='"+email+"',p_password='"+password+"',sellerLevel='"+sellerLevel+"',sellerName='"+sellerName+"'  WHERE profileID='"+id+"')";
 				updateStatement.executeUpdate(updateQuery);	
-				addressDAO.updateAddresses(id, addresses);
-				phoneDAO.updatePhones(id, phones);
-				billInfoDAO.updateBillingInfos(id, bills);
+				addressDAO.updatePartnerAddresses(id, addresses);
+				phoneDAO.updatePartnerPhones(id, phones);
+				billInfoDAO.updatePartnerBillingInfos(id, bills);
 				
 			}catch(SQLException se) {
 				se.printStackTrace();
@@ -196,9 +196,9 @@ public class PartnerDAO {
 				String deleteQuery = "DELETE FROM partner WHERE profileID='"+id+"')";
 				deleteStatement.executeUpdate(deleteQuery);	
 				
-				addressDAO.deleteAddress(id);
-				phoneDAO.deletePhone(id);
-				billInfoDAO.deleteBillingInfo(id);
+				addressDAO.deletePartnerAddress(id);
+				phoneDAO.deletePartnerPhone(id);
+				billInfoDAO.deletePartnerBillingInfo(id);
 				
 			}catch(SQLException se) {
 				se.printStackTrace();

@@ -59,7 +59,7 @@ public class OrderDAO {
 		return order;	
 	}
 	
-	public Order addOrder(String oid, String profileID, String orderDate, String shipAddressID, Set<OrderDetail> orderDetails) {
+	public Order addBookOrder(String oid, String profileID, String orderDate, String shipAddressID, Set<OrderDetail> orderDetails) {
 			
 			Order order = new Order();
 			/*
@@ -77,11 +77,11 @@ public class OrderDAO {
 			try {
 				Statement insertStatement = connection.createStatement();
 				
-				String insertQuery = "INSERT INTO orderT(orderID,profileID,orderDate,shipAddressID,refund,isPicked,isPacked,deliveredToPickUpLocation,isDelivered,pickUpLocation) "
-						+ "VALUES('"+oid+"','"+profileID+"','"+orderDate+"','"+shipAddressID+"',0 , 0, 0, 0, 0,'NA')";
+				String insertQuery = "INSERT INTO orderT(orderID,profileID,orderDate,shipAddressID,pickUpLocation) "
+						+ "VALUES('"+oid+"','"+profileID+"','"+orderDate+"','"+shipAddressID+"','NA')";
 				insertStatement.executeUpdate(insertQuery);
 			
-				orderDetailDAO.addOrderDetails(orderDetails);
+				orderDetailDAO.addBookOrderDetails(orderDetails);
 				
 			}catch(SQLException se) {
 				se.printStackTrace();
@@ -95,6 +95,43 @@ public class OrderDAO {
 			
 			return order;
 		}
+	
+	public Order addSmartphoneOrder(String oid, String profileID, String orderDate, String shipAddressID, Set<OrderDetail> orderDetails) {
+		
+		Order order = new Order();
+		/*
+		Random randomGenerator = new Random();
+	    int randomInt = randomGenerator.nextInt(10000);
+	    String id = "OR" + randomInt; */
+	    
+	    order.setOrderID(oid);
+	    order.setOrderDate(orderDate);
+	    order.setProfileID(profileID);
+	    order.setShipAddressID(shipAddressID);
+	    order.setOrderDetails(orderDetails);
+		
+		Connection connection = DBConnect.getDatabaseConnection();
+		try {
+			Statement insertStatement = connection.createStatement();
+			
+			String insertQuery = "INSERT INTO orderT(orderID,profileID,orderDate,shipAddressID,pickUpLocation) "
+					+ "VALUES('"+oid+"','"+profileID+"','"+orderDate+"','"+shipAddressID+"','NA')";
+			insertStatement.executeUpdate(insertQuery);
+		
+			orderDetailDAO.addSmartphoneOrderDetails(orderDetails);
+			
+		}catch(SQLException se) {
+			se.printStackTrace();
+		}finally {
+			if(connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {}
+			}
+		}
+		
+		return order;
+	}
 
 	public void updateOrder(String id, String profileID, String orderDate, String shipAddressID) {
 		Connection connection = DBConnect.getDatabaseConnection();

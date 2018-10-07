@@ -55,9 +55,9 @@ public class ShopperDAO {
 			email = resultSet.getString("email");
 			shopperType = resultSet.getString("shopperType");
 			
-			addresses = addressDAO.getAddresses(id);
-			phones  = phoneDAO.getPhones(id);
-			billInfos = billInfoDAO.getBillingInfos(id);
+			addresses = addressDAO.getShopperAddresses(id);
+			phones  = phoneDAO.getShopperPhones(id);
+			billInfos = billInfoDAO.getShopperBillingInfos(id);
 			
 		}catch(SQLException se) {
 			se.printStackTrace();
@@ -143,9 +143,9 @@ public Shopper addShopperProfile(String id,String loginID, String firstName, Str
 					+ "VALUES('"+id+"','"+loginID+"','"+firstName+"','"+middleName+"','"+lastName+"','"+email+"','"+password+"','"+shopperType+"')";
 			insertStatement.executeUpdate(insertQuery);
 			
-			addressDAO.insertAddresses(id, addresses);
-			phoneDAO.insertPhones(id, phones);
-			billInfoDAO.insertBillingInfos(id, bills);
+			addressDAO.insertShopperAddresses(id, addresses);
+			phoneDAO.insertShopperPhones(id, phones);
+			billInfoDAO.insertShopperBillingInfos(id, bills);
 		
 			
 		}catch(SQLException se) {
@@ -169,9 +169,9 @@ public Shopper addShopperProfile(String id,String loginID, String firstName, Str
 			
 			String updateQuery = "UPDATE shopper SET loginID='"+loginID+"', firstName='"+firstName+"', middleName='"+middleName+"',lastName='"+lastName+"',email='"+email+"',s_password='"+password+"',shopperType='"+shopperType+"'  WHERE profileID='"+id+"')";
 			updateStatement.executeUpdate(updateQuery);	
-			addressDAO.updateAddresses(id, addresses);
-			phoneDAO.updatePhones(id, phones);
-			billInfoDAO.updateBillingInfos(id, bills);
+			addressDAO.updateShopperAddresses(id, addresses);
+			phoneDAO.updateShopperPhones(id, phones);
+			billInfoDAO.updateShopperBillingInfos(id, bills);
 			
 		}catch(SQLException se) {
 			se.printStackTrace();
@@ -192,9 +192,9 @@ public Shopper addShopperProfile(String id,String loginID, String firstName, Str
 			String deleteQuery = "DELETE FROM shopper WHERE profileID='"+id+"')";
 			deleteStatement.executeUpdate(deleteQuery);	
 			
-			addressDAO.deleteAddress(id);
-			phoneDAO.deletePhone(id);
-			billInfoDAO.deleteBillingInfo(id);
+			addressDAO.deleteShopperAddress(id);
+			phoneDAO.deleteShopperPhone(id);
+			billInfoDAO.deleteShopperBillingInfo(id);
 			
 		}catch(SQLException se) {
 			se.printStackTrace();

@@ -55,23 +55,42 @@ private static InventoryDAO iDAO = new InventoryDAO();
 		spDAO.deleteSmartphone(id);
 	}
 	
-	public Inventory getProductQtyOnHand(String id) {
-		return iDAO.getProductQtyOnHand(id);
+	public Inventory getBookQtyOnHand(String id) {
+		return iDAO.getBookQtyOnHand(id);
 	}
 	
-	public Inventory addProductQtyOnHand(String iid, String id, double qtyOnHand) {
+	public Inventory getSmartphoneQtyOnHand(String id) {
+		return iDAO.getSmartphoneQtyOnHand(id);
+	}
+	
+	public Inventory addBookQtyOnHand(String iid, String bid, double qtyOnHand) {
 		
-		Inventory inventory = iDAO.addProductQtyOnHand(iid, id, qtyOnHand);
+		Inventory inventory = iDAO.addBookQtyOnHand(iid, bid, qtyOnHand);
+		
+		return inventory;
+	}
+	
+	public Inventory addSmartphoneQtyOnHand(String iid, String spid, double qtyOnHand) {
+		
+		Inventory inventory = iDAO.addSmartphoneQtyOnHand(iid, spid, qtyOnHand);
 		
 		return inventory;
 	}
 
-	public void updateProductQtyOnHand(String id, double qtyOnHand) {
+	public void updateBookQtyOnHand(String id, double qtyOnHand) {
 		
-		iDAO.updateProductQtyOnHand(id, qtyOnHand);
+		iDAO.updateBookQtyOnHand(id, qtyOnHand);
+	}
+	
+	public void updateSmartphoneQtyOnHand(String id, double qtyOnHand) {
+		
+		iDAO.updateSmartphoneQtyOnHand(id, qtyOnHand);
 	}
 
-	public void deleteProductQtyOnHand(String id) {
-		iDAO.deleteProductQtyOnHand(id);
+	public void deleteBookQtyOnHand(String id) {
+		iDAO.deleteBookQtyOnHand(id);
+	}
+	public void deleteSmartphoneQtyOnHand(String id) {
+		iDAO.deleteSmartphoneQtyOnHand(id);
 	}
 }

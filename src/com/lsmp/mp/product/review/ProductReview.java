@@ -8,16 +8,30 @@ package com.lsmp.mp.product.review;
 
 public class ProductReview {
 	
-	private String productID;
+	private String productReviewID;
+	private String bookProductID;
+	private String smartphoneProductID;
 	private String profileID;
 	private String review;
 	private double rating;
 	
-	public String getProductID() {
-		return productID;
+	public String getProductReviewID() {
+		return productReviewID;
 	}
-	public void setProductID(String productID) {
-		this.productID = productID;
+	public void setProductReviewID(String productReviewID) {
+		this.productReviewID = productReviewID;
+	}
+	public String getBookProductID() {
+		return bookProductID;
+	}
+	public void setBookProductID(String bookProductID) {
+		this.bookProductID = bookProductID;
+	}
+	public String getSmartphoneProductID() {
+		return smartphoneProductID;
+	}
+	public void setSmartphoneProductID(String smartphoneProductID) {
+		this.smartphoneProductID = smartphoneProductID;
 	}
 	public String getProfileID() {
 		return profileID;

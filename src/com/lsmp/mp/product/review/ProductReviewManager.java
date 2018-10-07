@@ -13,23 +13,37 @@ public class ProductReviewManager {
 	
 private static ProductReviewDAO prDAO = new ProductReviewDAO();
 	
-	public ProductReview getProductReviewByProfileIDandProductID(String id, String pid) {
-		return prDAO.getProductReviewByProfileIDandProductID(id,pid);
+	public ProductReview getBookReviewByProfileIDandProductID(String id, String pid) {
+		return prDAO.getBookReviewByProfileIDandProductID(id,pid);
+	}
+	public ProductReview getSmartphoneReviewByProfileIDandProductID(String id, String pid) {
+		return prDAO.getSmartphoneReviewByProfileIDandProductID(id, pid);
 	}
 	
-	public ProductReview addProductReview(String id, String pid, String review,double rating) {
+	public ProductReview addBookReview(String id, String pid, String prid, String review,double rating) {
 		
-		ProductReview productReview = prDAO.addProductReview(id, pid, review, rating);
+		ProductReview productReview = prDAO.addBookReview(id, pid, prid, review, rating);
+		
+		return productReview;
+	}
+	
+	public ProductReview addSmartphoneReview(String id, String pid, String prid, String review,double rating) {
+		
+		ProductReview productReview = prDAO.addSmartphoneReview(id, pid, prid, review, rating);
 		
 		return productReview;
 	}
 
-	public void updateProductReview(String id, String pid, String review,double rating) {
-		prDAO.updateProductReview(id, pid, review, rating);
+	public void updateBookReview(String id, String pid, String review,double rating) {
+		prDAO.updateBookReview(id, pid, review, rating);
+	}
+	
+	public void updateSmartphoneReview(String id, String pid, String review,double rating) {
+		prDAO.updateSmartphoneReview(id, pid, review, rating);
 	}
 
-	public void deleteProductReview(String id,String pid) {
-		prDAO.deleteProductReview(id, pid);
+	public void deleteProductReview(String id) {
+		prDAO.deleteProductReview(id);
 	}
 	
 	

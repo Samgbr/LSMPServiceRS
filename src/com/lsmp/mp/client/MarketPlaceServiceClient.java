@@ -50,7 +50,7 @@ public class MarketPlaceServiceClient {
 	}
 
 	private static void proRevManager(ProductReviewManager productReviewManager) {
-		productReviewManager.addProductReview("BO89743", "SH45897", "Great Product", 4.2);
+		productReviewManager.addBookReview("PR65452","BO89743", "SH45897", "Great Product", 4.2);
 	}
 
 	private static void parManager(PartnerManager partnerManager, CustomerManager customerManager) {
@@ -76,7 +76,7 @@ public class MarketPlaceServiceClient {
 		//Create a Partner
 		partnerManager.addPartnerProfile("PA95687","diknas", "Nassir", "Raul", "Dickson", "dskf@gmail.com", "Wegh$$8i", "Level 3", "XYZS Co.", addresses, phones, bills);
 		//Add partner product
-		partnerManager.addPartnerProduct("PP61923", "BO89789", "PA95687");
+		partnerManager.addPartnerBook("PP61923", "BO89789", "PA95687");
 	}
 
 	private static void orderProcessingAndComplete(Order order) {
@@ -99,12 +99,12 @@ public class MarketPlaceServiceClient {
 
 	private static Order oManager(OrderManager orderManager) {
 		//Order and order detail creation
-		OrderDetail orderDetail1 = orderManager.addOrderDetail("OD45698", "OR78954", "BO89743", 2.0);
-		OrderDetail orderDetail2 = orderManager.addOrderDetail("OD45697", "OR78954", "BO89789", 3.0);
+		OrderDetail orderDetail1 = orderManager.createBookOrderDetail("OR88954", "BO45457", 1.0);
+		OrderDetail orderDetail2 = orderManager.createBookOrderDetail("OR88954", "BO89789", 1.0);
 		Set<OrderDetail> details = new HashSet<>();
 		details.add(orderDetail1);
 		details.add(orderDetail2);
-		Order order =orderManager.addOrder("OR78954", "SH45897", "10/10/2018", "AD45688",details);
+		Order order =orderManager.addBookOrder("OR88954", "SH45451", "01/11/2018", "AD78984",details);
 		return order;
 	}
 
@@ -113,8 +113,8 @@ public class MarketPlaceServiceClient {
 		productManager.addBook("BO89743", "fdgknkln22", "Mcgraw hill", "Adam reta", "7th", "Ebook", "XXX", "suspense book", 12.99, 20.99, 0.125, "A Dart");
 		productManager.addBook("BO89789", "fdgfjln22", "Mcgraw hill", "Ptr reta", "5th", "paper", "YYY", "psychology book", 10.99, 15.99, 0.115, "The dark knight");
 		//Create Product Inventory
-		productManager.addProductQtyOnHand("IN98554","BO89743", 10.0);
-		productManager.addProductQtyOnHand("IN98556","BO89789", 10.0);
+		productManager.addBookQtyOnHand("IN98554","BO89743", 10.0);
+		productManager.addBookQtyOnHand("IN98556","BO89789", 10.0);
 	}
 
 	private static void cManager(CustomerManager customerManager) {
