@@ -155,7 +155,7 @@ public class BookDAO {
 		try {
 			Statement updateStatement = connection.createStatement();
 			
-			String updateQuery = "UPDATE book SET productName='"+productName+"', description='"+description+"', purchasePrice='"+purchasePrice+"',sellingPrice='"+sellingPrice+"',discount='"+discount+"',title='"+title+"',isbn='"+isbn+"',publisher='"+publisher+"',author='"+author+"',edition='"+edition+"',bookType='"+bookType+"'  WHERE productID='"+id+"')";
+			String updateQuery = "UPDATE book SET productName='"+productName+"', description='"+description+"', purchasePrice='"+purchasePrice+"',sellingPrice='"+sellingPrice+"',discount='"+discount+"',title='"+title+"',isbn='"+isbn+"',publisher='"+publisher+"',author='"+author+"',edition='"+edition+"',bookType='"+bookType+"'  WHERE productID='"+id+"'";
 			updateStatement.executeUpdate(updateQuery);	
 			
 		}catch(SQLException se) {
@@ -174,7 +174,7 @@ public class BookDAO {
 		try {
 			Statement deleteStatement = connection.createStatement();
 			
-			String deleteQuery = "DELETE FROM book WHERE productID='"+id+"')";
+			String deleteQuery = "DELETE FROM book WHERE productID='"+id+"'";
 			deleteStatement.executeUpdate(deleteQuery);	
 			
 		}catch(SQLException se) {

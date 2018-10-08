@@ -72,20 +72,31 @@ public class OrderManager {
 		odDAO.updateSmartphoneOrderDetail(id, orderID, productID, orderedQuantity);
 	}
 	
+	public void updateOrderInProcess(String id, int isPicked, int isPacked,int deliveredToPickUpLocation) {
+		oDAO.updateOrderInProcess(id, isPicked, isPacked, deliveredToPickUpLocation);
+	}
+	public void updateOrderComplete(String id, int isDelivered, String pickUpLocation) {
+		oDAO.updateOrderComplete(id, isDelivered, pickUpLocation);
+	}
+	public void updateOrderCancel(String id, int refund) {
+		oDAO.updateOrderCancel(id, refund);
+	}
 	public void deleteOrderDetail(String id) {
 		odDAO.deleteOrderDetail(id);
 	}
 	
-	public OrderDetail createBookOrderDetail(String orderID, String productID, double orderedQuantity) {
+	public OrderDetail createBookOrderDetail(String orderDetailID, String orderID, String productID, double orderedQuantity) {
 		OrderDetail orderDetail = new OrderDetail();
+		orderDetail.setOrderDetailID(orderDetailID);
 		orderDetail.setBookProductID(productID);
 		orderDetail.setOrderID(orderID);
 		orderDetail.setOrderedQuantity(orderedQuantity);
 		return orderDetail;
 	}
 	
-	public OrderDetail createSmartphoneOrderDetail(String orderID, String productID, double orderedQuantity) {
+	public OrderDetail createSmartphoneOrderDetail(String orderDetailID, String orderID, String productID, double orderedQuantity) {
 		OrderDetail orderDetail = new OrderDetail();
+		orderDetail.setOrderDetailID(orderDetailID);
 		orderDetail.setSmartphoneProductID(productID);
 		orderDetail.setOrderID(orderID);
 		orderDetail.setOrderedQuantity(orderedQuantity);

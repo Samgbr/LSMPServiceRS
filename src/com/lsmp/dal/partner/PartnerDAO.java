@@ -171,7 +171,7 @@ public class PartnerDAO {
 			try {
 				Statement updateStatement = connection.createStatement();
 				
-				String updateQuery = "UPDATE partner SET loginID='"+loginID+"', firstName='"+firstName+"', middleName='"+middleName+"',lastName='"+lastName+"',email='"+email+"',p_password='"+password+"',sellerLevel='"+sellerLevel+"',sellerName='"+sellerName+"'  WHERE profileID='"+id+"')";
+				String updateQuery = "UPDATE partner SET loginID='"+loginID+"', firstName='"+firstName+"', middleName='"+middleName+"',lastName='"+lastName+"',email='"+email+"',p_password='"+password+"',sellerLevel='"+sellerLevel+"',sellerName='"+sellerName+"'  WHERE profileID='"+id+"'";
 				updateStatement.executeUpdate(updateQuery);	
 				addressDAO.updatePartnerAddresses(id, addresses);
 				phoneDAO.updatePartnerPhones(id, phones);
@@ -193,7 +193,7 @@ public class PartnerDAO {
 			try {
 				Statement deleteStatement = connection.createStatement();
 				
-				String deleteQuery = "DELETE FROM partner WHERE profileID='"+id+"')";
+				String deleteQuery = "DELETE FROM partner WHERE profileID='"+id+"'";
 				deleteStatement.executeUpdate(deleteQuery);	
 				
 				addressDAO.deletePartnerAddress(id);

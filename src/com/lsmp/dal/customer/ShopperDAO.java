@@ -167,7 +167,7 @@ public Shopper addShopperProfile(String id,String loginID, String firstName, Str
 		try {
 			Statement updateStatement = connection.createStatement();
 			
-			String updateQuery = "UPDATE shopper SET loginID='"+loginID+"', firstName='"+firstName+"', middleName='"+middleName+"',lastName='"+lastName+"',email='"+email+"',s_password='"+password+"',shopperType='"+shopperType+"'  WHERE profileID='"+id+"')";
+			String updateQuery = "UPDATE shopper SET loginID='"+loginID+"', firstName='"+firstName+"', middleName='"+middleName+"',lastName='"+lastName+"',email='"+email+"',s_password='"+password+"',shopperType='"+shopperType+"'  WHERE profileID='"+id+"'";
 			updateStatement.executeUpdate(updateQuery);	
 			addressDAO.updateShopperAddresses(id, addresses);
 			phoneDAO.updateShopperPhones(id, phones);
@@ -189,7 +189,7 @@ public Shopper addShopperProfile(String id,String loginID, String firstName, Str
 		try {
 			Statement deleteStatement = connection.createStatement();
 			
-			String deleteQuery = "DELETE FROM shopper WHERE profileID='"+id+"')";
+			String deleteQuery = "DELETE FROM shopper WHERE profileID='"+id+"'";
 			deleteStatement.executeUpdate(deleteQuery);	
 			
 			addressDAO.deleteShopperAddress(id);

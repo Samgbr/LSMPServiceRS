@@ -183,7 +183,7 @@ public class ProductReviewDAO {
 		try {
 			Statement updateStatement = connection.createStatement();
 			
-			String updateQuery = "UPDATE productReview SET review='"+review+"', rating='"+rating+"'  WHERE bookProductID='"+id+"' AND profileID='"+pid+"')";
+			String updateQuery = "UPDATE productReview SET review='"+review+"', rating='"+rating+"'  WHERE bookProductID='"+id+"' AND profileID='"+pid+"'";
 			updateStatement.executeUpdate(updateQuery);	
 			
 		}catch(SQLException se) {
@@ -202,7 +202,7 @@ public class ProductReviewDAO {
 		try {
 			Statement updateStatement = connection.createStatement();
 			
-			String updateQuery = "UPDATE productReview SET review='"+review+"', rating='"+rating+"'  WHERE smartphoneProductID='"+id+"' AND profileID='"+pid+"')";
+			String updateQuery = "UPDATE productReview SET review='"+review+"', rating='"+rating+"'  WHERE smartphoneProductID='"+id+"' AND profileID='"+pid+"'";
 			updateStatement.executeUpdate(updateQuery);	
 			
 		}catch(SQLException se) {
@@ -221,7 +221,7 @@ public class ProductReviewDAO {
 		try {
 			Statement deleteStatement = connection.createStatement();
 			
-			String deleteQuery = "DELETE FROM productReview WHERE productReviewID='"+id+"')";
+			String deleteQuery = "DELETE FROM productReview WHERE productReviewID='"+id+"'";
 			deleteStatement.executeUpdate(deleteQuery);	
 			
 		}catch(SQLException se) {

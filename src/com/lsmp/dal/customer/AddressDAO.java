@@ -217,7 +217,7 @@ public Set<Address> getPartnerAddresses(String id) {
 		try {
 			Statement deleteStatement = connection.createStatement();
 			
-			String deleteQuery = "DELETE FROM address WHERE shopperProfileID='"+id+"')";
+			String deleteQuery = "DELETE FROM address WHERE shopperProfileID='"+id+"'";
 			deleteStatement.executeUpdate(deleteQuery);	
 						
 		}catch(SQLException se) {
@@ -237,7 +237,7 @@ public Set<Address> getPartnerAddresses(String id) {
 		try {
 			Statement deleteStatement = connection.createStatement();
 			
-			String deleteQuery = "DELETE FROM address WHERE partnerProfileID='"+id+"')";
+			String deleteQuery = "DELETE FROM address WHERE partnerProfileID='"+id+"'";
 			deleteStatement.executeUpdate(deleteQuery);	
 						
 		}catch(SQLException se) {
@@ -262,7 +262,7 @@ public Set<Address> getPartnerAddresses(String id) {
 			while(addressIterator.hasNext()) {
 				Address currentAddress = addressIterator.next();
 				
-				String updateQuery = "UPDATE address SET street='"+currentAddress.getStreet()+"', city='"+currentAddress.getCity()+"', state='"+currentAddress.getState()+"',zipcode='"+currentAddress.getZipcode()+"'  WHERE shopperProfileID='"+id+"')";
+				String updateQuery = "UPDATE address SET street='"+currentAddress.getStreet()+"', city='"+currentAddress.getCity()+"', state='"+currentAddress.getState()+"',zipcode='"+currentAddress.getZipcode()+"'  WHERE shopperProfileID='"+id+"'";
 				updateStatement.executeUpdate(updateQuery);
 				
 			}			
@@ -288,7 +288,7 @@ public Set<Address> getPartnerAddresses(String id) {
 			while(addressIterator.hasNext()) {
 				Address currentAddress = addressIterator.next();
 				
-				String updateQuery = "UPDATE address SET street='"+currentAddress.getStreet()+"', city='"+currentAddress.getCity()+"', state='"+currentAddress.getState()+"',zipcode='"+currentAddress.getZipcode()+"'  WHERE partnerProfileID='"+id+"')";
+				String updateQuery = "UPDATE address SET street='"+currentAddress.getStreet()+"', city='"+currentAddress.getCity()+"', state='"+currentAddress.getState()+"',zipcode='"+currentAddress.getZipcode()+"'  WHERE partnerProfileID='"+id+"'";
 				updateStatement.executeUpdate(updateQuery);
 				
 			}			
@@ -309,7 +309,7 @@ public Set<Address> getPartnerAddresses(String id) {
 		try {
 			Statement updateStatement = connection.createStatement();
 				
-			String updateQuery = "UPDATE address SET street='"+address.getStreet()+"', city='"+address.getCity()+"', state='"+address.getState()+"',zipcode='"+address.getZipcode()+"'  WHERE shopperProfileID='"+id+"' AND addressID='"+addressID+"')";
+			String updateQuery = "UPDATE address SET street='"+address.getStreet()+"', city='"+address.getCity()+"', state='"+address.getState()+"',zipcode='"+address.getZipcode()+"'  WHERE shopperProfileID='"+id+"' AND addressID='"+addressID+"'";
 			updateStatement.executeUpdate(updateQuery);		
 			
 		}catch(SQLException se) {
@@ -328,7 +328,7 @@ public Set<Address> getPartnerAddresses(String id) {
 		try {
 			Statement updateStatement = connection.createStatement();
 				
-			String updateQuery = "UPDATE address SET street='"+address.getStreet()+"', city='"+address.getCity()+"', state='"+address.getState()+"',zipcode='"+address.getZipcode()+"'  WHERE partnerProfileID='"+id+"' AND addressID='"+addressID+"')";
+			String updateQuery = "UPDATE address SET street='"+address.getStreet()+"', city='"+address.getCity()+"', state='"+address.getState()+"',zipcode='"+address.getZipcode()+"'  WHERE partnerProfileID='"+id+"' AND addressID='"+addressID+"'";
 			updateStatement.executeUpdate(updateQuery);		
 			
 		}catch(SQLException se) {

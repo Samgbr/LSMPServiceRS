@@ -138,7 +138,7 @@ public class OrderDAO {
 		try {
 			Statement updateStatement = connection.createStatement();
 			
-			String updateQuery = "UPDATE orderT SET profileID='"+profileID+"', orderDate='"+orderDate+"', shipAddressID='"+shipAddressID+"'  WHERE orderID='"+id+"')";
+			String updateQuery = "UPDATE orderT SET profileID='"+profileID+"', orderDate='"+orderDate+"', shipAddressID='"+shipAddressID+"'  WHERE orderID='"+id+"'";
 			updateStatement.executeUpdate(updateQuery);	
 			
 		}catch(SQLException se) {
@@ -157,8 +157,65 @@ public class OrderDAO {
 		try {
 			Statement deleteStatement = connection.createStatement();
 			
-			String deleteQuery = "DELETE FROM orderT WHERE orderID='"+id+"')";
+			String deleteQuery = "DELETE FROM orderT WHERE orderID='"+id+"'";
 			deleteStatement.executeUpdate(deleteQuery);	
+			
+		}catch(SQLException se) {
+			se.printStackTrace();
+		}finally {
+			if(connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {}
+			}
+		}
+	}
+	
+	public void updateOrderInProcess(String id, int isPicked, int isPacked,int deliveredToPickUpLocation) {
+		Connection connection = DBConnect.getDatabaseConnection();
+		try {
+			Statement updateStatement = connection.createStatement();
+			
+			String updateQuery = "UPDATE orderT SET isPicked='"+isPicked+"', isPacked='"+isPacked+"', deliveredToPickUpLocation='"+deliveredToPickUpLocation+"'  WHERE orderID='"+id+"'";
+			updateStatement.executeUpdate(updateQuery);	
+			
+		}catch(SQLException se) {
+			se.printStackTrace();
+		}finally {
+			if(connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {}
+			}
+		}
+	}
+	
+	public void updateOrderComplete(String id, int isDelivered, String pickUpLocation) {
+		Connection connection = DBConnect.getDatabaseConnection();
+		try {
+			Statement updateStatement = connection.createStatement();
+			
+			String updateQuery = "UPDATE orderT SET isDelivered='"+isDelivered+"', pickUpLocation='"+pickUpLocation+"'  WHERE orderID='"+id+"'";
+			updateStatement.executeUpdate(updateQuery);	
+			
+		}catch(SQLException se) {
+			se.printStackTrace();
+		}finally {
+			if(connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {}
+			}
+		}
+	}
+	
+	public void updateOrderCancel(String id, int refund) {
+		Connection connection = DBConnect.getDatabaseConnection();
+		try {
+			Statement updateStatement = connection.createStatement();
+			
+			String updateQuery = "UPDATE orderT SET refund='"+refund+"'  WHERE orderID='"+id+"'";
+			updateStatement.executeUpdate(updateQuery);	
 			
 		}catch(SQLException se) {
 			se.printStackTrace();

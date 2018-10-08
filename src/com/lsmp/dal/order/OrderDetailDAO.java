@@ -192,7 +192,7 @@ public class OrderDetailDAO {
 		try {
 			Statement updateStatement = connection.createStatement();
 			
-			String updateQuery = "UPDATE orderDetail SET orderID='"+orderID+"', bookProductID='"+productID+"', orderedQuantity='"+orderedQuantity+"'  WHERE orderDetailID='"+id+"')";
+			String updateQuery = "UPDATE orderDetail SET orderID='"+orderID+"', bookProductID='"+productID+"', orderedQuantity='"+orderedQuantity+"'  WHERE orderDetailID='"+id+"'";
 			updateStatement.executeUpdate(updateQuery);	
 			
 		}catch(SQLException se) {
@@ -211,7 +211,7 @@ public class OrderDetailDAO {
 		try {
 			Statement updateStatement = connection.createStatement();
 			
-			String updateQuery = "UPDATE orderDetail SET orderID='"+orderID+"', smartphoneProductID='"+productID+"', orderedQuantity='"+orderedQuantity+"'  WHERE orderDetailID='"+id+"')";
+			String updateQuery = "UPDATE orderDetail SET orderID='"+orderID+"', smartphoneProductID='"+productID+"', orderedQuantity='"+orderedQuantity+"'  WHERE orderDetailID='"+id+"'";
 			updateStatement.executeUpdate(updateQuery);	
 			
 		}catch(SQLException se) {
@@ -230,7 +230,7 @@ public class OrderDetailDAO {
 		try {
 			Statement deleteStatement = connection.createStatement();
 			
-			String deleteQuery = "DELETE FROM orderDetail WHERE orderDetailID='"+id+"')";
+			String deleteQuery = "DELETE FROM orderDetail WHERE orderDetailID='"+id+"'";
 			deleteStatement.executeUpdate(deleteQuery);	
 			
 		}catch(SQLException se) {
@@ -253,13 +253,14 @@ public class OrderDetailDAO {
 			Iterator<OrderDetail> orderDetailsIterator = orderDetails.iterator();
 			
 			while(orderDetailsIterator.hasNext()) {
+				/*
 				Random randomGenerator = new Random();
 			    int randomInt = randomGenerator.nextInt(10000);
-			    String orderDetailID = "OD" + randomInt;
+			    String orderDetailID = "OD" + randomInt;  */
 				OrderDetail currentOrderDetail = orderDetailsIterator.next();
 				
 				String insertQuery = "INSERT INTO orderDetail(orderDetailID,orderID,bookProductID,orderedQuantity) "
-						+ "VALUES('"+orderDetailID+"','"+currentOrderDetail.getOrderID()+"','"+currentOrderDetail.getBookProductID()+"','"+currentOrderDetail.getOrderedQuantity()+"')";
+						+ "VALUES('"+currentOrderDetail.getOrderDetailID()+"','"+currentOrderDetail.getOrderID()+"','"+currentOrderDetail.getBookProductID()+"','"+currentOrderDetail.getOrderedQuantity()+"')";
 				insertStatement.executeUpdate(insertQuery);
 				
 			}		
@@ -284,13 +285,14 @@ public class OrderDetailDAO {
 			Iterator<OrderDetail> orderDetailsIterator = orderDetails.iterator();
 			
 			while(orderDetailsIterator.hasNext()) {
+				/*
 				Random randomGenerator = new Random();
 			    int randomInt = randomGenerator.nextInt(10000);
-			    String orderDetailID = "OD" + randomInt;
+			    String orderDetailID = "OD" + randomInt;  */
 				OrderDetail currentOrderDetail = orderDetailsIterator.next();
 				
 				String insertQuery = "INSERT INTO orderDetail(orderDetailID,orderID,smartphoneProductID,orderedQuantity) "
-						+ "VALUES('"+orderDetailID+"','"+currentOrderDetail.getOrderID()+"','"+currentOrderDetail.getSmartphoneProductID()+"','"+currentOrderDetail.getOrderedQuantity()+"')";
+						+ "VALUES('"+currentOrderDetail.getOrderDetailID()+"','"+currentOrderDetail.getOrderID()+"','"+currentOrderDetail.getSmartphoneProductID()+"','"+currentOrderDetail.getOrderedQuantity()+"')";
 				insertStatement.executeUpdate(insertQuery);
 				
 			}		

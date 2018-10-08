@@ -219,7 +219,7 @@ public void insertShopperBillingInfos(String id, Set<Bill> bills) {
 		try {
 			Statement deleteStatement = connection.createStatement();
 			
-			String deleteQuery = "DELETE FROM bill WHERE shopperProfileID='"+id+"')";
+			String deleteQuery = "DELETE FROM bill WHERE shopperProfileID='"+id+"'";
 			deleteStatement.executeUpdate(deleteQuery);	
 						
 		}catch(SQLException se) {
@@ -238,7 +238,7 @@ public void insertShopperBillingInfos(String id, Set<Bill> bills) {
 		try {
 			Statement deleteStatement = connection.createStatement();
 			
-			String deleteQuery = "DELETE FROM bill WHERE partnerProfileID='"+id+"')";
+			String deleteQuery = "DELETE FROM bill WHERE partnerProfileID='"+id+"'";
 			deleteStatement.executeUpdate(deleteQuery);	
 						
 		}catch(SQLException se) {
@@ -263,7 +263,7 @@ public void insertShopperBillingInfos(String id, Set<Bill> bills) {
 			while(billIterator.hasNext()) {
 				Bill currentBillInfo = billIterator.next();
 				
-				String updateQuery = "UPDATE bill SET creditCardNumber='"+currentBillInfo.getCreditCardNumber()+"', cvv='"+currentBillInfo.getCvv()+"', expiryMonth='"+currentBillInfo.getExpiryMonth()+"',expiryYear='"+currentBillInfo.getExpiryYear()+"'  WHERE shopperProfileID='"+id+"')";
+				String updateQuery = "UPDATE bill SET creditCardNumber='"+currentBillInfo.getCreditCardNumber()+"', cvv='"+currentBillInfo.getCvv()+"', expiryMonth='"+currentBillInfo.getExpiryMonth()+"',expiryYear='"+currentBillInfo.getExpiryYear()+"'  WHERE shopperProfileID='"+id+"'";
 				updateStatement.executeUpdate(updateQuery);
 				
 			}			
@@ -289,7 +289,7 @@ public void insertShopperBillingInfos(String id, Set<Bill> bills) {
 			while(billIterator.hasNext()) {
 				Bill currentBillInfo = billIterator.next();
 				
-				String updateQuery = "UPDATE bill SET creditCardNumber='"+currentBillInfo.getCreditCardNumber()+"', cvv='"+currentBillInfo.getCvv()+"', expiryMonth='"+currentBillInfo.getExpiryMonth()+"',expiryYear='"+currentBillInfo.getExpiryYear()+"'  WHERE partnerProfileID='"+id+"')";
+				String updateQuery = "UPDATE bill SET creditCardNumber='"+currentBillInfo.getCreditCardNumber()+"', cvv='"+currentBillInfo.getCvv()+"', expiryMonth='"+currentBillInfo.getExpiryMonth()+"',expiryYear='"+currentBillInfo.getExpiryYear()+"'  WHERE partnerProfileID='"+id+"'";
 				updateStatement.executeUpdate(updateQuery);
 				
 			}			
@@ -310,7 +310,7 @@ public void insertShopperBillingInfos(String id, Set<Bill> bills) {
 		try {
 			Statement updateStatement = connection.createStatement();
 				
-			String updateQuery = "UPDATE bill SET creditCardNumber='"+bill.getCreditCardNumber()+"', cvv='"+bill.getCvv()+"', expiryMonth='"+bill.getExpiryMonth()+"',expiryYear='"+bill.getExpiryYear()+"'  WHERE shopperProfileID='"+id+"' AND billID='"+billID+"')";
+			String updateQuery = "UPDATE bill SET creditCardNumber='"+bill.getCreditCardNumber()+"', cvv='"+bill.getCvv()+"', expiryMonth='"+bill.getExpiryMonth()+"',expiryYear='"+bill.getExpiryYear()+"'  WHERE shopperProfileID='"+id+"' AND billID='"+billID+"'";
 			updateStatement.executeUpdate(updateQuery);			
 			
 		}catch(SQLException se) {
@@ -329,7 +329,7 @@ public void insertShopperBillingInfos(String id, Set<Bill> bills) {
 		try {
 			Statement updateStatement = connection.createStatement();
 				
-			String updateQuery = "UPDATE bill SET creditCardNumber='"+bill.getCreditCardNumber()+"', cvv='"+bill.getCvv()+"', expiryMonth='"+bill.getExpiryMonth()+"',expiryYear='"+bill.getExpiryYear()+"'  WHERE partnerProfileID='"+id+"' AND billID='"+billID+"')";
+			String updateQuery = "UPDATE bill SET creditCardNumber='"+bill.getCreditCardNumber()+"', cvv='"+bill.getCvv()+"', expiryMonth='"+bill.getExpiryMonth()+"',expiryYear='"+bill.getExpiryYear()+"'  WHERE partnerProfileID='"+id+"' AND billID='"+billID+"'";
 			updateStatement.executeUpdate(updateQuery);			
 			
 		}catch(SQLException se) {

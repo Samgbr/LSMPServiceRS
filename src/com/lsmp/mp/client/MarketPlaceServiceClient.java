@@ -8,6 +8,7 @@ import com.lsmp.mp.customer.Bill;
 import com.lsmp.mp.customer.CustomerManager;
 import com.lsmp.mp.customer.Phone;
 import com.lsmp.mp.customer.Shopper;
+import com.lsmp.mp.order.Cancel;
 import com.lsmp.mp.order.Complete;
 import com.lsmp.mp.order.InProcess;
 import com.lsmp.mp.order.Order;
@@ -38,7 +39,7 @@ public class MarketPlaceServiceClient {
 		Order order = oManager(orderManager);
 		
 		//Order Status in process using state design pattern
-		orderProcessingAndComplete(order);
+		orderProcessingAndComplete(order,orderManager);
 		
 		//Partner Manager
 		PartnerManager partnerManager = new PartnerManager();
@@ -50,7 +51,13 @@ public class MarketPlaceServiceClient {
 	}
 
 	private static void proRevManager(ProductReviewManager productReviewManager) {
+		//Add book review
 		productReviewManager.addBookReview("PR65452","BO89743", "SH45897", "Great Product", 4.2);
+		productReviewManager.addBookReview("PR65451","BO45459", "SH45897", "Not recommend this book", 2.9);
+		//update book review
+		productReviewManager.updateBookReview("BO45459", "SH45897", "Not bad after all", 3.7);
+		//Delete book review
+		productReviewManager.deleteProductReview("PR65451");
 	}
 
 	private static void parManager(PartnerManager partnerManager, CustomerManager customerManager) {
@@ -75,11 +82,11 @@ public class MarketPlaceServiceClient {
 		
 		//Create a Partner
 		partnerManager.addPartnerProfile("PA95687","diknas", "Nassir", "Raul", "Dickson", "dskf@gmail.com", "Wegh$$8i", "Level 3", "XYZS Co.", addresses, phones, bills);
-		//Add partner product
+		//Add partner book
 		partnerManager.addPartnerBook("PP61923", "BO89789", "PA95687");
 	}
 
-	private static void orderProcessingAndComplete(Order order) {
+	private static void orderProcessingAndComplete(Order order,OrderManager orderManager) {
 		InProcess processing = new InProcess();
 		order.setStatus(processing);
 		//Package Picked
@@ -88,6 +95,7 @@ public class MarketPlaceServiceClient {
 		processing.setPacked(true);
 		//Package delivered to pick up location
 		processing.setDeliverdToPickupLocation(true);
+		orderManager.updateOrderInProcess(order.getOrderID(), 1, 1, 1);
 		//Order Completed
 		Complete complete = new Complete();
 		//Pickup location
@@ -95,16 +103,28 @@ public class MarketPlaceServiceClient {
 		//Package delivered
 		complete.setDelivered(true);
 		order.setStatus(complete);
+		orderManager.updateOrderComplete(order.getOrderID(), 1, complete.getPickupLocation());
+		//Order Cancel
+		Cancel cancel = new Cancel();
+		cancel.setRefund(true);
+		order.setStatus(cancel);
+		orderManager.updateOrderCancel(order.getOrderID(), 1);
+		orderManager.deleteOrder(order.getOrderID());
 	}
 
 	private static Order oManager(OrderManager orderManager) {
 		//Order and order detail creation
-		OrderDetail orderDetail1 = orderManager.createBookOrderDetail("OR88954", "BO45457", 1.0);
-		OrderDetail orderDetail2 = orderManager.createBookOrderDetail("OR88954", "BO89789", 1.0);
+		OrderDetail orderDetail1 = orderManager.createBookOrderDetail("OD45617","OR88960", "BO45457", 2.0);
+		OrderDetail orderDetail2 = orderManager.createBookOrderDetail("OD45610","OR88960" ,"BO89789", 2.0);
 		Set<OrderDetail> details = new HashSet<>();
 		details.add(orderDetail1);
 		details.add(orderDetail2);
-		Order order =orderManager.addBookOrder("OR88954", "SH45451", "01/11/2018", "AD78984",details);
+		Order order =orderManager.addBookOrder("OR88960", "SH45451", "01/11/2018", "AD78984",details);
+		//Update order
+		orderManager.updateBookOrderDetail("OD45610", "OR88960", "BO89789", 3.0);
+		//Delete order
+		orderManager.deleteOrderDetail("OD45617");
+		orderManager.deleteOrderDetail("OD45610");
 		return order;
 	}
 
@@ -112,9 +132,18 @@ public class MarketPlaceServiceClient {
 		//Book Creation
 		productManager.addBook("BO89743", "fdgknkln22", "Mcgraw hill", "Adam reta", "7th", "Ebook", "XXX", "suspense book", 12.99, 20.99, 0.125, "A Dart");
 		productManager.addBook("BO89789", "fdgfjln22", "Mcgraw hill", "Ptr reta", "5th", "paper", "YYY", "psychology book", 10.99, 15.99, 0.115, "The dark knight");
+		productManager.addBook("BO89999", "fdgfjln22", "Mcgraw hill", "Ptr reta", "5th", "CD", "YYY", "Dude book", 9.99, 12.99, 0.115, "The okay knight");
+		//Update book
+		productManager.updateBook("BO89789", "fdgfjln22", "Mcgraw hill", "Ptr reta", "5th", "paper", "YYY", "psychology book", 17.99, 21.99, 0.17, "The dark knight");
+		//Delete book
+		productManager.deleteBook("BO89999");
 		//Create Product Inventory
 		productManager.addBookQtyOnHand("IN98554","BO89743", 10.0);
 		productManager.addBookQtyOnHand("IN98556","BO89789", 10.0);
+		//Update Product Inventory
+		productManager.updateBookQtyOnHand("BO89743", 20.0);
+		//Delete Product Inventory
+		//productManager.deleteBookQtyOnHand("BO89789");
 	}
 
 	private static void cManager(CustomerManager customerManager) {
@@ -141,6 +170,8 @@ public class MarketPlaceServiceClient {
 		//Create Shopper Profile
 		customerManager.addShopperProfile(shopper.getProfileID(), shopper.getLoginID(), shopper.getFirstName(), shopper.getMiddleName(), shopper.getLastName(), shopper.getEmail()
 					, shopper.getPassword(), shopper.getShopperType(), addresses, phones, bills);
+		//Delete Customer
+		//customerManager.deleteShopperProfile(shopper.getProfileID());
 	}
 
 }

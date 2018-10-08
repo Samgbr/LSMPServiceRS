@@ -22,10 +22,10 @@ private static InventoryDAO iDAO = new InventoryDAO();
 		return book;
 	}
 
-	public void updateBook(String id, String productName, String description, double purchasePrice, double sellingPrice, 
-			double discount, String title, String isbn, String publisher, String author, String edition, String bookType) {
+	public void updateBook(String productID, String isbn, String publisher, String author, String edition, 
+			String booktype, String productName, String description, double purchasePrice, double sellingPrice, double discount,String title) {
 		
-		bDAO.updateBook(id, productName, description, purchasePrice, sellingPrice, discount, title, isbn, publisher, author, edition, bookType);
+		bDAO.updateBook(productID, productName, description, purchasePrice, sellingPrice, discount, title, isbn, publisher, author, edition, booktype);
 	}
 
 	public void deleteBook(String id) {

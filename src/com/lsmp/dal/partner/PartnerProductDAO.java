@@ -189,7 +189,7 @@ public class PartnerProductDAO {
 		try {
 			Statement updateStatement = connection.createStatement();
 			
-			String updateQuery = "UPDATE productPartner SET profileID='"+profileID+"'  WHERE bookProductID='"+id+"')";
+			String updateQuery = "UPDATE productPartner SET profileID='"+profileID+"'  WHERE bookProductID='"+id+"'";
 			updateStatement.executeUpdate(updateQuery);	
 			
 		}catch(SQLException se) {
@@ -208,7 +208,7 @@ public class PartnerProductDAO {
 		try {
 			Statement updateStatement = connection.createStatement();
 			
-			String updateQuery = "UPDATE productPartner SET profileID='"+profileID+"'  WHERE smartphoneProductID='"+id+"')";
+			String updateQuery = "UPDATE productPartner SET profileID='"+profileID+"'  WHERE smartphoneProductID='"+id+"'";
 			updateStatement.executeUpdate(updateQuery);	
 			
 		}catch(SQLException se) {
@@ -227,7 +227,7 @@ public class PartnerProductDAO {
 		try {
 			Statement deleteStatement = connection.createStatement();
 			
-			String deleteQuery = "DELETE FROM productPartner WHERE bookProductID='"+id+"')";
+			String deleteQuery = "DELETE FROM productPartner WHERE bookProductID='"+id+"'";
 			deleteStatement.executeUpdate(deleteQuery);	
 			
 		}catch(SQLException se) {
@@ -246,7 +246,7 @@ public class PartnerProductDAO {
 		try {
 			Statement deleteStatement = connection.createStatement();
 			
-			String deleteQuery = "DELETE FROM productPartner WHERE smartphoneProductID='"+id+"')";
+			String deleteQuery = "DELETE FROM productPartner WHERE smartphoneProductID='"+id+"'";
 			deleteStatement.executeUpdate(deleteQuery);	
 			
 		}catch(SQLException se) {

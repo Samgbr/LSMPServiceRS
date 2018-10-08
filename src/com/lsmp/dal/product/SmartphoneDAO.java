@@ -151,7 +151,7 @@ public class SmartphoneDAO {
 		try {
 			Statement updateStatement = connection.createStatement();
 			
-			String updateQuery = "UPDATE smartphone SET productName='"+productName+"', description='"+description+"', purchasePrice='"+purchasePrice+"',sellingPrice='"+sellingPrice+"',discount='"+discount+"',displayInch='"+displayInch+"',brand='"+brand+"',ramSize='"+ramSize+"',os='"+os+"',storageSize='"+storageSize+"'  WHERE productID='"+id+"')";
+			String updateQuery = "UPDATE smartphone SET productName='"+productName+"', description='"+description+"', purchasePrice='"+purchasePrice+"',sellingPrice='"+sellingPrice+"',discount='"+discount+"',displayInch='"+displayInch+"',brand='"+brand+"',ramSize='"+ramSize+"',os='"+os+"',storageSize='"+storageSize+"'  WHERE productID='"+id+"'";
 			updateStatement.executeUpdate(updateQuery);	
 			
 		}catch(SQLException se) {
@@ -170,7 +170,7 @@ public class SmartphoneDAO {
 		try {
 			Statement deleteStatement = connection.createStatement();
 			
-			String deleteQuery = "DELETE FROM smartphone WHERE productID='"+id+"')";
+			String deleteQuery = "DELETE FROM smartphone WHERE productID='"+id+"'";
 			deleteStatement.executeUpdate(deleteQuery);	
 			
 		}catch(SQLException se) {

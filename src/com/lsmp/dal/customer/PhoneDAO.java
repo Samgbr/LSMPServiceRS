@@ -208,7 +208,7 @@ public class PhoneDAO {
 		try {
 			Statement deleteStatement = connection.createStatement();
 			
-			String deleteQuery = "DELETE FROM phone WHERE shopperProfileID='"+id+"')";
+			String deleteQuery = "DELETE FROM phone WHERE shopperProfileID='"+id+"'";
 			deleteStatement.executeUpdate(deleteQuery);	
 						
 		}catch(SQLException se) {
@@ -228,7 +228,7 @@ public class PhoneDAO {
 		try {
 			Statement deleteStatement = connection.createStatement();
 			
-			String deleteQuery = "DELETE FROM phone WHERE partnerProfileID='"+id+"')";
+			String deleteQuery = "DELETE FROM phone WHERE partnerProfileID='"+id+"'";
 			deleteStatement.executeUpdate(deleteQuery);	
 						
 		}catch(SQLException se) {
@@ -253,7 +253,7 @@ public class PhoneDAO {
 			while(phoneIterator.hasNext()) {
 				Phone currentPhone = phoneIterator.next();
 				
-				String updateQuery = "UPDATE phone SET type='"+currentPhone.getType()+"', city='"+currentPhone.getPhoneNumber()+"'  WHERE shopperProfileID='"+id+"')";
+				String updateQuery = "UPDATE phone SET type='"+currentPhone.getType()+"', city='"+currentPhone.getPhoneNumber()+"'  WHERE shopperProfileID='"+id+"'";
 				updateStatement.executeUpdate(updateQuery);
 				
 			}			
@@ -279,7 +279,7 @@ public class PhoneDAO {
 			while(phoneIterator.hasNext()) {
 				Phone currentPhone = phoneIterator.next();
 				
-				String updateQuery = "UPDATE phone SET type='"+currentPhone.getType()+"', city='"+currentPhone.getPhoneNumber()+"'  WHERE partnerProfileID='"+id+"')";
+				String updateQuery = "UPDATE phone SET type='"+currentPhone.getType()+"', city='"+currentPhone.getPhoneNumber()+"'  WHERE partnerProfileID='"+id+"'";
 				updateStatement.executeUpdate(updateQuery);
 				
 			}			
@@ -300,7 +300,7 @@ public class PhoneDAO {
 		try {
 			Statement updateStatement = connection.createStatement();
 			
-			String updateQuery = "UPDATE phone SET type='"+phone.getType()+"', city='"+phone.getPhoneNumber()+"'  WHERE shopperProfileID='"+id+"' AND phoneID='"+phoneID+"')";
+			String updateQuery = "UPDATE phone SET type='"+phone.getType()+"', city='"+phone.getPhoneNumber()+"'  WHERE shopperProfileID='"+id+"' AND phoneID='"+phoneID+"'";
 			updateStatement.executeUpdate(updateQuery);			
 			
 		}catch(SQLException se) {
@@ -319,7 +319,7 @@ public class PhoneDAO {
 		try {
 			Statement updateStatement = connection.createStatement();
 			
-			String updateQuery = "UPDATE phone SET type='"+phone.getType()+"', city='"+phone.getPhoneNumber()+"'  WHERE partnerProfileID='"+id+"' AND phoneID='"+phoneID+"')";
+			String updateQuery = "UPDATE phone SET type='"+phone.getType()+"', city='"+phone.getPhoneNumber()+"'  WHERE partnerProfileID='"+id+"' AND phoneID='"+phoneID+"'";
 			updateStatement.executeUpdate(updateQuery);			
 			
 		}catch(SQLException se) {
