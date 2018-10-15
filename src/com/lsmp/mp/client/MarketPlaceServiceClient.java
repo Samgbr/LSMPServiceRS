@@ -1,7 +1,16 @@
 package com.lsmp.mp.client;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+
+import javax.xml.ws.Response;
+
+import org.apache.cxf.interceptor.LoggingInInterceptor;
+import org.apache.cxf.interceptor.LoggingOutInterceptor;
+import org.apache.cxf.jaxrs.client.WebClient;
+import org.codehaus.jackson.jaxrs.JacksonJsonProvider;
 
 import com.lsmp.mp.customer.Address;
 import com.lsmp.mp.customer.Bill;
@@ -26,12 +35,41 @@ public class MarketPlaceServiceClient {
 		//Customer Manager 
 		CustomerManager customerManager = new CustomerManager();
 		
-		cManager(customerManager);
+		List<Object> providers = new ArrayList<Object>();
+        JacksonJsonProvider provider = new JacksonJsonProvider();
+        provider.addUntouchable(Response.class);
+        providers.add(provider);
+        
+        /*****************************************************************************************
+         * GET METHOD invoke
+         *****************************************************************************************/
+        System.out.println("GET METHOD .........................................................");
+        WebClient getClient = WebClient.create("http://localhost:8081", providers);
+        
+        //Configuring the CXF logging interceptor for the outgoing message
+        WebClient.getConfig(getClient).getOutInterceptors().add(new LoggingOutInterceptor());
+      //Configuring the CXF logging interceptor for the incoming response
+        WebClient.getConfig(getClient).getInInterceptors().add(new LoggingInInterceptor());
+        
+        // change application/xml  to get in xml format
+        getClient = getClient.accept("application/json").type("application/json").path("/shopperservice/shopper/SH45897");
+        
+        //The following lines are to show how to log messages without the CXF interceptors
+        String getRequestURI = getClient.getCurrentURI().toString();
+        System.out.println("Client GET METHOD Request URI:  " + getRequestURI);
+        String getRequestHeaders = getClient.getHeaders().toString();
+        System.out.println("Client GET METHOD Request Headers:  " + getRequestHeaders);
+        
+        //to see as raw XML/json
+        String response = getClient.get(String.class);
+        System.out.println("GET METHOD Response: ...." + response);
+		
+		//cManager(customerManager);
 		
 		//Product Manager
 		ProductManager productManager = new ProductManager();
 		
-		pManager(productManager);
+		//pManager(productManager);
 		
 		//Order Manager
 		OrderManager orderManager = new OrderManager();
@@ -39,15 +77,15 @@ public class MarketPlaceServiceClient {
 		Order order = oManager(orderManager);
 		
 		//Order Status in process using state design pattern
-		orderProcessingAndComplete(order,orderManager);
+		//orderProcessingAndComplete(order,orderManager);
 		
 		//Partner Manager
 		PartnerManager partnerManager = new PartnerManager();
-		parManager(partnerManager,customerManager);
+		//parManager(partnerManager,customerManager);
 		
 		//Product Review Manager
 		ProductReviewManager productReviewManager = new ProductReviewManager();
-		proRevManager(productReviewManager);
+		//proRevManager(productReviewManager);
 	}
 
 	private static void proRevManager(ProductReviewManager productReviewManager) {
