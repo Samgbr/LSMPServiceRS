@@ -29,7 +29,7 @@ public class CustomerActivity {
 		return customerRepresentation;
 	}
 	
-	//new changes
+	//new changes by Nasr
 	public CustomerRepresentation createShopper(String profileID, String loginID, String firstName, String middleName, String lastName, String email) {
 		Shopper shopper=customerManager.addShopperProfile(profileID, loginID,firstName,middleName,lastName,email,null,null,null,null,null);
 		
