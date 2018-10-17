@@ -29,4 +29,22 @@ public class CustomerActivity {
 		return customerRepresentation;
 	}
 	
+	public CustomerRepresentation createShopper(String profileID, String loginID, String firstName, String middleName, String lastName, String email) {
+		Shopper shopper=customerManager.addShopperProfile(profileID, loginID,firstName,middleName,lastName,email,null,null,null,null,null);
+		
+
+		CustomerRepresentation customerRepresentation = new CustomerRepresentation();
+		customerRepresentation.setProfileID(shopper.getProfileID());
+		customerRepresentation.setLoginID(shopper.getLoginID());
+		customerRepresentation.setFirstName(shopper.getFirstName());
+		customerRepresentation.setMiddleName(shopper.getMiddleName());
+		customerRepresentation.setLastName(shopper.getLastName());
+		customerRepresentation.setEmail(shopper.getEmail());
+		
+		return customerRepresentation;
+	}
+	
+
+
+	
 }
