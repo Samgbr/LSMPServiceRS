@@ -1,11 +1,13 @@
 package com.lsmp.mp.customer;
 
+
+
 /**
  * This phone model class hold customer phone number
  * @author samzi
  *
  */
-public class Phone {
+public class Phone{
 
 	// Instances
 	private String phoneID;

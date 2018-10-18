@@ -2,12 +2,15 @@ package com.lsmp.mp.customer;
 
 import java.util.Set;
 
+
+
 /**
  * This class is a customer model class
  * @author samzi
  *
  */
-public class Profile {
+
+public class Profile{
 
 	//Customer instance variables
 	private String profileID;

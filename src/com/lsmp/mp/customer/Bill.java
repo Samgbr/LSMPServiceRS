@@ -1,11 +1,12 @@
 package com.lsmp.mp.customer;
 
+
 /**
  * This class is a billing model class 
  * @author samzi
  *
  */
-public class Bill {
+public class Bill{
 
 	private String billID;
 	private String creditCardNumber;

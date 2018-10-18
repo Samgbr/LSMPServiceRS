@@ -1,5 +1,6 @@
 package com.lsmp.mp.customer;
 
+
 /**
  * This Shopper model class
  * @author samzi

@@ -27,10 +27,9 @@ import com.lsmp.mp.partner.PartnerManager;
 import com.lsmp.mp.product.ProductManager;
 import com.lsmp.mp.product.review.ProductReviewManager;
 
-public class MarketPlaceServiceClient {
+public final class MarketPlaceServiceClient {
 
 	public static void main(String[] args) {
-		// TODO run the application modules
 		
 		//Customer Manager 
 		CustomerManager customerManager = new CustomerManager();
@@ -44,7 +43,7 @@ public class MarketPlaceServiceClient {
          * GET METHOD invoke
          *****************************************************************************************/
         System.out.println("GET METHOD .........................................................");
-        WebClient getClient = WebClient.create("http://localhost:8081", providers);
+        WebClient getClient = WebClient.create("http://localhost:8082", providers);
         
         //Configuring the CXF logging interceptor for the outgoing message
         WebClient.getConfig(getClient).getOutInterceptors().add(new LoggingOutInterceptor());
@@ -86,6 +85,8 @@ public class MarketPlaceServiceClient {
 		//Product Review Manager
 		ProductReviewManager productReviewManager = new ProductReviewManager();
 		//proRevManager(productReviewManager);
+		
+		System.exit(0);
 	}
 
 	private static void proRevManager(ProductReviewManager productReviewManager) {

@@ -1,11 +1,12 @@
 package com.lsmp.mp.customer;
 
+
 /**
  * This address model class store customer address
  * @author samzi
  *
  */
-public class Address {
+public class Address{
 
 	//Instance variables
 	private String addressID;

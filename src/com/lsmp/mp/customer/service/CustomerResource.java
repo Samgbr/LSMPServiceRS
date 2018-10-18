@@ -12,14 +12,13 @@ import com.lsmp.mp.customer.service.workflow.CustomerActivity;
 public class CustomerResource implements CustomerService {
 	
 	//GET, CREATE, UPDATE and DELETE Shopper
-
 	@GET
 	@Produces({"application/xml" , "application/json"})
 	@Path("/shopper/{shopperId}")
 	public CustomerRepresentation getShopper(@PathParam("shopperId") String id) {
-			System.out.println("GET METHOD Request from Client with shopperRequest String ............." + id);
-			CustomerActivity customerActivity = new CustomerActivity();
-			return customerActivity.getShopper(id);
+		System.out.println("GET METHOD Request from Client with shopperRequest String ............." + id);
+		CustomerActivity customerActivity = new CustomerActivity();
+		return customerActivity.getShopper(id);
 	}
 	
 	
