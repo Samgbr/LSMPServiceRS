@@ -49,6 +49,14 @@ public class CustomerActivity {
 		return customerRepresentation;
 	}
 	
+	public String deleteShopper(String id) {
+		customerManager.deleteShopper(id);
+		
+		return "OK";
+		
+	}
+
+	
 
 
 	
