@@ -123,31 +123,35 @@ public final class MarketPlaceServiceClient {
 		partnerManager.addPartnerProfile("PA95687","diknas", "Nassir", "Raul", "Dickson", "dskf@gmail.com", "Wegh$$8i", "Level 3", "XYZS Co.", addresses, phones, bills);
 		//Add partner book
 		partnerManager.addPartnerBook("PP61923", "BO89789", "PA95687");
+		
 	}
 
 	private static void orderProcessingAndComplete(Order order,OrderManager orderManager) {
-		InProcess processing = new InProcess();
-		order.setStatus(processing);
+		//Order fulfilled and in process
+		orderManager.processingOrder(order);
 		//Package Picked
-		processing.setPicked(true);
+		orderManager.packagePicked();
 		//Package packed
-		processing.setPacked(true);
+		orderManager.packagePacked();
 		//Package delivered to pick up location
-		processing.setDeliverdToPickupLocation(true);
+		orderManager.deliverdToPickupLocation();
+		//update the Order DB
 		orderManager.updateOrderInProcess(order.getOrderID(), 1, 1, 1);
-		//Order Completed
-		Complete complete = new Complete();
-		//Pickup location
-		complete.setPickupLocation("Belmont Store");
+		//Order pickup location
+		orderManager.orderPickupLocation("Belmont Store");
 		//Package delivered
-		complete.setDelivered(true);
-		order.setStatus(complete);
-		orderManager.updateOrderComplete(order.getOrderID(), 1, complete.getPickupLocation());
+		orderManager.orderDelivered();
+		//Order complete status
+		orderManager.completeOrder(order);
+		//Update to the Order DB
+		orderManager.updateOrderComplete(order.getOrderID(), 1, "Belmont Store");
+		//Order refund
+		orderManager.orderRefund();
 		//Order Cancel
-		Cancel cancel = new Cancel();
-		cancel.setRefund(true);
-		order.setStatus(cancel);
+		orderManager.cancelOrder(order);
+		//update the DB
 		orderManager.updateOrderCancel(order.getOrderID(), 1);
+		//Delete the Order from the DB
 		orderManager.deleteOrder(order.getOrderID());
 	}
 

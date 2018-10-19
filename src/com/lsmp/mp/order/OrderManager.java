@@ -9,6 +9,9 @@ public class OrderManager {
 	
 	private static OrderDAO oDAO = new OrderDAO();
 	private static OrderDetailDAO odDAO = new OrderDetailDAO();
+	InProcess processing = new InProcess();
+	Complete complete = new Complete();
+	Cancel cancel = new Cancel();
 	
 	public Order getOrderWithDetail(String id) {
 		return oDAO.getOrderWithDetail(id);
@@ -103,4 +106,45 @@ public class OrderManager {
 		return orderDetail;
 	}
 	
+	public void processingOrder(Order order) {
+		order.setStatus(processing);
+	}
+	
+	public void completeOrder(Order order) {
+		order.setStatus(complete);
+	}
+	
+	public void cancelOrder(Order order) {
+		order.setStatus(cancel);
+		initializeOrderProcess();
+	}
+	
+	private void initializeOrderProcess() {
+		processing = new InProcess();
+		complete = new Complete();
+		cancel = new Cancel();
+	}
+
+	public void packagePicked() {
+		processing.setPicked(true);
+	}
+	
+	public void packagePacked() {
+		processing.setPacked(true);
+	}
+	
+	public void orderRefund() {
+		cancel.setRefund(true);
+	}
+	public void deliverdToPickupLocation() {
+		processing.setDeliverdToPickupLocation(true);
+	}
+	
+	public void orderPickupLocation(String location) {
+		complete.setPickupLocation(location);
+	}
+	
+	public void orderDelivered() {
+		complete.setDelivered(true);
+	}
 }
