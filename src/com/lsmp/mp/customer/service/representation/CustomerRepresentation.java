@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "Customer")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
-public class CustomerRepresentation {
+public class CustomerRepresentation{
 
 	//
 	private String profileID;
@@ -17,7 +17,21 @@ public class CustomerRepresentation {
 	private String middleName;
 	private String lastName;
 	private String email;
+	private String password;
+	private String shopperType; 
 	
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getShopperType() {
+		return shopperType;
+	}
+	public void setShopperType(String shopperType) {
+		this.shopperType = shopperType;
+	}
 	public String getProfileID() {
 		return profileID;
 	}

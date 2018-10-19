@@ -1,5 +1,7 @@
 package com.lsmp.mp.customer.service.representation;
 
+import java.io.Serializable;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -10,12 +12,33 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "")
 public class CustomerRequest {
 
+	private String profileID;
 	private String loginID;
 	private String firstName;
 	private String middleName;
 	private String lastName;
 	private String email;
+	private String password;
+	private String shopperType;
 	
+	public String getProfileID() {
+		return profileID;
+	}
+	public void setProfileID(String profileID) {
+		this.profileID = profileID;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getShopperType() {
+		return shopperType;
+	}
+	public void setShopperType(String shopperType) {
+		this.shopperType = shopperType;
+	}
 	public String getLoginID() {
 		return loginID;
 	}

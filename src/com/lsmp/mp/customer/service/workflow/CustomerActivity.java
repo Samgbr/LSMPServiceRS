@@ -25,13 +25,15 @@ public class CustomerActivity {
 		customerRepresentation.setMiddleName(shopper.getMiddleName());
 		customerRepresentation.setLastName(shopper.getLastName());
 		customerRepresentation.setEmail(shopper.getEmail());
+		customerRepresentation.setShopperType(shopper.getShopperType());
 		
 		return customerRepresentation;
 	}
 	
 	//new changes by Nasr
-	public CustomerRepresentation createShopper(String profileID, String loginID, String firstName, String middleName, String lastName, String email) {
-		Shopper shopper=customerManager.addShopperProfile(profileID, loginID,firstName,middleName,lastName,email,null,null,null,null,null);
+	public CustomerRepresentation createShopper(String id, String loginID, String firstName, String middleName, String lastName, String email, String password, String shopperType) {
+		
+		Shopper shopper=customerManager.addShopper(id, loginID, firstName, middleName, lastName, email, password, shopperType);
 		
 
 		CustomerRepresentation customerRepresentation = new CustomerRepresentation();
@@ -41,6 +43,8 @@ public class CustomerActivity {
 		customerRepresentation.setMiddleName(shopper.getMiddleName());
 		customerRepresentation.setLastName(shopper.getLastName());
 		customerRepresentation.setEmail(shopper.getEmail());
+		customerRepresentation.setPassword(shopper.getPassword());
+		customerRepresentation.setShopperType(shopper.getShopperType());
 		
 		return customerRepresentation;
 	}

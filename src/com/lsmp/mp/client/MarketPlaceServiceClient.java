@@ -73,7 +73,7 @@ public final class MarketPlaceServiceClient {
 		//Order Manager
 		OrderManager orderManager = new OrderManager();
 		
-		Order order = oManager(orderManager);
+		//Order order = oManager(orderManager);
 		
 		//Order Status in process using state design pattern
 		//orderProcessingAndComplete(order,orderManager);
