@@ -34,7 +34,7 @@ https://drive.google.com/open?id=1HThbxD_x_JkXtQuXd7rrshiakwjpBaX9
 + Classes that have association/composition characteristics, used set data structre.
 
 # Database schema
-https://drive.google.com/open?id=1ecISjmnJ3ldyt_-aye9fiaOL1rarQDNb
+https://drive.google.com/open?id=19t3fRpdxKS1buoFkO6XKs5yK6TfCJBfv
 + MySql DB on AWS is used to create DB and connect
 + Updated and revised DB schema as per the operational model compatible with OM
 # DB DDL
