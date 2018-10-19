@@ -110,6 +110,10 @@ public class OrderManager {
 		order.setStatus(processing);
 	}
 	
+	/**
+	 * This method set order status to complete
+	 * @param order
+	 */
 	public void completeOrder(Order order) {
 		order.setStatus(complete);
 	}
