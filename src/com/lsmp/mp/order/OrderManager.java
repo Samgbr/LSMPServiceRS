@@ -118,6 +118,7 @@ public class OrderManager {
 		order.setStatus(complete);
 	}
 	
+	// this mothod is to cancel order
 	public void cancelOrder(Order order) {
 		order.setStatus(cancel);
 		initializeOrderProcess();
