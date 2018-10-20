@@ -1,14 +1,15 @@
-package com.lsmp.mp.customer;
+package com.lsmp.mp.customer.service.representation;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
-/**
- * This address model class store customer address
- * @author samzi
- *
- */
-public class Address {
+@XmlRootElement(name = "shaddressRequest")
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "")
+public class ShopperAddressRepresentation {
 
-	//Instance variables
 	private String addressID;
 	private String street;
 	private String city;
@@ -45,7 +46,5 @@ public class Address {
 	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
 	}
-	
-	
 	
 }

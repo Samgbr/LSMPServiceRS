@@ -2,6 +2,7 @@ package com.lsmp.mp.customer;
 
 import java.util.Set;
 
+import com.lsmp.dal.customer.AddressDAO;
 import com.lsmp.dal.customer.ShopperDAO;
 
 /**
@@ -14,7 +15,7 @@ public class CustomerManager {
 
 	//Shopper DAO
 	private static ShopperDAO sDAO = new ShopperDAO();
-	
+	private static AddressDAO aDAO = new AddressDAO();
 	/**
 	 * This method get shopper profile with its address, bill and phone
 	 * @param id
@@ -195,5 +196,28 @@ public class CustomerManager {
 		return bill;
 	}
 	
+	public void insertShopperAddress(String aid, String pid, String street, String city, String state, String zipcode) {
+		aDAO.insertShopperAddress(aid, pid, street, city, state, zipcode);
+	}
+	
+	public void insertPartnerAddress(String aid, String pid, String street, String city, String state, String zipcode) {
+		aDAO.insertPartnerAddress(aid, pid, street, city, state, zipcode);
+	}
+	
+	public void deleteShopperAddress(String id) {
+		aDAO.deleteShopperAddress(id);
+	}
+	
+	public void deletePartnerAddress(String id) {
+		aDAO.deletePartnerAddress(id);
+	}
+	
+	public void updateShopperAddress(String aid, String pid, String street, String city, String state, String zipcode) {
+		aDAO.updateShopperAddress(aid, pid, street, city, state, zipcode);
+	}
+	
+	public void updatePartnerAddress(String aid, String pid, String street, String city, String state, String zipcode) {
+		aDAO.updatePartnerAddress(aid, pid, street, city, state, zipcode);
+	}
 	
 }

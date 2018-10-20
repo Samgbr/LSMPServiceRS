@@ -1,5 +1,7 @@
 package com.lsmp.mp.customer.service.workflow;
 
+import javax.ws.rs.core.Response;
+
 import com.lsmp.mp.customer.CustomerManager;
 import com.lsmp.mp.customer.Shopper;
 import com.lsmp.mp.customer.service.representation.CustomerRepresentation;
@@ -50,10 +52,16 @@ public class CustomerActivity {
 	}
 	
 	public String deleteShopper(String id) {
-		customerManager.deleteShopper(id);
 		
+		customerManager.deleteShopper(id);
 		return "OK";
 		
+	}
+
+	public String updateShopper(String id, String loginID, String firstName, String middleName,
+			String lastName, String email, String password, String shopperType) {
+		customerManager.updateShopper(id, loginID, firstName, middleName, lastName, email, password, shopperType);
+		return "OK";
 	}
 
 	

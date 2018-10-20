@@ -53,7 +53,7 @@ public class AddressDAO {
 		return addresses;
 	}
 
-public Set<Address> getPartnerAddresses(String id) {
+	public Set<Address> getPartnerAddresses(String id) {
 		
 		Connection connection = DBConnect.getDatabaseConnection();
 		Set<Address> addresses = new HashSet<>();
@@ -160,7 +160,7 @@ public Set<Address> getPartnerAddresses(String id) {
 				
 	}
 
-	public void insertShopperAddress(String aid, String id, Address address) {
+	public void insertShopperAddress(String aid, String pid, String street, String city, String state, String zipcode) {
 		
 		Connection connection = DBConnect.getDatabaseConnection();
 		try {
@@ -171,7 +171,7 @@ public Set<Address> getPartnerAddresses(String id) {
 			    String addressID = "AD" + randomInt; */
 				
 				String insertQuery = "INSERT INTO address(addressID, shopperProfileID, street,city,state,zipcode) "
-						+ "VALUES('"+aid+"','"+id+"','"+address.getStreet()+"','"+address.getCity()+"','"+address.getState()+"','"+address.getZipcode()+"')";
+						+ "VALUES('"+aid+"','"+pid+"','"+street+"','"+city+"','"+state+"','"+zipcode+"')";
 				insertStatement.executeUpdate(insertQuery);	
 			
 		}catch(SQLException se) {
@@ -186,7 +186,7 @@ public Set<Address> getPartnerAddresses(String id) {
 				
 	}
 	
-	public void insertPartnerAddress(String aid, String id, Address address) {
+	public void insertPartnerAddress(String aid, String pid, String street, String city, String state, String zipcode) {
 		
 		Connection connection = DBConnect.getDatabaseConnection();
 		try {
@@ -197,7 +197,7 @@ public Set<Address> getPartnerAddresses(String id) {
 			    String addressID = "AD" + randomInt; */
 				
 				String insertQuery = "INSERT INTO address(addressID, partnerProfileID, street,city,state,zipcode) "
-						+ "VALUES('"+aid+"','"+id+"','"+address.getStreet()+"','"+address.getCity()+"','"+address.getState()+"','"+address.getZipcode()+"')";
+						+ "VALUES('"+aid+"','"+pid+"','"+street+"','"+city+"','"+state+"','"+zipcode+"')";
 				insertStatement.executeUpdate(insertQuery);	
 			
 		}catch(SQLException se) {
@@ -217,7 +217,7 @@ public Set<Address> getPartnerAddresses(String id) {
 		try {
 			Statement deleteStatement = connection.createStatement();
 			
-			String deleteQuery = "DELETE FROM address WHERE shopperProfileID='"+id+"'";
+			String deleteQuery = "DELETE FROM address WHERE addressID='"+id+"'";
 			deleteStatement.executeUpdate(deleteQuery);	
 						
 		}catch(SQLException se) {
@@ -237,7 +237,7 @@ public Set<Address> getPartnerAddresses(String id) {
 		try {
 			Statement deleteStatement = connection.createStatement();
 			
-			String deleteQuery = "DELETE FROM address WHERE partnerProfileID='"+id+"'";
+			String deleteQuery = "DELETE FROM address WHERE addressID='"+id+"'";
 			deleteStatement.executeUpdate(deleteQuery);	
 						
 		}catch(SQLException se) {
@@ -304,12 +304,12 @@ public Set<Address> getPartnerAddresses(String id) {
 		}
 	}
 	
-	public void updateShopperAddress(String id, String addressID, Address address) {
+	public void updateShopperAddress(String aid, String pid, String street, String city, String state, String zipcode) {
 		Connection connection = DBConnect.getDatabaseConnection();
 		try {
 			Statement updateStatement = connection.createStatement();
 				
-			String updateQuery = "UPDATE address SET street='"+address.getStreet()+"', city='"+address.getCity()+"', state='"+address.getState()+"',zipcode='"+address.getZipcode()+"'  WHERE shopperProfileID='"+id+"' AND addressID='"+addressID+"'";
+			String updateQuery = "UPDATE address SET street='"+street+"',shopperProfileID='"+pid+"', city='"+city+"', state='"+state+"',zipcode='"+zipcode+"'  WHERE addressID='"+aid+"'";
 			updateStatement.executeUpdate(updateQuery);		
 			
 		}catch(SQLException se) {
@@ -323,12 +323,12 @@ public Set<Address> getPartnerAddresses(String id) {
 		}
 	}  
 	
-	public void updatePartnerAddress(String id, String addressID, Address address) {
+	public void updatePartnerAddress(String aid, String pid, String street, String city, String state, String zipcode) {
 		Connection connection = DBConnect.getDatabaseConnection();
 		try {
 			Statement updateStatement = connection.createStatement();
 				
-			String updateQuery = "UPDATE address SET street='"+address.getStreet()+"', city='"+address.getCity()+"', state='"+address.getState()+"',zipcode='"+address.getZipcode()+"'  WHERE partnerProfileID='"+id+"' AND addressID='"+addressID+"'";
+			String updateQuery = "UPDATE address SET street='"+street+"',partnerProfileID='"+pid+"', city='"+city+"', state='"+state+"',zipcode='"+zipcode+"'  WHERE addressID='"+aid+"'";
 			updateStatement.executeUpdate(updateQuery);		
 			
 		}catch(SQLException se) {
