@@ -1,12 +1,14 @@
-package com.lsmp.mp.customer;
+package com.lsmp.mp.customer.service.representation;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
-/**
- * This class is a billing model class 
- * @author samzi
- *
- */
-public class Bill{
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "")
+public class ShopperBillingRequest {
 
 	private String billID;
 	private String creditCardNumber;
@@ -14,20 +16,7 @@ public class Bill{
 	private int expiryMonth;
 	private int expiryYear;
 	private String shopperProfileID;
-	private String partnerProfileID;
-		
-	public String getShopperProfileID() {
-		return shopperProfileID;
-	}
-	public void setShopperProfileID(String shopperProfileID) {
-		this.shopperProfileID = shopperProfileID;
-	}
-	public String getPartnerProfileID() {
-		return partnerProfileID;
-	}
-	public void setPartnerProfileID(String partnerProfileID) {
-		this.partnerProfileID = partnerProfileID;
-	}
+	
 	public String getBillID() {
 		return billID;
 	}
@@ -58,6 +47,11 @@ public class Bill{
 	public void setExpiryYear(int expiryYear) {
 		this.expiryYear = expiryYear;
 	}
-	
+	public String getShopperProfileID() {
+		return shopperProfileID;
+	}
+	public void setShopperProfileID(String shopperProfileID) {
+		this.shopperProfileID = shopperProfileID;
+	}
 	
 }

@@ -3,6 +3,8 @@ package com.lsmp.mp.customer;
 import java.util.Set;
 
 import com.lsmp.dal.customer.AddressDAO;
+import com.lsmp.dal.customer.BillingDAO;
+import com.lsmp.dal.customer.PhoneDAO;
 import com.lsmp.dal.customer.ShopperDAO;
 
 /**
@@ -16,6 +18,8 @@ public class CustomerManager {
 	//Shopper DAO
 	private static ShopperDAO sDAO = new ShopperDAO();
 	private static AddressDAO aDAO = new AddressDAO();
+	private static BillingDAO bDAO = new BillingDAO();
+	private static PhoneDAO pDAO = new PhoneDAO();
 	/**
 	 * This method get shopper profile with its address, bill and phone
 	 * @param id
@@ -199,13 +203,32 @@ public class CustomerManager {
 	public Address insertShopperAddress(String aid, String pid, String street, String city, String state, String zipcode) {
 		return aDAO.insertShopperAddress(aid, pid, street, city, state, zipcode);
 	}
-	
+	public Phone insertShopperPhone(String pid, String id, String type, String phoneNumber) {
+		return pDAO.insertShopperPhone(pid, id, type, phoneNumber);
+	}
+	public Phone insertPartnerPhone(String pid, String id, String type, String phoneNumber) {
+		return pDAO.insertPartnerPhone(pid, id, type, phoneNumber);
+	}
 	public void insertPartnerAddress(String aid, String pid, String street, String city, String state, String zipcode) {
 		aDAO.insertPartnerAddress(aid, pid, street, city, state, zipcode);
 	}
 	
+	public void insertPartnerBillingInfo(String bid, String id, String creditCardNumber, String cvv, String expiryMonth, String expiryYear) {
+		bDAO.insertPartnerBillingInfo(bid, id, creditCardNumber, cvv, expiryMonth, expiryYear);
+	}
+	
+	public Bill insertShopperBillingInfo(String bid, String id, String creditCardNumber, int cvv, int expiryMonth, int expiryYear) {
+		return bDAO.insertShopperBillingInfo(bid, id, creditCardNumber, cvv, expiryMonth, expiryYear);
+	}
+	
 	public void deleteShopperAddress(String id) {
 		aDAO.deleteShopperAddress(id);
+	}
+	public void deleteShopperPhone(String id) {
+		pDAO.deleteShopperPhone(id);
+	}
+	public void deletePartnerPhone(String id) {
+		pDAO.deletePartnerPhone(id);
 	}
 	
 	public Address getShopperAddress(String id) {
@@ -216,16 +239,51 @@ public class CustomerManager {
 		return aDAO.getPartnerAddress(id);
 	}
 	
+	public Bill getShopperBillingInfo(String id) {
+		return bDAO.getShopperBillingInfo(id);
+	}
+	
+	public Bill getPartnerBillingInfo(String id) {
+		return bDAO.getPartnerBillingInfo(id);
+	}
+	
+	public Phone getShopperPhone(String id) {
+		return pDAO.getShopperPhone(id);
+	}
+	public Phone getPartnerPhone(String id) {
+		return pDAO.getPartnerPhone(id);
+	}
+	
 	public void deletePartnerAddress(String id) {
 		aDAO.deletePartnerAddress(id);
+	}
+	
+	public void deletePartnerBillingInfo(String id) {
+		bDAO.deletePartnerBillingInfo(id);
+	}
+	public void deleteShopperBillingInfo(String id) {
+		bDAO.deleteShopperBillingInfo(id);
 	}
 	
 	public void updateShopperAddress(String aid, String pid, String street, String city, String state, String zipcode) {
 		aDAO.updateShopperAddress(aid, pid, street, city, state, zipcode);
 	}
 	
+	public void updateShopperBillingInfo(String bid, String id, String creditCardNumber, int cvv, int expiryMonth, int expiryYear) {
+		bDAO.updateShopperBillingInfo(bid, id, creditCardNumber, cvv, expiryMonth, expiryYear);
+	}
+	
 	public void updatePartnerAddress(String aid, String pid, String street, String city, String state, String zipcode) {
 		aDAO.updatePartnerAddress(aid, pid, street, city, state, zipcode);
+	}
+	public void updateShopperPhone(String pid, String id, String type, String phoneNumber) {
+		pDAO.updateShopperPhone(pid, id, type, phoneNumber);
+	}
+	public void updatePartnerPhone(String pid, String id, String type, String phoneNumber) {
+		pDAO.updatePartnerPhone(pid, id, type, phoneNumber);
+	}
+	public void updatePartnerBillingInfo(String bid, String id, String creditCardNumber, String cvv, String expiryMonth, String expiryYear) {
+		bDAO.updatePartnerBillingInfo(bid, id, creditCardNumber, cvv, expiryMonth, expiryYear);
 	}
 	
 }
