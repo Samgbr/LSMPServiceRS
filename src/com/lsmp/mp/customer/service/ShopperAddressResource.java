@@ -21,6 +21,7 @@ public class ShopperAddressResource implements ShopperAddressService{
 		//GET, CREATE, UPDATE and DELETE Shopper
 		@GET
 		@Produces({"application/xml" , "application/json"})
+		@Consumes({"application/xml", "application/json"})
 		@Path("/shaddress/{addressId}")
 		public ShopperAddressRepresentation getShopperAddress(@PathParam("addressId") String id) {
 			System.out.println("GET METHOD Request from Client with shopper address request String ............." + id);
@@ -32,10 +33,11 @@ public class ShopperAddressResource implements ShopperAddressService{
 		@Produces({"application/xml" , "application/json"})
 		@Consumes({"application/xml", "application/json"})
 		@Path("/shaddress")
-		public ShopperAddressRepresentation createShopperAddress(ShopperAddressRequest shaddressRequest) {
+		public ShopperAddressRepresentation createShopperAddress(ShopperAddressRequest shopperAddressRequest) {
 			System.out.println("POST METHOD Shopper Address Request from Client with ............." );		
 			ShopperAddressActivity shaddressActivity = new ShopperAddressActivity();
-			return shaddressActivity.createShopperAddress();
+			return shaddressActivity.createShopperAddress(shopperAddressRequest.getAddressID(),shopperAddressRequest.getShopperProfileID()
+					,shopperAddressRequest.getStreet(),shopperAddressRequest.getCity(),shopperAddressRequest.getState(),shopperAddressRequest.getZipcode());
 		}
 
 		@PUT
@@ -45,7 +47,8 @@ public class ShopperAddressResource implements ShopperAddressService{
 		public Response updateShopperAddress(ShopperAddressRequest shaddressRequest) {
 			System.out.println("PUT METHOD Shopper Address Request from Client with ............." );		
 			ShopperAddressActivity shaddressActivity = new ShopperAddressActivity();
-			String res = shaddressActivity.updateShopperAddress();
+			String res = shaddressActivity.updateShopperAddress(shaddressRequest.getAddressID(),shaddressRequest.getShopperProfileID()
+					,shaddressRequest.getStreet(),shaddressRequest.getCity(),shaddressRequest.getState(),shaddressRequest.getZipcode());
 			if (res.equals("OK")) {
 				return Response.status(Status.OK).build();
 			}

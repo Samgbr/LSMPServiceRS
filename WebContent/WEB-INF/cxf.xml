@@ -14,7 +14,7 @@
   	
   <bean id="jacksonProvider" class="org.codehaus.jackson.jaxrs.JacksonJaxbJsonProvider" />
       	
-  <jaxrs:server name="CustomerService" address="http://localhost:8082">
+  <jaxrs:server name="CustomerService" address="http://localhost:8082/sh">
 		<jaxrs:serviceBeans>
 			<ref bean="customerServiceRest" />
 		</jaxrs:serviceBeans>
@@ -28,6 +28,23 @@
 		</jaxrs:schemaLocations>
 
 	</jaxrs:server>
-  	<bean id="customerServiceRest" class="com.lsmp.mp.customer.service.CustomerResource" />
+
+	<jaxrs:server name="ShopperAddressService" address="http://localhost:8082/shad">
+		<jaxrs:serviceBeans>
+			<ref bean="customerAddressServiceRest" />
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<ref bean="jacksonProvider" />
+		</jaxrs:providers> 
+
+		<jaxrs:schemaLocations>
+			<jaxrs:schemaLocation>com.lsmp.mp.customer.service.representation.ShopperAddressRequest</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.lsmp.mp.customer.service.representation.ShopperAddressRepresentation</jaxrs:schemaLocation>
+		</jaxrs:schemaLocations>
+
+	</jaxrs:server>
+	
+	<bean id="customerServiceRest" class="com.lsmp.mp.customer.service.CustomerResource" />
+  	<bean id="customerAddressServiceRest" class="com.lsmp.mp.customer.service.ShopperAddressResource" />
   
 </beans>

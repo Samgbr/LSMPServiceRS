@@ -5,7 +5,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlRootElement(name = "shaddressRequest")
+@XmlRootElement(name = "shopperAddressRequest")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
 public class ShopperAddressRepresentation {
@@ -15,6 +15,14 @@ public class ShopperAddressRepresentation {
 	private String city;
 	private String state;
 	private String zipcode;
+	private String shopperProfileID;
+	
+	public String getShopperProfileID() {
+		return shopperProfileID;
+	}
+	public void setShopperProfileID(String shopperProfileID) {
+		this.shopperProfileID = shopperProfileID;
+	}
 	
 	public String getAddressID() {
 		return addressID;

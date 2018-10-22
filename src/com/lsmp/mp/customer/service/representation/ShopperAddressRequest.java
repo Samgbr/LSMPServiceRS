@@ -15,6 +15,14 @@ public class ShopperAddressRequest {
 	private String city;
 	private String state;
 	private String zipcode;
+	private String shopperProfileID;
+	
+	public String getShopperProfileID() {
+		return shopperProfileID;
+	}
+	public void setShopperProfileID(String shopperProfileID) {
+		this.shopperProfileID = shopperProfileID;
+	}
 	
 	public String getAddressID() {
 		return addressID;

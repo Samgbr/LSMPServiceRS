@@ -11,7 +11,7 @@ public interface ShopperAddressService {
 
 	//Address representation and request methods goes here
 		public ShopperAddressRepresentation getShopperAddress(String addressID);
-		public ShopperAddressRepresentation createShopperAddress(ShopperAddressRequest addressRequest);
+		public ShopperAddressRepresentation createShopperAddress(ShopperAddressRequest shopperAddressRequest);
 		public Response updateShopperAddress(ShopperAddressRequest addressRequest);
 	    public Response deleteShopperAddress(String addressId);
 }

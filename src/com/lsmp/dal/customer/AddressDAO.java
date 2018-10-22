@@ -53,6 +53,82 @@ public class AddressDAO {
 		return addresses;
 	}
 
+	public Address getShopperAddress(String id) {
+		
+		Connection connection = DBConnect.getDatabaseConnection();
+		Address address = new Address();
+		
+		try {
+			Statement selectStatement = connection.createStatement();
+			
+			String selectQuery = "SELECT * from address WHERE addressID='"+id+"'";
+			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
+			resultSet.next();
+			String shopperProfileID= resultSet.getString("shopperProfileID");
+			String street = resultSet.getString("street");
+			String city = resultSet.getString("city");
+			String state = resultSet.getString("state");
+			String zipcode = resultSet.getString("zipCode");
+			
+			address.setAddressID(id);
+			address.setShopperProfileID(shopperProfileID);
+			address.setStreet(street);
+			address.setCity(city);
+			address.setState(state);
+			address.setZipcode(zipcode);
+			
+			
+		}catch(SQLException se) {
+			se.printStackTrace();
+		}finally {
+			if(connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {}
+			}
+		}
+		
+		return address;
+	}
+	
+	public Address getPartnerAddress(String id) {
+		
+		Connection connection = DBConnect.getDatabaseConnection();
+		Address address = new Address();
+		
+		try {
+			Statement selectStatement = connection.createStatement();
+			
+			String selectQuery = "SELECT * from address WHERE addressID='"+id+"'";
+			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
+			resultSet.next();
+			String partnerProfileID= resultSet.getString("partnerProfileID");
+			String street = resultSet.getString("street");
+			String city = resultSet.getString("city");
+			String state = resultSet.getString("state");
+			String zipcode = resultSet.getString("zipCode");
+			
+			address.setAddressID(id);
+			address.setPartnerProfileID(partnerProfileID);
+			address.setStreet(street);
+			address.setCity(city);
+			address.setState(state);
+			address.setZipcode(zipcode);
+			
+			
+		}catch(SQLException se) {
+			se.printStackTrace();
+		}finally {
+			if(connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {}
+			}
+		}
+		
+		return address;
+	}
+	
 	public Set<Address> getPartnerAddresses(String id) {
 		
 		Connection connection = DBConnect.getDatabaseConnection();
@@ -160,7 +236,14 @@ public class AddressDAO {
 				
 	}
 
-	public void insertShopperAddress(String aid, String pid, String street, String city, String state, String zipcode) {
+	public Address insertShopperAddress(String aid, String pid, String street, String city, String state, String zipcode) {
+		Address address = new Address();
+		address.setAddressID(aid);
+		address.setCity(city);
+		address.setShopperProfileID(pid);
+		address.setState(state);
+		address.setStreet(street);
+		address.setZipcode(zipcode);
 		
 		Connection connection = DBConnect.getDatabaseConnection();
 		try {
@@ -183,10 +266,17 @@ public class AddressDAO {
 				} catch (SQLException e) {}
 			}
 		}
-				
+		return address;		
 	}
 	
-	public void insertPartnerAddress(String aid, String pid, String street, String city, String state, String zipcode) {
+	public Address insertPartnerAddress(String aid, String pid, String street, String city, String state, String zipcode) {
+		Address address = new Address();
+		address.setAddressID(aid);
+		address.setCity(city);
+		address.setPartnerProfileID(pid);
+		address.setState(state);
+		address.setStreet(street);
+		address.setZipcode(zipcode);
 		
 		Connection connection = DBConnect.getDatabaseConnection();
 		try {
@@ -209,7 +299,7 @@ public class AddressDAO {
 				} catch (SQLException e) {}
 			}
 		}
-				
+		return address;		
 	}
 	
 	public void deleteShopperAddress(String id) {

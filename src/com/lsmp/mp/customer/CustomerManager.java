@@ -196,8 +196,8 @@ public class CustomerManager {
 		return bill;
 	}
 	
-	public void insertShopperAddress(String aid, String pid, String street, String city, String state, String zipcode) {
-		aDAO.insertShopperAddress(aid, pid, street, city, state, zipcode);
+	public Address insertShopperAddress(String aid, String pid, String street, String city, String state, String zipcode) {
+		return aDAO.insertShopperAddress(aid, pid, street, city, state, zipcode);
 	}
 	
 	public void insertPartnerAddress(String aid, String pid, String street, String city, String state, String zipcode) {
@@ -206,6 +206,14 @@ public class CustomerManager {
 	
 	public void deleteShopperAddress(String id) {
 		aDAO.deleteShopperAddress(id);
+	}
+	
+	public Address getShopperAddress(String id) {
+		return aDAO.getShopperAddress(id);
+	}
+	
+	public Address getPartnerAddress(String id) {
+		return aDAO.getPartnerAddress(id);
 	}
 	
 	public void deletePartnerAddress(String id) {
