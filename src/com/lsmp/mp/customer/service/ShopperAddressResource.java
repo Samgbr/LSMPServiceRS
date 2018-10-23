@@ -15,14 +15,14 @@ import com.lsmp.mp.customer.service.representation.ShopperAddressRepresentation;
 import com.lsmp.mp.customer.service.representation.ShopperAddressRequest;
 import com.lsmp.mp.customer.service.workflow.ShopperAddressActivity;
 
-@Path("/shaddservice/")
+@Path("/shopperaddressservice/")
 public class ShopperAddressResource implements ShopperAddressService{
 
 		//GET, CREATE, UPDATE and DELETE Shopper
 		@GET
 		@Produces({"application/xml" , "application/json"})
 		@Consumes({"application/xml", "application/json"})
-		@Path("/shaddress/{addressId}")
+		@Path("/shopperaddress/{addressId}")
 		public ShopperAddressRepresentation getShopperAddress(@PathParam("addressId") String id) {
 			System.out.println("GET METHOD Request from Client with shopper address request String ............." + id);
 			ShopperAddressActivity shaddressActivity = new ShopperAddressActivity();
@@ -32,7 +32,7 @@ public class ShopperAddressResource implements ShopperAddressService{
 		@POST
 		@Produces({"application/xml" , "application/json"})
 		@Consumes({"application/xml", "application/json"})
-		@Path("/shaddress")
+		@Path("/shopperaddress")
 		public ShopperAddressRepresentation createShopperAddress(ShopperAddressRequest shopperAddressRequest) {
 			System.out.println("POST METHOD Shopper Address Request from Client with ............." );		
 			ShopperAddressActivity shaddressActivity = new ShopperAddressActivity();
@@ -43,7 +43,7 @@ public class ShopperAddressResource implements ShopperAddressService{
 		@PUT
 		@Produces({"application/xml" , "application/json"})
 		@Consumes({"application/xml", "application/json"})
-		@Path("/shaddress")
+		@Path("/shopperaddress")
 		public Response updateShopperAddress(ShopperAddressRequest shaddressRequest) {
 			System.out.println("PUT METHOD Shopper Address Request from Client with ............." );		
 			ShopperAddressActivity shaddressActivity = new ShopperAddressActivity();
@@ -58,7 +58,7 @@ public class ShopperAddressResource implements ShopperAddressService{
 		@DELETE
 		@Produces({"application/xml" , "application/json"})
 		@Consumes({"application/xml", "application/json"})
-		@Path("/shaddress/{addressId}")
+		@Path("/shopperaddress/{addressId}")
 		public Response deleteShopperAddress(@PathParam("addressId") String id) {
 			System.out.println("Delete METHOD Request from Client with Shopper Address request String ............." + id);
 			ShopperAddressActivity shaddressActivity = new ShopperAddressActivity();

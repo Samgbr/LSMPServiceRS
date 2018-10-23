@@ -37,7 +37,7 @@ public class ShopperBillingActivity {
 		return shopperBillingRepresentation;
 	}
 
-	public String updateShopperAddress(String bid, String id, String creditCardNumber, int cvv, int expiryMonth, int expiryYear) {
+	public String updateShopperBillingInfo(String bid, String id, String creditCardNumber, int cvv, int expiryMonth, int expiryYear) {
 		customerManager.updateShopperBillingInfo(bid, id, creditCardNumber, cvv, expiryMonth, expiryYear);
 		return "OK";
 	}
