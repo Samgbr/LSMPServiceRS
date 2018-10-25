@@ -8,7 +8,7 @@ public class ShopperPhoneActivity {
 
 	private static CustomerManager customerManager = new CustomerManager();
 	
-	public ShopperPhoneRepresentation getShopperAddress(String id) {
+	public ShopperPhoneRepresentation getShopperPhone(String id) {
 		
 		Phone phone = customerManager.getShopperPhone(id);
 		

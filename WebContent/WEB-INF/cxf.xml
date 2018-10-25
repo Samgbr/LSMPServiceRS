@@ -14,7 +14,7 @@
   	
   <bean id="jacksonProvider" class="org.codehaus.jackson.jaxrs.JacksonJaxbJsonProvider" />
       	
-  <jaxrs:server name="CustomerService" address="http://localhost:8082/sh">
+  <jaxrs:server name="CustomerService" address="http://localhost:8082/Customer">
 		<jaxrs:serviceBeans>
 			<ref bean="customerServiceRest" />
 		</jaxrs:serviceBeans>
@@ -29,7 +29,7 @@
 
 	</jaxrs:server>
 
-	<jaxrs:server name="ShopperAddressService" address="http://localhost:8082/shad">
+	<jaxrs:server name="ShopperAddressService" address="http://localhost:8082/CustomerAddress">
 		<jaxrs:serviceBeans>
 			<ref bean="customerAddressServiceRest" />
 		</jaxrs:serviceBeans>
@@ -44,7 +44,39 @@
 
 	</jaxrs:server>
 	
+	<jaxrs:server name="ShopperBillingService" address="http://localhost:8082/CustomerBilling">
+		<jaxrs:serviceBeans>
+			<ref bean="customerBillingServiceRest" />
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<ref bean="jacksonProvider" />
+		</jaxrs:providers> 
+
+		<jaxrs:schemaLocations>
+			<jaxrs:schemaLocation>com.lsmp.mp.customer.service.representation.ShopperBillingRequest</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.lsmp.mp.customer.service.representation.ShopperBillingRepresentation</jaxrs:schemaLocation>
+		</jaxrs:schemaLocations>
+
+	</jaxrs:server>
+	
+	<jaxrs:server name="ShopperPhoneService" address="http://localhost:8082/CustomerPhone">
+		<jaxrs:serviceBeans>
+			<ref bean="customerPhoneServiceRest" />
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<ref bean="jacksonProvider" />
+		</jaxrs:providers> 
+
+		<jaxrs:schemaLocations>
+			<jaxrs:schemaLocation>com.lsmp.mp.customer.service.representation.ShopperPhoneRequest</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.lsmp.mp.customer.service.representation.ShopperPhoneRepresentation</jaxrs:schemaLocation>
+		</jaxrs:schemaLocations>
+
+	</jaxrs:server>
+	
 	<bean id="customerServiceRest" class="com.lsmp.mp.customer.service.CustomerResource" />
   	<bean id="customerAddressServiceRest" class="com.lsmp.mp.customer.service.ShopperAddressResource" />
+  	<bean id="customerBillingServiceRest" class="com.lsmp.mp.customer.service.ShopperBillingResource" />
+  	<bean id="customerPhoneServiceRest" class="com.lsmp.mp.customer.service.ShopperPhoneResource" />
   
 </beans>
