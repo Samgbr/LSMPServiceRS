@@ -9,14 +9,19 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
 
-public class ProductRequest {
+public class BookRequest {
 	private String productID;
 	private String productName;
 	private String description;
 	private double purchasePrice;
 	private double sellingPrice;
 	private double discount;
-		
+	private String title;
+	private String isbn;
+	private String publisher;
+	private String author;
+	private String edition;
+	private String bookType;
 	public String getProductID() {
 		return productID;
 	}
@@ -53,6 +58,42 @@ public class ProductRequest {
 	public void setDiscount(double discount) {
 		this.discount = discount;
 	}
-	
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getIsbn() {
+		return isbn;
+	}
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+	public String getPublisher() {
+		return publisher;
+	}
+	public void setPublisher(String publisher) {
+		this.publisher = publisher;
+	}
+	public String getAuthor() {
+		return author;
+	}
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+	public String getEdition() {
+		return edition;
+	}
+	public void setEdition(String edition) {
+		this.edition = edition;
+	}
+	public String getBookType() {
+		return bookType;
+	}
+	public void setBookType(String bookType) {
+		this.bookType = bookType;
+	}
+
 
 }
