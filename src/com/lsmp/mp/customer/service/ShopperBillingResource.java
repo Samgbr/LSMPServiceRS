@@ -1,5 +1,7 @@
 package com.lsmp.mp.customer.service;
 
+import java.util.Set;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -66,6 +68,15 @@ public class ShopperBillingResource implements ShopperBillingService{
 			return Response.status(Status.OK).build();
 		}
 		return null;
+	}
+
+	@GET
+	@Produces({"application/xml" , "application/json"})
+	@Path("/shopperbillings/{shopperProfileID}")
+	public Set<ShopperBillingRepresentation> getShopperBillingInfos(@PathParam("shopperProfileID") String id) {
+		System.out.println("GET METHOD Request for all Shopper Billing Infos .............");
+		ShopperBillingActivity shopperBillingActivity = new ShopperBillingActivity();
+		return shopperBillingActivity.getShopperBillingInfos(id);
 	}
 
 }

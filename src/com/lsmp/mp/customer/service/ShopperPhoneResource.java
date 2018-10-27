@@ -1,5 +1,7 @@
 package com.lsmp.mp.customer.service;
 
+import java.util.Set;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -22,7 +24,7 @@ public class ShopperPhoneResource implements ShopperPhoneService{
 	@Produces({"application/xml" , "application/json"})
 	@Consumes({"application/xml", "application/json"})
 	@Path("/shopperphone/{phoneID}")
-	public ShopperPhoneRepresentation getShopperPhone(String id) {
+	public ShopperPhoneRepresentation getShopperPhone(@PathParam("phoneID") String id) {
 		System.out.println("GET METHOD Request from Client with shopper Phone request String ............." + id);
 		ShopperPhoneActivity shopperPhoneActivity = new ShopperPhoneActivity();
 		return shopperPhoneActivity.getShopperPhone(id);
@@ -66,6 +68,15 @@ public class ShopperPhoneResource implements ShopperPhoneService{
 			return Response.status(Status.OK).build();
 		}
 		return null;
+	}
+
+	@GET
+	@Produces({"application/xml" , "application/json"})
+	@Path("/shopperphones/{shopperProfileID}")
+	public Set<ShopperPhoneRepresentation> getShopperPhones(@PathParam("shopperProfileID") String id) {
+		System.out.println("GET METHOD Request for all Shopper Phones .............");
+		ShopperPhoneActivity shopperPhoneActivity = new ShopperPhoneActivity();
+		return shopperPhoneActivity.getShopperPhones(id);
 	}
 
 }

@@ -1,6 +1,8 @@
 package com.lsmp.mp.customer.service.workflow;
 
-import javax.ws.rs.core.Response;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
 import com.lsmp.mp.customer.CustomerManager;
 import com.lsmp.mp.customer.Shopper;
@@ -15,6 +17,32 @@ import com.lsmp.mp.customer.service.representation.CustomerRepresentation;
 public class CustomerActivity {
 	
 	private static CustomerManager customerManager = new CustomerManager();
+	
+	
+	public Set<CustomerRepresentation> getShoppers() {
+		
+		Set<Shopper> shoppers = new HashSet<Shopper>();
+		Set<CustomerRepresentation> shopperRepresentations = new HashSet<CustomerRepresentation>();
+		//employees = dao.getAllEmployees();
+		shoppers = customerManager.getAllShopperProfiles();
+		
+		Iterator<Shopper> it = shoppers.iterator();
+		while(it.hasNext()) {
+          Shopper shopper = (Shopper)it.next();
+          CustomerRepresentation customerRepresentation = new CustomerRepresentation();
+          customerRepresentation.setProfileID(shopper.getProfileID());
+  		  customerRepresentation.setLoginID(shopper.getLoginID());
+  		  customerRepresentation.setFirstName(shopper.getFirstName());
+  		  customerRepresentation.setMiddleName(shopper.getMiddleName());
+  		  customerRepresentation.setLastName(shopper.getLastName());
+  		  customerRepresentation.setEmail(shopper.getEmail());
+  		  customerRepresentation.setShopperType(shopper.getShopperType());
+          
+          //now add this representation in the list
+  		shopperRepresentations.add(customerRepresentation);
+        }
+		return shopperRepresentations;
+	}
 	
 	public CustomerRepresentation getShopper(String id) {
 		

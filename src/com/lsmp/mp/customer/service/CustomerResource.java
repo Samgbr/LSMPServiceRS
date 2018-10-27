@@ -1,5 +1,7 @@
 package com.lsmp.mp.customer.service;
 
+import java.util.Set;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -69,6 +71,15 @@ public class CustomerResource implements CustomerService {
 			return Response.status(Status.OK).build();
 		}
 		return null;
+	}
+
+	@GET
+	@Produces({"application/xml" , "application/json"})
+	@Path("/shoppers")
+	public Set<CustomerRepresentation> getShoppers() {
+		System.out.println("GET METHOD Request for all Shoppers .............");
+		CustomerActivity customerActivity = new CustomerActivity();
+		return customerActivity.getShoppers();
 	}
 	
 	

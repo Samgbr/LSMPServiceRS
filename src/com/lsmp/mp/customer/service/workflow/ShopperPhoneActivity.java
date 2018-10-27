@@ -1,5 +1,9 @@
 package com.lsmp.mp.customer.service.workflow;
 
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+
 import com.lsmp.mp.customer.CustomerManager;
 import com.lsmp.mp.customer.Phone;
 import com.lsmp.mp.customer.service.representation.ShopperPhoneRepresentation;
@@ -42,6 +46,27 @@ public class ShopperPhoneActivity {
 	public String deleteShopperPhone(String id) {
 		customerManager.deleteShopperPhone(id);
 		return "OK";
+	}
+	
+	public Set<ShopperPhoneRepresentation> getShopperPhones(String id) {
+		Set<Phone> phones = new HashSet<Phone>();
+		Set<ShopperPhoneRepresentation> shopperPhoneRepresentations = new HashSet<ShopperPhoneRepresentation>();
+		//employees = dao.getAllEmployees();
+		phones = customerManager.getShopperPhones(id);
+		
+		Iterator<Phone> it = phones.iterator();
+		while(it.hasNext()) {
+          Phone phone = (Phone)it.next();
+          ShopperPhoneRepresentation shopperPhoneRepresentation = new ShopperPhoneRepresentation();
+          shopperPhoneRepresentation.setPhoneID(phone.getPhoneID());
+  		  shopperPhoneRepresentation.setPhoneNumber(phone.getPhoneNumber());
+  		  shopperPhoneRepresentation.setShopperProfileID(phone.getShopperProfileID());
+  		  shopperPhoneRepresentation.setType(phone.getType());
+          
+          //now add this representation in the list
+  		shopperPhoneRepresentations.add(shopperPhoneRepresentation);
+        }
+		return shopperPhoneRepresentations;
 	}
 
 }

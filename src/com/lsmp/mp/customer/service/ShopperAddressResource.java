@@ -1,5 +1,7 @@
 package com.lsmp.mp.customer.service;
 
+import java.util.Set;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -68,4 +70,14 @@ public class ShopperAddressResource implements ShopperAddressService{
 			}
 			return null;
 		}
+
+		@GET
+		@Produces({"application/xml" , "application/json"})
+		@Path("/shopperaddresses/{shopperProfileID}")
+		public Set<ShopperAddressRepresentation> getShopperAddresses(@PathParam("shopperProfileID") String id) {
+			System.out.println("GET METHOD Request for all Shopper Addresses .............");
+			ShopperAddressActivity shaddressActivity = new ShopperAddressActivity();
+			return shaddressActivity.getShopperAddresses(id);
+		}
+
 }

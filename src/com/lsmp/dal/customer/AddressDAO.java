@@ -11,6 +11,7 @@ import java.util.Set;
 
 import com.lsmp.dal.DBConnect;
 import com.lsmp.mp.customer.Address;
+import com.lsmp.mp.customer.Shopper;
 
 public class AddressDAO {
 	
@@ -27,6 +28,7 @@ public class AddressDAO {
 			
 			while(resultSet.next()) {
 				String addressID= resultSet.getString("addressID");
+				String shopperProfileID = resultSet.getString("shopperProfileID");
 				String street = resultSet.getString("street");
 				String city = resultSet.getString("city");
 				String state = resultSet.getString("state");
@@ -36,6 +38,7 @@ public class AddressDAO {
 				address.setStreet(street);
 				address.setCity(city);
 				address.setState(state);
+				address.setShopperProfileID(shopperProfileID);
 				address.setZipcode(zipcode);
 				addresses.add(address);
 			}
@@ -142,6 +145,7 @@ public class AddressDAO {
 			
 			while(resultSet.next()) {
 				String addressID= resultSet.getString("addressID");
+				String partnerProfileID = resultSet.getString("partnerProfileID");
 				String street = resultSet.getString("street");
 				String city = resultSet.getString("city");
 				String state = resultSet.getString("state");
@@ -149,6 +153,7 @@ public class AddressDAO {
 				Address address = new Address();
 				address.setAddressID(addressID);
 				address.setStreet(street);
+				address.setPartnerProfileID(partnerProfileID);
 				address.setCity(city);
 				address.setState(state);
 				address.setZipcode(zipcode);

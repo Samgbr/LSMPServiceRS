@@ -301,7 +301,7 @@ public Set<Bill> getShopperBillingInfos(String id) {
 		try {
 			Statement deleteStatement = connection.createStatement();
 			
-			String deleteQuery = "DELETE FROM bill WHERE shopperProfileID='"+id+"'";
+			String deleteQuery = "DELETE FROM bill WHERE billID='"+id+"'";
 			deleteStatement.executeUpdate(deleteQuery);	
 						
 		}catch(SQLException se) {
@@ -320,7 +320,7 @@ public Set<Bill> getShopperBillingInfos(String id) {
 		try {
 			Statement deleteStatement = connection.createStatement();
 			
-			String deleteQuery = "DELETE FROM bill WHERE partnerProfileID='"+id+"'";
+			String deleteQuery = "DELETE FROM bill WHERE billID='"+id+"'";
 			deleteStatement.executeUpdate(deleteQuery);	
 						
 		}catch(SQLException se) {

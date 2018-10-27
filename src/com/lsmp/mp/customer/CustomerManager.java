@@ -20,6 +20,7 @@ public class CustomerManager {
 	private static AddressDAO aDAO = new AddressDAO();
 	private static BillingDAO bDAO = new BillingDAO();
 	private static PhoneDAO pDAO = new PhoneDAO();
+	
 	/**
 	 * This method get shopper profile with its address, bill and phone
 	 * @param id
@@ -28,7 +29,6 @@ public class CustomerManager {
 	public Shopper getShopperProfile(String id) {
 		return sDAO.getShopperProfile(id);
 	}
-	
 	/**
 	 * This method get shopper data only
 	 * @param id
@@ -36,6 +36,10 @@ public class CustomerManager {
 	 */
 	public Shopper getShopper(String id) {
 		return sDAO.getShopper(id);
+	}
+	
+	public Set<Shopper> getAllShopperProfiles() {
+		return sDAO.getAllShopperProfiles();
 	}
 	
 	/**
@@ -235,25 +239,41 @@ public class CustomerManager {
 		return aDAO.getShopperAddress(id);
 	}
 	
+	public Set<Address> getShopperAddresses(String id) {
+		return aDAO.getShopperAddresses(id);
+	}
 	public Address getPartnerAddress(String id) {
 		return aDAO.getPartnerAddress(id);
 	}
-	
+	public Set<Address> getPartnerAddresses(String id) {
+		return aDAO.getPartnerAddresses(id);
+	}
 	public Bill getShopperBillingInfo(String id) {
 		return bDAO.getShopperBillingInfo(id);
+	}
+	public Set<Bill> getShopperBillingInfos(String id) {
+		return bDAO.getShopperBillingInfos(id);
 	}
 	
 	public Bill getPartnerBillingInfo(String id) {
 		return bDAO.getPartnerBillingInfo(id);
 	}
+	public Set<Bill> getPartnerBillingInfos(String id) {
+		return bDAO.getPartnerBillingInfos(id);
+	}
 	
 	public Phone getShopperPhone(String id) {
 		return pDAO.getShopperPhone(id);
 	}
+	public Set<Phone> getShopperPhones(String id) {
+		return pDAO.getShopperPhones(id);
+	}
 	public Phone getPartnerPhone(String id) {
 		return pDAO.getPartnerPhone(id);
 	}
-	
+	public Set<Phone> getPartnerPhones(String id) {
+		return pDAO.getPartnerPhones(id);
+	}
 	public void deletePartnerAddress(String id) {
 		aDAO.deletePartnerAddress(id);
 	}
