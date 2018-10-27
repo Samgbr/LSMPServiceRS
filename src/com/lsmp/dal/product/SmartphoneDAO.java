@@ -102,14 +102,14 @@ public class SmartphoneDAO {
 		
 	}
 	
-	public Smartphone addSmartphone(String productName, String description, double purchasePrice, double sellingPrice, 
+	public Smartphone addSmartphone(String id, String productName, String description, double purchasePrice, double sellingPrice, 
 				double discount, String displayInch, String brand, String ramSize, String os, String storageSize) {
 			
 			Smartphone smartphone = new Smartphone();
-			
+			/*
 			Random randomGenerator = new Random();
 		    int randomInt = randomGenerator.nextInt(10000);
-		    String id = "SP" + randomInt;
+		    String id = "SP" + randomInt; */
 		    
 		    smartphone.setProductID(id);
 		    smartphone.setProductName(productName);

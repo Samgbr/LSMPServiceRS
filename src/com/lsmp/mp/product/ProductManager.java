@@ -43,10 +43,14 @@ private static InventoryDAO iDAO = new InventoryDAO();
 		return spDAO.getSmartphone(id);
 	}
 	
-	public Smartphone addSmartphone(String productName, String description, double purchasePrice, double sellingPrice, 
+	public Set<Smartphone> getAllSmartphones() {
+		return spDAO.getAllSmartphones();
+	}
+	
+	public Smartphone addSmartphone(String id, String productName, String description, double purchasePrice, double sellingPrice, 
 			double discount, String displayInch, String brand, String ramSize, String os, String storageSize) {
 		
-		Smartphone smartphone = spDAO.addSmartphone(productName, description, purchasePrice, sellingPrice, discount, displayInch, brand, ramSize, os, storageSize);
+		Smartphone smartphone = spDAO.addSmartphone(id, productName, description, purchasePrice, sellingPrice, discount, displayInch, brand, ramSize, os, storageSize);
 		
 		return smartphone;
 	}

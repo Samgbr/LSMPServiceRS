@@ -28,7 +28,7 @@
 		</jaxrs:schemaLocations>
 
 	</jaxrs:server>
-	<jaxrs:server name="BookService" address="http://localhost:8082/Product">
+	<jaxrs:server name="BookService" address="http://localhost:8082/BookProduct">
 		<jaxrs:serviceBeans>
 			<ref bean="bookServiceRest" />
 		</jaxrs:serviceBeans>
@@ -39,6 +39,21 @@
 		<jaxrs:schemaLocations>
 			<jaxrs:schemaLocation>com.lsmp.mp.product.service.representation.BookRequest</jaxrs:schemaLocation>
 			<jaxrs:schemaLocation>com.lsmp.mp.customer.service.representation.BookRepresentation</jaxrs:schemaLocation>
+		</jaxrs:schemaLocations>
+
+	</jaxrs:server>
+	
+	<jaxrs:server name="SmartphoneService" address="http://localhost:8082/SmartphoneProduct">
+		<jaxrs:serviceBeans>
+			<ref bean="smartphoneServiceRest" />
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<ref bean="jacksonProvider" />
+		</jaxrs:providers> 
+
+		<jaxrs:schemaLocations>
+			<jaxrs:schemaLocation>com.lsmp.mp.product.service.representation.SmartphoneRequest</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.lsmp.mp.customer.service.representation.SmartphoneRepresentation</jaxrs:schemaLocation>
 		</jaxrs:schemaLocations>
 
 	</jaxrs:server>
@@ -106,6 +121,7 @@
 	<bean id="customerServiceRest" class="com.lsmp.mp.customer.service.CustomerResource" />
 	<bean id="partnerServiceRest" class="com.lsmp.mp.partner.service.PartnerResource" />
 	<bean id="bookServiceRest" class="com.lsmp.mp.product.service.BookResource" />
+	<bean id="smartphoneServiceRest" class="com.lsmp.mp.product.service.SmartphoneResource" />
   	<bean id="customerAddressServiceRest" class="com.lsmp.mp.customer.service.ShopperAddressResource" />
   	<bean id="customerBillingServiceRest" class="com.lsmp.mp.customer.service.ShopperBillingResource" />
   	<bean id="customerPhoneServiceRest" class="com.lsmp.mp.customer.service.ShopperPhoneResource" />
