@@ -1,5 +1,6 @@
 package com.lsmp.mp.customer;
 
+
 /**
  * This address model class store customer address
  * @author samzi
@@ -13,7 +14,21 @@ public class Address {
 	private String city;
 	private String state;
 	private String zipcode;
+	private String shopperProfileID;
+	private String partnerProfileID;
 	
+	public String getShopperProfileID() {
+		return shopperProfileID;
+	}
+	public void setShopperProfileID(String shopperProfileID) {
+		this.shopperProfileID = shopperProfileID;
+	}
+	public String getPartnerProfileID() {
+		return partnerProfileID;
+	}
+	public void setPartnerProfileID(String partnerProfileID) {
+		this.partnerProfileID = partnerProfileID;
+	}
 	public String getAddressID() {
 		return addressID;
 	}

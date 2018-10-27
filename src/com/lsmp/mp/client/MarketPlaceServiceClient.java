@@ -1,7 +1,16 @@
 package com.lsmp.mp.client;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+
+import javax.xml.ws.Response;
+
+import org.apache.cxf.interceptor.LoggingInInterceptor;
+import org.apache.cxf.interceptor.LoggingOutInterceptor;
+import org.apache.cxf.jaxrs.client.WebClient;
+import org.codehaus.jackson.jaxrs.JacksonJsonProvider;
 
 import com.lsmp.mp.customer.Address;
 import com.lsmp.mp.customer.Bill;
@@ -18,36 +27,66 @@ import com.lsmp.mp.partner.PartnerManager;
 import com.lsmp.mp.product.ProductManager;
 import com.lsmp.mp.product.review.ProductReviewManager;
 
-public class MarketPlaceServiceClient {
+public final class MarketPlaceServiceClient {
 
 	public static void main(String[] args) {
-		// TODO run the application modules
 		
 		//Customer Manager 
 		CustomerManager customerManager = new CustomerManager();
 		
-		cManager(customerManager);
+		List<Object> providers = new ArrayList<Object>();
+        JacksonJsonProvider provider = new JacksonJsonProvider();
+        provider.addUntouchable(Response.class);
+        providers.add(provider);
+        
+        /*****************************************************************************************
+         * GET METHOD invoke
+         *****************************************************************************************/
+        System.out.println("GET METHOD .........................................................");
+        WebClient getClient = WebClient.create("http://localhost:8082", providers);
+        
+        //Configuring the CXF logging interceptor for the outgoing message
+        WebClient.getConfig(getClient).getOutInterceptors().add(new LoggingOutInterceptor());
+      //Configuring the CXF logging interceptor for the incoming response
+        WebClient.getConfig(getClient).getInInterceptors().add(new LoggingInInterceptor());
+        
+        // change application/xml  to get in xml format
+        getClient = getClient.accept("application/json").type("application/json").path("/shopperservice/shopper/SH45897");
+        
+        //The following lines are to show how to log messages without the CXF interceptors
+        String getRequestURI = getClient.getCurrentURI().toString();
+        System.out.println("Client GET METHOD Request URI:  " + getRequestURI);
+        String getRequestHeaders = getClient.getHeaders().toString();
+        System.out.println("Client GET METHOD Request Headers:  " + getRequestHeaders);
+        
+        //to see as raw XML/json
+        String response = getClient.get(String.class);
+        System.out.println("GET METHOD Response: ...." + response);
+		
+		//cManager(customerManager);
 		
 		//Product Manager
 		ProductManager productManager = new ProductManager();
 		
-		pManager(productManager);
+		//pManager(productManager);
 		
 		//Order Manager
 		OrderManager orderManager = new OrderManager();
 		
-		Order order = oManager(orderManager);
+		//Order order = oManager(orderManager);
 		
 		//Order Status in process using state design pattern
-		orderProcessingAndComplete(order,orderManager);
+		//orderProcessingAndComplete(order,orderManager);
 		
 		//Partner Manager
 		PartnerManager partnerManager = new PartnerManager();
-		parManager(partnerManager,customerManager);
+		//parManager(partnerManager,customerManager);
 		
 		//Product Review Manager
 		ProductReviewManager productReviewManager = new ProductReviewManager();
-		proRevManager(productReviewManager);
+		//proRevManager(productReviewManager);
+		
+		System.exit(0);
 	}
 
 	private static void proRevManager(ProductReviewManager productReviewManager) {
@@ -84,31 +123,35 @@ public class MarketPlaceServiceClient {
 		partnerManager.addPartnerProfile("PA95687","diknas", "Nassir", "Raul", "Dickson", "dskf@gmail.com", "Wegh$$8i", "Level 3", "XYZS Co.", addresses, phones, bills);
 		//Add partner book
 		partnerManager.addPartnerBook("PP61923", "BO89789", "PA95687");
+		
 	}
 
 	private static void orderProcessingAndComplete(Order order,OrderManager orderManager) {
-		InProcess processing = new InProcess();
-		order.setStatus(processing);
+		//Order fulfilled and in process
+		orderManager.processingOrder(order);
 		//Package Picked
-		processing.setPicked(true);
+		orderManager.packagePicked();
 		//Package packed
-		processing.setPacked(true);
+		orderManager.packagePacked();
 		//Package delivered to pick up location
-		processing.setDeliverdToPickupLocation(true);
+		orderManager.deliverdToPickupLocation();
+		//update the Order DB
 		orderManager.updateOrderInProcess(order.getOrderID(), 1, 1, 1);
-		//Order Completed
-		Complete complete = new Complete();
-		//Pickup location
-		complete.setPickupLocation("Belmont Store");
+		//Order pickup location
+		orderManager.orderPickupLocation("Belmont Store");
 		//Package delivered
-		complete.setDelivered(true);
-		order.setStatus(complete);
-		orderManager.updateOrderComplete(order.getOrderID(), 1, complete.getPickupLocation());
+		orderManager.orderDelivered();
+		//Order complete status
+		orderManager.completeOrder(order);
+		//Update to the Order DB
+		orderManager.updateOrderComplete(order.getOrderID(), 1, "Belmont Store");
+		//Order refund
+		orderManager.orderRefund();
 		//Order Cancel
-		Cancel cancel = new Cancel();
-		cancel.setRefund(true);
-		order.setStatus(cancel);
+		orderManager.cancelOrder(order);
+		//update the DB
 		orderManager.updateOrderCancel(order.getOrderID(), 1);
+		//Delete the Order from the DB
 		orderManager.deleteOrder(order.getOrderID());
 	}
 

@@ -1,14 +1,19 @@
 package com.lsmp.mp.customer;
 
+import java.io.Serializable;
 import java.util.Set;
+
+
 
 /**
  * This class is a customer model class
  * @author samzi
  *
  */
-public class Profile {
 
+public class Profile implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	//Customer instance variables
 	private String profileID;
 	private String loginID;

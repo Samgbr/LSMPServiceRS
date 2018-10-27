@@ -29,6 +29,11 @@ public class ShopperDAO {
 	}
 
 	//get, update, insert and delete goes here
+	/**
+	 * This method get the whole shopper profile including its shopper address, bill and phone info
+	 * @param id - profileID
+	 * @return - shopper model
+	 */
 	public Shopper getShopperProfile(String id) {
 		String loginID="";
 		String firstName = "";
@@ -81,6 +86,57 @@ public class ShopperDAO {
 		return shopper;	
 	}
 	
+	/**
+	 * This method only get shopper profile only
+	 * @param id - profileID
+	 * @return - shopper model
+	 */
+	public Shopper getShopper(String id) {
+		String loginID="";
+		String firstName = "";
+		String middleName = "";
+		String lastName = "";
+		String email = "";
+		String shopperType="";
+		Connection connection = DBConnect.getDatabaseConnection();
+		
+		
+		try {
+			Statement selectStatement = connection.createStatement();
+			
+			String selectQuery = "SELECT * from shopper where profileID='" + id +"'";
+			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
+			resultSet.next();
+			loginID= resultSet.getString("loginID");
+			lastName = resultSet.getString("lastName");
+			middleName = resultSet.getString("middleName");
+			firstName = resultSet.getString("firstName");
+			email = resultSet.getString("email");
+			shopperType = resultSet.getString("shopperType");
+			
+		}catch(SQLException se) {
+			se.printStackTrace();
+		}finally {
+			if(connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {}
+			}
+		}
+		Shopper shopper = new Shopper();
+		shopper.setLoginID(loginID);
+		shopper.setFirstName(firstName);
+		shopper.setMiddleName(middleName);
+		shopper.setLastName(lastName);
+		shopper.setEmail(email);
+		shopper.setShopperType(shopperType);
+		return shopper;	
+	}
+	
+	/**
+	 * This method get all shopper profiles with bill, address and phone info
+	 * @return - set of shopper models
+	 */
 	public Set<Shopper> getAllShopperProfiles() {
 		
 		Connection connection = DBConnect.getDatabaseConnection();
@@ -114,7 +170,22 @@ public class ShopperDAO {
 		
 	}
 	
-public Shopper addShopperProfile(String id,String loginID, String firstName, String middleName, String lastName,
+	/**
+	 * This method will add shopper with its address, bill and phone info
+	 * @param id
+	 * @param loginID
+	 * @param firstName
+	 * @param middleName
+	 * @param lastName
+	 * @param email
+	 * @param password
+	 * @param shopperType
+	 * @param addresses
+	 * @param phones
+	 * @param bills
+	 * @return
+	 */
+	public Shopper addShopperProfile(String id,String loginID, String firstName, String middleName, String lastName,
 			String email,String password,String shopperType, Set<Address> addresses,Set<Phone> phones,Set<Bill> bills) {
 		
 		Shopper shopper = new Shopper();
@@ -160,7 +231,72 @@ public Shopper addShopperProfile(String id,String loginID, String firstName, Str
 		
 		return shopper;
 	}
-
+	
+	/**
+	 * This method will add shopper data only
+	 * @param id
+	 * @param loginID
+	 * @param firstName
+	 * @param middleName
+	 * @param lastName
+	 * @param email
+	 * @param password
+	 * @param shopperType
+	 * @return
+	 */
+	public Shopper addShopper(String id,String loginID, String firstName, String middleName, String lastName,
+			String email,String password,String shopperType) {
+		
+		Shopper shopper = new Shopper();
+		/*
+		Random randomGenerator = new Random();
+	    int randomInt = randomGenerator.nextInt(10000);
+	    String id = "SH" + randomInt;  */
+	    
+		shopper.setProfileID(id);
+		shopper.setLoginID(loginID);
+		shopper.setFirstName(firstName);
+		shopper.setMiddleName(middleName);
+		shopper.setLastName(lastName);
+		shopper.setEmail(email);
+		shopper.setPassword(password);
+		shopper.setShopperType(shopperType);
+		
+		Connection connection = DBConnect.getDatabaseConnection();
+		try {
+			Statement insertStatement = connection.createStatement();
+			
+			String insertQuery = "INSERT INTO shopper(profileID,loginID,firstName,middleName,lastName,email,s_password,shopperType) "
+					+ "VALUES('"+id+"','"+loginID+"','"+firstName+"','"+middleName+"','"+lastName+"','"+email+"','"+password+"','"+shopperType+"')";
+			insertStatement.executeUpdate(insertQuery);
+			
+		}catch(SQLException se) {
+			se.printStackTrace();
+		}finally {
+			if(connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {}
+			}
+		}
+		
+		return shopper;
+	}
+	
+	/**
+	 * This method will update the shopper profile with bill, address and phone data
+	 * @param id
+	 * @param loginID
+	 * @param firstName
+	 * @param middleName
+	 * @param lastName
+	 * @param email
+	 * @param password
+	 * @param shopperType
+	 * @param addresses
+	 * @param phones
+	 * @param bills
+	 */
 	public void updateShopperProfile(String id,String loginID, String firstName, String middleName, String lastName,
 			String email,String password,String shopperType,Set<Address> addresses,Set<Phone> phones,Set<Bill> bills) {
 		Connection connection = DBConnect.getDatabaseConnection();
@@ -184,6 +320,41 @@ public Shopper addShopperProfile(String id,String loginID, String firstName, Str
 		}
 	}
 	
+	/**
+	 * This method update shopper data only
+	 * @param id
+	 * @param loginID
+	 * @param firstName
+	 * @param middleName
+	 * @param lastName
+	 * @param email
+	 * @param password
+	 * @param shopperType
+	 */
+	public void updateShopper(String id,String loginID, String firstName, String middleName, String lastName,
+			String email,String password,String shopperType) {
+		Connection connection = DBConnect.getDatabaseConnection();
+		try {
+			Statement updateStatement = connection.createStatement();
+			
+			String updateQuery = "UPDATE shopper SET loginID='"+loginID+"', firstName='"+firstName+"', middleName='"+middleName+"',lastName='"+lastName+"',email='"+email+"',s_password='"+password+"',shopperType='"+shopperType+"'  WHERE profileID='"+id+"'";
+			updateStatement.executeUpdate(updateQuery);	
+			
+		}catch(SQLException se) {
+			se.printStackTrace();
+		}finally {
+			if(connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {}
+			}
+		}
+	}
+	
+	/**
+	 * This method deletes shopper profile with bill, address and phone data
+	 * @param id - profileID
+	 */
 	public void deleteShopperProfile(String id) {
 		Connection connection = DBConnect.getDatabaseConnection();
 		try {
@@ -195,6 +366,29 @@ public Shopper addShopperProfile(String id,String loginID, String firstName, Str
 			addressDAO.deleteShopperAddress(id);
 			phoneDAO.deleteShopperPhone(id);
 			billInfoDAO.deleteShopperBillingInfo(id);
+			
+		}catch(SQLException se) {
+			se.printStackTrace();
+		}finally {
+			if(connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {}
+			}
+		}
+	}
+	
+	/**
+	 * This method deletes shopper data only
+	 * @param id
+	 */
+	public void deleteShopper(String id) {
+		Connection connection = DBConnect.getDatabaseConnection();
+		try {
+			Statement deleteStatement = connection.createStatement();
+			
+			String deleteQuery = "DELETE FROM shopper WHERE profileID='"+id+"'";
+			deleteStatement.executeUpdate(deleteQuery);	
 			
 		}catch(SQLException se) {
 			se.printStackTrace();

@@ -49,6 +49,40 @@ public class PhoneDAO {
 		return phones;
 	}
 	
+	public Phone getShopperPhone(String id) {
+		
+		Connection connection = DBConnect.getDatabaseConnection();
+		Phone phone = new Phone();
+		try {
+			Statement selectStatement = connection.createStatement();
+			
+			String selectQuery = "SELECT * from phone WHERE phoneID='"+id+"'";
+			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
+			resultSet.next();
+			
+			String phoneID= resultSet.getString("phoneID");
+			String type = resultSet.getString("type");
+			String phoneNumber = resultSet.getString("phoneNumber");
+			String shopperProfileID = resultSet.getString("shopperProfileID");
+			
+			phone.setPhoneID(phoneID);
+			phone.setType(type);
+			phone.setPhoneNumber(phoneNumber);
+			phone.setShopperProfileID(shopperProfileID);
+			
+		}catch(SQLException se) {
+			se.printStackTrace();
+		}finally {
+			if(connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {}
+			}
+		}
+		
+		return phone;
+	}
+	
 	public Set<Phone> getPartnerPhones(String id) {
 		
 		Connection connection = DBConnect.getDatabaseConnection();
@@ -82,6 +116,40 @@ public class PhoneDAO {
 		}
 		
 		return phones;
+	}
+	
+	public Phone getPartnerPhone(String id) {
+		
+		Connection connection = DBConnect.getDatabaseConnection();
+		Phone phone = new Phone();
+		try {
+			Statement selectStatement = connection.createStatement();
+			
+			String selectQuery = "SELECT * from phone WHERE phoneID='"+id+"'";
+			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
+			resultSet.next();
+			
+			String phoneID= resultSet.getString("phoneID");
+			String type = resultSet.getString("type");
+			String phoneNumber = resultSet.getString("phoneNumber");
+			String partnerProfileID = resultSet.getString("partnerProfileID");
+			
+			phone.setPhoneID(phoneID);
+			phone.setType(type);
+			phone.setPhoneNumber(phoneNumber);
+			phone.setPartnerProfileID(partnerProfileID);
+			
+		}catch(SQLException se) {
+			se.printStackTrace();
+		}finally {
+			if(connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {}
+			}
+		}
+		
+		return phone;
 	}
 	
 	public void insertShopperPhones(String id, Set<Phone> phones) {
@@ -150,18 +218,23 @@ public class PhoneDAO {
 				
 	}
 	
-	public void insertShopperPhone(String id, Phone phone) {
+	public Phone insertShopperPhone(String pid, String id, String type, String phoneNumber) {
+		Phone phone = new Phone();
+		phone.setPhoneID(pid);
+		phone.setShopperProfileID(id);
+		phone.setType(type);
+		phone.setPhoneNumber(phoneNumber);
 		
 		Connection connection = DBConnect.getDatabaseConnection();
 		try {
 			Statement insertStatement = connection.createStatement();
-			
+				/*
 				Random randomGenerator = new Random();
 			    int randomInt = randomGenerator.nextInt(10000);
-			    String phoneID = "PH" + randomInt;
+			    String phoneID = "PH" + randomInt; */
 				
 				String insertQuery = "INSERT INTO phone(phoneID, shopperProfileID, type,phoneNumber) "
-						+ "VALUES('"+phoneID+"','"+id+"','"+phone.getType()+"','"+phone.getPhoneNumber()+"')";
+						+ "VALUES('"+pid+"','"+id+"','"+type+"','"+phoneNumber+"')";
 				insertStatement.executeUpdate(insertQuery);	
 			
 		}catch(SQLException se) {
@@ -173,21 +246,27 @@ public class PhoneDAO {
 				} catch (SQLException e) {}
 			}
 		}
-		
+		return phone;
 	}
 	
-	public void insertPartnerPhone(String id, Phone phone) {
+	public Phone insertPartnerPhone(String pid, String id, String type, String phoneNumber) {
+		
+		Phone phone = new Phone();
+		phone.setPhoneID(pid);
+		phone.setPartnerProfileID(id);
+		phone.setType(type);
+		phone.setPhoneNumber(phoneNumber);
 		
 		Connection connection = DBConnect.getDatabaseConnection();
 		try {
 			Statement insertStatement = connection.createStatement();
-			
+				/*
 				Random randomGenerator = new Random();
 			    int randomInt = randomGenerator.nextInt(10000);
-			    String phoneID = "PH" + randomInt;
+			    String phoneID = "PH" + randomInt; */
 				
 				String insertQuery = "INSERT INTO phone(phoneID, partnerProfileID, type,phoneNumber) "
-						+ "VALUES('"+phoneID+"','"+id+"','"+phone.getType()+"','"+phone.getPhoneNumber()+"')";
+						+ "VALUES('"+pid+"','"+id+"','"+type+"','"+phoneNumber+"')";
 				insertStatement.executeUpdate(insertQuery);	
 			
 		}catch(SQLException se) {
@@ -199,7 +278,7 @@ public class PhoneDAO {
 				} catch (SQLException e) {}
 			}
 		}
-				
+		return phone;		
 	}
 
 
@@ -208,7 +287,7 @@ public class PhoneDAO {
 		try {
 			Statement deleteStatement = connection.createStatement();
 			
-			String deleteQuery = "DELETE FROM phone WHERE shopperProfileID='"+id+"'";
+			String deleteQuery = "DELETE FROM phone WHERE phoneID='"+id+"'";
 			deleteStatement.executeUpdate(deleteQuery);	
 						
 		}catch(SQLException se) {
@@ -228,7 +307,7 @@ public class PhoneDAO {
 		try {
 			Statement deleteStatement = connection.createStatement();
 			
-			String deleteQuery = "DELETE FROM phone WHERE partnerProfileID='"+id+"'";
+			String deleteQuery = "DELETE FROM phone WHERE phoneID='"+id+"'";
 			deleteStatement.executeUpdate(deleteQuery);	
 						
 		}catch(SQLException se) {
@@ -253,7 +332,7 @@ public class PhoneDAO {
 			while(phoneIterator.hasNext()) {
 				Phone currentPhone = phoneIterator.next();
 				
-				String updateQuery = "UPDATE phone SET type='"+currentPhone.getType()+"', city='"+currentPhone.getPhoneNumber()+"'  WHERE shopperProfileID='"+id+"'";
+				String updateQuery = "UPDATE phone SET type='"+currentPhone.getType()+"', phoneNumber='"+currentPhone.getPhoneNumber()+"'  WHERE shopperProfileID='"+id+"'";
 				updateStatement.executeUpdate(updateQuery);
 				
 			}			
@@ -279,7 +358,7 @@ public class PhoneDAO {
 			while(phoneIterator.hasNext()) {
 				Phone currentPhone = phoneIterator.next();
 				
-				String updateQuery = "UPDATE phone SET type='"+currentPhone.getType()+"', city='"+currentPhone.getPhoneNumber()+"'  WHERE partnerProfileID='"+id+"'";
+				String updateQuery = "UPDATE phone SET type='"+currentPhone.getType()+"', phoneNumber='"+currentPhone.getPhoneNumber()+"'  WHERE partnerProfileID='"+id+"'";
 				updateStatement.executeUpdate(updateQuery);
 				
 			}			
@@ -295,12 +374,12 @@ public class PhoneDAO {
 		}
 	}
 	
-	public void updateShopperPhone(String id, String phoneID, Phone phone) {
+	public void updateShopperPhone(String pid, String id, String type, String phoneNumber) {
 		Connection connection = DBConnect.getDatabaseConnection();
 		try {
 			Statement updateStatement = connection.createStatement();
 			
-			String updateQuery = "UPDATE phone SET type='"+phone.getType()+"', city='"+phone.getPhoneNumber()+"'  WHERE shopperProfileID='"+id+"' AND phoneID='"+phoneID+"'";
+			String updateQuery = "UPDATE phone SET type='"+type+"', phoneNumber='"+phoneNumber+"', shopperProfileID='"+id+"'  WHERE phoneID='"+pid+"'";
 			updateStatement.executeUpdate(updateQuery);			
 			
 		}catch(SQLException se) {
@@ -314,12 +393,12 @@ public class PhoneDAO {
 		}
 	}  
 	
-	public void updatePartnerPhone(String id, String phoneID, Phone phone) {
+	public void updatePartnerPhone(String pid, String id, String type, String phoneNumber) {
 		Connection connection = DBConnect.getDatabaseConnection();
 		try {
 			Statement updateStatement = connection.createStatement();
 			
-			String updateQuery = "UPDATE phone SET type='"+phone.getType()+"', city='"+phone.getPhoneNumber()+"'  WHERE partnerProfileID='"+id+"' AND phoneID='"+phoneID+"'";
+			String updateQuery = "UPDATE phone SET type='"+type+"', phoneNumber='"+phoneNumber+"', partnerProfileID='"+id+"'  WHERE phoneID='"+pid+"'";
 			updateStatement.executeUpdate(updateQuery);			
 			
 		}catch(SQLException se) {

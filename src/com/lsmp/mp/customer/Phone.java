@@ -1,17 +1,33 @@
 package com.lsmp.mp.customer;
 
+
+
 /**
  * This phone model class hold customer phone number
  * @author samzi
  *
  */
-public class Phone {
+public class Phone{
 
 	// Instances
 	private String phoneID;
 	private String type;
 	private String phoneNumber;
-	
+	private String shopperProfileID;
+	private String partnerProfileID;
+		
+	public String getShopperProfileID() {
+		return shopperProfileID;
+	}
+	public void setShopperProfileID(String shopperProfileID) {
+		this.shopperProfileID = shopperProfileID;
+	}
+	public String getPartnerProfileID() {
+		return partnerProfileID;
+	}
+	public void setPartnerProfileID(String partnerProfileID) {
+		this.partnerProfileID = partnerProfileID;
+	}
 	public String getPhoneID() {
 		return phoneID;
 	}
