@@ -12,7 +12,7 @@ public class ShopperBillingActivity {
 
 	private static CustomerManager customerManager = new CustomerManager();
 	
-	public ShopperBillingRepresentation getShopperAddress(String id) {
+	public ShopperBillingRepresentation getShopperBillingInfo(String id) {
 		
 		Bill bill = customerManager.getShopperBillingInfo(id);
 		

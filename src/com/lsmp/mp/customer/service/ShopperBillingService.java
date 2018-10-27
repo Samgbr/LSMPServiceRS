@@ -5,7 +5,6 @@ import java.util.Set;
 import javax.jws.WebService;
 import javax.ws.rs.core.Response;
 
-import com.lsmp.mp.customer.service.representation.ShopperAddressRepresentation;
 import com.lsmp.mp.customer.service.representation.ShopperBillingRepresentation;
 import com.lsmp.mp.customer.service.representation.ShopperBillingRequest;
 

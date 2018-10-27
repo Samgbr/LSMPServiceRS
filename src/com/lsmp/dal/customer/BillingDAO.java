@@ -270,8 +270,14 @@ public Set<Bill> getShopperBillingInfos(String id) {
 		return bill;	
 	}
 	
-	public void insertPartnerBillingInfo(String bid, String id, String creditCardNumber, String cvv, String expiryMonth, String expiryYear) {
-		
+	public Bill insertPartnerBillingInfo(String bid, String id, String creditCardNumber, int cvv, int expiryMonth, int expiryYear) {
+		Bill bill = new Bill();
+		bill.setBillID(bid);
+		bill.setCreditCardNumber(creditCardNumber);
+		bill.setCvv(cvv);
+		bill.setExpiryMonth(expiryMonth);
+		bill.setExpiryYear(expiryYear);
+		bill.setPartnerProfileID(id);
 		Connection connection = DBConnect.getDatabaseConnection();
 		try {
 			Statement insertStatement = connection.createStatement();
@@ -293,7 +299,7 @@ public Set<Bill> getShopperBillingInfos(String id) {
 				} catch (SQLException e) {}
 			}
 		}
-				
+		return bill;		
 	}
 	
 	public void deleteShopperBillingInfo(String id) {
@@ -406,7 +412,7 @@ public Set<Bill> getShopperBillingInfos(String id) {
 		}
 	}
 	
-	public void updatePartnerBillingInfo(String bid, String id, String creditCardNumber, String cvv, String expiryMonth, String expiryYear) {
+	public void updatePartnerBillingInfo(String bid, String id, String creditCardNumber, int cvv, int expiryMonth, int expiryYear) {
 		Connection connection = DBConnect.getDatabaseConnection();
 		try {
 			Statement updateStatement = connection.createStatement();

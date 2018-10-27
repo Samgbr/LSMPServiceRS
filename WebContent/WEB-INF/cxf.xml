@@ -118,8 +118,54 @@
 
 	</jaxrs:server>
 	
+	<jaxrs:server name="PartnerAddressService" address="http://localhost:8082/PartnerAddress">
+		<jaxrs:serviceBeans>
+			<ref bean="partnerAddressServiceRest" />
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<ref bean="jacksonProvider" />
+		</jaxrs:providers> 
+
+		<jaxrs:schemaLocations>
+			<jaxrs:schemaLocation>com.lsmp.mp.partner.service.representation.PartnerAddressRequest</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.lsmp.mp.partner.service.representation.PartnerAddressRepresentation</jaxrs:schemaLocation>
+		</jaxrs:schemaLocations>
+
+	</jaxrs:server>
+	<jaxrs:server name="PartnerBillingService" address="http://localhost:8082/PartnerBilling">
+		<jaxrs:serviceBeans>
+			<ref bean="partnerBillingServiceRest" />
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<ref bean="jacksonProvider" />
+		</jaxrs:providers> 
+
+		<jaxrs:schemaLocations>
+			<jaxrs:schemaLocation>com.lsmp.mp.partner.service.representation.PartnerBillingRequest</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.lsmp.mp.partner.service.representation.PartnerBillingRepresentation</jaxrs:schemaLocation>
+		</jaxrs:schemaLocations>
+
+	</jaxrs:server>
+	<jaxrs:server name="PartnerPhoneService" address="http://localhost:8082/PartnerPhone">
+		<jaxrs:serviceBeans>
+			<ref bean="partnerPhoneServiceRest" />
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<ref bean="jacksonProvider" />
+		</jaxrs:providers> 
+
+		<jaxrs:schemaLocations>
+			<jaxrs:schemaLocation>com.lsmp.mp.partner.service.representation.PartnerPhoneRequest</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.lsmp.mp.partner.service.representation.PartnerPhoneRepresentation</jaxrs:schemaLocation>
+		</jaxrs:schemaLocations>
+
+	</jaxrs:server>
+	
 	<bean id="customerServiceRest" class="com.lsmp.mp.customer.service.CustomerResource" />
 	<bean id="partnerServiceRest" class="com.lsmp.mp.partner.service.PartnerResource" />
+	<bean id="partnerAddressServiceRest" class="com.lsmp.mp.partner.service.PartnerAddressResource" />
+	<bean id="partnerBillingServiceRest" class="com.lsmp.mp.partner.service.PartnerBillingResource" />
+	<bean id="partnerPhoneServiceRest" class="com.lsmp.mp.partner.service.PartnerPhoneResource" />
 	<bean id="bookServiceRest" class="com.lsmp.mp.product.service.BookResource" />
 	<bean id="smartphoneServiceRest" class="com.lsmp.mp.product.service.SmartphoneResource" />
   	<bean id="customerAddressServiceRest" class="com.lsmp.mp.customer.service.ShopperAddressResource" />

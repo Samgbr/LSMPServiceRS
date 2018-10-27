@@ -27,7 +27,7 @@ public class ShopperBillingResource implements ShopperBillingService{
 	public ShopperBillingRepresentation getShopperBillingInfo(@PathParam("billId") String id) {
 		System.out.println("GET METHOD Request from Client with shopper billing request String ............." + id);
 		ShopperBillingActivity shopperBillingActivity = new ShopperBillingActivity();
-		return shopperBillingActivity.getShopperAddress(id);
+		return shopperBillingActivity.getShopperBillingInfo(id);
 	}
 
 	@POST

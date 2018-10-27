@@ -213,12 +213,12 @@ public class CustomerManager {
 	public Phone insertPartnerPhone(String pid, String id, String type, String phoneNumber) {
 		return pDAO.insertPartnerPhone(pid, id, type, phoneNumber);
 	}
-	public void insertPartnerAddress(String aid, String pid, String street, String city, String state, String zipcode) {
-		aDAO.insertPartnerAddress(aid, pid, street, city, state, zipcode);
+	public Address insertPartnerAddress(String aid, String pid, String street, String city, String state, String zipcode) {
+		return aDAO.insertPartnerAddress(aid, pid, street, city, state, zipcode);
 	}
 	
-	public void insertPartnerBillingInfo(String bid, String id, String creditCardNumber, String cvv, String expiryMonth, String expiryYear) {
-		bDAO.insertPartnerBillingInfo(bid, id, creditCardNumber, cvv, expiryMonth, expiryYear);
+	public Bill insertPartnerBillingInfo(String bid, String id, String creditCardNumber, int cvv, int expiryMonth, int expiryYear) {
+		return bDAO.insertPartnerBillingInfo(bid, id, creditCardNumber, cvv, expiryMonth, expiryYear);
 	}
 	
 	public Bill insertShopperBillingInfo(String bid, String id, String creditCardNumber, int cvv, int expiryMonth, int expiryYear) {
@@ -302,7 +302,7 @@ public class CustomerManager {
 	public void updatePartnerPhone(String pid, String id, String type, String phoneNumber) {
 		pDAO.updatePartnerPhone(pid, id, type, phoneNumber);
 	}
-	public void updatePartnerBillingInfo(String bid, String id, String creditCardNumber, String cvv, String expiryMonth, String expiryYear) {
+	public void updatePartnerBillingInfo(String bid, String id, String creditCardNumber, int cvv, int expiryMonth, int expiryYear) {
 		bDAO.updatePartnerBillingInfo(bid, id, creditCardNumber, cvv, expiryMonth, expiryYear);
 	}
 	
