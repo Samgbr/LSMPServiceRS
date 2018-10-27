@@ -1,5 +1,7 @@
 package com.lsmp.mp.product;
 
+import java.util.Set;
+
 import com.lsmp.dal.product.BookDAO;
 import com.lsmp.dal.product.InventoryDAO;
 import com.lsmp.dal.product.SmartphoneDAO;
@@ -12,6 +14,10 @@ private static InventoryDAO iDAO = new InventoryDAO();
 	
 	public Book getBook(String id) {
 		return bDAO.getBook(id);
+	}
+	
+	public Set<Book> getAllBooks() {
+		return bDAO.getAllBooks();
 	}
 	
 	public Book addBook(String productID, String isbn, String publisher, String author, String edition, 
