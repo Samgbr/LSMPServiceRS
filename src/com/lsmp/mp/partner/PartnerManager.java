@@ -17,10 +17,26 @@ private static PartnerProductDAO ppDAO = new PartnerProductDAO();
 		return pDAO.getPartnerProfile(id);
 	}
 	
+	public Set<Partner> getAllPartner() {
+		return pDAO.getAllPartner();
+	}
+	
+	public Partner getPartner(String id) {
+		return pDAO.getPartner(id);
+	}
+	
 	public Partner addPartnerProfile(String pid, String loginID, String firstName, String middleName, String lastName,
 			String email,String password,String sellerLevel, String sellerName, Set<Address> addresses,Set<Phone> phones,Set<Bill> bills) {
 		
 		Partner partner = pDAO.addPartnerProfile(pid, loginID, firstName, middleName, lastName, email, password, sellerLevel,sellerName, addresses, phones,bills);
+		
+		return partner;
+	}
+	
+	public Partner addPartner(String pid, String loginID, String firstName, String middleName, String lastName,
+			String email,String password,String sellerLevel, String sellerName) {
+		
+		Partner partner = pDAO.addPartner(pid, loginID, firstName, middleName, lastName, email, password, sellerLevel,sellerName);
 		
 		return partner;
 	}
@@ -29,9 +45,18 @@ private static PartnerProductDAO ppDAO = new PartnerProductDAO();
 			String email,String password,String sellerLevel, String sellerName, Set<Address> addresses,Set<Phone> phones, Set<Bill> bills) {
 		pDAO.updatePartnerProfile(id, loginID, firstName, middleName, lastName, email, password, sellerLevel,sellerName, addresses, phones,bills);
 	}
+	
+	public void updatePartner(String id,String loginID, String firstName, String middleName, String lastName,
+			String email,String password,String sellerLevel, String sellerName) {
+		pDAO.updatePartner(id, loginID, firstName, middleName, lastName, email, password, sellerLevel,sellerName);
+	}
 
 	public void deletePartnerProfile(String id) {
 		pDAO.deletePartnerProfile(id);
+	}
+	
+	public void deletePartner(String id) {
+		pDAO.deletePartner(id);
 	}
 	
 	//------------------------------------------
