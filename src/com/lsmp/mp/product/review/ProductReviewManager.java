@@ -1,6 +1,8 @@
 package com.lsmp.mp.product.review;
 
 
+import java.util.Set;
+
 import com.lsmp.dal.product.review.ProductReviewDAO;
 
 /**
@@ -12,7 +14,10 @@ import com.lsmp.dal.product.review.ProductReviewDAO;
 public class ProductReviewManager {
 	
 private static ProductReviewDAO prDAO = new ProductReviewDAO();
-	
+
+	public Set<ProductReview> getAllBookReviews(){
+		return prDAO.getAllBookReviews();
+	}
 	public ProductReview getBookReviewByProfileIDandProductID(String id, String pid) {
 		return prDAO.getBookReviewByProfileIDandProductID(id,pid);
 	}

@@ -175,6 +175,23 @@
 
 	</jaxrs:server>
 	
+	<jaxrs:server name="BookReviewService" address="http://localhost:8082/BookReview">
+		<jaxrs:serviceBeans>
+			<ref bean="bookReviewServiceRest" />
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<ref bean="jacksonProvider" />
+		</jaxrs:providers> 
+
+		<jaxrs:schemaLocations>
+			<jaxrs:schemaLocation>com.lsmp.mp.product.review.service.representation.BookReviewRequest</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.lsmp.mp.product.review.service.representation.BookReviewRepresentation</jaxrs:schemaLocation>
+		</jaxrs:schemaLocations>
+
+	</jaxrs:server>
+	
+	
+	
 	<bean id="customerServiceRest" class="com.lsmp.mp.customer.service.CustomerResource" />
 	<bean id="partnerServiceRest" class="com.lsmp.mp.partner.service.PartnerResource" />
 	<bean id="partnerAddressServiceRest" class="com.lsmp.mp.partner.service.PartnerAddressResource" />
@@ -186,5 +203,6 @@
   	<bean id="customerAddressServiceRest" class="com.lsmp.mp.customer.service.ShopperAddressResource" />
   	<bean id="customerBillingServiceRest" class="com.lsmp.mp.customer.service.ShopperBillingResource" />
   	<bean id="customerPhoneServiceRest" class="com.lsmp.mp.customer.service.ShopperPhoneResource" />
+  	<bean id="bookReviewServiceRest" class="com.lsmp.mp.product.review.service.BookReviewResource" />
   
 </beans>
