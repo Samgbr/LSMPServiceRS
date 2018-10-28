@@ -17,7 +17,7 @@ public class InventoryDAO {
 	
 	public Inventory getBookQtyOnHand(String id) {
 		double qtyOnHand=0.0;
-		
+		String iid="";
 		Map<String,Double> qtyOnHandMap = new HashMap<>();
 		
 		Connection connection = DBConnect.getDatabaseConnection();
@@ -29,6 +29,7 @@ public class InventoryDAO {
 			String selectQuery = "SELECT * from Inventory where bookProductID='" + id +"'";
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			resultSet.next();
+			iid = resultSet.getString("InventoryID");
 			qtyOnHand= resultSet.getDouble("qtyOnHand");
 			qtyOnHandMap.put(id, qtyOnHand);
 			
@@ -42,6 +43,7 @@ public class InventoryDAO {
 			}
 		}
 		Inventory inventory = new Inventory();
+		inventory.setInventoryID(iid);
 		inventory.setQtyOnHandMap(qtyOnHandMap);
 		
 		return inventory;	
