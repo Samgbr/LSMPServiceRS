@@ -47,9 +47,11 @@ public class BookReviewResource implements BookReviewService{
 	public BookReviewRepresentation createBookReview(BookReviewRequest bookReviewRequest) {
 		System.out.println("POST METHOD Book review Request from Client with ............." );
 		BookReviewActivity bookReviewActivity=new BookReviewActivity();
-		return bookReviewActivity.addBookReview(bookReviewRequest.getProductReviewID(), bookReviewRequest.getBookProductID(), bookReviewRequest.getProfileID(), bookReviewRequest.getProductReviewID(), bookReviewRequest.getRating());
+		return bookReviewActivity.addBookReview(bookReviewRequest.getProductReviewID(), bookReviewRequest.getBookProductID(), bookReviewRequest.getProfileID(), bookReviewRequest.getReview(), bookReviewRequest.getRating());
 	}
-	
+	/**
+	 * This method updates only review and rating
+	 */
 	@PUT
 	@Produces({"application/xml" , "application/json"})
 	@Consumes({"application/xml", "application/json"})
@@ -57,7 +59,7 @@ public class BookReviewResource implements BookReviewService{
 	public Response updateBookReview(BookReviewRequest bookReviewRequest) {
 		System.out.println("PUT METHOD Book Review Request from Client with ............." );
 		BookReviewActivity bookReviewActivity=new BookReviewActivity();
-		String res=bookReviewActivity.updateBookReview(bookReviewRequest.getProductReviewID(), bookReviewRequest.getBookProductID(), bookReviewRequest.getProfileID(), bookReviewRequest.getProductReviewID(), bookReviewRequest.getRating());
+		String res=bookReviewActivity.updateBookReview(bookReviewRequest.getBookProductID(), bookReviewRequest.getProfileID(), bookReviewRequest.getReview(), bookReviewRequest.getRating());
 		if (res.equals("OK")) {
 			return Response.status(Status.OK).build();
 		}

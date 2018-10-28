@@ -14,6 +14,7 @@ public class BookReviewRequest {
 	private String profileID;
 	private String review;
 	private double rating;
+	
 	public String getProductReviewID() {
 		return productReviewID;
 	}

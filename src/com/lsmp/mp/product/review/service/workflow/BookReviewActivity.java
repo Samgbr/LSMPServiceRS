@@ -67,7 +67,7 @@ public class BookReviewActivity {
 		return bookReviewRepresentation;
 	}
 	
-	public String updateBookReview(String id,String pid,String prid, String review,double rating) {
+	public String updateBookReview(String prid,String pid, String review,double rating) {
 		productReviewManager.updateBookReview(prid, pid, review, rating);
 		return "OK";
 	}
