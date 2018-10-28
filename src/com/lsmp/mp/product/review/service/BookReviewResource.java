@@ -9,7 +9,7 @@ import javax.ws.rs.Produces;
 import com.lsmp.mp.product.review.service.representation.BookReviewRepresentation;
 import com.lsmp.mp.product.review.service.workflow.BookReviewActivity;
 
-@Path("/bookreviewservice")
+@Path("/bookreviewservice/")
 public class BookReviewResource implements BookReviewService{
 	//GET,CREATE,DELETE AND UPDATE A Book Review
 	

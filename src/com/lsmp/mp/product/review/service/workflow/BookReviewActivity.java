@@ -4,13 +4,12 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-
-
 import com.lsmp.mp.product.review.ProductReview;
 import com.lsmp.mp.product.review.ProductReviewManager;
 import com.lsmp.mp.product.review.service.representation.BookReviewRepresentation;
 
 public class BookReviewActivity {
+	
 	public static ProductReviewManager productReviewManager=new ProductReviewManager();
 	
 	public Set<BookReviewRepresentation> getBookReviews(){
@@ -21,8 +20,11 @@ public class BookReviewActivity {
 		bookReviews=productReviewManager.getAllBookReviews();
 		
 		Iterator<ProductReview> it=bookReviews.iterator();
+		
 		while(it.hasNext()) {
-			ProductReview productReview=new ProductReview();
+			
+			ProductReview productReview = (ProductReview)it.next();
+			
 			BookReviewRepresentation bookReviewRepresentation=new BookReviewRepresentation();
 			
 			bookReviewRepresentation.setProductReviewID(productReview.getProductReviewID());

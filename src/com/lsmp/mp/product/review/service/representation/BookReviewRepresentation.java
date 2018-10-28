@@ -11,11 +11,13 @@ import javax.xml.bind.annotation.XmlType;
 
 
 public class BookReviewRepresentation {
+	
 	private String productReviewID;
 	private String bookProductID;
 	private String profileID;
 	private String review;
 	private double rating;
+	
 	public String getProductReviewID() {
 		return productReviewID;
 	}
