@@ -189,6 +189,21 @@
 		</jaxrs:schemaLocations>
 
 	</jaxrs:server>
+		
+		<jaxrs:server name="SmartPhoneReviewService" address="http://localhost:8082/SmartPhoneReview">
+		<jaxrs:serviceBeans>
+			<ref bean="smartPhoneReviewServiceRest" />
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<ref bean="jacksonProvider" />
+		</jaxrs:providers> 
+
+		<jaxrs:schemaLocations>
+			<jaxrs:schemaLocation>com.lsmp.mp.product.review.service.representation.SmartPhoneReviewRequest</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.lsmp.mp.product.review.service.representation.SmartPhoneReviewRepresentation</jaxrs:schemaLocation>
+		</jaxrs:schemaLocations>
+
+	</jaxrs:server>
 	<jaxrs:server name="SmartphoneInventoryService" address="http://localhost:8082/SmartphoneInventory">
 		<jaxrs:serviceBeans>
 			<ref bean="smartphoneInventoryServiceRest" />
@@ -200,6 +215,21 @@
 		<jaxrs:schemaLocations>
 			<jaxrs:schemaLocation>com.lsmp.mp.product.service.representation.SmartphoneInventoryRequest</jaxrs:schemaLocation>
 			<jaxrs:schemaLocation>com.lsmp.mp.product.service.representation.SmartphoneInventoryRepresentation</jaxrs:schemaLocation>
+		</jaxrs:schemaLocations>
+
+	</jaxrs:server>
+	
+	<jaxrs:server name="PartnerBookService" address="http://localhost:8082/PartnerBook">
+		<jaxrs:serviceBeans>
+			<ref bean="partnerBookServiceRest" />
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<ref bean="jacksonProvider" />
+		</jaxrs:providers> 
+
+		<jaxrs:schemaLocations>
+			<jaxrs:schemaLocation>com.lsmp.mp.partner.service.representation.PartnerBookRequest</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.lsmp.mp.partner.service.representation.PartnerBookRepresentation</jaxrs:schemaLocation>
 		</jaxrs:schemaLocations>
 
 	</jaxrs:server>
@@ -218,6 +248,8 @@
   	<bean id="customerBillingServiceRest" class="com.lsmp.mp.customer.service.ShopperBillingResource" />
   	<bean id="customerPhoneServiceRest" class="com.lsmp.mp.customer.service.ShopperPhoneResource" />
   	<bean id="bookReviewServiceRest" class="com.lsmp.mp.product.review.service.BookReviewResource" />
+  	<bean id="smartPhoneReviewServiceRest" class="com.lsmp.mp.product.review.service.SmartPhoneReviewResource" />
   	<bean id="smartphoneInventoryServiceRest" class="com.lsmp.mp.product.service.SmartphoneInventoryResource" />
+  	<bean id="partnerBookServiceRest" class="com.lsmp.mp.partner.service.PartnerBookResource" />
   
 </beans>

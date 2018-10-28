@@ -32,6 +32,9 @@ private static ProductReviewDAO prDAO = new ProductReviewDAO();
 		return productReview;
 	}
 	
+	public Set<ProductReview> getAllSmartPhoneReviews(){
+		return prDAO.getAllSmartPhoneReviews();
+	}
 	public ProductReview addSmartphoneReview(String id, String pid, String prid, String review,double rating) {
 		
 		ProductReview productReview = prDAO.addSmartphoneReview(id, pid, prid, review, rating);

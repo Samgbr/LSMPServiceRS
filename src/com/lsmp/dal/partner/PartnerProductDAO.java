@@ -17,7 +17,7 @@ public class PartnerProductDAO {
 
 	public PartnerProduct getPartnerBookProfileBYProductID(String id) {
 		String profileID="";
-		
+		String productPartnerID="";
 		Map<String,String> partnerProductMap = new HashMap<>();
 		
 		Connection connection = DBConnect.getDatabaseConnection();
@@ -29,6 +29,7 @@ public class PartnerProductDAO {
 			String selectQuery = "SELECT * from productPartner where bookProductID='" + id +"'";
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			resultSet.next();
+			productPartnerID = resultSet.getString("productPartnerID");
 			profileID= resultSet.getString("profileID");
 			partnerProductMap.put(id, profileID);
 			
@@ -43,6 +44,7 @@ public class PartnerProductDAO {
 		}
 		PartnerProduct partnerProduct = new PartnerProduct();
 		partnerProduct.setPartnerProduct(partnerProductMap);
+		partnerProduct.setProductPartnerID(productPartnerID);
 		
 		return partnerProduct;	
 	}
