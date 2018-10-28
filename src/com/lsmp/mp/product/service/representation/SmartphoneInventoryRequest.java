@@ -12,7 +12,16 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "")
 public class SmartphoneInventoryRequest {
 
+	private String inventoryID;
 	private Map<String,Double> qtyOnHandMap;
+
+	public String getInventoryID() {
+		return inventoryID;
+	}
+
+	public void setInventoryID(String inventoryID) {
+		this.inventoryID = inventoryID;
+	}
 
 	public Map<String, Double> getQtyOnHandMap() {
 		return qtyOnHandMap;

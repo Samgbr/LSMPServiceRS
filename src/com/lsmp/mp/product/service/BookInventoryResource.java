@@ -13,7 +13,6 @@ import javax.ws.rs.core.Response.Status;
 
 import com.lsmp.mp.product.service.representation.BookInventoryRepresentation;
 import com.lsmp.mp.product.service.representation.BookInventoryRequest;
-import com.lsmp.mp.product.service.workflow.BookActivity;
 import com.lsmp.mp.product.service.workflow.BookInventoryActivity;
 
 @Path("/bookinventoryservice/")

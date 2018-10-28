@@ -6,7 +6,7 @@ import com.lsmp.mp.product.service.representation.BookInventoryRepresentation;
 
 public class BookInventoryActivity {
 
-public static ProductManager productManager=new ProductManager();
+	public static ProductManager productManager=new ProductManager();
 	
 	public BookInventoryRepresentation getBookQtyOnHand(String id) {
 		

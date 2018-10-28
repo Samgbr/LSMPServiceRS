@@ -160,7 +160,7 @@
 		</jaxrs:schemaLocations>
 
 	</jaxrs:server>
-	<jaxrs:server name="BookInventoryService" address="http://localhost:8082/BookProductInventory">
+	<jaxrs:server name="BookInventoryService" address="http://localhost:8082/BookInventory">
 		<jaxrs:serviceBeans>
 			<ref bean="bookInventoryServiceRest" />
 		</jaxrs:serviceBeans>
@@ -189,6 +189,20 @@
 		</jaxrs:schemaLocations>
 
 	</jaxrs:server>
+	<jaxrs:server name="SmartphoneInventoryService" address="http://localhost:8082/SmartphoneInventory">
+		<jaxrs:serviceBeans>
+			<ref bean="smartphoneInventoryServiceRest" />
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<ref bean="jacksonProvider" />
+		</jaxrs:providers> 
+
+		<jaxrs:schemaLocations>
+			<jaxrs:schemaLocation>com.lsmp.mp.product.service.representation.SmartphoneInventoryRequest</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.lsmp.mp.product.service.representation.SmartphoneInventoryRepresentation</jaxrs:schemaLocation>
+		</jaxrs:schemaLocations>
+
+	</jaxrs:server>
 	
 	
 	
@@ -204,5 +218,6 @@
   	<bean id="customerBillingServiceRest" class="com.lsmp.mp.customer.service.ShopperBillingResource" />
   	<bean id="customerPhoneServiceRest" class="com.lsmp.mp.customer.service.ShopperPhoneResource" />
   	<bean id="bookReviewServiceRest" class="com.lsmp.mp.product.review.service.BookReviewResource" />
+  	<bean id="smartphoneInventoryServiceRest" class="com.lsmp.mp.product.service.SmartphoneInventoryResource" />
   
 </beans>
