@@ -33,7 +33,7 @@ public class PartnerActivity {
 		
 		Set<Partner> partners = new HashSet<Partner>();
 		Set<PartnerRepresentation> partnerRepresentations = new HashSet<PartnerRepresentation>();
-		//employees = dao.getAllEmployees();
+		
 		partners = partnerManager.getAllPartner();
 		
 		Iterator<Partner> it = partners.iterator();
