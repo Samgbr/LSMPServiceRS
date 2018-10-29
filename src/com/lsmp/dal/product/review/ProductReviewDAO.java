@@ -86,6 +86,7 @@ public class ProductReviewDAO {
 	}
 	
 	public Set<ProductReview> getAllBookReviews() {
+
 		
 		Connection connection = DBConnect.getDatabaseConnection();
 		Set<ProductReview> productReviews = new HashSet<>();
@@ -93,7 +94,7 @@ public class ProductReviewDAO {
 		try {
 			Statement selectStatement = connection.createStatement();
 			
-			String selectQuery = "SELECT * from productReview";
+			String selectQuery = "SELECT * from productReview WHERE bookProductID IS NOT NULL";
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			
 			while(resultSet.next()) {
@@ -118,6 +119,42 @@ public class ProductReviewDAO {
 		return productReviews;
 		
 	}
+	
+	public Set<ProductReview> getAllSmartPhoneReviews() {
+
+		
+		Connection connection = DBConnect.getDatabaseConnection();
+		Set<ProductReview> productReviews = new HashSet<>();
+		
+		try {
+			Statement selectStatement = connection.createStatement();
+			
+			String selectQuery = "SELECT * from productReview WHERE smartphoneProductID IS NOT NULL";
+			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
+			
+			while(resultSet.next()) {
+				String productID = resultSet.getString("smartphoneProductID");
+				String profileID = resultSet.getString("profileID");
+				ProductReview productReview = getSmartphoneReviewByProfileIDandProductID(productID,profileID);
+				if(productReview != null) {
+					productReviews.add(productReview);
+				}
+			}
+			
+		}catch(SQLException se) {
+			se.printStackTrace();
+		}finally {
+			if(connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {}
+			}
+		}
+		
+		return productReviews;
+		
+	}
+
 	
 	public ProductReview addBookReview(String id, String pid, String prid, String review,double rating) {
 			

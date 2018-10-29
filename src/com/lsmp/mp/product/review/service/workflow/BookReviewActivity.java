@@ -38,5 +38,43 @@ public class BookReviewActivity {
 		}
 		return bookReviewRepresentations;
 	}
+	
+	public BookReviewRepresentation getBookReviewByProfileIDandProductID(String id, String pid) {
+		ProductReview productReview=productReviewManager.getBookReviewByProfileIDandProductID(id, pid);
+		
+		BookReviewRepresentation bookReviewRepresentation=new BookReviewRepresentation();
+		
+		bookReviewRepresentation.setProductReviewID(productReview.getProductReviewID());
+		bookReviewRepresentation.setBookProductID(productReview.getBookProductID());
+		bookReviewRepresentation.setProfileID(productReview.getProfileID());
+		bookReviewRepresentation.setReview(productReview.getReview());
+		bookReviewRepresentation.setRating(productReview.getRating());
+		
+		return bookReviewRepresentation;
+	}
+	
+	public BookReviewRepresentation addBookReview(String id,String pid,String prid, String review,double rating) {
+		ProductReview productReview=productReviewManager.addBookReview(id, pid, prid, review, rating);
+		
+		BookReviewRepresentation bookReviewRepresentation=new BookReviewRepresentation();
+		
+		bookReviewRepresentation.setProductReviewID(productReview.getProductReviewID());
+		bookReviewRepresentation.setBookProductID(productReview.getBookProductID());
+		bookReviewRepresentation.setProfileID(productReview.getProfileID());
+		bookReviewRepresentation.setReview(productReview.getReview());
+		bookReviewRepresentation.setRating(productReview.getRating());
+		
+		return bookReviewRepresentation;
+	}
+	
+	public String updateBookReview(String prid,String pid, String review,double rating) {
+		productReviewManager.updateBookReview(prid, pid, review, rating);
+		return "OK";
+	}
+	
+	public String deleteProductReview(String id) {
+		productReviewManager.deleteProductReview(id);
+		return "OK";
+	}
 
 }

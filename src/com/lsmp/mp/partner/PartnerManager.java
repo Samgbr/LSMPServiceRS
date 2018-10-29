@@ -63,9 +63,16 @@ private static PartnerProductDAO ppDAO = new PartnerProductDAO();
 	public PartnerProduct getPartnerBookProfileBYProductID(String id) {
 		return ppDAO.getPartnerBookProfileBYProductID(id);
 	}
+	public Set<PartnerProduct> getAllPartnerBooks() {
+		return ppDAO.getAllPartnerBooks();
+	}
 	
 	public PartnerProduct getPartnerSmarphoneProfileBYProductID(String id) {
 		return ppDAO.getPartnerSmarphoneProfileBYProductID(id);
+	}
+	
+	public Set<PartnerProduct> getAllPartnerSmartphones() {
+		return ppDAO.getAllPartnerSmartphones();
 	}
 	
 	public PartnerProduct addPartnerBook(String ppid, String id, String profileID) {
@@ -74,6 +81,8 @@ private static PartnerProductDAO ppDAO = new PartnerProductDAO();
 		
 		return partnerProduct;
 	}
+	
+	
 	
 	public PartnerProduct addPartnerSmartphone(String ppid, String id, String profileID) {
 		

@@ -17,7 +17,7 @@ public class PartnerProductDAO {
 
 	public PartnerProduct getPartnerBookProfileBYProductID(String id) {
 		String profileID="";
-		
+		String productPartnerID="";
 		Map<String,String> partnerProductMap = new HashMap<>();
 		
 		Connection connection = DBConnect.getDatabaseConnection();
@@ -29,6 +29,7 @@ public class PartnerProductDAO {
 			String selectQuery = "SELECT * from productPartner where bookProductID='" + id +"'";
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			resultSet.next();
+			productPartnerID = resultSet.getString("productPartnerID");
 			profileID= resultSet.getString("profileID");
 			partnerProductMap.put(id, profileID);
 			
@@ -43,13 +44,14 @@ public class PartnerProductDAO {
 		}
 		PartnerProduct partnerProduct = new PartnerProduct();
 		partnerProduct.setPartnerProduct(partnerProductMap);
+		partnerProduct.setProductPartnerID(productPartnerID);
 		
 		return partnerProduct;	
 	}
 	
 	public PartnerProduct getPartnerSmarphoneProfileBYProductID(String id) {
 		String profileID="";
-		
+		String productPartnerID="";
 		Map<String,String> partnerProductMap = new HashMap<>();
 		
 		Connection connection = DBConnect.getDatabaseConnection();
@@ -61,6 +63,7 @@ public class PartnerProductDAO {
 			String selectQuery = "SELECT * from productPartner where smartphoneProductID='" + id +"'";
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			resultSet.next();
+			productPartnerID = resultSet.getString("productPartnerID");
 			profileID= resultSet.getString("profileID");
 			partnerProductMap.put(id, profileID);
 			
@@ -75,6 +78,7 @@ public class PartnerProductDAO {
 		}
 		PartnerProduct partnerProduct = new PartnerProduct();
 		partnerProduct.setPartnerProduct(partnerProductMap);
+		partnerProduct.setProductPartnerID(productPartnerID);
 		
 		return partnerProduct;	
 	}
@@ -87,7 +91,40 @@ public class PartnerProductDAO {
 		try {
 			Statement selectStatement = connection.createStatement();
 			
-			String selectQuery = "SELECT * from productPartner";
+			String selectQuery = "SELECT * from productPartner WHERE bookProductID IS NOT NULL";
+			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
+			
+			while(resultSet.next()) {
+				String productID = resultSet.getString("bookProductID");
+				PartnerProduct partnerProduct = getPartnerBookProfileBYProductID(productID);
+				if(partnerProduct != null) {
+					partnerProducts.add(partnerProduct);
+				}
+			}
+			
+		}catch(SQLException se) {
+			se.printStackTrace();
+		}finally {
+			if(connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {}
+			}
+		}
+		
+		return partnerProducts;
+		
+	}
+	
+	public Set<PartnerProduct> getAllPartnerSmartphones() {
+		
+		Connection connection = DBConnect.getDatabaseConnection();
+		Set<PartnerProduct> partnerProducts = new HashSet<>();
+		
+		try {
+			Statement selectStatement = connection.createStatement();
+			
+			String selectQuery = "SELECT * from productPartner WHERE WHERE smartphoneProductID IS NOT NULL";
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			
 			while(resultSet.next()) {

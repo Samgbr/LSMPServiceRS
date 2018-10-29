@@ -8,10 +8,11 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
-public class BookReviewRequest {
+
+public class SmartPhoneReviewRequest {
 	private String productReviewID;
-	private String bookProductID;
 	private String profileID;
+	private String smartphoneProductID;
 	private String review;
 	private double rating;
 	
@@ -21,17 +22,17 @@ public class BookReviewRequest {
 	public void setProductReviewID(String productReviewID) {
 		this.productReviewID = productReviewID;
 	}
-	public String getBookProductID() {
-		return bookProductID;
-	}
-	public void setBookProductID(String bookProductID) {
-		this.bookProductID = bookProductID;
-	}
 	public String getProfileID() {
 		return profileID;
 	}
 	public void setProfileID(String profileID) {
 		this.profileID = profileID;
+	}
+	public String getSmartphoneProductID() {
+		return smartphoneProductID;
+	}
+	public void setSmartphoneProductID(String smartphoneProductID) {
+		this.smartphoneProductID = smartphoneProductID;
 	}
 	public String getReview() {
 		return review;
