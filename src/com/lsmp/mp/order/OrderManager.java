@@ -17,9 +17,24 @@ public class OrderManager {
 		return oDAO.getOrderWithDetail(id);
 	}
 	
+	public Order getOrder(String id) {
+		return oDAO.getOrder(id);
+	}
+	
+	public Set<Order> getAllOrders() {
+		return oDAO.getAllOrders();
+	}
+	
 	public Order addBookOrder(String oid, String profileID, String orderDate, String shipAddressID, Set<OrderDetail> orderDetails) {
 		
 		Order order = oDAO.addBookOrder(oid, profileID, orderDate, shipAddressID, orderDetails);
+		
+		return order;
+	}
+	
+	public Order addOrder(String oid, String profileID, String orderDate, String shipAddressID) {
+		
+		Order order = oDAO.addOrder(oid, profileID, orderDate, shipAddressID);
 		
 		return order;
 	}
@@ -31,7 +46,7 @@ public class OrderManager {
 		return order;
 	}
 
-	public void updateOrder(String id, String profileID, String orderDate, String shipAddressID, Set<OrderDetail> orderDetails) {
+	public void updateOrder(String id, String profileID, String orderDate, String shipAddressID) {
 		oDAO.updateOrder(id, profileID, orderDate, shipAddressID);
 	}
 

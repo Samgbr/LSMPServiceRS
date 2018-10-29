@@ -11,6 +11,7 @@ import java.util.Set;
 import com.lsmp.dal.DBConnect;
 import com.lsmp.mp.order.Order;
 import com.lsmp.mp.order.OrderDetail;
+import com.lsmp.mp.partner.Partner;
 
 public class OrderDAO {
 	
@@ -59,6 +60,74 @@ public class OrderDAO {
 		return order;	
 	}
 	
+	public Order getOrder(String id) {
+		String profileID="";
+		String orderDate="";
+		String shipAddressID="";
+		
+		Connection connection = DBConnect.getDatabaseConnection();
+		
+		
+		try {
+			Statement selectStatement = connection.createStatement();
+			
+			String selectQuery = "SELECT * from orderT";
+			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
+			resultSet.next();
+			profileID= resultSet.getString("profileID");
+			orderDate = resultSet.getString("orderDate");
+			shipAddressID = resultSet.getString("shipAddressID");
+			
+		}catch(SQLException se) {
+			se.printStackTrace();
+		}finally {
+			if(connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {}
+			}
+		}
+		Order order = new Order();
+		order.setOrderID(id);
+		order.setProfileID(profileID);
+		order.setOrderDate(orderDate);
+		order.setShipAddressID(shipAddressID);
+		return order;	
+	}
+	
+	public Set<Order> getAllOrders() {
+		
+		Connection connection = DBConnect.getDatabaseConnection();
+		Set<Order> orders = new HashSet<>();
+		
+		try {
+			Statement selectStatement = connection.createStatement();
+			
+			String selectQuery = "SELECT * from orderT";
+			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
+			
+			while(resultSet.next()) {
+				String orderID = resultSet.getString("orderID");
+				Order order = getOrder(orderID);
+				if(order != null) {
+					orders.add(order);
+				}
+			}
+			
+		}catch(SQLException se) {
+			se.printStackTrace();
+		}finally {
+			if(connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {}
+			}
+		}
+		
+		return orders;
+		
+	}
+	
 	public Order addBookOrder(String oid, String profileID, String orderDate, String shipAddressID, Set<OrderDetail> orderDetails) {
 			
 			Order order = new Order();
@@ -95,6 +164,40 @@ public class OrderDAO {
 			
 			return order;
 		}
+	
+	public Order addOrder(String oid, String profileID, String orderDate, String shipAddressID) {
+		
+		Order order = new Order();
+		/*
+		Random randomGenerator = new Random();
+	    int randomInt = randomGenerator.nextInt(10000);
+	    String id = "OR" + randomInt; */
+	    
+	    order.setOrderID(oid);
+	    order.setOrderDate(orderDate);
+	    order.setProfileID(profileID);
+	    order.setShipAddressID(shipAddressID);
+		
+		Connection connection = DBConnect.getDatabaseConnection();
+		try {
+			Statement insertStatement = connection.createStatement();
+			
+			String insertQuery = "INSERT INTO orderT(orderID,profileID,orderDate,shipAddressID,pickUpLocation) "
+					+ "VALUES('"+oid+"','"+profileID+"','"+orderDate+"','"+shipAddressID+"','NA')";
+			insertStatement.executeUpdate(insertQuery);
+			
+		}catch(SQLException se) {
+			se.printStackTrace();
+		}finally {
+			if(connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {}
+			}
+		}
+		
+		return order;
+	}
 	
 	public Order addSmartphoneOrder(String oid, String profileID, String orderDate, String shipAddressID, Set<OrderDetail> orderDetails) {
 		

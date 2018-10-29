@@ -248,6 +248,21 @@
 
 	</jaxrs:server>
 	
+	<jaxrs:server name="OrderService" address="http://localhost:8082/Order">
+		<jaxrs:serviceBeans>
+			<ref bean="orderServiceRest" />
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<ref bean="jacksonProvider" />
+		</jaxrs:providers> 
+
+		<jaxrs:schemaLocations>
+			<jaxrs:schemaLocation>com.lsmp.mp.order.service.representation.OrderRequest</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.lsmp.mp.order.service.representation.OrderRepresentation</jaxrs:schemaLocation>
+		</jaxrs:schemaLocations>
+
+	</jaxrs:server>
+	
 	
 	<bean id="customerServiceRest" class="com.lsmp.mp.customer.service.CustomerResource" />
 	<bean id="partnerServiceRest" class="com.lsmp.mp.partner.service.PartnerResource" />
@@ -265,5 +280,6 @@
   	<bean id="smartphoneInventoryServiceRest" class="com.lsmp.mp.product.service.SmartphoneInventoryResource" />
   	<bean id="partnerBookServiceRest" class="com.lsmp.mp.partner.service.PartnerBookResource" />
   	<bean id="partnerSmartphoneServiceRest" class="com.lsmp.mp.partner.service.PartnerSmartphoneResource" />
+  	<bean id="orderServiceRest" class="com.lsmp.mp.order.service.OrderResource" />
   
 </beans>
