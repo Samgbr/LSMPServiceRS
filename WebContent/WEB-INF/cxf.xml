@@ -233,6 +233,21 @@
 
 	</jaxrs:server>
 	
+	<jaxrs:server name="PartnerSmartphoneService" address="http://localhost:8082/PartnerSmartphone">
+		<jaxrs:serviceBeans>
+			<ref bean="partnerSmartphoneServiceRest" />
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<ref bean="jacksonProvider" />
+		</jaxrs:providers> 
+
+		<jaxrs:schemaLocations>
+			<jaxrs:schemaLocation>com.lsmp.mp.partner.service.representation.PartnerSmartphoneRequest</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.lsmp.mp.partner.service.representation.PartnerSmartphoneRepresentation</jaxrs:schemaLocation>
+		</jaxrs:schemaLocations>
+
+	</jaxrs:server>
+	
 	
 	<bean id="customerServiceRest" class="com.lsmp.mp.customer.service.CustomerResource" />
 	<bean id="partnerServiceRest" class="com.lsmp.mp.partner.service.PartnerResource" />
@@ -249,5 +264,6 @@
   	<bean id="smartPhoneReviewServiceRest" class="com.lsmp.mp.product.review.service.SmartPhoneReviewResource" />
   	<bean id="smartphoneInventoryServiceRest" class="com.lsmp.mp.product.service.SmartphoneInventoryResource" />
   	<bean id="partnerBookServiceRest" class="com.lsmp.mp.partner.service.PartnerBookResource" />
+  	<bean id="partnerSmartphoneServiceRest" class="com.lsmp.mp.partner.service.PartnerSmartphoneResource" />
   
 </beans>
