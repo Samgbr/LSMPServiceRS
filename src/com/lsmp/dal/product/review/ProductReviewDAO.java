@@ -94,7 +94,7 @@ public class ProductReviewDAO {
 		try {
 			Statement selectStatement = connection.createStatement();
 			
-			String selectQuery = "SELECT * from productReview";
+			String selectQuery = "SELECT * from productReview WHERE bookProductID IS NOT NULL";
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			
 			while(resultSet.next()) {
@@ -120,7 +120,7 @@ public class ProductReviewDAO {
 		
 	}
 	
-public Set<ProductReview> getAllSmartPhoneReviews() {
+	public Set<ProductReview> getAllSmartPhoneReviews() {
 
 		
 		Connection connection = DBConnect.getDatabaseConnection();
@@ -129,7 +129,7 @@ public Set<ProductReview> getAllSmartPhoneReviews() {
 		try {
 			Statement selectStatement = connection.createStatement();
 			
-			String selectQuery = "SELECT * from productReview";
+			String selectQuery = "SELECT * from productReview WHERE smartphoneProductID IS NOT NULL";
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			
 			while(resultSet.next()) {

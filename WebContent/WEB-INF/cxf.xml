@@ -218,7 +218,20 @@
 		</jaxrs:schemaLocations>
 
 	</jaxrs:server>
-	
+		<jaxrs:server name="PartnerBookService" address="http://localhost:8082/PartnerBook">
+		<jaxrs:serviceBeans>
+			<ref bean="partnerBookServiceRest" />
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<ref bean="jacksonProvider" />
+		</jaxrs:providers> 
+
+		<jaxrs:schemaLocations>
+			<jaxrs:schemaLocation>com.lsmp.mp.partner.service.representation.PartnerBookRequest</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.lsmp.mp.partner.service.representation.PartnerBookRepresentation</jaxrs:schemaLocation>
+		</jaxrs:schemaLocations>
+
+	</jaxrs:server>
 	
 	
 	<bean id="customerServiceRest" class="com.lsmp.mp.customer.service.CustomerResource" />
@@ -235,5 +248,6 @@
   	<bean id="bookReviewServiceRest" class="com.lsmp.mp.product.review.service.BookReviewResource" />
   	<bean id="smartPhoneReviewServiceRest" class="com.lsmp.mp.product.review.service.SmartPhoneReviewResource" />
   	<bean id="smartphoneInventoryServiceRest" class="com.lsmp.mp.product.service.SmartphoneInventoryResource" />
+  	<bean id="partnerBookServiceRest" class="com.lsmp.mp.partner.service.PartnerBookResource" />
   
 </beans>

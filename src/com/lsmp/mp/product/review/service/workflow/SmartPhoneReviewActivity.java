@@ -55,7 +55,7 @@ public class SmartPhoneReviewActivity {
 	}
 	
 	public SmartPhoneReviewRepresentation addSmartPhoneReview(String id,String pid,String prid, String review,double rating) {
-		ProductReview productReview=productReviewManager.addBookReview(id, pid, prid, review, rating);
+		ProductReview productReview=productReviewManager.addSmartphoneReview(id, pid, prid, review, rating);
 		
 		SmartPhoneReviewRepresentation smartPhoneReviewRepresentation=new SmartPhoneReviewRepresentation();
 		

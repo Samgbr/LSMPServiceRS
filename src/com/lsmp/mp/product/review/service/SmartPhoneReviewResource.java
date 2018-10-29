@@ -26,7 +26,7 @@ public class SmartPhoneReviewResource implements SmartphoneReviewService {
 	@Produces({"application/xml" , "application/json"})
 	@Path("/smartphonereviews")
 	public Set<SmartPhoneReviewRepresentation> getAllSmartPhoneReviews(){
-		System.out.println("GET METHOD Request for all Book Reviews .............");
+		System.out.println("GET METHOD Request for all Smartphone Reviews .............");
 		SmartPhoneReviewActivity smartPhoneReviewActiviy=new SmartPhoneReviewActivity();
 		return smartPhoneReviewActiviy.getSmartPhoneReviews();
 	}
@@ -34,7 +34,7 @@ public class SmartPhoneReviewResource implements SmartphoneReviewService {
 	@GET
 	@Produces({"application/xml" , "application/json"})
 	@Path("/smartphonereview/{smartphoneproductId}/{profileId}")
-	public SmartPhoneReviewRepresentation getBookReview(@PathParam("smartphoneproductId") String id, @PathParam("profileId") String pid) {
+	public SmartPhoneReviewRepresentation getSmartPhoneReview(@PathParam("smartphoneproductId") String id, @PathParam("profileId") String pid) {
 		System.out.println("GET METHOD Request from Client with smart phone review Request String :");
 		SmartPhoneReviewActivity smartPhoneReviewActivity=new SmartPhoneReviewActivity();
 		return smartPhoneReviewActivity.getSmartphoneReviewByProfileIDandProductID(id, pid);

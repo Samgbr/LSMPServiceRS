@@ -37,7 +37,7 @@ private static ProductReviewDAO prDAO = new ProductReviewDAO();
 	}
 	public ProductReview addSmartphoneReview(String id, String pid, String prid, String review,double rating) {
 		
-		ProductReview productReview = prDAO.addSmartphoneReview(id, pid, prid, review, rating);
+		ProductReview productReview = prDAO.addSmartphoneReview(id, pid, prid,review, rating);
 		
 		return productReview;
 	}
