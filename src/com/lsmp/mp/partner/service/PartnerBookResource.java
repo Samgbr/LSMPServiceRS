@@ -1,5 +1,7 @@
 package com.lsmp.mp.partner.service;
 
+import java.util.Set;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -16,7 +18,7 @@ import com.lsmp.mp.partner.service.representation.PartnerBookRequest;
 import com.lsmp.mp.partner.service.workflow.PartnerBookActivity;
 
 @Path("/partnerbookservice/")
-public class PartnerBookResource {
+public class PartnerBookResource implements PartnerBookService {
 
 	@GET
 	@Produces({"application/xml" , "application/json"})
@@ -25,6 +27,15 @@ public class PartnerBookResource {
 		System.out.println("GET METHOD Request from Client with Partner Book Request String ............." + id);
 		PartnerBookActivity partnerBookActivity=new PartnerBookActivity();
 		return partnerBookActivity.getPartnerBookProfileBYProductID(id);
+	}
+	
+	@GET
+	@Produces({"application/xml" , "application/json"})
+	@Path("/partnerbooks")
+	public Set<PartnerBookRepresentation> getAllPartnerBooks() {
+		System.out.println("GET METHOD Request for all Partner Books .............");
+		PartnerBookActivity partnerBookActivity=new PartnerBookActivity();
+		return partnerBookActivity.getAllPartnerBooks();
 	}
 	
 	@POST
