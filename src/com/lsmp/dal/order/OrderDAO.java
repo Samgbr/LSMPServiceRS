@@ -11,7 +11,6 @@ import java.util.Set;
 import com.lsmp.dal.DBConnect;
 import com.lsmp.mp.order.Order;
 import com.lsmp.mp.order.OrderDetail;
-import com.lsmp.mp.partner.Partner;
 
 public class OrderDAO {
 	

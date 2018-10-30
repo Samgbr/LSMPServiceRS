@@ -65,7 +65,7 @@ public class OrderResource implements OrderService{
 	@DELETE
 	@Produces({"application/xml" , "application/json"})
 	@Consumes({"application/xml", "application/json"})
-	@Path("/order/{orderId}")
+	@Path("/order/{oderId}")
 	public Response deleteOrder(@PathParam("oderId") String id) {
 		System.out.println("Delete METHOD Request from Client with Order Request String ............." + id);
 		OrderActivity orderActivity = new OrderActivity();
