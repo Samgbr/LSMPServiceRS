@@ -10,7 +10,7 @@ import com.lsmp.mp.order.service.representation.OrderRepresentation;
 
 public class OrderActivity {
 
-private static OrderManager orderManager = new OrderManager();
+	private static OrderManager orderManager = new OrderManager();
 	
 	public OrderRepresentation getOrder(String id) {
 		

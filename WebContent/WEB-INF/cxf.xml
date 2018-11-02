@@ -263,6 +263,36 @@
 
 	</jaxrs:server>
 	
+	<jaxrs:server name="BookOrderDetailService" address="http://localhost:8082/BookOrderDetail">
+		<jaxrs:serviceBeans>
+			<ref bean="bookOrderDetailServiceRest" />
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<ref bean="jacksonProvider" />
+		</jaxrs:providers> 
+
+		<jaxrs:schemaLocations>
+			<jaxrs:schemaLocation>com.lsmp.mp.order.service.representation.BookOrderDetailRequest</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.lsmp.mp.order.service.representation.BookOrderDetailRepresentation</jaxrs:schemaLocation>
+		</jaxrs:schemaLocations>
+
+	</jaxrs:server>
+	
+	<jaxrs:server name="SmartphoneOrderDetailService" address="http://localhost:8082/SmartphoneOrderDetail">
+		<jaxrs:serviceBeans>
+			<ref bean="smartphoneOrderDetailServiceRest" />
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<ref bean="jacksonProvider" />
+		</jaxrs:providers> 
+
+		<jaxrs:schemaLocations>
+			<jaxrs:schemaLocation>com.lsmp.mp.order.service.representation.SmartphoneOrderDetailRequest</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.lsmp.mp.order.service.representation.SmartphoneOrderDetailRepresentation</jaxrs:schemaLocation>
+		</jaxrs:schemaLocations>
+
+	</jaxrs:server>
+	
 	
 	<bean id="customerServiceRest" class="com.lsmp.mp.customer.service.CustomerResource" />
 	<bean id="partnerServiceRest" class="com.lsmp.mp.partner.service.PartnerResource" />
@@ -281,5 +311,7 @@
   	<bean id="partnerBookServiceRest" class="com.lsmp.mp.partner.service.PartnerBookResource" />
   	<bean id="partnerSmartphoneServiceRest" class="com.lsmp.mp.partner.service.PartnerSmartphoneResource" />
   	<bean id="orderServiceRest" class="com.lsmp.mp.order.service.OrderResource" />
+  	<bean id="bookOrderDetailServiceRest" class="com.lsmp.mp.order.service.BookOrderDetailResource" />
+  	<bean id="smartphoneOrderDetailServiceRest" class="com.lsmp.mp.order.service.SmartphoneOrderDetailResource" />
   
 </beans>

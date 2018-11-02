@@ -39,7 +39,7 @@ public class OrderDAO {
 			orderDate = resultSet.getString("orderDate");
 			shipAddressID = resultSet.getString("shipAddressID");
 			
-			orderDetails = orderDetailDAO.getAllOrderDetailsByOrderID(id);
+			orderDetails = orderDetailDAO.getAllBookOrderDetailsByOrderID(id);
 			
 		}catch(SQLException se) {
 			se.printStackTrace();

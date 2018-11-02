@@ -58,15 +58,29 @@ public class OrderManager {
 	public OrderDetail getOrderDetail(String id) {
 		return odDAO.getOrderDetail(id);
 	}
-	
+	/*
 	public Set<OrderDetail> getAllOrderDetailsByProfileID(String pid) {
 		return odDAO.getAllOrderDetailsByProfileID(pid);
-	}
+	} */
 	
-	public Set<OrderDetail> getAllOrderDetailsByOrderID(String id) {
-		return odDAO.getAllOrderDetailsByOrderID(id);
+	public Set<OrderDetail> getAllBookOrderDetailsByOrderID(String id) {
+		return odDAO.getAllBookOrderDetailsByOrderID(id);
 	}
-	
+	public Set<OrderDetail> getAllSmartphoneOrderDetailsByOrderID(String id) {
+		return odDAO.getAllSmartphoneOrderDetailsByOrderID(id);
+	}
+	public OrderDetail getBookOrderDetail(String id) {
+		return odDAO.getBookOrderDetail(id);
+	}
+	public Set<OrderDetail> getAllBookOrderDetails() {
+		return odDAO.getAllBookOrderDetails();
+	}
+	public Set<OrderDetail> getAllSmartphoneOrderDetails() {
+		return odDAO.getAllSmartphoneOrderDetails();
+	}
+	public OrderDetail getSmartphoneOrderDetail(String id) {
+		return odDAO.getSmartphoneOrderDetail(id);
+	}
 	public OrderDetail addBookOrderDetail(String odid, String orderID, String productID, double orderedQuantity) {
 		return odDAO.addBookOrderDetail(odid, orderID, productID, orderedQuantity);
 	}

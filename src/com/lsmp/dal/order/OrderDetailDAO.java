@@ -1,3 +1,4 @@
+
 package com.lsmp.dal.order;
 
 import java.sql.Connection;
@@ -51,6 +52,141 @@ public class OrderDetailDAO {
 		return orderDetail;	
 	}
 	
+	public OrderDetail getBookOrderDetail(String id) {
+		String orderID="";
+		String bookProductID="";
+		double orderedQuantity=0.0;
+		
+		Connection connection = DBConnect.getDatabaseConnection();
+		
+		
+		try {
+			Statement selectStatement = connection.createStatement();
+			
+			String selectQuery = "SELECT * from orderDetail where orderDetailID='" + id +"'";
+			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
+			resultSet.next();
+			orderID= resultSet.getString("orderID");
+			bookProductID = resultSet.getString("bookProductID");
+			orderedQuantity = resultSet.getDouble("orderedQuantity");
+			
+		}catch(SQLException se) {
+			se.printStackTrace();
+		}finally {
+			if(connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {}
+			}
+		}
+		OrderDetail orderDetail = new OrderDetail();
+		orderDetail.setOrderID(orderID);
+		orderDetail.setBookProductID(bookProductID);
+		orderDetail.setOrderedQuantity(orderedQuantity);
+		return orderDetail;	
+	}
+	
+	public OrderDetail getSmartphoneOrderDetail(String id) {
+		String orderID="";
+		String smartphoneProductID="";
+		double orderedQuantity=0.0;
+		
+		Connection connection = DBConnect.getDatabaseConnection();
+		
+		
+		try {
+			Statement selectStatement = connection.createStatement();
+			
+			String selectQuery = "SELECT * from orderDetail where orderDetailID='" + id +"'";
+			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
+			resultSet.next();
+			orderID= resultSet.getString("orderID");
+			smartphoneProductID = resultSet.getString("smartphoneProductID");
+			orderedQuantity = resultSet.getDouble("orderedQuantity");
+			
+		}catch(SQLException se) {
+			se.printStackTrace();
+		}finally {
+			if(connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {}
+			}
+		}
+		OrderDetail orderDetail = new OrderDetail();
+		orderDetail.setOrderID(orderID);
+		orderDetail.setSmartphoneProductID(smartphoneProductID);
+		orderDetail.setOrderedQuantity(orderedQuantity);
+		return orderDetail;	
+	}
+	
+	public Set<OrderDetail> getAllBookOrderDetails() {
+		
+		Connection connection = DBConnect.getDatabaseConnection();
+		Set<OrderDetail> orderDetails = new HashSet<>();
+		
+		try {
+			Statement selectStatement = connection.createStatement();
+			
+			String selectQuery = "SELECT * from orderDetail WHERE bookProductID IS NOT NULL";
+			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
+			
+			while(resultSet.next()) {
+				String orderDetailID = resultSet.getString("orderDetailID");
+				OrderDetail orderDetail = getBookOrderDetail(orderDetailID);
+				if(orderDetail != null) {
+					orderDetails.add(orderDetail);
+				}
+			}
+			
+		}catch(SQLException se) {
+			se.printStackTrace();
+		}finally {
+			if(connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {}
+			}
+		}
+		
+		return orderDetails;
+		
+	}
+	
+	public Set<OrderDetail> getAllSmartphoneOrderDetails() {
+		
+		Connection connection = DBConnect.getDatabaseConnection();
+		Set<OrderDetail> orderDetails = new HashSet<>();
+		
+		try {
+			Statement selectStatement = connection.createStatement();
+			
+			String selectQuery = "SELECT * from orderDetail WHERE smartphoneProductID IS NOT NULL";
+			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
+			
+			while(resultSet.next()) {
+				String orderDetailID = resultSet.getString("orderDetailID");
+				OrderDetail orderDetail = getSmartphoneOrderDetail(orderDetailID);
+				if(orderDetail != null) {
+					orderDetails.add(orderDetail);
+				}
+			}
+			
+		}catch(SQLException se) {
+			se.printStackTrace();
+		}finally {
+			if(connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {}
+			}
+		}
+		
+		return orderDetails;
+		
+	}
+
+	/*
 	public Set<OrderDetail> getAllOrderDetailsByProfileID(String pid) {
 		
 		Connection connection = DBConnect.getDatabaseConnection();
@@ -82,9 +218,9 @@ public class OrderDetailDAO {
 		
 		return orderDetails;
 		
-	}
+	}  */
 	
-	public Set<OrderDetail> getAllOrderDetailsByOrderID(String id) {
+	public Set<OrderDetail> getAllBookOrderDetailsByOrderID(String id) {
 			
 			Connection connection = DBConnect.getDatabaseConnection();
 			Set<OrderDetail> orderDetails = new HashSet<>();
@@ -92,12 +228,12 @@ public class OrderDetailDAO {
 			try {
 				Statement selectStatement = connection.createStatement();
 				
-				String selectQuery = "SELECT * from orderDetail WHERE orderID='"+id+"'";
+				String selectQuery = "SELECT * from orderDetail WHERE orderID='"+id+"' AND bookProductID IS NOT NULL";
 				ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 				
 				while(resultSet.next()) {
 					String orderDetailID = resultSet.getString("orderDetailID");
-					OrderDetail orderDetail = getOrderDetail(orderDetailID);
+					OrderDetail orderDetail = getBookOrderDetail(orderDetailID);
 					if(orderDetail != null) {
 						orderDetails.add(orderDetail);
 					}
@@ -116,6 +252,39 @@ public class OrderDetailDAO {
 			return orderDetails;
 			
 		}
+	
+	public Set<OrderDetail> getAllSmartphoneOrderDetailsByOrderID(String id) {
+		
+		Connection connection = DBConnect.getDatabaseConnection();
+		Set<OrderDetail> orderDetails = new HashSet<>();
+		
+		try {
+			Statement selectStatement = connection.createStatement();
+			
+			String selectQuery = "SELECT * from orderDetail WHERE orderID='"+id+"' AND smartphoneProductID IS NOT NULL";
+			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
+			
+			while(resultSet.next()) {
+				String orderDetailID = resultSet.getString("orderDetailID");
+				OrderDetail orderDetail = getSmartphoneOrderDetail(orderDetailID);
+				if(orderDetail != null) {
+					orderDetails.add(orderDetail);
+				}
+			}
+			
+		}catch(SQLException se) {
+			se.printStackTrace();
+		}finally {
+			if(connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {}
+			}
+		}
+		
+		return orderDetails;
+		
+	}
 	
 	public OrderDetail addBookOrderDetail(String odid,String orderID, String productID, double orderedQuantity) {
 			
