@@ -11,7 +11,7 @@ import com.lsmp.mp.order.status.OrderStatus;
 public class Complete extends Order implements OrderStatus{
 
 	private String pickupLocation;
-	private boolean isDelivered;
+	private int isDelivered;
 	
 	public String getPickupLocation() {
 		return pickupLocation;
@@ -19,17 +19,17 @@ public class Complete extends Order implements OrderStatus{
 	public void setPickupLocation(String pickupLocation) {
 		this.pickupLocation = pickupLocation;
 	}
-	public boolean isDelivered() {
+	public int isDelivered() {
 		return isDelivered;
 	}
-	public void setDelivered(boolean isDelivered) {
+	public void setDelivered(int isDelivered) {
 		this.isDelivered = isDelivered;
 	}
 	
 	@Override
 	public void status(Order order) {
 		// Complete status set here
-		isDelivered = true;
+		isDelivered = 1;
 		order.setStatus(this);
 	}
 	

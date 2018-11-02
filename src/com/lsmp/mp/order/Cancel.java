@@ -9,20 +9,20 @@ import com.lsmp.mp.order.status.OrderStatus;
  */
 public class Cancel extends Order implements OrderStatus {
 
-	private boolean refund;
+	private int refund;
 
-	public boolean isRefund() {
+	public int isRefund() {
 		return refund;
 	}
 
-	public void setRefund(boolean refund) {
+	public void setRefund(int refund) {
 		this.refund = refund;
 	}
 
 	@Override
 	public void status(Order order) {
 		//Cancel status goes here
-		refund = true;
+		refund = 1;
 		order.setStatus(this);	
 	}
 	

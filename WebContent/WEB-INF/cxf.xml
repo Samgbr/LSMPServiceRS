@@ -294,6 +294,50 @@
 	</jaxrs:server>
 	
 	
+	<jaxrs:server name="OrderInProcessService" address="http://localhost:8082/OrderInProcess">
+		<jaxrs:serviceBeans>
+			<ref bean="orderInProcessServiceRest" />
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<ref bean="jacksonProvider" />
+		</jaxrs:providers> 
+
+		<jaxrs:schemaLocations>
+			<jaxrs:schemaLocation>com.lsmp.mp.order.service.representation.OrderInProcessRequest</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.lsmp.mp.order.service.representation.OrderInProcessRepresentation</jaxrs:schemaLocation>
+		</jaxrs:schemaLocations>
+
+	</jaxrs:server>
+	
+	<jaxrs:server name="OrderCompleteService" address="http://localhost:8082/OrderComplete">
+		<jaxrs:serviceBeans>
+			<ref bean="orderCompleteServiceRest" />
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<ref bean="jacksonProvider" />
+		</jaxrs:providers> 
+
+		<jaxrs:schemaLocations>
+			<jaxrs:schemaLocation>com.lsmp.mp.order.service.representation.OrderCompleteRequest</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.lsmp.mp.order.service.representation.OrderCompleteRepresentation</jaxrs:schemaLocation>
+		</jaxrs:schemaLocations>
+
+	</jaxrs:server>
+	<jaxrs:server name="OrderCancelService" address="http://localhost:8082/OrderCancel">
+		<jaxrs:serviceBeans>
+			<ref bean="orderCancelServiceRest" />
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<ref bean="jacksonProvider" />
+		</jaxrs:providers> 
+
+		<jaxrs:schemaLocations>
+			<jaxrs:schemaLocation>com.lsmp.mp.order.service.representation.OrderCancelRequest</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.lsmp.mp.order.service.representation.OrderCancelRepresentation</jaxrs:schemaLocation>
+		</jaxrs:schemaLocations>
+
+	</jaxrs:server>
+	
 	<bean id="customerServiceRest" class="com.lsmp.mp.customer.service.CustomerResource" />
 	<bean id="partnerServiceRest" class="com.lsmp.mp.partner.service.PartnerResource" />
 	<bean id="partnerAddressServiceRest" class="com.lsmp.mp.partner.service.PartnerAddressResource" />
@@ -313,5 +357,8 @@
   	<bean id="orderServiceRest" class="com.lsmp.mp.order.service.OrderResource" />
   	<bean id="bookOrderDetailServiceRest" class="com.lsmp.mp.order.service.BookOrderDetailResource" />
   	<bean id="smartphoneOrderDetailServiceRest" class="com.lsmp.mp.order.service.SmartphoneOrderDetailResource" />
+  	<bean id="orderInProcessServiceRest" class="com.lsmp.mp.order.service.OrderInProcessResource" />
+  	<bean id="orderCompleteServiceRest" class="com.lsmp.mp.order.service.OrderCompleteResource" />
+  	<bean id="orderCancelServiceRest" class="com.lsmp.mp.order.service.OrderCancelResource" />
   
 </beans>

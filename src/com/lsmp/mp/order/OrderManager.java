@@ -160,18 +160,18 @@ public class OrderManager {
 	}
 
 	public void packagePicked() {
-		processing.setPicked(true);
+		processing.setPicked(1);
 	}
 	
 	public void packagePacked() {
-		processing.setPacked(true);
+		processing.setPacked(1);
 	}
 	
 	public void orderRefund() {
-		cancel.setRefund(true);
+		cancel.setRefund(1);
 	}
 	public void deliverdToPickupLocation() {
-		processing.setDeliverdToPickupLocation(true);
+		processing.setDeliverdToPickupLocation(1);
 	}
 	
 	public void orderPickupLocation(String location) {
@@ -179,6 +179,6 @@ public class OrderManager {
 	}
 	
 	public void orderDelivered() {
-		complete.setDelivered(true);
+		complete.setDelivered(1);
 	}
 }

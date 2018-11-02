@@ -9,26 +9,26 @@ import com.lsmp.mp.order.status.OrderStatus;
  */
 public class InProcess extends Order implements OrderStatus{
 
-	private boolean isPicked;
-	private boolean isPacked;
-	private boolean deliverdToPickupLocation;
+	private int isPicked;
+	private int isPacked;
+	private int deliverdToPickupLocation;
 	
-	public boolean isPicked() {
+	public int isPicked() {
 		return isPicked;
 	}
-	public void setPicked(boolean isPicked) {
+	public void setPicked(int isPicked) {
 		this.isPicked = isPicked;
 	}
-	public boolean isPacked() {
+	public int isPacked() {
 		return isPacked;
 	}
-	public void setPacked(boolean isPacked) {
+	public void setPacked(int isPacked) {
 		this.isPacked = isPacked;
 	}
-	public boolean isDeliverdToPickupLocation() {
+	public int isDeliverdToPickupLocation() {
 		return deliverdToPickupLocation;
 	}
-	public void setDeliverdToPickupLocation(boolean deliverdToPickupLocation) {
+	public void setDeliverdToPickupLocation(int deliverdToPickupLocation) {
 		this.deliverdToPickupLocation = deliverdToPickupLocation;
 	}
 	
