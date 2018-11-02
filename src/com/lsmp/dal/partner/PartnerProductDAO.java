@@ -124,12 +124,12 @@ public class PartnerProductDAO {
 		try {
 			Statement selectStatement = connection.createStatement();
 			
-			String selectQuery = "SELECT * from productPartner WHERE WHERE smartphoneProductID IS NOT NULL";
+			String selectQuery = "SELECT * from productPartner WHERE smartphoneProductID IS NOT NULL";
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			
 			while(resultSet.next()) {
-				String productID = resultSet.getString("bookProductID");
-				PartnerProduct partnerProduct = getPartnerBookProfileBYProductID(productID);
+				String productID = resultSet.getString("smartphoneProductID");
+				PartnerProduct partnerProduct = getPartnerSmarphoneProfileBYProductID(productID);
 				if(partnerProduct != null) {
 					partnerProducts.add(partnerProduct);
 				}

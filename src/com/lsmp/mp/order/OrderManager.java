@@ -17,9 +17,24 @@ public class OrderManager {
 		return oDAO.getOrderWithDetail(id);
 	}
 	
+	public Order getOrder(String id) {
+		return oDAO.getOrder(id);
+	}
+	
+	public Set<Order> getAllOrders() {
+		return oDAO.getAllOrders();
+	}
+	
 	public Order addBookOrder(String oid, String profileID, String orderDate, String shipAddressID, Set<OrderDetail> orderDetails) {
 		
 		Order order = oDAO.addBookOrder(oid, profileID, orderDate, shipAddressID, orderDetails);
+		
+		return order;
+	}
+	
+	public Order addOrder(String oid, String profileID, String orderDate, String shipAddressID) {
+		
+		Order order = oDAO.addOrder(oid, profileID, orderDate, shipAddressID);
 		
 		return order;
 	}
@@ -31,7 +46,7 @@ public class OrderManager {
 		return order;
 	}
 
-	public void updateOrder(String id, String profileID, String orderDate, String shipAddressID, Set<OrderDetail> orderDetails) {
+	public void updateOrder(String id, String profileID, String orderDate, String shipAddressID) {
 		oDAO.updateOrder(id, profileID, orderDate, shipAddressID);
 	}
 
@@ -43,15 +58,29 @@ public class OrderManager {
 	public OrderDetail getOrderDetail(String id) {
 		return odDAO.getOrderDetail(id);
 	}
-	
+	/*
 	public Set<OrderDetail> getAllOrderDetailsByProfileID(String pid) {
 		return odDAO.getAllOrderDetailsByProfileID(pid);
-	}
+	} */
 	
-	public Set<OrderDetail> getAllOrderDetailsByOrderID(String id) {
-		return odDAO.getAllOrderDetailsByOrderID(id);
+	public Set<OrderDetail> getAllBookOrderDetailsByOrderID(String id) {
+		return odDAO.getAllBookOrderDetailsByOrderID(id);
 	}
-	
+	public Set<OrderDetail> getAllSmartphoneOrderDetailsByOrderID(String id) {
+		return odDAO.getAllSmartphoneOrderDetailsByOrderID(id);
+	}
+	public OrderDetail getBookOrderDetail(String id) {
+		return odDAO.getBookOrderDetail(id);
+	}
+	public Set<OrderDetail> getAllBookOrderDetails() {
+		return odDAO.getAllBookOrderDetails();
+	}
+	public Set<OrderDetail> getAllSmartphoneOrderDetails() {
+		return odDAO.getAllSmartphoneOrderDetails();
+	}
+	public OrderDetail getSmartphoneOrderDetail(String id) {
+		return odDAO.getSmartphoneOrderDetail(id);
+	}
 	public OrderDetail addBookOrderDetail(String odid, String orderID, String productID, double orderedQuantity) {
 		return odDAO.addBookOrderDetail(odid, orderID, productID, orderedQuantity);
 	}
