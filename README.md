@@ -39,4 +39,6 @@ https://drive.google.com/open?id=19t3fRpdxKS1buoFkO6XKs5yK6TfCJBfv
 + Updated and revised DB schema as per the operational model compatible with OM
 # DB DDL
 https://drive.google.com/open?id=1gKjU8BXtycJypRo7HUS38supncaXSLe-
+# State Machine Diagram
+https://drive.google.com/open?id=1-HlWZ_UnL4JrCJwlkdnw7apwiXRTOtsE
 
