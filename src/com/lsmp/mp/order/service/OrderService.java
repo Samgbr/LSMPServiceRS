@@ -12,7 +12,7 @@ import com.lsmp.mp.order.service.representation.OrderRequest;
 public interface OrderService {
 	
 	//Order representation and request methods goes here
-	public Set<OrderRepresentation> getOrders();
+	//public Set<OrderRepresentation> getOrders();
 	public OrderRepresentation getOrder(String id);
 	public OrderRepresentation createOrder(OrderRequest orderRequest);
 	public Response updateOrder(OrderRequest orderRequest);

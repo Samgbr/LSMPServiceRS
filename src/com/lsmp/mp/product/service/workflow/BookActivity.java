@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.Set;
 
 import com.lsmp.mp.product.Book;
+import com.lsmp.mp.product.Link;
 //import com.lsmp.mp.product.Product;
 import com.lsmp.mp.product.service.representation.BookRepresentation;;
 
@@ -29,7 +30,17 @@ public class BookActivity {
 		bookRepresentation.setAuthor(book.getAuthor());
 		bookRepresentation.setEdition(book.getEdition());		
 		
+		setLinks(bookRepresentation);
+		
 		return bookRepresentation;
+	}
+	
+	private void setLinks(BookRepresentation bookRep) {
+		// Set up the activities that can be performed on orders
+		Link ListOrder = new Link("List", 
+				"http://api.mississippi.com:8080/bookstore/books/order?book_id=" + bookRep.getProductID());
+		
+		bookRep.setLinks();
 	}
 
 	public Set<BookRepresentation> getBooks() {

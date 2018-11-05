@@ -1,7 +1,5 @@
 package com.lsmp.mp.order.service;
 
-import java.util.Set;
-
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -22,15 +20,6 @@ public class OrderResource implements OrderService{
 
 	@GET
 	@Produces({"application/xml" , "application/json"})
-	@Path("/orders")
-	public Set<OrderRepresentation> getOrders() {
-		System.out.println("GET METHOD Request for all Orders .............");
-		OrderActivity orderActivity = new OrderActivity();
-		return orderActivity.getAllOrders();
-	}
-
-	@GET
-	@Produces({"application/xml" , "application/json"})
 	@Path("/order/{oderId}")
 	public OrderRepresentation getOrder(@PathParam("oderId") String id) {
 		System.out.println("GET METHOD Request from Client with Order Request String ............." + id);
@@ -45,7 +34,7 @@ public class OrderResource implements OrderService{
 	public OrderRepresentation createOrder(OrderRequest orderRequest) {
 		System.out.println("POST METHOD Order Request from Client with ............." );		
 		OrderActivity orderActivity = new OrderActivity();
-		return orderActivity.createOrder(orderRequest.getOrderID(), orderRequest.getProfileID(), orderRequest.getOrderDate(), orderRequest.getShipAddressID());
+		return orderActivity.createOrder(orderRequest.getOrderID(), orderRequest.getProfileID(), orderRequest.getOrderDate(), orderRequest.getShipAddressID(),orderRequest.getOrderDetails());
 	}
 
 	@PUT
@@ -55,7 +44,7 @@ public class OrderResource implements OrderService{
 	public Response updateOrder(OrderRequest orderRequest) {
 		System.out.println("PUT METHOD Order Request from Client with ............." );		
 		OrderActivity orderActivity = new OrderActivity();
-		String res = orderActivity.updateOrder(orderRequest.getOrderID(), orderRequest.getProfileID(), orderRequest.getOrderDate(), orderRequest.getShipAddressID());
+		String res = orderActivity.updateOrder(orderRequest.getOrderID(), orderRequest.getProfileID(), orderRequest.getOrderDate(), orderRequest.getShipAddressID(),orderRequest.getOrderDetails());
 		if (res.equals("OK")) {
 			return Response.status(Status.OK).build();
 		}

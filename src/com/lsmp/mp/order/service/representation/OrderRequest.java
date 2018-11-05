@@ -1,9 +1,13 @@
 package com.lsmp.mp.order.service.representation;
 
+import java.util.Set;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+
+import com.lsmp.mp.order.OrderDetail;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -14,7 +18,14 @@ public class OrderRequest {
 	private String profileID;
 	private String orderDate;
 	private String shipAddressID;
-	
+	private Set<OrderDetail> orderDetails;
+		
+	public Set<OrderDetail> getOrderDetails() {
+		return orderDetails;
+	}
+	public void setOrderDetails(Set<OrderDetail> orderDetails) {
+		this.orderDetails = orderDetails;
+	}
 	public String getOrderID() {
 		return orderID;
 	}

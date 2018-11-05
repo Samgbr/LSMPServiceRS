@@ -157,14 +157,14 @@ public final class MarketPlaceServiceClient {
 
 	private static Order oManager(OrderManager orderManager) {
 		//Order and order detail creation
-		OrderDetail orderDetail1 = orderManager.createBookOrderDetail("OD45617","OR88960", "BO45457", 2.0);
-		OrderDetail orderDetail2 = orderManager.createBookOrderDetail("OD45610","OR88960" ,"BO89789", 2.0);
+		OrderDetail orderDetail1 = orderManager.createOrderDetail("OD45617","OR88960", "BO45457", 2.0);
+		OrderDetail orderDetail2 = orderManager.createOrderDetail("OD45610","OR88960" ,"BO89789", 2.0);
 		Set<OrderDetail> details = new HashSet<>();
 		details.add(orderDetail1);
 		details.add(orderDetail2);
-		Order order =orderManager.addBookOrder("OR88960", "SH45451", "01/11/2018", "AD78984",details);
+		Order order =orderManager.addOrder("OR88960", "SH45451", "01/11/2018", "AD78984",details);
 		//Update order
-		orderManager.updateBookOrderDetail("OD45610", "OR88960", "BO89789", 3.0);
+		orderManager.updateOrderDetail("OD45610", "OR88960", "BO89789", 3.0);
 		//Delete order
 		orderManager.deleteOrderDetail("OD45617");
 		orderManager.deleteOrderDetail("OD45610");
