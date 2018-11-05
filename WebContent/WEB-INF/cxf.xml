@@ -57,51 +57,6 @@
 		</jaxrs:schemaLocations>
 
 	</jaxrs:server>
-
-	<jaxrs:server name="ShopperAddressService" address="http://localhost:8082/CustomerAddress">
-		<jaxrs:serviceBeans>
-			<ref bean="customerAddressServiceRest" />
-		</jaxrs:serviceBeans>
-		<jaxrs:providers>
-			<ref bean="jacksonProvider" />
-		</jaxrs:providers> 
-
-		<jaxrs:schemaLocations>
-			<jaxrs:schemaLocation>com.lsmp.mp.customer.service.representation.ShopperAddressRequest</jaxrs:schemaLocation>
-			<jaxrs:schemaLocation>com.lsmp.mp.customer.service.representation.ShopperAddressRepresentation</jaxrs:schemaLocation>
-		</jaxrs:schemaLocations>
-
-	</jaxrs:server>
-	
-	<jaxrs:server name="ShopperBillingService" address="http://localhost:8082/CustomerBilling">
-		<jaxrs:serviceBeans>
-			<ref bean="customerBillingServiceRest" />
-		</jaxrs:serviceBeans>
-		<jaxrs:providers>
-			<ref bean="jacksonProvider" />
-		</jaxrs:providers> 
-
-		<jaxrs:schemaLocations>
-			<jaxrs:schemaLocation>com.lsmp.mp.customer.service.representation.ShopperBillingRequest</jaxrs:schemaLocation>
-			<jaxrs:schemaLocation>com.lsmp.mp.customer.service.representation.ShopperBillingRepresentation</jaxrs:schemaLocation>
-		</jaxrs:schemaLocations>
-
-	</jaxrs:server>
-	
-	<jaxrs:server name="ShopperPhoneService" address="http://localhost:8082/CustomerPhone">
-		<jaxrs:serviceBeans>
-			<ref bean="customerPhoneServiceRest" />
-		</jaxrs:serviceBeans>
-		<jaxrs:providers>
-			<ref bean="jacksonProvider" />
-		</jaxrs:providers> 
-
-		<jaxrs:schemaLocations>
-			<jaxrs:schemaLocation>com.lsmp.mp.customer.service.representation.ShopperPhoneRequest</jaxrs:schemaLocation>
-			<jaxrs:schemaLocation>com.lsmp.mp.customer.service.representation.ShopperPhoneRepresentation</jaxrs:schemaLocation>
-		</jaxrs:schemaLocations>
-
-	</jaxrs:server>
 	
 	<jaxrs:server name="PartnerService" address="http://localhost:8082/Partner">
 		<jaxrs:serviceBeans>
@@ -118,48 +73,6 @@
 
 	</jaxrs:server>
 	
-	<jaxrs:server name="PartnerAddressService" address="http://localhost:8082/PartnerAddress">
-		<jaxrs:serviceBeans>
-			<ref bean="partnerAddressServiceRest" />
-		</jaxrs:serviceBeans>
-		<jaxrs:providers>
-			<ref bean="jacksonProvider" />
-		</jaxrs:providers> 
-
-		<jaxrs:schemaLocations>
-			<jaxrs:schemaLocation>com.lsmp.mp.partner.service.representation.PartnerAddressRequest</jaxrs:schemaLocation>
-			<jaxrs:schemaLocation>com.lsmp.mp.partner.service.representation.PartnerAddressRepresentation</jaxrs:schemaLocation>
-		</jaxrs:schemaLocations>
-
-	</jaxrs:server>
-	<jaxrs:server name="PartnerBillingService" address="http://localhost:8082/PartnerBilling">
-		<jaxrs:serviceBeans>
-			<ref bean="partnerBillingServiceRest" />
-		</jaxrs:serviceBeans>
-		<jaxrs:providers>
-			<ref bean="jacksonProvider" />
-		</jaxrs:providers> 
-
-		<jaxrs:schemaLocations>
-			<jaxrs:schemaLocation>com.lsmp.mp.partner.service.representation.PartnerBillingRequest</jaxrs:schemaLocation>
-			<jaxrs:schemaLocation>com.lsmp.mp.partner.service.representation.PartnerBillingRepresentation</jaxrs:schemaLocation>
-		</jaxrs:schemaLocations>
-
-	</jaxrs:server>
-	<jaxrs:server name="PartnerPhoneService" address="http://localhost:8082/PartnerPhone">
-		<jaxrs:serviceBeans>
-			<ref bean="partnerPhoneServiceRest" />
-		</jaxrs:serviceBeans>
-		<jaxrs:providers>
-			<ref bean="jacksonProvider" />
-		</jaxrs:providers> 
-
-		<jaxrs:schemaLocations>
-			<jaxrs:schemaLocation>com.lsmp.mp.partner.service.representation.PartnerPhoneRequest</jaxrs:schemaLocation>
-			<jaxrs:schemaLocation>com.lsmp.mp.partner.service.representation.PartnerPhoneRepresentation</jaxrs:schemaLocation>
-		</jaxrs:schemaLocations>
-
-	</jaxrs:server>
 	<jaxrs:server name="BookInventoryService" address="http://localhost:8082/BookInventory">
 		<jaxrs:serviceBeans>
 			<ref bean="bookInventoryServiceRest" />
@@ -175,35 +88,21 @@
 
 	</jaxrs:server>
 	
-	<jaxrs:server name="BookReviewService" address="http://localhost:8082/BookReview">
+	<jaxrs:server name="ProductReviewService" address="http://localhost:8082/ProductReview">
 		<jaxrs:serviceBeans>
-			<ref bean="bookReviewServiceRest" />
+			<ref bean="productReviewServiceRest" />
 		</jaxrs:serviceBeans>
 		<jaxrs:providers>
 			<ref bean="jacksonProvider" />
 		</jaxrs:providers> 
 
 		<jaxrs:schemaLocations>
-			<jaxrs:schemaLocation>com.lsmp.mp.product.review.service.representation.BookReviewRequest</jaxrs:schemaLocation>
-			<jaxrs:schemaLocation>com.lsmp.mp.product.review.service.representation.BookReviewRepresentation</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.lsmp.mp.product.review.service.representation.ProductReviewRequest</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.lsmp.mp.product.review.service.representation.ProductReviewRepresentation</jaxrs:schemaLocation>
 		</jaxrs:schemaLocations>
 
 	</jaxrs:server>
 	
-		<jaxrs:server name="SmartPhoneReviewService" address="http://localhost:8082/SmartPhoneReview">
-		<jaxrs:serviceBeans>
-			<ref bean="smartPhoneReviewServiceRest" />
-		</jaxrs:serviceBeans>
-		<jaxrs:providers>
-			<ref bean="jacksonProvider" />
-		</jaxrs:providers> 
-
-		<jaxrs:schemaLocations>
-			<jaxrs:schemaLocation>com.lsmp.mp.product.review.service.representation.SmartPhoneReviewRequest</jaxrs:schemaLocation>
-			<jaxrs:schemaLocation>com.lsmp.mp.product.review.service.representation.SmartPhoneReviewRepresentation</jaxrs:schemaLocation>
-		</jaxrs:schemaLocations>
-
-	</jaxrs:server>
 	<jaxrs:server name="SmartphoneInventoryService" address="http://localhost:8082/SmartphoneInventory">
 		<jaxrs:serviceBeans>
 			<ref bean="smartphoneInventoryServiceRest" />
@@ -310,17 +209,10 @@
 	
 	<bean id="customerServiceRest" class="com.lsmp.mp.customer.service.CustomerResource" />
 	<bean id="partnerServiceRest" class="com.lsmp.mp.partner.service.PartnerResource" />
-	<bean id="partnerAddressServiceRest" class="com.lsmp.mp.partner.service.PartnerAddressResource" />
-	<bean id="partnerBillingServiceRest" class="com.lsmp.mp.partner.service.PartnerBillingResource" />
-	<bean id="partnerPhoneServiceRest" class="com.lsmp.mp.partner.service.PartnerPhoneResource" />
 	<bean id="bookServiceRest" class="com.lsmp.mp.product.service.BookResource" />
 	<bean id="bookInventoryServiceRest" class="com.lsmp.mp.product.service.BookInventoryResource" />
 	<bean id="smartphoneServiceRest" class="com.lsmp.mp.product.service.SmartphoneResource" />
-  	<bean id="customerAddressServiceRest" class="com.lsmp.mp.customer.service.ShopperAddressResource" />
-  	<bean id="customerBillingServiceRest" class="com.lsmp.mp.customer.service.ShopperBillingResource" />
-  	<bean id="customerPhoneServiceRest" class="com.lsmp.mp.customer.service.ShopperPhoneResource" />
-  	<bean id="bookReviewServiceRest" class="com.lsmp.mp.product.review.service.BookReviewResource" />
-  	<bean id="smartPhoneReviewServiceRest" class="com.lsmp.mp.product.review.service.SmartPhoneReviewResource" />
+  	<bean id="productReviewServiceRest" class="com.lsmp.mp.product.review.service.ProductReviewResource" />
   	<bean id="smartphoneInventoryServiceRest" class="com.lsmp.mp.product.service.SmartphoneInventoryResource" />
   	<bean id="partnerBookServiceRest" class="com.lsmp.mp.partner.service.PartnerBookResource" />
   	<bean id="partnerSmartphoneServiceRest" class="com.lsmp.mp.partner.service.PartnerSmartphoneResource" />

@@ -1,9 +1,15 @@
 package com.lsmp.mp.customer.service.representation;
 
+import java.util.Set;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+
+import com.lsmp.mp.customer.Address;
+import com.lsmp.mp.customer.Bill;
+import com.lsmp.mp.customer.Phone;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -18,7 +24,28 @@ public class CustomerRequest {
 	private String email;
 	private String password;
 	private String shopperType;
+	private Set<Address> addresses;
+	private Set<Phone> phones;
+	private Set<Bill> bills;
 	
+	public Set<Address> getAddresses() {
+		return addresses;
+	}
+	public void setAddresses(Set<Address> addresses) {
+		this.addresses = addresses;
+	}
+	public Set<Phone> getPhones() {
+		return phones;
+	}
+	public void setPhones(Set<Phone> phones) {
+		this.phones = phones;
+	}
+	public Set<Bill> getBills() {
+		return bills;
+	}
+	public void setBills(Set<Bill> bills) {
+		this.bills = bills;
+	}
 	public String getProfileID() {
 		return profileID;
 	}

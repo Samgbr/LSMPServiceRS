@@ -13,7 +13,7 @@ import com.lsmp.mp.product.review.ProductReview;
 public class ProductReviewDAO {
 	
 	
-	public ProductReview getBookReviewByProfileIDandProductID(String id, String pid) {
+	public ProductReview getProductReviewByProfileIDandProductID(String id, String pid) {
 		String productID="";
 		String profileID="";
 		String review="";
@@ -24,10 +24,10 @@ public class ProductReviewDAO {
 		try {
 			Statement selectStatement = connection.createStatement();
 			
-			String selectQuery = "SELECT * from productReview where bookProductID='" + id +"' AND profileID='" + pid +"'";
+			String selectQuery = "SELECT * from productReview where productID='" + id +"' AND profileID='" + pid +"'";
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			resultSet.next();
-			productID= resultSet.getString("bookProductID");
+			productID= resultSet.getString("productID");
 			profileID = resultSet.getString("profileID");
 			review = resultSet.getString("review");
 			rating = resultSet.getDouble("rating");
@@ -42,13 +42,13 @@ public class ProductReviewDAO {
 			}
 		}
 		ProductReview productReview = new ProductReview();
-		productReview.setBookProductID(productID);
+		productReview.setProductID(productID);
 		productReview.setProfileID(profileID);
 		productReview.setReview(review);
 		productReview.setRating(rating);
 		return productReview;	
 	}
-	
+	/*
 	public ProductReview getSmartphoneReviewByProfileIDandProductID(String id, String pid) {
 		String smartphoneProductID="";
 		String profileID="";
@@ -83,9 +83,9 @@ public class ProductReviewDAO {
 		productReview.setReview(review);
 		productReview.setRating(rating);
 		return productReview;	
-	}
+	}  */
 	
-	public Set<ProductReview> getAllBookReviews() {
+	public Set<ProductReview> getAllProductReviews() {
 
 		
 		Connection connection = DBConnect.getDatabaseConnection();
@@ -94,13 +94,13 @@ public class ProductReviewDAO {
 		try {
 			Statement selectStatement = connection.createStatement();
 			
-			String selectQuery = "SELECT * from productReview WHERE bookProductID IS NOT NULL";
+			String selectQuery = "SELECT * from productReview";
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			
 			while(resultSet.next()) {
-				String productID = resultSet.getString("bookProductID");
+				String productID = resultSet.getString("productID");
 				String profileID = resultSet.getString("profileID");
-				ProductReview productReview = getBookReviewByProfileIDandProductID(productID,profileID);
+				ProductReview productReview = getProductReviewByProfileIDandProductID(productID,profileID);
 				if(productReview != null) {
 					productReviews.add(productReview);
 				}
@@ -119,7 +119,7 @@ public class ProductReviewDAO {
 		return productReviews;
 		
 	}
-	
+	/*
 	public Set<ProductReview> getAllSmartPhoneReviews() {
 
 		
@@ -153,14 +153,14 @@ public class ProductReviewDAO {
 		
 		return productReviews;
 		
-	}
+	}  */
 
 	
-	public ProductReview addBookReview(String id, String pid, String prid, String review,double rating) {
+	public ProductReview addProductReview(String id, String pid, String prid, String review,double rating) {
 			
 			ProductReview ProductReview = new ProductReview();
 			ProductReview.setProductReviewID(id);
-			ProductReview.setBookProductID(pid);
+			ProductReview.setProductID(pid);
 			ProductReview.setProfileID(prid);
 			ProductReview.setRating(rating);
 			ProductReview.setReview(review);
@@ -168,7 +168,7 @@ public class ProductReviewDAO {
 			try {
 				Statement insertStatement = connection.createStatement();
 				
-				String insertQuery = "INSERT INTO productReview(productReviewID,bookProductID,profileID,review,rating) "
+				String insertQuery = "INSERT INTO productReview(productReviewID,productID,profileID,review,rating) "
 						+ "VALUES('"+id+"','"+pid+"','"+prid+"','"+review+"','"+rating+"')";
 				insertStatement.executeUpdate(insertQuery);
 			
@@ -185,7 +185,7 @@ public class ProductReviewDAO {
 			
 			return ProductReview;
 		}
-
+	/*
 	public ProductReview addSmartphoneReview(String id, String pid, String prid, String review,double rating) {
 		
 		ProductReview ProductReview = new ProductReview();
@@ -214,13 +214,14 @@ public class ProductReviewDAO {
 		}
 		
 		return ProductReview;
-	}
-	public void updateBookReview(String id, String pid, String review,double rating) {
+	}  */
+	
+	public void updateProductReview(String id, String pid, String review,double rating) {
 		Connection connection = DBConnect.getDatabaseConnection();
 		try {
 			Statement updateStatement = connection.createStatement();
 			
-			String updateQuery = "UPDATE productReview SET review='"+review+"', rating='"+rating+"'  WHERE bookProductID='"+id+"' AND profileID='"+pid+"'";
+			String updateQuery = "UPDATE productReview SET review='"+review+"', rating='"+rating+"'  WHERE productID='"+id+"' AND profileID='"+pid+"'";
 			updateStatement.executeUpdate(updateQuery);	
 			
 		}catch(SQLException se) {
@@ -233,7 +234,7 @@ public class ProductReviewDAO {
 			}
 		}
 	}
-	
+	/*
 	public void updateSmartphoneReview(String id, String pid, String review,double rating) {
 		Connection connection = DBConnect.getDatabaseConnection();
 		try {
@@ -251,7 +252,7 @@ public class ProductReviewDAO {
 				} catch (SQLException e) {}
 			}
 		}
-	}
+	}  */
 	
 	public void deleteProductReview(String id) {
 		Connection connection = DBConnect.getDatabaseConnection();

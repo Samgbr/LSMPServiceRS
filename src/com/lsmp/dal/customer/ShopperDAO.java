@@ -360,12 +360,12 @@ public class ShopperDAO {
 		try {
 			Statement deleteStatement = connection.createStatement();
 			
-			String deleteQuery = "DELETE FROM shopper WHERE profileID='"+id+"'";
-			deleteStatement.executeUpdate(deleteQuery);	
-			
 			addressDAO.deleteShopperAddress(id);
 			phoneDAO.deleteShopperPhone(id);
 			billInfoDAO.deleteShopperBillingInfo(id);
+			
+			String deleteQuery = "DELETE FROM shopper WHERE profileID='"+id+"'";
+			deleteStatement.executeUpdate(deleteQuery);	
 			
 		}catch(SQLException se) {
 			se.printStackTrace();

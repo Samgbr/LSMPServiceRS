@@ -332,12 +332,12 @@ public class PartnerDAO {
 			try {
 				Statement deleteStatement = connection.createStatement();
 				
-				String deleteQuery = "DELETE FROM partner WHERE profileID='"+id+"'";
-				deleteStatement.executeUpdate(deleteQuery);	
-				
 				addressDAO.deletePartnerAddress(id);
 				phoneDAO.deletePartnerPhone(id);
 				billInfoDAO.deletePartnerBillingInfo(id);
+				
+				String deleteQuery = "DELETE FROM partner WHERE profileID='"+id+"'";
+				deleteStatement.executeUpdate(deleteQuery);	
 				
 			}catch(SQLException se) {
 				se.printStackTrace();

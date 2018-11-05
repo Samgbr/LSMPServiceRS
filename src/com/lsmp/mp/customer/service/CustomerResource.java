@@ -39,7 +39,7 @@ public class CustomerResource implements CustomerService {
 		CustomerActivity customerActivity = new CustomerActivity();
 		return customerActivity.createShopper(customerRequest.getProfileID(),customerRequest.getLoginID(),customerRequest.getFirstName()
 				, customerRequest.getMiddleName(), customerRequest.getLastName(), customerRequest.getEmail(), customerRequest.getPassword()
-				, customerRequest.getShopperType());
+				, customerRequest.getShopperType(),customerRequest.getAddresses(),customerRequest.getPhones(),customerRequest.getBills());
 	}
 
 	
@@ -52,7 +52,7 @@ public class CustomerResource implements CustomerService {
 		CustomerActivity customerActivity = new CustomerActivity();
 		String res = customerActivity.updateShopper(customerRequest.getProfileID(),customerRequest.getLoginID(),customerRequest.getFirstName()
 				, customerRequest.getMiddleName(), customerRequest.getLastName(), customerRequest.getEmail(), customerRequest.getPassword()
-				, customerRequest.getShopperType());
+				, customerRequest.getShopperType(),customerRequest.getAddresses(),customerRequest.getPhones(),customerRequest.getBills());
 		if (res.equals("OK")) {
 			return Response.status(Status.OK).build();
 		}

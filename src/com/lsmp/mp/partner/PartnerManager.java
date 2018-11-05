@@ -17,6 +17,10 @@ private static PartnerProductDAO ppDAO = new PartnerProductDAO();
 		return pDAO.getPartnerProfile(id);
 	}
 	
+	public Set<Partner> getAllPartnerProfiles() {
+		return pDAO.getAllPartnerProfiles();
+	}
+	
 	public Set<Partner> getAllPartner() {
 		return pDAO.getAllPartner();
 	}

@@ -287,7 +287,7 @@ public class PhoneDAO {
 		try {
 			Statement deleteStatement = connection.createStatement();
 			
-			String deleteQuery = "DELETE FROM phone WHERE phoneID='"+id+"'";
+			String deleteQuery = "DELETE FROM phone WHERE shopperProfileID='"+id+"'";
 			deleteStatement.executeUpdate(deleteQuery);	
 						
 		}catch(SQLException se) {
@@ -307,7 +307,7 @@ public class PhoneDAO {
 		try {
 			Statement deleteStatement = connection.createStatement();
 			
-			String deleteQuery = "DELETE FROM phone WHERE phoneID='"+id+"'";
+			String deleteQuery = "DELETE FROM phone WHERE partnerProfileID='"+id+"'";
 			deleteStatement.executeUpdate(deleteQuery);	
 						
 		}catch(SQLException se) {

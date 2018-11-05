@@ -5,14 +5,16 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-@XmlRootElement
+@XmlRootElement(name = "productReviewRequest")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
 
-public class SmartPhoneReviewRequest {
+
+public class ProductReviewRepresentation {
+	
 	private String productReviewID;
+	private String productID;
 	private String profileID;
-	private String smartphoneProductID;
 	private String review;
 	private double rating;
 	
@@ -22,17 +24,17 @@ public class SmartPhoneReviewRequest {
 	public void setProductReviewID(String productReviewID) {
 		this.productReviewID = productReviewID;
 	}
+	public String getProductID() {
+		return productID;
+	}
+	public void setProductID(String productID) {
+		this.productID = productID;
+	}
 	public String getProfileID() {
 		return profileID;
 	}
 	public void setProfileID(String profileID) {
 		this.profileID = profileID;
-	}
-	public String getSmartphoneProductID() {
-		return smartphoneProductID;
-	}
-	public void setSmartphoneProductID(String smartphoneProductID) {
-		this.smartphoneProductID = smartphoneProductID;
 	}
 	public String getReview() {
 		return review;
@@ -46,6 +48,7 @@ public class SmartPhoneReviewRequest {
 	public void setRating(double rating) {
 		this.rating = rating;
 	}
-
+	
+	
 
 }
