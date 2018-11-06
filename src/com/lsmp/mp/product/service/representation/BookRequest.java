@@ -17,7 +17,14 @@ public class BookRequest {
 	private String publisher;
 	private String author;
 	private String edition;
-	
+	private String partnerID;
+		
+	public String getPartnerID() {
+		return partnerID;
+	}
+	public void setPartnerID(String partnerID) {
+		this.partnerID = partnerID;
+	}
 	public String getProductID() {
 		return productID;
 	}

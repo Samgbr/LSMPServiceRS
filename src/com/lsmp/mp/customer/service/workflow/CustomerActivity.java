@@ -4,7 +4,10 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import com.lsmp.mp.customer.Address;
+import com.lsmp.mp.customer.Bill;
 import com.lsmp.mp.customer.CustomerManager;
+import com.lsmp.mp.customer.Phone;
 import com.lsmp.mp.customer.Shopper;
 import com.lsmp.mp.customer.service.representation.CustomerRepresentation;
 
@@ -37,7 +40,9 @@ public class CustomerActivity {
   		  customerRepresentation.setLastName(shopper.getLastName());
   		  customerRepresentation.setEmail(shopper.getEmail());
   		  customerRepresentation.setShopperType(shopper.getShopperType());
-          
+  		  customerRepresentation.setAddresses(shopper.getAddresses());
+  		  customerRepresentation.setBills(shopper.getBillingsInfo());
+  		  customerRepresentation.setPhones(shopper.getPhones());
           //now add this representation in the list
   		shopperRepresentations.add(customerRepresentation);
         }
@@ -56,14 +61,17 @@ public class CustomerActivity {
 		customerRepresentation.setLastName(shopper.getLastName());
 		customerRepresentation.setEmail(shopper.getEmail());
 		customerRepresentation.setShopperType(shopper.getShopperType());
+		customerRepresentation.setAddresses(shopper.getAddresses());
+		customerRepresentation.setBills(shopper.getBillingsInfo());
+		customerRepresentation.setPhones(shopper.getPhones());
 		
 		return customerRepresentation;
 	}
 	
 	//new changes by Nasr
-	public CustomerRepresentation createShopper(String id, String loginID, String firstName, String middleName, String lastName, String email, String password, String shopperType) {
+	public CustomerRepresentation createShopper(String id, String loginID, String firstName, String middleName, String lastName, String email, String password, String shopperType,Set<Address> addresses, Set<Phone> phones, Set<Bill> bills) {
 		
-		Shopper shopper=customerManager.addShopper(id, loginID, firstName, middleName, lastName, email, password, shopperType);
+		Shopper shopper=customerManager.addShopperProfile(id, loginID, firstName, middleName, lastName, email, password, shopperType, addresses, phones, bills);
 		
 
 		CustomerRepresentation customerRepresentation = new CustomerRepresentation();
@@ -75,20 +83,23 @@ public class CustomerActivity {
 		customerRepresentation.setEmail(shopper.getEmail());
 		customerRepresentation.setPassword(shopper.getPassword());
 		customerRepresentation.setShopperType(shopper.getShopperType());
+		customerRepresentation.setAddresses(shopper.getAddresses());
+		customerRepresentation.setBills(shopper.getBillingsInfo());
+		customerRepresentation.setPhones(shopper.getPhones());
 		
 		return customerRepresentation;
 	}
 	
 	public String deleteShopper(String id) {
 		
-		customerManager.deleteShopper(id);
+		customerManager.deleteShopperProfile(id);
 		return "OK";
 		
 	}
 
 	public String updateShopper(String id, String loginID, String firstName, String middleName,
-			String lastName, String email, String password, String shopperType) {
-		customerManager.updateShopper(id, loginID, firstName, middleName, lastName, email, password, shopperType);
+			String lastName, String email, String password, String shopperType,Set<Address> addresses, Set<Phone> phones, Set<Bill> bills) {
+		customerManager.updateShopperProfile(id, loginID, firstName, middleName, lastName, email, password, shopperType, addresses, phones, bills);
 		return "OK";
 	}
 

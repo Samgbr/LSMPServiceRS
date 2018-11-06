@@ -1,10 +1,9 @@
 package com.lsmp.mp.order.service.workflow;
 
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 import com.lsmp.mp.order.Order;
+import com.lsmp.mp.order.OrderDetail;
 import com.lsmp.mp.order.OrderManager;
 import com.lsmp.mp.order.service.representation.OrderRepresentation;
 
@@ -14,54 +13,35 @@ public class OrderActivity {
 	
 	public OrderRepresentation getOrder(String id) {
 		
-		Order order = orderManager.getOrder(id);
+		Order order = orderManager.getOrderWithDetail(id);
 		
 		OrderRepresentation orderRepresentation = new OrderRepresentation();
 		orderRepresentation.setOrderID(order.getOrderID());
 		orderRepresentation.setOrderDate(order.getOrderDate());
 		orderRepresentation.setProfileID(order.getProfileID());
 		orderRepresentation.setShipAddressID(order.getShipAddressID());
+		orderRepresentation.setOrderDetails(order.getOrderDetails());
 		
 		return orderRepresentation;
 	}
 
-	public Set<OrderRepresentation> getAllOrders() {
+	public OrderRepresentation createOrder(String oid, String profileID, String orderDate, String shipAddressID,Set<OrderDetail> orderDetails) {
 		
-		Set<Order> orders = new HashSet<Order>();
-		Set<OrderRepresentation> orderRepresentations = new HashSet<OrderRepresentation>();
-		
-		orders = orderManager.getAllOrders();
-		
-		Iterator<Order> it = orders.iterator();
-		while(it.hasNext()) {
-          Order order = (Order)it.next();
-          OrderRepresentation orderRepresentation = new OrderRepresentation();
-  		  orderRepresentation.setOrderID(order.getOrderID());
-  		  orderRepresentation.setOrderDate(order.getOrderDate());
-  		  orderRepresentation.setProfileID(order.getProfileID());
-  		  orderRepresentation.setShipAddressID(order.getShipAddressID());
-          
-          //now add this representation in the list
-  		orderRepresentations.add(orderRepresentation);
-        }
-		return orderRepresentations;
-	}
-
-	public OrderRepresentation createOrder(String oid, String profileID, String orderDate, String shipAddressID) {
-		
-		Order order = orderManager.addOrder(oid, profileID, orderDate, shipAddressID);
+		Order order = orderManager.addOrder(oid, profileID, orderDate, shipAddressID, orderDetails);
 		
 		OrderRepresentation orderRepresentation = new OrderRepresentation();
 		orderRepresentation.setOrderID(order.getOrderID());
 		orderRepresentation.setOrderDate(order.getOrderDate());
 		orderRepresentation.setProfileID(order.getProfileID());
 		orderRepresentation.setShipAddressID(order.getShipAddressID());
+		orderRepresentation.setOrderDetails(order.getOrderDetails());
+		orderRepresentation.setOrderDetails(order.getOrderDetails());
         
 		return orderRepresentation;
 	}
 
-	public String updateOrder(String oid, String profileID, String orderDate, String shipAddressID) {
-		orderManager.updateOrder(oid, profileID, orderDate, shipAddressID);
+	public String updateOrder(String oid, String profileID, String orderDate, String shipAddressID,Set<OrderDetail> details) {
+		orderManager.updateOrder(oid, profileID, orderDate, shipAddressID, details);
 		return "OK";
 	}
 

@@ -18,7 +18,14 @@ public class SmartphoneRepresentation {
 	private String ramSize;
 	private String os;
 	private String storageSize;
-	
+	private String partnerID;
+		
+	public String getPartnerID() {
+		return partnerID;
+	}
+	public void setPartnerID(String partnerID) {
+		this.partnerID = partnerID;
+	}
 	public String getProductID() {
 		return productID;
 	}

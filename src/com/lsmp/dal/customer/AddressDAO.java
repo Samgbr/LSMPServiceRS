@@ -312,7 +312,7 @@ public class AddressDAO {
 		try {
 			Statement deleteStatement = connection.createStatement();
 			
-			String deleteQuery = "DELETE FROM address WHERE addressID='"+id+"'";
+			String deleteQuery = "DELETE FROM address WHERE shopperProfileID='"+id+"'";
 			deleteStatement.executeUpdate(deleteQuery);	
 						
 		}catch(SQLException se) {
@@ -332,7 +332,7 @@ public class AddressDAO {
 		try {
 			Statement deleteStatement = connection.createStatement();
 			
-			String deleteQuery = "DELETE FROM address WHERE addressID='"+id+"'";
+			String deleteQuery = "DELETE FROM address WHERE partnerProfileID='"+id+"'";
 			deleteStatement.executeUpdate(deleteQuery);	
 						
 		}catch(SQLException se) {

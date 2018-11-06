@@ -25,6 +25,7 @@ public class SmartphoneDAO {
 		String ramSize = "";
 		String os = "";
 		String storageSize = "";
+		String partnerID="";
 		
 		Connection connection = DBConnect.getDatabaseConnection();
 		
@@ -45,6 +46,7 @@ public class SmartphoneDAO {
 			ramSize = resultSet.getString("ramSize");
 			os = resultSet.getString("os");
 			storageSize = resultSet.getString("storageSize");
+			partnerID = resultSet.getString("partnerID");
 			
 		}catch(SQLException se) {
 			se.printStackTrace();
@@ -66,6 +68,7 @@ public class SmartphoneDAO {
 		smartphone.setRamSize(ramSize);
 		smartphone.setOs(os);
 		smartphone.setStorageSize(storageSize);
+		smartphone.setPartnerID(partnerID);
 		return smartphone;	
 	}
 	
@@ -103,7 +106,7 @@ public class SmartphoneDAO {
 	}
 	
 	public Smartphone addSmartphone(String id, String productName, String description, double purchasePrice, double sellingPrice, 
-				double discount, String displayInch, String brand, String ramSize, String os, String storageSize) {
+				double discount, String displayInch, String brand, String ramSize, String os, String storageSize, String partnerID) {
 			
 			Smartphone smartphone = new Smartphone();
 			/*
@@ -122,13 +125,14 @@ public class SmartphoneDAO {
 		    smartphone.setRamSize(ramSize);
 		    smartphone.setOs(os);
 		    smartphone.setStorageSize(storageSize);
+		    smartphone.setPartnerID(partnerID);
 			
 			Connection connection = DBConnect.getDatabaseConnection();
 			try {
 				Statement insertStatement = connection.createStatement();
 				
-				String insertQuery = "INSERT INTO smartphone(productID,displayInch,brand,ramSize,os,storageSize,productName,description,purchasePrice,sellingPrice,discount) "
-						+ "VALUES('"+id+"','"+displayInch+"','"+brand+"','"+ramSize+"','"+os+"','"+storageSize+"','"+productName+"','"+description+"','"+purchasePrice+"','"+sellingPrice+"','"+discount+"')";
+				String insertQuery = "INSERT INTO smartphone(productID,displayInch,brand,ramSize,os,storageSize,productName,description,purchasePrice,sellingPrice,discount,partnerID) "
+						+ "VALUES('"+id+"','"+displayInch+"','"+brand+"','"+ramSize+"','"+os+"','"+storageSize+"','"+productName+"','"+description+"','"+purchasePrice+"','"+sellingPrice+"','"+discount+"','"+partnerID+"')";
 				insertStatement.executeUpdate(insertQuery);
 			
 				
@@ -146,12 +150,12 @@ public class SmartphoneDAO {
 		}
 
 	public void updateSmartphone(String id, String productName, String description, double purchasePrice, double sellingPrice, 
-			double discount, String displayInch, String brand, String ramSize, String os, String storageSize) {
+			double discount, String displayInch, String brand, String ramSize, String os, String storageSize, String partnerID) {
 		Connection connection = DBConnect.getDatabaseConnection();
 		try {
 			Statement updateStatement = connection.createStatement();
 			
-			String updateQuery = "UPDATE smartphone SET productName='"+productName+"', description='"+description+"', purchasePrice='"+purchasePrice+"',sellingPrice='"+sellingPrice+"',discount='"+discount+"',displayInch='"+displayInch+"',brand='"+brand+"',ramSize='"+ramSize+"',os='"+os+"',storageSize='"+storageSize+"'  WHERE productID='"+id+"'";
+			String updateQuery = "UPDATE smartphone SET productName='"+productName+"', description='"+description+"', partnerID='"+partnerID+"', purchasePrice='"+purchasePrice+"',sellingPrice='"+sellingPrice+"',discount='"+discount+"',displayInch='"+displayInch+"',brand='"+brand+"',ramSize='"+ramSize+"',os='"+os+"',storageSize='"+storageSize+"'  WHERE productID='"+id+"'";
 			updateStatement.executeUpdate(updateQuery);	
 			
 		}catch(SQLException se) {

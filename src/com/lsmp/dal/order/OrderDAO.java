@@ -39,7 +39,7 @@ public class OrderDAO {
 			orderDate = resultSet.getString("orderDate");
 			shipAddressID = resultSet.getString("shipAddressID");
 			
-			orderDetails = orderDetailDAO.getAllBookOrderDetailsByOrderID(id);
+			orderDetails = orderDetailDAO.getAllOrderDetailsByOrderID(id);
 			
 		}catch(SQLException se) {
 			se.printStackTrace();
@@ -127,7 +127,7 @@ public class OrderDAO {
 		
 	}
 	
-	public Order addBookOrder(String oid, String profileID, String orderDate, String shipAddressID, Set<OrderDetail> orderDetails) {
+	public Order addOrder(String oid, String profileID, String orderDate, String shipAddressID, Set<OrderDetail> orderDetails) {
 			
 			Order order = new Order();
 			/*
@@ -149,7 +149,7 @@ public class OrderDAO {
 						+ "VALUES('"+oid+"','"+profileID+"','"+orderDate+"','"+shipAddressID+"','NA')";
 				insertStatement.executeUpdate(insertQuery);
 			
-				orderDetailDAO.addBookOrderDetails(orderDetails);
+				orderDetailDAO.addOrderDetails(orderDetails);
 				
 			}catch(SQLException se) {
 				se.printStackTrace();
@@ -164,84 +164,16 @@ public class OrderDAO {
 			return order;
 		}
 	
-	public Order addOrder(String oid, String profileID, String orderDate, String shipAddressID) {
-		
-		Order order = new Order();
-		/*
-		Random randomGenerator = new Random();
-	    int randomInt = randomGenerator.nextInt(10000);
-	    String id = "OR" + randomInt; */
-	    
-	    order.setOrderID(oid);
-	    order.setOrderDate(orderDate);
-	    order.setProfileID(profileID);
-	    order.setShipAddressID(shipAddressID);
-		
-		Connection connection = DBConnect.getDatabaseConnection();
-		try {
-			Statement insertStatement = connection.createStatement();
-			
-			String insertQuery = "INSERT INTO orderT(orderID,profileID,orderDate,shipAddressID,pickUpLocation) "
-					+ "VALUES('"+oid+"','"+profileID+"','"+orderDate+"','"+shipAddressID+"','NA')";
-			insertStatement.executeUpdate(insertQuery);
-			
-		}catch(SQLException se) {
-			se.printStackTrace();
-		}finally {
-			if(connection != null) {
-				try {
-					connection.close();
-				} catch (SQLException e) {}
-			}
-		}
-		
-		return order;
-	}
-	
-	public Order addSmartphoneOrder(String oid, String profileID, String orderDate, String shipAddressID, Set<OrderDetail> orderDetails) {
-		
-		Order order = new Order();
-		/*
-		Random randomGenerator = new Random();
-	    int randomInt = randomGenerator.nextInt(10000);
-	    String id = "OR" + randomInt; */
-	    
-	    order.setOrderID(oid);
-	    order.setOrderDate(orderDate);
-	    order.setProfileID(profileID);
-	    order.setShipAddressID(shipAddressID);
-	    order.setOrderDetails(orderDetails);
-		
-		Connection connection = DBConnect.getDatabaseConnection();
-		try {
-			Statement insertStatement = connection.createStatement();
-			
-			String insertQuery = "INSERT INTO orderT(orderID,profileID,orderDate,shipAddressID,pickUpLocation) "
-					+ "VALUES('"+oid+"','"+profileID+"','"+orderDate+"','"+shipAddressID+"','NA')";
-			insertStatement.executeUpdate(insertQuery);
-		
-			orderDetailDAO.addSmartphoneOrderDetails(orderDetails);
-			
-		}catch(SQLException se) {
-			se.printStackTrace();
-		}finally {
-			if(connection != null) {
-				try {
-					connection.close();
-				} catch (SQLException e) {}
-			}
-		}
-		
-		return order;
-	}
 
-	public void updateOrder(String id, String profileID, String orderDate, String shipAddressID) {
+	public void updateOrder(String id, String profileID, String orderDate, String shipAddressID, Set<OrderDetail> details) {
 		Connection connection = DBConnect.getDatabaseConnection();
 		try {
 			Statement updateStatement = connection.createStatement();
 			
 			String updateQuery = "UPDATE orderT SET profileID='"+profileID+"', orderDate='"+orderDate+"', shipAddressID='"+shipAddressID+"'  WHERE orderID='"+id+"'";
 			updateStatement.executeUpdate(updateQuery);	
+			
+			orderDetailDAO.updateOrderDetails(id, details);
 			
 		}catch(SQLException se) {
 			se.printStackTrace();
@@ -258,6 +190,8 @@ public class OrderDAO {
 		Connection connection = DBConnect.getDatabaseConnection();
 		try {
 			Statement deleteStatement = connection.createStatement();
+			
+			orderDetailDAO.deleteOrderDetailWithOrderID(id);
 			
 			String deleteQuery = "DELETE FROM orderT WHERE orderID='"+id+"'";
 			deleteStatement.executeUpdate(deleteQuery);	

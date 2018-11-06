@@ -47,7 +47,7 @@ public class PartnerResource implements PartnerService{
 		PartnerActivity partnerActivity = new PartnerActivity();
 		return partnerActivity.createPartner(partnerRequest.getProfileID(),partnerRequest.getLoginID(),partnerRequest.getFirstName()
 				, partnerRequest.getMiddleName(), partnerRequest.getLastName(), partnerRequest.getEmail(), partnerRequest.getPassword()
-				, partnerRequest.getSellerLevel(),partnerRequest.getSellerName());
+				, partnerRequest.getSellerLevel(),partnerRequest.getSellerName(),partnerRequest.getAddresses(),partnerRequest.getPhones(),partnerRequest.getBillingsInfo());
 	}
 
 	@PUT
@@ -59,7 +59,7 @@ public class PartnerResource implements PartnerService{
 		PartnerActivity partnerActivity = new PartnerActivity();
 		String res = partnerActivity.updatePartner(partnerRequest.getProfileID(),partnerRequest.getLoginID(),partnerRequest.getFirstName()
 				, partnerRequest.getMiddleName(), partnerRequest.getLastName(), partnerRequest.getEmail(), partnerRequest.getPassword()
-				, partnerRequest.getSellerLevel(),partnerRequest.getSellerName());
+				, partnerRequest.getSellerLevel(),partnerRequest.getSellerName(),partnerRequest.getAddresses(),partnerRequest.getPhones(),partnerRequest.getBillingsInfo());
 		if (res.equals("OK")) {
 			return Response.status(Status.OK).build();
 		}

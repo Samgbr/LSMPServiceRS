@@ -25,29 +25,29 @@ public class OrderManager {
 		return oDAO.getAllOrders();
 	}
 	
-	public Order addBookOrder(String oid, String profileID, String orderDate, String shipAddressID, Set<OrderDetail> orderDetails) {
+	public Order addOrder(String oid, String profileID, String orderDate, String shipAddressID, Set<OrderDetail> orderDetails) {
 		
-		Order order = oDAO.addBookOrder(oid, profileID, orderDate, shipAddressID, orderDetails);
+		Order order = oDAO.addOrder(oid, profileID, orderDate, shipAddressID, orderDetails);
 		
 		return order;
 	}
-	
+	/*
 	public Order addOrder(String oid, String profileID, String orderDate, String shipAddressID) {
 		
 		Order order = oDAO.addOrder(oid, profileID, orderDate, shipAddressID);
 		
 		return order;
-	}
+	} 
 	
 	public Order addSmartphoneOrder(String oid, String profileID, String orderDate, String shipAddressID, Set<OrderDetail> orderDetails) {
 		
 		Order order = oDAO.addSmartphoneOrder(oid, profileID, orderDate, shipAddressID, orderDetails);
 		
 		return order;
-	}
+	}  */
 
-	public void updateOrder(String id, String profileID, String orderDate, String shipAddressID) {
-		oDAO.updateOrder(id, profileID, orderDate, shipAddressID);
+	public void updateOrder(String id, String profileID, String orderDate, String shipAddressID,Set<OrderDetail> details) {
+		oDAO.updateOrder(id, profileID, orderDate, shipAddressID,details);
 	}
 
 	public void deleteOrder(String id) {
@@ -63,46 +63,49 @@ public class OrderManager {
 		return odDAO.getAllOrderDetailsByProfileID(pid);
 	} */
 	
-	public Set<OrderDetail> getAllBookOrderDetailsByOrderID(String id) {
-		return odDAO.getAllBookOrderDetailsByOrderID(id);
+	public Set<OrderDetail> getAllOrderDetailsByOrderID(String id) {
+		return odDAO.getAllOrderDetailsByOrderID(id);
 	}
+	/*
 	public Set<OrderDetail> getAllSmartphoneOrderDetailsByOrderID(String id) {
 		return odDAO.getAllSmartphoneOrderDetailsByOrderID(id);
 	}
 	public OrderDetail getBookOrderDetail(String id) {
 		return odDAO.getBookOrderDetail(id);
+	} */
+	public Set<OrderDetail> getAllOrderDetails() {
+		return odDAO.getAllOrderDetails();
 	}
-	public Set<OrderDetail> getAllBookOrderDetails() {
-		return odDAO.getAllBookOrderDetails();
-	}
+	/*
 	public Set<OrderDetail> getAllSmartphoneOrderDetails() {
 		return odDAO.getAllSmartphoneOrderDetails();
 	}
 	public OrderDetail getSmartphoneOrderDetail(String id) {
 		return odDAO.getSmartphoneOrderDetail(id);
+	} */
+	public OrderDetail addOrderDetail(String odid, String orderID, String productID, double orderedQuantity) {
+		return odDAO.addOrderDetail(odid, orderID, productID, orderedQuantity);
 	}
-	public OrderDetail addBookOrderDetail(String odid, String orderID, String productID, double orderedQuantity) {
-		return odDAO.addBookOrderDetail(odid, orderID, productID, orderedQuantity);
-	}
-	
+	/*
 	public OrderDetail addSmartphoneOrderDetail(String odid, String orderID, String productID, double orderedQuantity) {
 		return odDAO.addSmartphoneOrderDetail(odid, orderID, productID, orderedQuantity);
-	}
+	} */
 	
-	public void addBookOrderDetails(Set<OrderDetail> orderDetails) {
-		odDAO.addBookOrderDetails(orderDetails);
+	public void addOrderDetails(Set<OrderDetail> orderDetails) {
+		odDAO.addOrderDetails(orderDetails);
 	}
+	/*
 	public void addSmartphoneOrderDetails(Set<OrderDetail> orderDetails) {
 		odDAO.addSmartphoneOrderDetails(orderDetails);
-	}
+	} */
 	
-	public void updateBookOrderDetail(String id, String orderID, String productID, double orderedQuantity) {
-		odDAO.updateBookOrderDetail(id, orderID, productID, orderedQuantity);
+	public void updateOrderDetail(String id, String orderID, String productID, double orderedQuantity) {
+		odDAO.updateOrderDetail(id, orderID, productID, orderedQuantity);
 	}
-	
+	/*
 	public void updateSmartphoneOrderDetail(String id, String orderID, String productID, double orderedQuantity) {
 		odDAO.updateSmartphoneOrderDetail(id, orderID, productID, orderedQuantity);
-	}
+	}  */
 	
 	public void updateOrderInProcess(String id, int isPicked, int isPacked,int deliveredToPickUpLocation) {
 		oDAO.updateOrderInProcess(id, isPicked, isPacked, deliveredToPickUpLocation);
@@ -116,16 +119,19 @@ public class OrderManager {
 	public void deleteOrderDetail(String id) {
 		odDAO.deleteOrderDetail(id);
 	}
+	public void deleteOrderDetailWithOrderID(String id) {
+		odDAO.deleteOrderDetailWithOrderID(id);
+	}
 	
-	public OrderDetail createBookOrderDetail(String orderDetailID, String orderID, String productID, double orderedQuantity) {
+	public OrderDetail createOrderDetail(String orderDetailID, String orderID, String productID, double orderedQuantity) {
 		OrderDetail orderDetail = new OrderDetail();
 		orderDetail.setOrderDetailID(orderDetailID);
-		orderDetail.setBookProductID(productID);
+		orderDetail.setProductID(productID);
 		orderDetail.setOrderID(orderID);
 		orderDetail.setOrderedQuantity(orderedQuantity);
 		return orderDetail;
 	}
-	
+	/*
 	public OrderDetail createSmartphoneOrderDetail(String orderDetailID, String orderID, String productID, double orderedQuantity) {
 		OrderDetail orderDetail = new OrderDetail();
 		orderDetail.setOrderDetailID(orderDetailID);
@@ -133,7 +139,7 @@ public class OrderManager {
 		orderDetail.setOrderID(orderID);
 		orderDetail.setOrderedQuantity(orderedQuantity);
 		return orderDetail;
-	}
+	} */
 	
 	public void processingOrder(Order order) {
 		order.setStatus(processing);

@@ -10,7 +10,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "")
 
 
-public class BookRepresentation {
+public class BookRepresentation extends ProductAbstractRepresentation {
+	
 	private String productID;
 	private double purchasePrice;
 	private double sellingPrice;
@@ -19,7 +20,14 @@ public class BookRepresentation {
 	private String publisher;
 	private String author;
 	private String edition;
+	private String partnerID;
 	
+	public String getPartnerID() {
+		return partnerID;
+	}
+	public void setPartnerID(String partnerID) {
+		this.partnerID = partnerID;
+	}
 	public String getProductID() {
 		return productID;
 	}

@@ -26,6 +26,7 @@ public static ProductManager productManager=new ProductManager();
 		smartphoneRepresentation.setRamSize(smartphone.getRamSize());
 		smartphoneRepresentation.setOs(smartphone.getOs());
 		smartphoneRepresentation.setStorageSize(smartphone.getStorageSize());
+		smartphoneRepresentation.setPartnerID(smartphone.getPartnerID());
 		
 		return smartphoneRepresentation;
 	}
@@ -50,7 +51,8 @@ public static ProductManager productManager=new ProductManager();
   		smartphoneRepresentation.setRamSize(smartphone.getRamSize());
   		smartphoneRepresentation.setOs(smartphone.getOs());
   		smartphoneRepresentation.setStorageSize(smartphone.getStorageSize());
-          
+  		smartphoneRepresentation.setPartnerID(smartphone.getPartnerID());
+  		
           //now add this representation in the list
   		smartphoneRepresentations.add(smartphoneRepresentation);
         }
@@ -63,9 +65,9 @@ public static ProductManager productManager=new ProductManager();
 	}
 
 	public SmartphoneRepresentation createSmartphone(String id, double purchasePrice, double sellingPrice, String displayInch, String brand,
-			String ramSize, String os, String storageSize) {
+			String ramSize, String os, String storageSize, String partnerID) {
 		
-		Smartphone smartphone = productManager.addSmartphone(id, null, null, purchasePrice, sellingPrice, 0.0, displayInch, brand, ramSize, os, storageSize);
+		Smartphone smartphone = productManager.addSmartphone(id, null, null, purchasePrice, sellingPrice, 0.0, displayInch, brand, ramSize, os, storageSize, partnerID);
 		
 		SmartphoneRepresentation smartphoneRepresentation=new SmartphoneRepresentation();
         
@@ -82,9 +84,9 @@ public static ProductManager productManager=new ProductManager();
 	}
 
 	public String updateSmartphone(String id, double purchasePrice, double sellingPrice, String displayInch, String brand,
-			String ramSize, String os, String storageSize) {
+			String ramSize, String os, String storageSize, String partnerID) {
 		
-		productManager.updateSmartphone(id, null, null, purchasePrice, sellingPrice, 0.0, displayInch, brand, ramSize, os, storageSize);
+		productManager.updateSmartphone(id, null, null, purchasePrice, sellingPrice, 0.0, displayInch, brand, ramSize, os, storageSize, partnerID);
 		
 		return "OK";
 	}

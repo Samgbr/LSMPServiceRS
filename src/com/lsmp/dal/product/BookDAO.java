@@ -26,6 +26,7 @@ public class BookDAO {
 		String author = "";
 		String edition = "";
 		String bookType="";
+		String partnerID="";
 		
 		Connection connection = DBConnect.getDatabaseConnection();
 		
@@ -47,6 +48,7 @@ public class BookDAO {
 			author = resultSet.getString("author");
 			edition = resultSet.getString("edition");
 			bookType = resultSet.getString("bookType");
+			partnerID = resultSet.getString("partnerID");
 			
 		}catch(SQLException se) {
 			se.printStackTrace();
@@ -69,6 +71,7 @@ public class BookDAO {
 		book.setAuthor(author);
 		book.setEdition(edition);
 		book.setBookType(bookType);
+		book.setPartnerID(partnerID);
 		return book;	
 	}
 	
@@ -106,7 +109,7 @@ public class BookDAO {
 	}
 	
 	public Book addBook(String bid,String productName, String description, double purchasePrice, double sellingPrice, 
-				double discount, String title, String isbn, String publisher, String author, String edition, String bookType) {
+				double discount, String title, String isbn, String publisher, String author, String edition, String bookType, String partnerID) {
 			
 			Book book = new Book();
 			/*
@@ -126,13 +129,14 @@ public class BookDAO {
 			book.setAuthor(author);
 			book.setEdition(edition);
 			book.setBookType(bookType);
+			book.setPartnerID(partnerID);
 			
 			Connection connection = DBConnect.getDatabaseConnection();
 			try {
 				Statement insertStatement = connection.createStatement();
 				
-				String insertQuery = "INSERT INTO book(productID,isbn,publisher,author,edition,bookType,productName,description,purchasePrice,sellingPrice,discount,title) "
-						+ "VALUES('"+bid+"','"+isbn+"','"+publisher+"','"+author+"','"+edition+"','"+bookType+"','"+productName+"','"+description+"','"+purchasePrice+"','"+sellingPrice+"','"+discount+"','"+title+"')";
+				String insertQuery = "INSERT INTO book(productID,isbn,publisher,author,edition,bookType,productName,description,purchasePrice,sellingPrice,discount,title,partnerID) "
+						+ "VALUES('"+bid+"','"+isbn+"','"+publisher+"','"+author+"','"+edition+"','"+bookType+"','"+productName+"','"+description+"','"+purchasePrice+"','"+sellingPrice+"','"+discount+"','"+title+"','"+partnerID+"')";
 				insertStatement.executeUpdate(insertQuery);
 			
 				
@@ -150,12 +154,12 @@ public class BookDAO {
 		}
 
 	public void updateBook(String id, String productName, String description, double purchasePrice, double sellingPrice, 
-			double discount, String title, String isbn, String publisher, String author, String edition, String bookType) {
+			double discount, String title, String isbn, String publisher, String author, String edition, String bookType, String partnerID) {
 		Connection connection = DBConnect.getDatabaseConnection();
 		try {
 			Statement updateStatement = connection.createStatement();
 			
-			String updateQuery = "UPDATE book SET productName='"+productName+"', description='"+description+"', purchasePrice='"+purchasePrice+"',sellingPrice='"+sellingPrice+"',discount='"+discount+"',title='"+title+"',isbn='"+isbn+"',publisher='"+publisher+"',author='"+author+"',edition='"+edition+"',bookType='"+bookType+"'  WHERE productID='"+id+"'";
+			String updateQuery = "UPDATE book SET productName='"+productName+"', description='"+description+"', partnerID='"+partnerID+"', purchasePrice='"+purchasePrice+"',sellingPrice='"+sellingPrice+"',discount='"+discount+"',title='"+title+"',isbn='"+isbn+"',publisher='"+publisher+"',author='"+author+"',edition='"+edition+"',bookType='"+bookType+"'  WHERE productID='"+id+"'";
 			updateStatement.executeUpdate(updateQuery);	
 			
 		}catch(SQLException se) {

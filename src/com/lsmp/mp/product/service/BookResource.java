@@ -48,7 +48,7 @@ public class BookResource implements BookService {
 		BookActivity bookActivity=new BookActivity();
 		return bookActivity.createBook(bookRequest.getProductID(),bookRequest.getPurchasePrice(),bookRequest.getSellingPrice()
 				, bookRequest.getTitle(), bookRequest.getIsbn(), bookRequest.getPublisher(), bookRequest.getAuthor()
-				, bookRequest.getEdition());
+				, bookRequest.getEdition(),bookRequest.getPartnerID());
 	}
 
 	@PUT
@@ -60,7 +60,7 @@ public class BookResource implements BookService {
 		BookActivity bookActivity=new BookActivity();
 		String res = bookActivity.updateBook(bookRequest.getProductID(),bookRequest.getPurchasePrice(),bookRequest.getSellingPrice()
 				, bookRequest.getTitle(), bookRequest.getIsbn(), bookRequest.getPublisher(), bookRequest.getAuthor()
-				, bookRequest.getEdition());
+				, bookRequest.getEdition(),bookRequest.getPartnerID());
 		if (res.equals("OK")) {
 			return Response.status(Status.OK).build();
 		}

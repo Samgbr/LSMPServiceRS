@@ -9,8 +9,7 @@ package com.lsmp.mp.product.review;
 public class ProductReview {
 	
 	private String productReviewID;
-	private String bookProductID;
-	private String smartphoneProductID;
+	private String productID;
 	private String profileID;
 	private String review;
 	private double rating;
@@ -21,17 +20,11 @@ public class ProductReview {
 	public void setProductReviewID(String productReviewID) {
 		this.productReviewID = productReviewID;
 	}
-	public String getBookProductID() {
-		return bookProductID;
+	public String getProductID() {
+		return productID;
 	}
-	public void setBookProductID(String bookProductID) {
-		this.bookProductID = bookProductID;
-	}
-	public String getSmartphoneProductID() {
-		return smartphoneProductID;
-	}
-	public void setSmartphoneProductID(String smartphoneProductID) {
-		this.smartphoneProductID = smartphoneProductID;
+	public void setProductID(String productID) {
+		this.productID = productID;
 	}
 	public String getProfileID() {
 		return profileID;
