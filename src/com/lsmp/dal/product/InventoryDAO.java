@@ -15,7 +15,7 @@ import com.lsmp.mp.product.Inventory;
 
 public class InventoryDAO {
 	
-	public Inventory getBookQtyOnHand(String id) {
+	public Inventory getProductQtyOnHand(String id) {
 		double qtyOnHand=0.0;
 		String iid="";
 		Map<String,Double> qtyOnHandMap = new HashMap<>();
@@ -26,7 +26,7 @@ public class InventoryDAO {
 		try {
 			Statement selectStatement = connection.createStatement();
 			
-			String selectQuery = "SELECT * from Inventory where bookProductID='" + id +"'";
+			String selectQuery = "SELECT * from Inventory where productID='" + id +"'";
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			resultSet.next();
 			iid = resultSet.getString("InventoryID");
@@ -49,7 +49,7 @@ public class InventoryDAO {
 		return inventory;	
 	}
 	
-	public Set<Inventory> getAllBooksQtyOnHand() {
+	public Set<Inventory> getAllProductsQtyOnHand() {
 		
 		Connection connection = DBConnect.getDatabaseConnection();
 		Set<Inventory> inventories = new HashSet<>();
@@ -61,8 +61,8 @@ public class InventoryDAO {
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			
 			while(resultSet.next()) {
-				String productID = resultSet.getString("bookProductID");
-				Inventory inventory = getBookQtyOnHand(productID);
+				String productID = resultSet.getString("productID");
+				Inventory inventory = getProductQtyOnHand(productID);
 				if(inventory != null) {
 					inventories.add(inventory);
 				}
@@ -81,7 +81,7 @@ public class InventoryDAO {
 		return inventories;
 		
 	}
-	
+	/*
 	public Inventory getSmartphoneQtyOnHand(String id) {
 		double qtyOnHand=0.0;
 		String iid="";
@@ -114,9 +114,9 @@ public class InventoryDAO {
 		inventory.setQtyOnHandMap(qtyOnHandMap);
 		
 		return inventory;	
-	}
+	}   */
 	
-	public Inventory addBookQtyOnHand(String iid, String bid, double qtyOnHand) {
+	public Inventory addProductQtyOnHand(String iid, String bid, double qtyOnHand) {
 			
 			Map<String,Double> qtyOnHandMap = new HashMap<>();
 			
@@ -134,7 +134,7 @@ public class InventoryDAO {
 			    int randomInt = randomGenerator.nextInt(10000);
 			    String iID = "IN" + randomInt; */
 				
-				String insertQuery = "INSERT INTO Inventory(InventoryID,bookProductID,qtyOnHand) "
+				String insertQuery = "INSERT INTO Inventory(InventoryID,productID,qtyOnHand) "
 						+ "VALUES('"+iid+"','"+bid+"','"+qtyOnHand+"')";
 				insertStatement.executeUpdate(insertQuery);
 			
@@ -151,7 +151,7 @@ public class InventoryDAO {
 			
 			return inventory;
 		}
-
+	/*
 	public Inventory addSmartphoneQtyOnHand(String iid, String spid, double qtyOnHand) {
 		
 		Map<String,Double> qtyOnHandMap = new HashMap<>();
@@ -169,7 +169,7 @@ public class InventoryDAO {
 			Random randomGenerator = new Random();
 		    int randomInt = randomGenerator.nextInt(10000);
 		    String iID = "IN" + randomInt; */
-			
+			/*
 			String insertQuery = "INSERT INTO Inventory(InventoryID,smartphoneProductID,qtyOnHand) "
 					+ "VALUES('"+iid+"','"+spid+"','"+qtyOnHand+"')";
 			insertStatement.executeUpdate(insertQuery);
@@ -186,14 +186,14 @@ public class InventoryDAO {
 		}
 		
 		return inventory;
-	}
+	}  */
 	
-	public void updateBookQtyOnHand(String id, double qtyOnHand) {
+	public void updateProductQtyOnHand(String id, double qtyOnHand) {
 		Connection connection = DBConnect.getDatabaseConnection();
 		try {
 			Statement updateStatement = connection.createStatement();
 			
-			String updateQuery = "UPDATE Inventory SET qtyOnHand='"+qtyOnHand+"'  WHERE bookProductID='"+id+"'";
+			String updateQuery = "UPDATE Inventory SET qtyOnHand='"+qtyOnHand+"'  WHERE productID='"+id+"'";
 			updateStatement.executeUpdate(updateQuery);	
 			
 		}catch(SQLException se) {
@@ -206,7 +206,7 @@ public class InventoryDAO {
 			}
 		}
 	}
-	
+	/*
 	public void updateSmartphoneQtyOnHand(String id, double qtyOnHand) {
 		Connection connection = DBConnect.getDatabaseConnection();
 		try {
@@ -224,14 +224,14 @@ public class InventoryDAO {
 				} catch (SQLException e) {}
 			}
 		}
-	}
+	}  */
 	
-	public void deleteBookQtyOnHand(String id) {
+	public void deleteProductQtyOnHand(String id) {
 		Connection connection = DBConnect.getDatabaseConnection();
 		try {
 			Statement deleteStatement = connection.createStatement();
 			
-			String deleteQuery = "DELETE FROM Inventory WHERE bookProductID='"+id+"'";
+			String deleteQuery = "DELETE FROM Inventory WHERE productID='"+id+"'";
 			deleteStatement.executeUpdate(deleteQuery);	
 			
 		}catch(SQLException se) {
@@ -244,7 +244,7 @@ public class InventoryDAO {
 			}
 		}
 	}
-	
+	/*
 	public void deleteSmartphoneQtyOnHand(String id) {
 		Connection connection = DBConnect.getDatabaseConnection();
 		try {
@@ -262,5 +262,5 @@ public class InventoryDAO {
 				} catch (SQLException e) {}
 			}
 		}
-	}
+	}  */
 }

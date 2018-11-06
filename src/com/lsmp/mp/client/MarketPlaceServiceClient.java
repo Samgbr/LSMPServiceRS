@@ -121,8 +121,6 @@ public final class MarketPlaceServiceClient {
 		
 		//Create a Partner
 		partnerManager.addPartnerProfile("PA95687","diknas", "Nassir", "Raul", "Dickson", "dskf@gmail.com", "Wegh$$8i", "Level 3", "XYZS Co.", addresses, phones, bills);
-		//Add partner book
-		partnerManager.addPartnerBook("PP61923", "BO89789", "PA95687");
 		
 	}
 
@@ -173,18 +171,18 @@ public final class MarketPlaceServiceClient {
 
 	private static void pManager(ProductManager productManager) {
 		//Book Creation
-		productManager.addBook("BO89743", "fdgknkln22", "Mcgraw hill", "Adam reta", "7th", "Ebook", "XXX", "suspense book", 12.99, 20.99, 0.125, "A Dart");
-		productManager.addBook("BO89789", "fdgfjln22", "Mcgraw hill", "Ptr reta", "5th", "paper", "YYY", "psychology book", 10.99, 15.99, 0.115, "The dark knight");
-		productManager.addBook("BO89999", "fdgfjln22", "Mcgraw hill", "Ptr reta", "5th", "CD", "YYY", "Dude book", 9.99, 12.99, 0.115, "The okay knight");
+		productManager.addBook("BO89743", "fdgknkln22", "Mcgraw hill", "Adam reta", "7th", "Ebook", "XXX", "suspense book", 12.99, 20.99, 0.125, "A Dart","PA95687");
+		productManager.addBook("BO89789", "fdgfjln22", "Mcgraw hill", "Ptr reta", "5th", "paper", "YYY", "psychology book", 10.99, 15.99, 0.115, "The dark knight","");
+		productManager.addBook("BO89999", "fdgfjln22", "Mcgraw hill", "Ptr reta", "5th", "CD", "YYY", "Dude book", 9.99, 12.99, 0.115, "The okay knight","");
 		//Update book
-		productManager.updateBook("BO89789", "fdgfjln22", "Mcgraw hill", "Ptr reta", "5th", "paper", "YYY", "psychology book", 17.99, 21.99, 0.17, "The dark knight");
+		productManager.updateBook("BO89789", "fdgfjln22", "Mcgraw hill", "Ptr reta", "5th", "paper", "YYY", "psychology book", 17.99, 21.99, 0.17, "The dark knight","");
 		//Delete book
 		productManager.deleteBook("BO89999");
 		//Create Product Inventory
-		productManager.addBookQtyOnHand("IN98554","BO89743", 10.0);
-		productManager.addBookQtyOnHand("IN98556","BO89789", 10.0);
+		productManager.addProductQtyOnHand("IN98554","BO89743", 10.0);
+		productManager.addProductQtyOnHand("IN98556","BO89789", 10.0);
 		//Update Product Inventory
-		productManager.updateBookQtyOnHand("BO89743", 20.0);
+		productManager.updateProductQtyOnHand("BO89743", 20.0);
 		//Delete Product Inventory
 		//productManager.deleteBookQtyOnHand("BO89789");
 	}

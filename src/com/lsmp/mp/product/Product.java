@@ -15,7 +15,14 @@ public class Product {
 	private double purchasePrice;
 	private double sellingPrice;
 	private double discount;
-		
+	private String partnerID;
+			
+	public String getPartnerID() {
+		return partnerID;
+	}
+	public void setPartnerID(String partnerID) {
+		this.partnerID = partnerID;
+	}
 	public String getProductID() {
 		return productID;
 	}

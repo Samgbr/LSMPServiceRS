@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
-public class SmartphoneInventoryRequest {
+public class ProductInventoryRequest {
 
 	private String inventoryID;
 	private Map<String,Double> qtyOnHandMap;
@@ -30,5 +30,4 @@ public class SmartphoneInventoryRequest {
 	public void setQtyOnHandMap(Map<String, Double> qtyOnHandMap) {
 		this.qtyOnHandMap = qtyOnHandMap;
 	}
-	
 }

@@ -46,7 +46,7 @@ public class SmartphoneResource implements SmartphoneService{
 		System.out.println("POST METHOD Smartphone Request from Client with ............." );		
 		SmartphoneActivity smartphoneActivity=new SmartphoneActivity();
 		return smartphoneActivity.createSmartphone(smartphoneRequest.getProductID(), smartphoneRequest.getPurchasePrice(), smartphoneRequest.getSellingPrice(), smartphoneRequest.getDisplayInch()
-				, smartphoneRequest.getBrand(), smartphoneRequest.getRamSize(), smartphoneRequest.getOs(), smartphoneRequest.getStorageSize());
+				, smartphoneRequest.getBrand(), smartphoneRequest.getRamSize(), smartphoneRequest.getOs(), smartphoneRequest.getStorageSize(), smartphoneRequest.getPartnerID());
 	}
 
 	@PUT
@@ -57,7 +57,7 @@ public class SmartphoneResource implements SmartphoneService{
 		System.out.println("PUT METHOD Smartphone Request from Client with ............." );		
 		SmartphoneActivity smartphoneActivity=new SmartphoneActivity();
 		String res = smartphoneActivity.updateSmartphone(smartphoneRequest.getProductID(), smartphoneRequest.getPurchasePrice(), smartphoneRequest.getSellingPrice(), smartphoneRequest.getDisplayInch()
-				, smartphoneRequest.getBrand(), smartphoneRequest.getRamSize(), smartphoneRequest.getOs(), smartphoneRequest.getStorageSize());
+				, smartphoneRequest.getBrand(), smartphoneRequest.getRamSize(), smartphoneRequest.getOs(), smartphoneRequest.getStorageSize(),smartphoneRequest.getPartnerID());
 		if (res.equals("OK")) {
 			return Response.status(Status.OK).build();
 		}

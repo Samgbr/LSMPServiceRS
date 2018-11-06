@@ -1,11 +1,9 @@
-package com.lsmp.mp.product.service;
+package com.lsmp.mp.product.service.representation;
 
 import java.util.Arrays;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlElement;
-
-import com.lsmp.mp.product.Link;
 
 public abstract class ProductAbstractRepresentation {
 
