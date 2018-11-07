@@ -11,6 +11,14 @@ import com.lsmp.mp.order.status.OrderStatus;
  */
 
 public class Order {
+	
+	//Order status
+	OrderStatus inProcess;
+	OrderStatus complete;
+	OrderStatus cancel;
+	OrderStatus noOrderYet;
+	
+	OrderStatus currentOrderStatus;
 
 	//Instances
 	private String orderID;
@@ -19,13 +27,71 @@ public class Order {
 	private String shipAddressID;
 	private Set<OrderDetail> orderDetails;
 	
-	private OrderStatus status;
-	
 	public Order() {
-		status=null;
+		inProcess = new InProcess(this);
+		complete = new Complete(this);
+		cancel = new Cancel(this);
+		noOrderYet= new NoOrderYet(this);
+		
+		currentOrderStatus = noOrderYet;
 	}
 	
+	public void noOrderYet() {
+		currentOrderStatus.noOrderYet();
+	}
 	
+	public void updateOrderInProcess(String status) {
+		currentOrderStatus.updateOrderInProcess(status);
+	}
+	
+	public void updateOrderComplete(String status) {
+		currentOrderStatus.updateOrderComplete(status);
+	}
+	
+	public void updateOrderCancel(String status) {
+		currentOrderStatus.updateOrderCancel(status);
+	}
+	
+	public OrderStatus getInProcess() {
+		return inProcess;
+	}
+
+
+	public void setInProcess(OrderStatus inProcess) {
+		this.inProcess = inProcess;
+	}
+
+
+	public OrderStatus getComplete() {
+		return complete;
+	}
+
+
+	public void setComplete(OrderStatus complete) {
+		this.complete = complete;
+	}
+
+
+	public OrderStatus getCancel() {
+		return cancel;
+	}
+
+
+	public void setCancel(OrderStatus cancel) {
+		this.cancel = cancel;
+	}
+
+
+	public OrderStatus getCurrentOrderStatus() {
+		return currentOrderStatus;
+	}
+
+
+	public void setCurrentOrderStatus(OrderStatus currentOrderStatus) {
+		this.currentOrderStatus = currentOrderStatus;
+	}
+
+
 	public String getShipAddressID() {
 		return shipAddressID;
 	}
@@ -64,16 +130,6 @@ public class Order {
 	public void setOrderDate(String orderDate) {
 		this.orderDate = orderDate;
 	}	
-	
-	public OrderStatus getStatus() {
-		return status;
-	}
-
-
-	public void setStatus(OrderStatus status) {
-		this.status = status;
-	}
-
 
 	public String getProfileID() {
 		return profileID;

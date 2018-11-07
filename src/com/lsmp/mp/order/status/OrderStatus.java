@@ -1,7 +1,10 @@
 package com.lsmp.mp.order.status;
 
-import com.lsmp.mp.order.Order;
 
 public interface OrderStatus {
-	public void status(Order order);
+	
+	public void noOrderYet();
+	public void updateOrderInProcess(String status);
+	public void updateOrderComplete(String status);
+	public void updateOrderCancel(String status);
 }

@@ -76,7 +76,7 @@ public final class MarketPlaceServiceClient {
 		//Order order = oManager(orderManager);
 		
 		//Order Status in process using state design pattern
-		//orderProcessingAndComplete(order,orderManager);
+		//orderProcessingAndComplete(order);
 		
 		//Partner Manager
 		PartnerManager partnerManager = new PartnerManager();
@@ -124,33 +124,15 @@ public final class MarketPlaceServiceClient {
 		
 	}
 
-	private static void orderProcessingAndComplete(Order order,OrderManager orderManager) {
+	private static void orderProcessingAndComplete(Order order) {
+		//No Order yet
+		order.noOrderYet();
 		//Order fulfilled and in process
-		orderManager.processingOrder(order);
-		//Package Picked
-		orderManager.packagePicked();
-		//Package packed
-		orderManager.packagePacked();
-		//Package delivered to pick up location
-		orderManager.deliverdToPickupLocation();
-		//update the Order DB
-		orderManager.updateOrderInProcess(order.getOrderID(), 1, 1, 1);
-		//Order pickup location
-		orderManager.orderPickupLocation("Belmont Store");
-		//Package delivered
-		orderManager.orderDelivered();
-		//Order complete status
-		orderManager.completeOrder(order);
-		//Update to the Order DB
-		orderManager.updateOrderComplete(order.getOrderID(), 1, "Belmont Store");
-		//Order refund
-		orderManager.orderRefund();
+		order.updateOrderInProcess("Y");
+		//Order Complete
+		order.updateOrderComplete("Y");
 		//Order Cancel
-		orderManager.cancelOrder(order);
-		//update the DB
-		orderManager.updateOrderCancel(order.getOrderID(), 1);
-		//Delete the Order from the DB
-		orderManager.deleteOrder(order.getOrderID());
+		order.updateOrderCancel("Y");
 	}
 
 	private static Order oManager(OrderManager orderManager) {
