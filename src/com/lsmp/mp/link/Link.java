@@ -1,4 +1,4 @@
-package com.lsmp.mp.product.service.representation;
+package com.lsmp.mp.link;
 
 import javax.xml.bind.annotation.XmlRootElement;
 

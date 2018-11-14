@@ -34,23 +34,21 @@ public class Complete implements OrderStatus {
 	}
 	
 	@Override
-	public void updateOrderInProcess(String status) {
-		System.out.println("Order process already completed" + status);
+	public void updateOrderInProcess(boolean isOrderStarted) {
+		System.out.println("Order process already completed");
 	}
 	@Override
-	public void updateOrderComplete(String status) {
-		if(status.equalsIgnoreCase("Y")) {
-			order.setComplete(this);
-			isDelivered = 1;
-			orderManager.updateOrderComplete(order.getOrderID(), isDelivered, "");
-		}
+	public void updateOrderComplete(boolean isOrderProcessed) {
+		order.setComplete(this);
+		isDelivered = 1;
+		orderManager.updateOrderComplete(order.getOrderID(), isDelivered, "");
 	}
 	@Override
-	public void updateOrderCancel(String status) {
-		System.out.println("Order not cancelled" + status);		
+	public void updateOrderCancel(boolean refundRequested) {
+		System.out.println("Order not cancelled");		
 	}
 	@Override
-	public void noOrderYet() {
+	public void noOrderYet(boolean nothing) {
 		System.out.println("Order already Initiated");
 		isDelivered = 0;
 	}

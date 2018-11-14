@@ -11,23 +11,24 @@ public class NoOrderYet implements OrderStatus{
 	}
 
 	@Override
-	public void noOrderYet() {
+	public void noOrderYet(boolean nothing) {
 		System.out.println("No Order Received yet");
 	}
 
 	@Override
-	public void updateOrderInProcess(String status) {
-		System.out.println("No Order Received yet" + status);
+	public void updateOrderInProcess(boolean isOrderStarted) {
+		System.out.println("No Order Received yet");
 	}
 
 	@Override
-	public void updateOrderComplete(String status) {
-		System.out.println("No Order Received yet" + status);		
+	public void updateOrderComplete(boolean isOrderProcessed) {
+		System.out.println("No Order Received yet");		
 	}
 
 	@Override
-	public void updateOrderCancel(String status) {
-		System.out.println("No Order Received yet" + status);		
+	public void updateOrderCancel(boolean refundRequested) {
+		System.out.println("No Order Received yet");		
 	}
+
 
 }

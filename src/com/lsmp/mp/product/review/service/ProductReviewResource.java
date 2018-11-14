@@ -33,11 +33,11 @@ public class ProductReviewResource implements ProductReviewService{
 	
 	@GET
 	@Produces({"application/xml" , "application/json"})
-	@Path("/productreview/{productId}/{profileId}")
-	public ProductReviewRepresentation getProductReview(@PathParam("productId") String id, @PathParam("profileId") String pid) {
+	@Path("/productreview/{productId}")
+	public ProductReviewRepresentation getProductReview(@PathParam("productId") String id) {
 		System.out.println("GET METHOD Request from Client with Product review Request String :");
 		ProductReviewActivity productReviewActivity=new ProductReviewActivity();
-		return productReviewActivity.getProductReviewByProfileIDandProductID(id, pid);
+		return productReviewActivity.getProductReviewByProductID(id);
 	}
 	
 	@POST

@@ -28,6 +28,14 @@ public class OrderManager {
 		
 		return order;
 	}
+	
+	public Order addPayment(String oid, double amount, String billID) {
+		
+		Order order = oDAO.addPayment(oid, amount, billID);
+		
+		return order;
+	}
+	
 	/*
 	public Order addOrder(String oid, String profileID, String orderDate, String shipAddressID) {
 		

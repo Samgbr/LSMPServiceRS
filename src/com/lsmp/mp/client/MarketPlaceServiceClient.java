@@ -128,11 +128,12 @@ public final class MarketPlaceServiceClient {
 		//No Order yet
 		order.noOrderYet();
 		//Order fulfilled and in process
-		order.updateOrderInProcess("Y");
+		order.setOrderStarted(true);
+		order.updateOrderInProcess();
 		//Order Complete
-		order.updateOrderComplete("Y");
+		order.updateOrderComplete();
 		//Order Cancel
-		order.updateOrderCancel("Y");
+		order.updateOrderCancel();
 	}
 
 	private static Order oManager(OrderManager orderManager) {

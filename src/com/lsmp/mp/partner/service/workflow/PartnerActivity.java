@@ -7,6 +7,7 @@ import java.util.Set;
 import com.lsmp.mp.customer.Address;
 import com.lsmp.mp.customer.Bill;
 import com.lsmp.mp.customer.Phone;
+import com.lsmp.mp.link.Link;
 import com.lsmp.mp.partner.Partner;
 import com.lsmp.mp.partner.PartnerManager;
 import com.lsmp.mp.partner.service.representation.PartnerRepresentation;
@@ -82,7 +83,19 @@ public class PartnerActivity {
 		partnerRepresentation.setBillingsInfo(partner.getBillingsInfo());
 		partnerRepresentation.setPhones(partner.getPhones());
         
+		setLinks(partnerRepresentation);
+		
 		return partnerRepresentation;
+	}
+
+	private void setLinks(PartnerRepresentation partnerRepresentation) {
+		Link updatepartner = new Link("updatepartner", 
+				"http://localhost:8082/Partner/partnerservice/partner" ,"application/xml");
+		Link deletepartner = new Link("deletepartner", 
+				" http://localhost:8082/Partner/partnerservice/partner/"+ partnerRepresentation.getProfileID() ,"application/xml");
+		Link addproduct = new Link("addproduct", 
+				" http://localhost:8082/BookProduct/bookservice/book" ,"application/xml");
+		partnerRepresentation.setLinks(updatepartner,deletepartner,addproduct);
 	}
 
 	public String updatePartner(String id, String loginID, String firstName, String middleName, String lastName,

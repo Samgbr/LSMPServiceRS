@@ -6,10 +6,10 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import com.lsmp.mp.link.Link;
 import com.lsmp.mp.product.Book;
 //import com.lsmp.mp.product.Product;
-import com.lsmp.mp.product.service.representation.BookRepresentation;
-import com.lsmp.mp.product.service.representation.Link;;
+import com.lsmp.mp.product.service.representation.BookRepresentation;;
 
 public class BookActivity {
 	
@@ -39,10 +39,14 @@ public class BookActivity {
 	private void setLinks(BookRepresentation bookRepresentation) {
 		
 		// Set up the activities that can be performed on orders
-		Link buy = new Link("Buy", 
-				"http://localhost:8082/Order/orderservice/order","application/xml");
+		Link check = new Link("check", 
+				"http://localhost:8082/ProductInventory/productinventoryservice/productinventory/"+ bookRepresentation.getProductID() ,"application/xml");
+		Link reviews = new Link("reviews", 
+				"http://localhost:8082/ProductReview/productreviewservice/productreview/"+ bookRepresentation.getProductID() ,"application/xml");
+		Link createreview = new Link("createreview", 
+				"http://localhost:8082/ProductReview/productreviewservice/productreview" ,"application/xml");
 		
-		bookRepresentation.setLinks(buy);
+		bookRepresentation.setLinks(check,reviews,createreview);
 	}
 
 	public Set<BookRepresentation> getBooks() {

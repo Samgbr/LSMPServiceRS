@@ -18,6 +18,8 @@ public class Order {
 	OrderStatus cancel;
 	OrderStatus noOrderYet;
 	
+	boolean orderStarted;
+	
 	OrderStatus currentOrderStatus;
 
 	//Instances
@@ -25,6 +27,8 @@ public class Order {
 	private String profileID;
 	private String orderDate;
 	private String shipAddressID;
+	private String billID;
+	private double amount;
 	private Set<OrderDetail> orderDetails;
 	
 	public Order() {
@@ -34,22 +38,50 @@ public class Order {
 		noOrderYet= new NoOrderYet(this);
 		
 		currentOrderStatus = noOrderYet;
+		
+		if (orderStarted == true) {
+			currentOrderStatus = inProcess;
+		}
 	}
 	
+	public String getBillID() {
+		return billID;
+	}
+
+	public void setBillID(String billID) {
+		this.billID = billID;
+	}
+
+	public double getAmount() {
+		return amount;
+	}
+
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
+
+	public boolean isOrderStarted() {
+		return orderStarted;
+	}
+
+	public void setOrderStarted(boolean orderStarted) {
+		this.orderStarted = orderStarted;
+	}
+
 	public void noOrderYet() {
-		currentOrderStatus.noOrderYet();
+		currentOrderStatus.noOrderYet(true);
 	}
 	
-	public void updateOrderInProcess(String status) {
-		currentOrderStatus.updateOrderInProcess(status);
+	public void updateOrderInProcess() {
+		currentOrderStatus.updateOrderInProcess(false);
 	}
 	
-	public void updateOrderComplete(String status) {
-		currentOrderStatus.updateOrderComplete(status);
+	public void updateOrderComplete() {
+		currentOrderStatus.updateOrderComplete(false);
 	}
 	
-	public void updateOrderCancel(String status) {
-		currentOrderStatus.updateOrderCancel(status);
+	public void updateOrderCancel() {
+		currentOrderStatus.updateOrderCancel(false);
 	}
 	
 	public OrderStatus getInProcess() {

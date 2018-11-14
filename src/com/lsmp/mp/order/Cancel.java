@@ -27,25 +27,23 @@ public class Cancel implements OrderStatus {
 	}
 
 	@Override
-	public void updateOrderInProcess(String status) {
-		System.out.println("Order not processed" + status);
+	public void updateOrderInProcess(boolean isOrderStarted) {
+		System.out.println("Order not processed");
 	}
 
 	@Override
-	public void updateOrderComplete(String status) {
-		System.out.println("Order not completed" + status);	
+	public void updateOrderComplete(boolean isOrderProcessed) {
+		System.out.println("Order not completed");	
 	}
 
 	@Override
-	public void updateOrderCancel(String status) {
-		if (status.equalsIgnoreCase("Y")) {
-			order.setCancel(this);
-			refund = 1;
-			orderManager.updateOrderCancel(order.getOrderID(), refund);
-		}	
+	public void updateOrderCancel(boolean refundRequested) {
+		order.setCancel(this);
+		refund = 1;
+		orderManager.updateOrderCancel(order.getOrderID(), refund);	
 	}
 	@Override
-	public void noOrderYet() {
+	public void noOrderYet(boolean nothing) {
 		System.out.println("Order already Initiated");
 		refund = 0;
 	}

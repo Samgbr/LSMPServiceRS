@@ -1,5 +1,6 @@
 package com.lsmp.mp.product.service.workflow;
 
+import com.lsmp.mp.link.Link;
 import com.lsmp.mp.product.Inventory;
 import com.lsmp.mp.product.ProductManager;
 import com.lsmp.mp.product.service.representation.ProductInventoryRepresentation;
@@ -17,9 +18,19 @@ public class ProductInventoryActivity {
 		productInventoryRepresentation.setQtyOnHandMap(inventory.getQtyOnHandMap());
 		productInventoryRepresentation.setInventoryID(inventory.getInventoryID());
 		
+		setLinks(productInventoryRepresentation);
+		
 		return productInventoryRepresentation;
 	}
 	
+	private void setLinks(ProductInventoryRepresentation productInventoryRepresentation) {
+		// Set up the activities that can be performed on orders
+		Link buy = new Link("buy", 
+			"http://localhost:8082/Order/orderservice/order" ,"application/xml");
+				
+		productInventoryRepresentation.setLinks(buy);
+	}
+
 	public String deleteProductInventory(String id) {
 		productManager.deleteProductQtyOnHand(id);
 		return "OK";

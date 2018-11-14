@@ -15,6 +15,7 @@ public class BookDAO {
 	
 	//get, update, insert and delete goes here
 	public Book getBook(String id) {
+		String productID="";
 		String productName="";
 		String description="";
 		double purchasePrice=0.0;
@@ -37,6 +38,7 @@ public class BookDAO {
 			String selectQuery = "SELECT * from book where productID='" + id +"'";
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			resultSet.next();
+			productID = resultSet.getString("productID");
 			productName= resultSet.getString("productName");
 			description = resultSet.getString("description");
 			purchasePrice = resultSet.getDouble("purchasePrice");
@@ -60,6 +62,7 @@ public class BookDAO {
 			}
 		}
 		Book book = new Book();
+		book.setProductID(productID);
 		book.setProductName(productName);
 		book.setDescription(description);
 		book.setPurchasePrice(purchasePrice);

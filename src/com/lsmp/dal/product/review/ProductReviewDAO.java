@@ -48,6 +48,43 @@ public class ProductReviewDAO {
 		productReview.setRating(rating);
 		return productReview;	
 	}
+	
+	public ProductReview getProductReviewByProductID(String id) {
+		String productID="";
+		String profileID="";
+		String review="";
+		double rating=0.0;
+		
+		Connection connection = DBConnect.getDatabaseConnection();
+		
+		try {
+			Statement selectStatement = connection.createStatement();
+			
+			String selectQuery = "SELECT * from productReview where productID='" + id +"'";
+			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
+			resultSet.next();
+			productID= resultSet.getString("productID");
+			profileID = resultSet.getString("profileID");
+			review = resultSet.getString("review");
+			rating = resultSet.getDouble("rating");
+			
+		}catch(SQLException se) {
+			se.printStackTrace();
+		}finally {
+			if(connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {}
+			}
+		}
+		ProductReview productReview = new ProductReview();
+		productReview.setProductID(productID);
+		productReview.setProfileID(profileID);
+		productReview.setReview(review);
+		productReview.setRating(rating);
+		return productReview;	
+	}
+	
 	/*
 	public ProductReview getSmartphoneReviewByProfileIDandProductID(String id, String pid) {
 		String smartphoneProductID="";

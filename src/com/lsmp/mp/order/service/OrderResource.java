@@ -13,6 +13,8 @@ import javax.ws.rs.core.Response.Status;
 
 import com.lsmp.mp.order.service.representation.OrderRepresentation;
 import com.lsmp.mp.order.service.representation.OrderRequest;
+import com.lsmp.mp.order.service.representation.PaymentRepresentation;
+import com.lsmp.mp.order.service.representation.PaymentRequest;
 import com.lsmp.mp.order.service.workflow.OrderActivity;
 
 @Path("/orderservice/")
@@ -63,6 +65,16 @@ public class OrderResource implements OrderService{
 			return Response.status(Status.OK).build();
 		}
 		return null;
+	}
+
+	@PUT
+	@Produces({"application/xml" , "application/json"})
+	@Consumes({"application/xml", "application/json"})
+	@Path("/payment")
+	public PaymentRepresentation createPayment(PaymentRequest paymentRequest) {
+		System.out.println("POST METHOD Payment Request from Client with ............." );		
+		OrderActivity orderActivity = new OrderActivity();
+		return orderActivity.createPayment(paymentRequest.getOrderID(), paymentRequest.getAmount(), paymentRequest.getBillID());
 	}
 
 }

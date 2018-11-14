@@ -3,8 +3,8 @@ package com.lsmp.mp.order.status;
 
 public interface OrderStatus {
 	
-	public void noOrderYet();
-	public void updateOrderInProcess(String status);
-	public void updateOrderComplete(String status);
-	public void updateOrderCancel(String status);
+	public void noOrderYet(boolean nothing);
+	public void updateOrderInProcess(boolean isOrderStarted);
+	public void updateOrderComplete(boolean isOrderProcessed);
+	public void updateOrderCancel(boolean refundRequested);
 }

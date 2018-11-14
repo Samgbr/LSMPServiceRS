@@ -10,6 +10,7 @@ import com.lsmp.mp.customer.CustomerManager;
 import com.lsmp.mp.customer.Phone;
 import com.lsmp.mp.customer.Shopper;
 import com.lsmp.mp.customer.service.representation.CustomerRepresentation;
+import com.lsmp.mp.link.Link;
 
 /**
  * This class is responsible for accessing the work flow of ShopperDAO CRUD object
@@ -87,9 +88,19 @@ public class CustomerActivity {
 		customerRepresentation.setBills(shopper.getBillingsInfo());
 		customerRepresentation.setPhones(shopper.getPhones());
 		
+		setLinks(customerRepresentation);
+		
 		return customerRepresentation;
 	}
 	
+	private void setLinks(CustomerRepresentation customerRepresentation) {
+		Link updatecustomer = new Link("updatecustomer", 
+				"http://localhost:8082/Customer/shopperservice/shopper" ,"application/xml");
+		Link deletecustomer = new Link("deletecustomer", 
+				"http://localhost:8082/Customer/shopperservice/shopper/"+ customerRepresentation.getProfileID() ,"application/xml");
+		customerRepresentation.setLinks(updatecustomer,deletecustomer);
+	}
+
 	public String deleteShopper(String id) {
 		
 		customerManager.deleteShopperProfile(id);

@@ -40,26 +40,24 @@ public class InProcess implements OrderStatus{
 	}
 	
 	@Override
-	public void updateOrderInProcess(String status) {
-		if(status.equalsIgnoreCase("Y")) {
-			order.setInProcess(this);
-			isPicked=1;
-			isPacked=1;
-			deliveredToPickUpLocation=1;
-			orderManger.updateOrderInProcess(order.getOrderID(), isPicked, isPacked, deliveredToPickUpLocation);
-		}
+	public void updateOrderInProcess(boolean isOrderStarted) {
+		order.setInProcess(this);
+		isPicked=1;
+		isPacked=1;
+		deliveredToPickUpLocation=1;
+		orderManger.updateOrderInProcess(order.getOrderID(), isPicked, isPacked, deliveredToPickUpLocation);
 	}
 	@Override
-	public void updateOrderComplete(String status) {
-		System.out.println("Still Order InProcess" + status);
+	public void updateOrderComplete(boolean isOrderProcessed) {
+		System.out.println("Still Order InProcess");
 	}
 	
 	@Override
-	public void updateOrderCancel(String status) {
-		System.out.println("Still Order InProcess" + status);
+	public void updateOrderCancel(boolean refundRequested) {
+		System.out.println("Still Order InProcess");
 	}
 	@Override
-	public void noOrderYet() {
+	public void noOrderYet(boolean nothing) {
 		System.out.println("Order already Initiated");
 		isPicked=0;
 		isPacked=0;	
