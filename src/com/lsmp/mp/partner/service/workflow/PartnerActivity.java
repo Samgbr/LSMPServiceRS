@@ -65,10 +65,10 @@ public class PartnerActivity {
 		return partnerRepresentations;
 	}
 
-	public PartnerRepresentation createPartner(String pid, String loginID, String firstName, String middleName,
+	public PartnerRepresentation createPartner(String loginID, String firstName, String middleName,
 			String lastName, String email, String password, String sellerLevel, String sellerName, Set<Address> addresses, Set<Phone> phones, Set<Bill> bills) {
 		
-		Partner partner = partnerManager.addPartnerProfile(pid, loginID, firstName, middleName, lastName, email, password, sellerLevel, sellerName, addresses, phones, bills);
+		Partner partner = partnerManager.addPartnerProfile(loginID, firstName, middleName, lastName, email, password, sellerLevel, sellerName, addresses, phones, bills);
 		
 		PartnerRepresentation partnerRepresentation = new PartnerRepresentation();
         partnerRepresentation.setProfileID(partner.getProfileID());

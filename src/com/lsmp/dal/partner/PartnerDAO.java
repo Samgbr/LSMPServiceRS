@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
 
 import com.lsmp.dal.DBConnect;
@@ -195,14 +196,14 @@ public class PartnerDAO {
 			
 		}
 		
-	public Partner addPartnerProfile(String pid, String loginID, String firstName, String middleName, String lastName,
+	public Partner addPartnerProfile(String loginID, String firstName, String middleName, String lastName,
 				String email,String password,String sellerLevel, String sellerName, Set<Address> addresses,Set<Phone> phones,Set<Bill> bills) {
 			
 			Partner partner = new Partner();
-			/*
+			
 			Random randomGenerator = new Random();
 		    int randomInt = randomGenerator.nextInt(10000);
-		    String id = "PA" + randomInt; */
+		    String pid = "PA" + randomInt; 
 		    
 			partner.setProfileID(pid);
 			partner.setLoginID(loginID);

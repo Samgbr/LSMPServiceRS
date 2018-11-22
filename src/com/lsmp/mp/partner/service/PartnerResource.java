@@ -39,13 +39,13 @@ public class PartnerResource implements PartnerService{
 	}
 
 	@POST
-	@Produces({"application/xml" , "application/json"})
-	@Consumes({"application/xml", "application/json"})
+	@Produces({"application/json"})
+	@Consumes({"application/json"})
 	@Path("/partner")
 	public PartnerRepresentation createPartner(PartnerRequest partnerRequest) {
 		System.out.println("POST METHOD Partner Request from Client with ............." );		
 		PartnerActivity partnerActivity = new PartnerActivity();
-		return partnerActivity.createPartner(partnerRequest.getProfileID(),partnerRequest.getLoginID(),partnerRequest.getFirstName()
+		return partnerActivity.createPartner(partnerRequest.getLoginID(),partnerRequest.getFirstName()
 				, partnerRequest.getMiddleName(), partnerRequest.getLastName(), partnerRequest.getEmail(), partnerRequest.getPassword()
 				, partnerRequest.getSellerLevel(),partnerRequest.getSellerName(),partnerRequest.getAddresses(),partnerRequest.getPhones(),partnerRequest.getBillingsInfo());
 	}

@@ -120,7 +120,7 @@ public final class MarketPlaceServiceClient {
 		bills.add(bill2);
 		
 		//Create a Partner
-		partnerManager.addPartnerProfile("PA95687","diknas", "Nassir", "Raul", "Dickson", "dskf@gmail.com", "Wegh$$8i", "Level 3", "XYZS Co.", addresses, phones, bills);
+		partnerManager.addPartnerProfile("diknas", "Nassir", "Raul", "Dickson", "dskf@gmail.com", "Wegh$$8i", "Level 3", "XYZS Co.", addresses, phones, bills);
 		
 	}
 
@@ -192,7 +192,7 @@ public final class MarketPlaceServiceClient {
 		bills.add(bill1);
 		bills.add(bill2);
 		//Create Shopper Profile
-		customerManager.addShopperProfile(shopper.getProfileID(), shopper.getLoginID(), shopper.getFirstName(), shopper.getMiddleName(), shopper.getLastName(), shopper.getEmail()
+		customerManager.addShopperProfile(shopper.getLoginID(), shopper.getFirstName(), shopper.getMiddleName(), shopper.getLastName(), shopper.getEmail()
 					, shopper.getPassword(), shopper.getShopperType(), addresses, phones, bills);
 		//Delete Customer
 		//customerManager.deleteShopperProfile(shopper.getProfileID());

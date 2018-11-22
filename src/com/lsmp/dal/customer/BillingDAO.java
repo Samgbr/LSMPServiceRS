@@ -185,7 +185,7 @@ public Set<Bill> getShopperBillingInfos(String id) {
 				Bill currentBillInfo = billIterator.next();
 				
 				String insertQuery = "INSERT INTO bill(billID, shopperProfileID, creditCardNumber, cvv, expiryMonth, expiryYear) "
-						+ "VALUES('"+currentBillInfo.getBillID()+"','"+id+"','"+currentBillInfo.getCreditCardNumber()+"','"+currentBillInfo.getCvv()+"','"+currentBillInfo.getExpiryMonth()+"','"+currentBillInfo.getExpiryYear()+"')";
+						+ "VALUES('"+billID+"','"+id+"','"+currentBillInfo.getCreditCardNumber()+"','"+currentBillInfo.getCvv()+"','"+currentBillInfo.getExpiryMonth()+"','"+currentBillInfo.getExpiryYear()+"')";
 				insertStatement.executeUpdate(insertQuery);
 				
 			}		
@@ -220,7 +220,7 @@ public Set<Bill> getShopperBillingInfos(String id) {
 				Bill currentBillInfo = billIterator.next();
 				
 				String insertQuery = "INSERT INTO bill(billID, partnerProfileID, creditCardNumber, cvv, expiryMonth, expiryYear) "
-						+ "VALUES('"+currentBillInfo.getBillID()+"','"+id+"','"+currentBillInfo.getCreditCardNumber()+"','"+currentBillInfo.getCvv()+"','"+currentBillInfo.getExpiryMonth()+"','"+currentBillInfo.getExpiryYear()+"')";
+						+ "VALUES('"+billID+"','"+id+"','"+currentBillInfo.getCreditCardNumber()+"','"+currentBillInfo.getCvv()+"','"+currentBillInfo.getExpiryMonth()+"','"+currentBillInfo.getExpiryYear()+"')";
 				insertStatement.executeUpdate(insertQuery);
 				
 			}		

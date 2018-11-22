@@ -182,15 +182,15 @@ public class AddressDAO {
 				Iterator<Address> addressIterator = addresses.iterator();
 				
 				while(addressIterator.hasNext()) {
-					/*
+					
 					Random randomGenerator = new Random();
 				    int randomInt = randomGenerator.nextInt(10000);
-				    String addressID = "AD" + randomInt; */
+				    String addressID = "AD" + randomInt; 
 				    
 					Address currentAddress = addressIterator.next();
 					
 					String insertQuery = "INSERT INTO address(addressID, shopperProfileID, street,city,state,zipcode) "
-							+ "VALUES('"+currentAddress.getAddressID()+"','"+id+"','"+currentAddress.getStreet()+"','"+currentAddress.getCity()+"','"+currentAddress.getState()+"','"+currentAddress.getZipcode()+"')";
+							+ "VALUES('"+addressID+"','"+id+"','"+currentAddress.getStreet()+"','"+currentAddress.getCity()+"','"+currentAddress.getState()+"','"+currentAddress.getZipcode()+"')";
 					insertStatement.executeUpdate(insertQuery);
 					
 				}		
@@ -216,15 +216,15 @@ public class AddressDAO {
 			Iterator<Address> addressIterator = addresses.iterator();
 			
 			while(addressIterator.hasNext()) {
-				/*
+				
 				Random randomGenerator = new Random();
 			    int randomInt = randomGenerator.nextInt(10000);
-			    String addressID = "AD" + randomInt; */
+			    String addressID = "AD" + randomInt; 
 			    
 				Address currentAddress = addressIterator.next();
 				
 				String insertQuery = "INSERT INTO address(addressID, partnerProfileID, street,city,state,zipcode) "
-						+ "VALUES('"+currentAddress.getAddressID()+"','"+id+"','"+currentAddress.getStreet()+"','"+currentAddress.getCity()+"','"+currentAddress.getState()+"','"+currentAddress.getZipcode()+"')";
+						+ "VALUES('"+addressID+"','"+id+"','"+currentAddress.getStreet()+"','"+currentAddress.getCity()+"','"+currentAddress.getState()+"','"+currentAddress.getZipcode()+"')";
 				insertStatement.executeUpdate(insertQuery);
 				
 			}		

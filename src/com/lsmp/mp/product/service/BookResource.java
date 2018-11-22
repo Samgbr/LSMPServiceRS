@@ -22,7 +22,7 @@ public class BookResource implements BookService {
 	//GET,CREATE,DELETE AND UPDATE A PRODUCT
 	
 	@GET
-	@Produces({"application/xml" , "application/json"})
+	@Produces({"application/json"})
 	@Path("/book/{productId}")
 	public BookRepresentation getBook(@PathParam("productId") String id) {
 		System.out.println("GET METHOD Request from Client with book Request String ............." + id);

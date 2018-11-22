@@ -19,7 +19,7 @@ import com.lsmp.mp.product.service.workflow.ProductInventoryActivity;
 public class ProductInventoryResource implements ProductInventoryService{
 
 	@GET
-	@Produces({"application/xml" , "application/json"})
+	@Produces({"application/json"})
 	@Path("/productinventory/{productId}")
 	public ProductInventoryRepresentation getProductQtyOnHand(@PathParam("productId") String id) {
 		System.out.println("GET METHOD Request from Client with Product Inventory Request String ............." + id);
