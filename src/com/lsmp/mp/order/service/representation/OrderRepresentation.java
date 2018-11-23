@@ -7,17 +7,18 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+import com.lsmp.mp.link.AbstractRepresentation;
 import com.lsmp.mp.order.OrderDetail;
 
 @XmlRootElement(name = "orderRequest")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
-public class OrderRepresentation {
+public class OrderRepresentation extends AbstractRepresentation{
 
 	private String orderID;
 	private String profileID;
 	private String orderDate;
-	private String shipAddressID;
+	private String shipAddressID; 
 	private Set<OrderDetail> orderDetails;
 	
 	public Set<OrderDetail> getOrderDetails() {

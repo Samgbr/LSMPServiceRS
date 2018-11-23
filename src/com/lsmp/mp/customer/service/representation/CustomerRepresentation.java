@@ -10,11 +10,12 @@ import javax.xml.bind.annotation.XmlType;
 import com.lsmp.mp.customer.Address;
 import com.lsmp.mp.customer.Bill;
 import com.lsmp.mp.customer.Phone;
+import com.lsmp.mp.link.AbstractRepresentation;
 
 @XmlRootElement(name = "customerRequest")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
-public class CustomerRepresentation {
+public class CustomerRepresentation extends AbstractRepresentation{
 
 	//
 	private String profileID;

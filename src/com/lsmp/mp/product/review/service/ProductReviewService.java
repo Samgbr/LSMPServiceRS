@@ -12,7 +12,7 @@ import com.lsmp.mp.product.review.service.representation.ProductReviewRequest;
 public interface ProductReviewService {
 	//Book review representation and request methods goes here 
 	
-	public ProductReviewRepresentation getProductReview(String id, String pid);
+	public ProductReviewRepresentation getProductReview(String id);
 	public Set<ProductReviewRepresentation> getAllProductReviews();
 	public ProductReviewRepresentation createProductReview(ProductReviewRequest productReviewRequest);
 	public Response updateProductReview(ProductReviewRequest productReviewRequest);

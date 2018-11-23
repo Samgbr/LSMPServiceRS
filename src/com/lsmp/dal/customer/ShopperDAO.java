@@ -185,14 +185,14 @@ public class ShopperDAO {
 	 * @param bills
 	 * @return
 	 */
-	public Shopper addShopperProfile(String id,String loginID, String firstName, String middleName, String lastName,
+	public Shopper addShopperProfile(String loginID, String firstName, String middleName, String lastName,
 			String email,String password,String shopperType, Set<Address> addresses,Set<Phone> phones,Set<Bill> bills) {
 		
 		Shopper shopper = new Shopper();
-		/*
+		
 		Random randomGenerator = new Random();
 	    int randomInt = randomGenerator.nextInt(10000);
-	    String id = "SH" + randomInt;  */
+	    String id = "SH" + randomInt;  
 	    
 		shopper.setProfileID(id);
 		shopper.setLoginID(loginID);

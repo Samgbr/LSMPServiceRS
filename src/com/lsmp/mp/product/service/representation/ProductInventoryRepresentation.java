@@ -7,10 +7,12 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+import com.lsmp.mp.link.AbstractRepresentation;
+
 @XmlRootElement(name = "productInventoryRequest")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
-public class ProductInventoryRepresentation {
+public class ProductInventoryRepresentation extends AbstractRepresentation{
 
 	private String inventoryID;
 	private Map<String,Double> qtyOnHandMap;

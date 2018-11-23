@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import com.lsmp.mp.link.Link;
 import com.lsmp.mp.product.review.ProductReview;
 import com.lsmp.mp.product.review.ProductReviewManager;
 import com.lsmp.mp.product.review.service.representation.ProductReviewRepresentation;
@@ -39,8 +40,8 @@ public class ProductReviewActivity {
 		return productReviewRepresentations;
 	}
 	
-	public ProductReviewRepresentation getProductReviewByProfileIDandProductID(String id, String pid) {
-		ProductReview productReview=productReviewManager.getProductReviewByProfileIDandProductID(id, pid);
+	public ProductReviewRepresentation getProductReviewByProductID(String id) {
+		ProductReview productReview=productReviewManager.getProductReviewByProductID(id);
 		
 		ProductReviewRepresentation productReviewRepresentation=new ProductReviewRepresentation();
 		
@@ -64,9 +65,19 @@ public class ProductReviewActivity {
 		productReviewRepresentation.setReview(productReview.getReview());
 		productReviewRepresentation.setRating(productReview.getRating());
 		
+		setLinks(productReviewRepresentation);
+		
 		return productReviewRepresentation;
 	}
 	
+	private void setLinks(ProductReviewRepresentation productReviewRepresentation) {
+		Link updatereview = new Link("updatereview", 
+				"http://localhost:8082/ProductReview/productreviewservice/productreview" ,"application/xml");
+		Link deletereview = new Link("deletereview", 
+				"http://localhost:8082/ProductReview/productreviewservice/productreview/" + productReviewRepresentation.getProductReviewID() ,"application/xml");
+		productReviewRepresentation.setLinks(updatereview,deletereview);
+	}
+
 	public String updateProductReview(String prid,String pid, String review,double rating) {
 		productReviewManager.updateProductReview(prid, pid, review, rating);
 		return "OK";

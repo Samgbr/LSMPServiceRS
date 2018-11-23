@@ -7,8 +7,15 @@ import com.lsmp.mp.order.status.OrderStatus;
  * @author samzi
  *
  */
-public class Cancel extends Order implements OrderStatus {
+public class Cancel implements OrderStatus {
 
+	Order order;
+	OrderManager orderManager = new OrderManager();
+	
+	public Cancel(Order order) {
+		this.order = order;
+	}
+	
 	private int refund;
 
 	public int isRefund() {
@@ -20,10 +27,25 @@ public class Cancel extends Order implements OrderStatus {
 	}
 
 	@Override
-	public void status(Order order) {
-		//Cancel status goes here
+	public void updateOrderInProcess(boolean isOrderStarted) {
+		System.out.println("Order not processed");
+	}
+
+	@Override
+	public void updateOrderComplete(boolean isOrderProcessed) {
+		System.out.println("Order not completed");	
+	}
+
+	@Override
+	public void updateOrderCancel(boolean refundRequested) {
+		order.setCancel(this);
 		refund = 1;
-		order.setStatus(this);	
+		orderManager.updateOrderCancel(order.getOrderID(), refund);	
+	}
+	@Override
+	public void noOrderYet(boolean nothing) {
+		System.out.println("Order already Initiated");
+		refund = 0;
 	}
 	
 }

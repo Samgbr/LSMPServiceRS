@@ -1,11 +1,11 @@
-package com.lsmp.mp.product.service.representation;
+package com.lsmp.mp.link;
 
 import java.util.Arrays;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlElement;
 
-public abstract class ProductAbstractRepresentation {
+public abstract class AbstractRepresentation {
 
 	@XmlElement(name="link", namespace="")
 	protected List<Link> links;

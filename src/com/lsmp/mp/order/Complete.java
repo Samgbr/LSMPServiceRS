@@ -8,7 +8,14 @@ import com.lsmp.mp.order.status.OrderStatus;
  *
  */
 
-public class Complete extends Order implements OrderStatus{
+public class Complete implements OrderStatus {
+	
+	Order order;
+	OrderManager orderManager = new OrderManager();
+	
+	public Complete(Order order) {
+		this.order = order;
+	}
 
 	private String pickupLocation;
 	private int isDelivered;
@@ -27,10 +34,23 @@ public class Complete extends Order implements OrderStatus{
 	}
 	
 	@Override
-	public void status(Order order) {
-		// Complete status set here
+	public void updateOrderInProcess(boolean isOrderStarted) {
+		System.out.println("Order process already completed");
+	}
+	@Override
+	public void updateOrderComplete(boolean isOrderProcessed) {
+		order.setComplete(this);
 		isDelivered = 1;
-		order.setStatus(this);
+		orderManager.updateOrderComplete(order.getOrderID(), isDelivered, "");
+	}
+	@Override
+	public void updateOrderCancel(boolean refundRequested) {
+		System.out.println("Order not cancelled");		
+	}
+	@Override
+	public void noOrderYet(boolean nothing) {
+		System.out.println("Order already Initiated");
+		isDelivered = 0;
 	}
 	
 }

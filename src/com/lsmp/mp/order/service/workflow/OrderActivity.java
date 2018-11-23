@@ -2,10 +2,12 @@ package com.lsmp.mp.order.service.workflow;
 
 import java.util.Set;
 
+import com.lsmp.mp.link.Link;
 import com.lsmp.mp.order.Order;
 import com.lsmp.mp.order.OrderDetail;
 import com.lsmp.mp.order.OrderManager;
 import com.lsmp.mp.order.service.representation.OrderRepresentation;
+import com.lsmp.mp.order.service.representation.PaymentRepresentation;
 
 public class OrderActivity {
 
@@ -37,9 +39,30 @@ public class OrderActivity {
 		orderRepresentation.setOrderDetails(order.getOrderDetails());
 		orderRepresentation.setOrderDetails(order.getOrderDetails());
         
+		setLinks(orderRepresentation);
+		
 		return orderRepresentation;
 	}
 
+	private void setLinks(OrderRepresentation orderRepresentation) {
+		Link payment = new Link("payment", 
+				"http://localhost:8082/Order/orderservice/payment" ,"application/xml");
+					
+		orderRepresentation.setLinks(payment);
+	}
+
+	public PaymentRepresentation createPayment(String oid, double amount, String billID) {
+		
+		Order order = orderManager.addPayment(oid, amount, billID);
+		
+		PaymentRepresentation paymentRepresentation = new PaymentRepresentation();
+		paymentRepresentation.setOrderID(order.getOrderID());
+		paymentRepresentation.setAmount(order.getAmount());
+		paymentRepresentation.setBillID(order.getBillID());
+        
+		return paymentRepresentation;
+	}
+	
 	public String updateOrder(String oid, String profileID, String orderDate, String shipAddressID,Set<OrderDetail> details) {
 		orderManager.updateOrder(oid, profileID, orderDate, shipAddressID, details);
 		return "OK";

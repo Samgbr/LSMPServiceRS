@@ -22,6 +22,10 @@ private static ProductReviewDAO prDAO = new ProductReviewDAO();
 		return prDAO.getProductReviewByProfileIDandProductID(id,pid);
 	}
 	
+	public ProductReview getProductReviewByProductID(String id) {
+		return prDAO.getProductReviewByProductID(id);
+	}
+	
 	public ProductReview addProductReview(String id, String pid, String prid, String review,double rating) {
 		
 		ProductReview productReview = prDAO.addProductReview(id, pid, prid, review, rating);

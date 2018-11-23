@@ -7,12 +7,25 @@ import com.lsmp.mp.order.status.OrderStatus;
  * @author samzi
  *
  */
-public class InProcess extends Order implements OrderStatus{
+public class InProcess implements OrderStatus{
+	
+	Order order;
+	OrderManager orderManger = new OrderManager();
+	
+	public InProcess(Order order) {
+		this.order = order;
+	}
 
 	private int isPicked;
 	private int isPacked;
-	private int deliverdToPickupLocation;
+	private int deliveredToPickUpLocation;
 	
+	public int getDeliveredToPickUpLocation() {
+		return deliveredToPickUpLocation;
+	}
+	public void setDeliveredToPickUpLocation(int deliveredToPickUpLocation) {
+		this.deliveredToPickUpLocation = deliveredToPickUpLocation;
+	}
 	public int isPicked() {
 		return isPicked;
 	}
@@ -25,19 +38,30 @@ public class InProcess extends Order implements OrderStatus{
 	public void setPacked(int isPacked) {
 		this.isPacked = isPacked;
 	}
-	public int isDeliverdToPickupLocation() {
-		return deliverdToPickupLocation;
-	}
-	public void setDeliverdToPickupLocation(int deliverdToPickupLocation) {
-		this.deliverdToPickupLocation = deliverdToPickupLocation;
-	}
-	
 	
 	@Override
-	public void status(Order order) {
-		// In process status goes here
-		System.out.println("Processing Order");
-		order.setStatus(this);
+	public void updateOrderInProcess(boolean isOrderStarted) {
+		order.setInProcess(this);
+		isPicked=1;
+		isPacked=1;
+		deliveredToPickUpLocation=1;
+		orderManger.updateOrderInProcess(order.getOrderID(), isPicked, isPacked, deliveredToPickUpLocation);
+	}
+	@Override
+	public void updateOrderComplete(boolean isOrderProcessed) {
+		System.out.println("Still Order InProcess");
+	}
+	
+	@Override
+	public void updateOrderCancel(boolean refundRequested) {
+		System.out.println("Still Order InProcess");
+	}
+	@Override
+	public void noOrderYet(boolean nothing) {
+		System.out.println("Order already Initiated");
+		isPicked=0;
+		isPacked=0;	
+		deliveredToPickUpLocation=0;
 	}
 	
 }

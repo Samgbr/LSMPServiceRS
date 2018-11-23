@@ -31,13 +31,13 @@ public class CustomerResource implements CustomerService {
 	}
 
 	@POST
-	@Produces({"application/xml" , "application/json"})
-	@Consumes({"application/xml", "application/json"})
+	@Produces({"application/json"})
+	@Consumes({"application/json"})
 	@Path("/shopper")
 	public CustomerRepresentation createShopper(CustomerRequest customerRequest) {
 		System.out.println("POST METHOD Customer Request from Client with ............." );		
 		CustomerActivity customerActivity = new CustomerActivity();
-		return customerActivity.createShopper(customerRequest.getProfileID(),customerRequest.getLoginID(),customerRequest.getFirstName()
+		return customerActivity.createShopper(customerRequest.getLoginID(),customerRequest.getFirstName()
 				, customerRequest.getMiddleName(), customerRequest.getLastName(), customerRequest.getEmail(), customerRequest.getPassword()
 				, customerRequest.getShopperType(),customerRequest.getAddresses(),customerRequest.getPhones(),customerRequest.getBills());
 	}

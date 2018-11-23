@@ -70,7 +70,7 @@ public class OrderDAO {
 		try {
 			Statement selectStatement = connection.createStatement();
 			
-			String selectQuery = "SELECT * from orderT";
+			String selectQuery = "SELECT * from orderT WHERE orderID='"+id+"'";
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			resultSet.next();
 			profileID= resultSet.getString("profileID");
@@ -163,6 +163,34 @@ public class OrderDAO {
 			
 			return order;
 		}
+	
+	public Order addPayment(String oid, double amount, String billID) {
+		
+		Order order = new Order();
+	    
+	    order.setOrderID(oid);
+	    order.setAmount(amount);
+	    order.setBillID(billID);
+		
+		Connection connection = DBConnect.getDatabaseConnection();
+		try {
+			Statement updateStatement = connection.createStatement();
+			
+			String updateQuery = "UPDATE orderT SET amount='"+amount+"', billID='"+billID+"'  WHERE orderID='"+oid+"'";
+			updateStatement.executeUpdate(updateQuery);	
+			
+		}catch(SQLException se) {
+			se.printStackTrace();
+		}finally {
+			if(connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {}
+			}
+		}
+		
+		return order;
+	}
 	
 
 	public void updateOrder(String id, String profileID, String orderDate, String shipAddressID, Set<OrderDetail> details) {

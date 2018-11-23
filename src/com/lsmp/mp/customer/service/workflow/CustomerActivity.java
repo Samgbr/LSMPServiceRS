@@ -10,6 +10,7 @@ import com.lsmp.mp.customer.CustomerManager;
 import com.lsmp.mp.customer.Phone;
 import com.lsmp.mp.customer.Shopper;
 import com.lsmp.mp.customer.service.representation.CustomerRepresentation;
+import com.lsmp.mp.link.Link;
 
 /**
  * This class is responsible for accessing the work flow of ShopperDAO CRUD object
@@ -69,9 +70,9 @@ public class CustomerActivity {
 	}
 	
 	//new changes by Nasr
-	public CustomerRepresentation createShopper(String id, String loginID, String firstName, String middleName, String lastName, String email, String password, String shopperType,Set<Address> addresses, Set<Phone> phones, Set<Bill> bills) {
+	public CustomerRepresentation createShopper(String loginID, String firstName, String middleName, String lastName, String email, String password, String shopperType,Set<Address> addresses, Set<Phone> phones, Set<Bill> bills) {
 		
-		Shopper shopper=customerManager.addShopperProfile(id, loginID, firstName, middleName, lastName, email, password, shopperType, addresses, phones, bills);
+		Shopper shopper=customerManager.addShopperProfile(loginID, firstName, middleName, lastName, email, password, shopperType, addresses, phones, bills);
 		
 
 		CustomerRepresentation customerRepresentation = new CustomerRepresentation();
@@ -87,9 +88,19 @@ public class CustomerActivity {
 		customerRepresentation.setBills(shopper.getBillingsInfo());
 		customerRepresentation.setPhones(shopper.getPhones());
 		
+		setLinks(customerRepresentation);
+		
 		return customerRepresentation;
 	}
 	
+	private void setLinks(CustomerRepresentation customerRepresentation) {
+		Link updatecustomer = new Link("updatecustomer", 
+				"http://localhost:8082/Customer/shopperservice/shopper" ,"application/xml");
+		Link deletecustomer = new Link("deletecustomer", 
+				"http://localhost:8082/Customer/shopperservice/shopper/"+ customerRepresentation.getProfileID() ,"application/xml");
+		customerRepresentation.setLinks(updatecustomer,deletecustomer);
+	}
+
 	public String deleteShopper(String id) {
 		
 		customerManager.deleteShopperProfile(id);

@@ -5,12 +5,14 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+import com.lsmp.mp.link.AbstractRepresentation;
+
 @XmlRootElement(name = "bookRequest")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
 
 
-public class BookRepresentation extends ProductAbstractRepresentation {
+public class BookRepresentation extends AbstractRepresentation {
 	
 	private String productID;
 	private double purchasePrice;
