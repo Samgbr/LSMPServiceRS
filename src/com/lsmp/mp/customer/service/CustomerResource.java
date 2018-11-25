@@ -22,7 +22,7 @@ public class CustomerResource implements CustomerService {
 	
 	//GET, CREATE, UPDATE and DELETE Shopper
 	@GET
-	@Produces({"application/xml" , "application/json"})
+	@Produces({"application/json"})
 	@Path("/shopper/{shopperId}")
 	public CustomerRepresentation getShopper(@PathParam("shopperId") String id) {
 		System.out.println("GET METHOD Request from Client with shopperRequest String ............." + id);
@@ -31,7 +31,7 @@ public class CustomerResource implements CustomerService {
 	}
 
 	@POST
-	@Produces({"application/json"})
+	//@Produces({"application/json"})
 	@Consumes({"application/json"})
 	@Path("/shopper")
 	public CustomerRepresentation createShopper(CustomerRequest customerRequest) {
@@ -80,6 +80,15 @@ public class CustomerResource implements CustomerService {
 		System.out.println("GET METHOD Request for all Shoppers .............");
 		CustomerActivity customerActivity = new CustomerActivity();
 		return customerActivity.getShoppers();
+	}
+
+	@GET
+	@Produces({"application/json"})
+	@Path("/shopper/{loginID}/{password}")
+	public CustomerRepresentation getShopperByUsernameAndPassword(@PathParam("loginID") String id, @PathParam("password") String pwd) {
+		System.out.println("GET METHOD Request from Client with username and password String ............." + id);
+		CustomerActivity customerActivity = new CustomerActivity();
+		return customerActivity.getShopperByUsernameAndPassword(id, pwd);
 	}
 	
 	

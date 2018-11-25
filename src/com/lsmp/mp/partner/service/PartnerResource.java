@@ -21,7 +21,7 @@ import com.lsmp.mp.partner.service.workflow.PartnerActivity;
 public class PartnerResource implements PartnerService{
 
 	@GET
-	@Produces({"application/xml" , "application/json"})
+	@Produces({"application/json"})
 	@Path("/partners")
 	public Set<PartnerRepresentation> getPartners() {
 		System.out.println("GET METHOD Request for all Partners .............");
@@ -30,7 +30,7 @@ public class PartnerResource implements PartnerService{
 	}
 
 	@GET
-	@Produces({"application/xml" , "application/json"})
+	@Produces({"application/json"})
 	@Path("/partner/{profileId}")
 	public PartnerRepresentation getPartner(@PathParam("profileId") String id) {
 		System.out.println("GET METHOD Request from Client with Partner Request String ............." + id);

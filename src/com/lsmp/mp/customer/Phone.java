@@ -1,13 +1,13 @@
 package com.lsmp.mp.customer;
 
-
+import java.io.Serializable;
 
 /**
  * This phone model class hold customer phone number
  * @author samzi
  *
  */
-public class Phone{
+public class Phone implements Serializable{
 
 	// Instances
 	private String phoneID;

@@ -38,6 +38,10 @@ public class CustomerManager {
 		return sDAO.getShopper(id);
 	}
 	
+	public Shopper getShopperByUsernameAndPassword(String id,String pwd) {
+		return sDAO.getShopperByUsernameAndPassword(id, pwd);
+	}
+	
 	public Set<Shopper> getAllShopperProfiles() {
 		return sDAO.getAllShopperProfiles();
 	}

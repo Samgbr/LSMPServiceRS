@@ -31,12 +31,14 @@ public Set<Bill> getShopperBillingInfos(String id) {
 				int cvv = resultSet.getInt("cvv");
 				int expiryMonth = resultSet.getInt("expiryMonth");
 				int expiryYear = resultSet.getInt("expiryYear");
+				String shopperProfileID = resultSet.getString("shopperProfileID");
 				Bill bill = new Bill();
 				bill.setBillID(billID);
 				bill.setCreditCardNumber(creditCardNumber);
 				bill.setCvv(cvv);
 				bill.setExpiryMonth(expiryMonth);
 				bill.setExpiryYear(expiryYear);
+				bill.setShopperProfileID(shopperProfileID);
 				bills.add(bill);
 			}
 			
@@ -108,12 +110,14 @@ public Set<Bill> getShopperBillingInfos(String id) {
 				int cvv = resultSet.getInt("cvv");
 				int expiryMonth = resultSet.getInt("expiryMonth");
 				int expiryYear = resultSet.getInt("expiryYear");
+				String partnerProfileID = resultSet.getString("partnerProfileID");
 				Bill bill = new Bill();
 				bill.setBillID(billID);
 				bill.setCreditCardNumber(creditCardNumber);
 				bill.setCvv(cvv);
 				bill.setExpiryMonth(expiryMonth);
 				bill.setExpiryYear(expiryYear);
+				bill.setPartnerProfileID(partnerProfileID);
 				bills.add(bill);
 			}
 			

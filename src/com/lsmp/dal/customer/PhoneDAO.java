@@ -29,10 +29,12 @@ public class PhoneDAO {
 				String phoneID= resultSet.getString("phoneID");
 				String type = resultSet.getString("type");
 				String phoneNumber = resultSet.getString("phoneNumber");
+				String shopperProfileID = resultSet.getString("shopperProfileID");
 				Phone phone = new Phone();
 				phone.setPhoneID(phoneID);
 				phone.setType(type);
 				phone.setPhoneNumber(phoneNumber);
+				phone.setShopperProfileID(shopperProfileID);
 				phones.add(phone);
 			}
 			
@@ -98,10 +100,12 @@ public class PhoneDAO {
 				String phoneID= resultSet.getString("phoneID");
 				String type = resultSet.getString("type");
 				String phoneNumber = resultSet.getString("phoneNumber");
+				String partnerProfileID = resultSet.getString("partnerProfileID");
 				Phone phone = new Phone();
 				phone.setPhoneID(phoneID);
 				phone.setType(type);
 				phone.setPhoneNumber(phoneNumber);
+				phone.setPartnerProfileID(partnerProfileID);
 				phones.add(phone);
 			}
 			

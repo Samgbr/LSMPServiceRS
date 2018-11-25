@@ -31,6 +31,7 @@ public class PartnerDAO {
 	
 	//get, update, insert and delete goes here
 		public Partner getPartnerProfile(String id) {
+			String profileID=id;
 			String loginID="";
 			String firstName = "";
 			String middleName = "";
@@ -72,6 +73,7 @@ public class PartnerDAO {
 				}
 			}
 			Partner partner = new Partner();
+			partner.setProfileID(profileID);
 			partner.setLoginID(loginID);
 			partner.setFirstName(firstName);
 			partner.setMiddleName(middleName);
@@ -86,6 +88,7 @@ public class PartnerDAO {
 		}
 		
 		public Partner getPartner(String id) {
+			String profileID=id;
 			String loginID="";
 			String firstName = "";
 			String middleName = "";
@@ -120,6 +123,7 @@ public class PartnerDAO {
 				}
 			}
 			Partner partner = new Partner();
+			partner.setProfileID(profileID);
 			partner.setLoginID(loginID);
 			partner.setFirstName(firstName);
 			partner.setMiddleName(middleName);
