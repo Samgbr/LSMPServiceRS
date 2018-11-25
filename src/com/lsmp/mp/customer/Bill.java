@@ -1,12 +1,13 @@
 package com.lsmp.mp.customer;
 
+import java.io.Serializable;
 
 /**
  * This class is a billing model class 
  * @author samzi
  *
  */
-public class Bill{
+public class Bill implements Serializable{
 
 	private String billID;
 	private String creditCardNumber;

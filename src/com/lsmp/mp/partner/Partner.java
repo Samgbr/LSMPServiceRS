@@ -1,5 +1,7 @@
 package com.lsmp.mp.partner;
 
+import java.io.Serializable;
+
 import com.lsmp.mp.customer.Profile;
 
 /**
@@ -7,7 +9,7 @@ import com.lsmp.mp.customer.Profile;
  * @author samzi
  *
  */
-public class Partner extends Profile{
+public class Partner extends Profile implements Serializable{
 
 	//Instances
 	private String sellerLevel;

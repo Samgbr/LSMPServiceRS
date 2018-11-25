@@ -1,12 +1,13 @@
 package com.lsmp.mp.customer;
 
+import java.io.Serializable;
 
 /**
  * This address model class store customer address
  * @author samzi
  *
  */
-public class Address {
+public class Address implements Serializable{
 
 	//Instance variables
 	private String addressID;

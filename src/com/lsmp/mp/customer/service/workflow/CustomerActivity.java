@@ -69,6 +69,25 @@ public class CustomerActivity {
 		return customerRepresentation;
 	}
 	
+	public CustomerRepresentation getShopperByUsernameAndPassword(String id,String pwd) {
+		
+		Shopper shopper = customerManager.getShopperByUsernameAndPassword(id, pwd);
+		
+		CustomerRepresentation customerRepresentation = new CustomerRepresentation();
+		customerRepresentation.setProfileID(shopper.getProfileID());
+		customerRepresentation.setLoginID(shopper.getLoginID());
+		customerRepresentation.setFirstName(shopper.getFirstName());
+		customerRepresentation.setMiddleName(shopper.getMiddleName());
+		customerRepresentation.setLastName(shopper.getLastName());
+		customerRepresentation.setEmail(shopper.getEmail());
+		customerRepresentation.setShopperType(shopper.getShopperType());
+		customerRepresentation.setAddresses(shopper.getAddresses());
+		customerRepresentation.setBills(shopper.getBillingsInfo());
+		customerRepresentation.setPhones(shopper.getPhones());
+		
+		return customerRepresentation;
+	}
+	
 	//new changes by Nasr
 	public CustomerRepresentation createShopper(String loginID, String firstName, String middleName, String lastName, String email, String password, String shopperType,Set<Address> addresses, Set<Phone> phones, Set<Bill> bills) {
 		

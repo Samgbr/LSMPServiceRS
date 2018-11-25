@@ -35,6 +35,7 @@ public class ShopperDAO {
 	 * @return - shopper model
 	 */
 	public Shopper getShopperProfile(String id) {
+		String profileID=id;
 		String loginID="";
 		String firstName = "";
 		String middleName = "";
@@ -74,6 +75,7 @@ public class ShopperDAO {
 			}
 		}
 		Shopper shopper = new Shopper();
+		shopper.setProfileID(id);
 		shopper.setLoginID(loginID);
 		shopper.setFirstName(firstName);
 		shopper.setMiddleName(middleName);
@@ -124,6 +126,51 @@ public class ShopperDAO {
 			}
 		}
 		Shopper shopper = new Shopper();
+		shopper.setLoginID(loginID);
+		shopper.setFirstName(firstName);
+		shopper.setMiddleName(middleName);
+		shopper.setLastName(lastName);
+		shopper.setEmail(email);
+		shopper.setShopperType(shopperType);
+		return shopper;	
+	}
+	
+	public Shopper getShopperByUsernameAndPassword(String id,String pwd) {
+		String profileID="";
+		String loginID="";
+		String firstName = "";
+		String middleName = "";
+		String lastName = "";
+		String email = "";
+		String shopperType="";
+		Connection connection = DBConnect.getDatabaseConnection();
+		
+		
+		try {
+			Statement selectStatement = connection.createStatement();
+			
+			String selectQuery = "SELECT * from shopper where loginID='" + id +"' AND s_password='" + pwd +"'";
+			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
+			resultSet.next();
+			profileID = resultSet.getString("profileID");
+			loginID= resultSet.getString("loginID");
+			lastName = resultSet.getString("lastName");
+			middleName = resultSet.getString("middleName");
+			firstName = resultSet.getString("firstName");
+			email = resultSet.getString("email");
+			shopperType = resultSet.getString("shopperType");
+			
+		}catch(SQLException se) {
+			se.printStackTrace();
+		}finally {
+			if(connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {}
+			}
+		}
+		Shopper shopper = new Shopper();
+		shopper.setProfileID(profileID);
 		shopper.setLoginID(loginID);
 		shopper.setFirstName(firstName);
 		shopper.setMiddleName(middleName);
