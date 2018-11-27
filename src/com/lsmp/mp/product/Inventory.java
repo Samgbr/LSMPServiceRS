@@ -13,6 +13,15 @@ public class Inventory {
 	//ProductID and qtyOnHand Map
 	private String inventoryID;
 	private Map<String,Double> qtyOnHandMap;
+	private double qty;
+
+	public double getQty() {
+		return qty;
+	}
+
+	public void setQty(double qty) {
+		this.qty = qty;
+	}
 
 	public String getInventoryID() {
 		return inventoryID;

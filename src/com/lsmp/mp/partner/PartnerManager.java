@@ -61,6 +61,9 @@ private static PartnerDAO pDAO = new PartnerDAO();
 		pDAO.deletePartner(id);
 	}
 	
+	public Partner getPartnerByUsernameAndPassword(String id,String pwd) {
+		return pDAO.getPartnerByUsernameAndPassword(id, pwd);
+	}
 	//------------------------------------------
 	// Partner product removed
 	

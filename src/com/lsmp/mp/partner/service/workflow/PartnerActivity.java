@@ -108,5 +108,20 @@ public class PartnerActivity {
 		partnerManager.deletePartnerProfile(id);
 		return "OK";
 	}
+	
+	public PartnerRepresentation getPartnerByUsernameAndPassword(String id, String pwd) {
+		
+		Partner partner = partnerManager.getPartnerByUsernameAndPassword(id, pwd);
+		
+		PartnerRepresentation partnerRepresentation = new PartnerRepresentation();
+		partnerRepresentation.setProfileID(partner.getProfileID());
+		partnerRepresentation.setLoginID(partner.getLoginID());
+		partnerRepresentation.setFirstName(partner.getFirstName());
+		partnerRepresentation.setMiddleName(partner.getMiddleName());
+		partnerRepresentation.setLastName(partner.getLastName());
+		partnerRepresentation.setEmail(partner.getEmail());
+		
+		return partnerRepresentation;
+	}
 
 }

@@ -80,5 +80,14 @@ public class PartnerResource implements PartnerService{
 		return null;
 	}
 
+	@GET
+	@Produces({"application/json"})
+	@Path("/partner/{loginID}/{password}")
+	public PartnerRepresentation getPartnerByUsernameAndPassword(@PathParam("loginID") String id,@PathParam("password") String pwd) {
+		System.out.println("GET METHOD Request for Partner Username and Password .............");
+		PartnerActivity partnerActivity = new PartnerActivity();
+		return partnerActivity.getPartnerByUsernameAndPassword(id, pwd);
+	}
+
 	
 }
