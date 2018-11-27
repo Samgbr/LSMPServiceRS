@@ -45,6 +45,7 @@ public class InventoryDAO {
 		Inventory inventory = new Inventory();
 		inventory.setInventoryID(iid);
 		inventory.setQtyOnHandMap(qtyOnHandMap);
+		inventory.setQty(qtyOnHand);
 		
 		return inventory;	
 	}

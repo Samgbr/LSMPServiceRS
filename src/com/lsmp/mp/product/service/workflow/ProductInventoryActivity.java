@@ -17,6 +17,7 @@ public class ProductInventoryActivity {
 		
 		productInventoryRepresentation.setQtyOnHandMap(inventory.getQtyOnHandMap());
 		productInventoryRepresentation.setInventoryID(inventory.getInventoryID());
+		productInventoryRepresentation.setQty(inventory.getQty());
 		
 		setLinks(productInventoryRepresentation);
 		

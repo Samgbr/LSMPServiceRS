@@ -134,6 +134,49 @@ public class PartnerDAO {
 			return partner;	
 		}
 		
+		public Partner getPartnerByUsernameAndPassword(String id,String pwd) {
+			String profileID="";
+			String loginID="";
+			String firstName = "";
+			String middleName = "";
+			String lastName = "";
+			String email = "";
+			
+			Connection connection = DBConnect.getDatabaseConnection();
+			
+			
+			try {
+				Statement selectStatement = connection.createStatement();
+				
+				String selectQuery = "SELECT * from partner where loginID='" + id +"' AND p_password='" + pwd +"'";
+				ResultSet resultSet = selectStatement.executeQuery(selectQuery);
+				resultSet.next();
+				profileID = resultSet.getString("profileID");
+				loginID= resultSet.getString("loginID");
+				lastName = resultSet.getString("lastName");
+				middleName = resultSet.getString("middleName");
+				firstName = resultSet.getString("firstName");
+				email = resultSet.getString("email");
+				
+			}catch(SQLException se) {
+				se.printStackTrace();
+			}finally {
+				if(connection != null) {
+					try {
+						connection.close();
+					} catch (SQLException e) {}
+				}
+			}
+			Partner partner = new Partner();
+			partner.setProfileID(profileID);
+			partner.setLoginID(loginID);
+			partner.setFirstName(firstName);
+			partner.setMiddleName(middleName);
+			partner.setLastName(lastName);
+			partner.setEmail(email);
+			return partner;	
+		}
+		
 		public Set<Partner> getAllPartnerProfiles() {
 			
 			Connection connection = DBConnect.getDatabaseConnection();
