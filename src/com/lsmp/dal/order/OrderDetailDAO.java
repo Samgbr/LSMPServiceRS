@@ -238,7 +238,7 @@ public class OrderDetailDAO {
 		}
 	}
 
-	public void addOrderDetails(Set<OrderDetail> orderDetails) {
+	public void addOrderDetails(String oid,Set<OrderDetail> orderDetails) {
 		
 		Connection connection = DBConnect.getDatabaseConnection();
 		try {
@@ -247,14 +247,14 @@ public class OrderDetailDAO {
 			Iterator<OrderDetail> orderDetailsIterator = orderDetails.iterator();
 			
 			while(orderDetailsIterator.hasNext()) {
-				/*
+				
 				Random randomGenerator = new Random();
 			    int randomInt = randomGenerator.nextInt(10000);
-			    String orderDetailID = "OD" + randomInt;  */
+			    String orderDetailID = "OD" + randomInt;  
 				OrderDetail currentOrderDetail = orderDetailsIterator.next();
 				
 				String insertQuery = "INSERT INTO orderDetail(orderDetailID,orderID,productID,orderedQuantity) "
-						+ "VALUES('"+currentOrderDetail.getOrderDetailID()+"','"+currentOrderDetail.getOrderID()+"','"+currentOrderDetail.getProductID()+"','"+currentOrderDetail.getOrderedQuantity()+"')";
+						+ "VALUES('"+orderDetailID+"','"+oid+"','"+currentOrderDetail.getProductID()+"','"+currentOrderDetail.getOrderedQuantity()+"')";
 				insertStatement.executeUpdate(insertQuery);
 				
 			}		

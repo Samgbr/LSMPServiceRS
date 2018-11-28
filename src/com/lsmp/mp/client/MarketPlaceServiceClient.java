@@ -143,7 +143,7 @@ public final class MarketPlaceServiceClient {
 		Set<OrderDetail> details = new HashSet<>();
 		details.add(orderDetail1);
 		details.add(orderDetail2);
-		Order order =orderManager.addOrder("OR88960", "SH45451", "01/11/2018", "AD78984",details);
+		Order order =orderManager.addOrder("SH45451", "01/11/2018", "AD78984",details);
 		//Update order
 		orderManager.updateOrderDetail("OD45610", "OR88960", "BO89789", 3.0);
 		//Delete order
