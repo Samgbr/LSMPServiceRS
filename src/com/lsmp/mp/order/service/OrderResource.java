@@ -30,13 +30,13 @@ public class OrderResource implements OrderService{
 	}
 
 	@POST
-	@Produces({"application/xml" , "application/json"})
-	@Consumes({"application/xml", "application/json"})
+	@Produces({"application/json"})
+	@Consumes({"application/json"})
 	@Path("/order")
 	public OrderRepresentation createOrder(OrderRequest orderRequest) {
 		System.out.println("POST METHOD Order Request from Client with ............." );		
 		OrderActivity orderActivity = new OrderActivity();
-		return orderActivity.createOrder(orderRequest.getOrderID(), orderRequest.getProfileID(), orderRequest.getOrderDate(), orderRequest.getShipAddressID(),orderRequest.getOrderDetails());
+		return orderActivity.createOrder(orderRequest.getProfileID(), orderRequest.getOrderDate(), orderRequest.getShipAddressID(),orderRequest.getOrderDetails());
 	}
 
 	@PUT
@@ -68,8 +68,8 @@ public class OrderResource implements OrderService{
 	}
 
 	@PUT
-	@Produces({"application/xml" , "application/json"})
-	@Consumes({"application/xml", "application/json"})
+	@Produces({"application/json"})
+	@Consumes({"application/json"})
 	@Path("/payment")
 	public PaymentRepresentation createPayment(PaymentRequest paymentRequest) {
 		System.out.println("POST METHOD Payment Request from Client with ............." );		

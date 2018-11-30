@@ -35,8 +35,8 @@ public class ShopperDAO {
 	 * @return - shopper model
 	 */
 	public Shopper getShopperProfile(String id) {
-		String profileID=id;
-		String loginID="";
+		String profileID="";
+		String loginID=id;
 		String firstName = "";
 		String middleName = "";
 		String lastName = "";
@@ -51,19 +51,19 @@ public class ShopperDAO {
 		try {
 			Statement selectStatement = connection.createStatement();
 			
-			String selectQuery = "SELECT * from shopper where profileID='" + id +"'";
+			String selectQuery = "SELECT * from shopper where loginID='" + id +"'";
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			resultSet.next();
-			loginID= resultSet.getString("loginID");
+			profileID= resultSet.getString("profileID");
 			lastName = resultSet.getString("lastName");
 			middleName = resultSet.getString("middleName");
 			firstName = resultSet.getString("firstName");
 			email = resultSet.getString("email");
 			shopperType = resultSet.getString("shopperType");
 			
-			addresses = addressDAO.getShopperAddresses(id);
-			phones  = phoneDAO.getShopperPhones(id);
-			billInfos = billInfoDAO.getShopperBillingInfos(id);
+			addresses = addressDAO.getShopperAddresses(profileID);
+			phones  = phoneDAO.getShopperPhones(profileID);
+			billInfos = billInfoDAO.getShopperBillingInfos(profileID);
 			
 		}catch(SQLException se) {
 			se.printStackTrace();
@@ -75,8 +75,8 @@ public class ShopperDAO {
 			}
 		}
 		Shopper shopper = new Shopper();
-		shopper.setProfileID(id);
-		shopper.setLoginID(loginID);
+		shopper.setProfileID(profileID);
+		shopper.setLoginID(id);
 		shopper.setFirstName(firstName);
 		shopper.setMiddleName(middleName);
 		shopper.setLastName(lastName);

@@ -127,13 +127,13 @@ public class OrderDAO {
 		
 	}
 	
-	public Order addOrder(String oid, String profileID, String orderDate, String shipAddressID, Set<OrderDetail> orderDetails) {
+	public Order addOrder(String profileID, String orderDate, String shipAddressID, Set<OrderDetail> orderDetails) {
 			
 			Order order = new Order();
-			/*
+			
 			Random randomGenerator = new Random();
 		    int randomInt = randomGenerator.nextInt(10000);
-		    String id = "OR" + randomInt; */
+		    String oid = "OR" + randomInt; 
 		    
 		    order.setOrderID(oid);
 		    order.setOrderDate(orderDate);
@@ -149,7 +149,7 @@ public class OrderDAO {
 						+ "VALUES('"+oid+"','"+profileID+"','"+orderDate+"','"+shipAddressID+"','NA')";
 				insertStatement.executeUpdate(insertQuery);
 			
-				orderDetailDAO.addOrderDetails(orderDetails);
+				orderDetailDAO.addOrderDetails(oid,orderDetails);
 				
 			}catch(SQLException se) {
 				se.printStackTrace();

@@ -22,9 +22,9 @@ public class OrderManager {
 		return oDAO.getAllOrders();
 	}
 	
-	public Order addOrder(String oid, String profileID, String orderDate, String shipAddressID, Set<OrderDetail> orderDetails) {
+	public Order addOrder(String profileID, String orderDate, String shipAddressID, Set<OrderDetail> orderDetails) {
 		
-		Order order = oDAO.addOrder(oid, profileID, orderDate, shipAddressID, orderDetails);
+		Order order = oDAO.addOrder(profileID, orderDate, shipAddressID, orderDetails);
 		
 		return order;
 	}
@@ -96,8 +96,8 @@ public class OrderManager {
 		return odDAO.addSmartphoneOrderDetail(odid, orderID, productID, orderedQuantity);
 	} */
 	
-	public void addOrderDetails(Set<OrderDetail> orderDetails) {
-		odDAO.addOrderDetails(orderDetails);
+	public void addOrderDetails(String oid,Set<OrderDetail> orderDetails) {
+		odDAO.addOrderDetails(oid, orderDetails);
 	}
 	/*
 	public void addSmartphoneOrderDetails(Set<OrderDetail> orderDetails) {

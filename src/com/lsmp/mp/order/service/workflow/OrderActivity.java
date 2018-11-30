@@ -27,9 +27,9 @@ public class OrderActivity {
 		return orderRepresentation;
 	}
 
-	public OrderRepresentation createOrder(String oid, String profileID, String orderDate, String shipAddressID,Set<OrderDetail> orderDetails) {
+	public OrderRepresentation createOrder(String profileID, String orderDate, String shipAddressID,Set<OrderDetail> orderDetails) {
 		
-		Order order = orderManager.addOrder(oid, profileID, orderDate, shipAddressID, orderDetails);
+		Order order = orderManager.addOrder(profileID, orderDate, shipAddressID, orderDetails);
 		
 		OrderRepresentation orderRepresentation = new OrderRepresentation();
 		orderRepresentation.setOrderID(order.getOrderID());
