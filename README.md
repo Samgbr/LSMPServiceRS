@@ -4,6 +4,22 @@
  Presentation Sildes :
  https://drive.google.com/file/d/191mmLHo50XP2lbPPW4WpOvjfILPA5jao/view?usp=sharing
  
+## Team Contribution:
+Samuel:
+-- Server-side DAL, Domain and partly service layer
+-- Client-side Javascript and Login
+-- Operational Model Design
+-- REST Service test using Postman
+Nassurllah:
+-- Database Design (DDL and ERD)
+-- Partly server-side service layer (including any changes in the DAL and domain layer)
+-- Client side code web page design
+-- REST Service test using Postman
+Ibrahim:
+-- Prepared wiki and documentation
+-- Prepared Presentation slides
+-- Functional test on client-side
+
 COMP433
 
 This repository is used to store a market place web service maven project for the course fulfillment of COMP 433 at Loyola University Fall 2018.
@@ -13,9 +29,8 @@ Tools/Languages used in this project are:
   1. Java/J2ee
   2. Eclipse
   3. Mysql
-  4. aws
+  4. AWS
   5. REST
-  6. Paypal
     
 # To-do list
 
