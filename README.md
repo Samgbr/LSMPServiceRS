@@ -35,7 +35,7 @@ Tools/Languages used in this project are:
 
 ================================
 # Operational Model
-https://drive.google.com/open?id=1HThbxD_x_JkXtQuXd7rrshiakwjpBaX9
+https://drive.google.com/open?id=1rQgXIoqmEhflRY4BI65eF9d_eH-zU2Yi
 + Classes that have association/composition characteristics, used set data structre.
 
 # Database schema
