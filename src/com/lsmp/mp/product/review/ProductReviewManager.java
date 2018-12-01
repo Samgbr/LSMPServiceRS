@@ -15,8 +15,8 @@ public class ProductReviewManager {
 	
 private static ProductReviewDAO prDAO = new ProductReviewDAO();
 
-	public Set<ProductReview> getAllProductReviews(){
-		return prDAO.getAllProductReviews();
+	public Set<ProductReview> getAllProductReviews(String id){
+		return prDAO.getAllProductReviews(id);
 	}
 	public ProductReview getProductReviewByProfileIDandProductID(String id, String pid) {
 		return prDAO.getProductReviewByProfileIDandProductID(id,pid);
@@ -26,9 +26,9 @@ private static ProductReviewDAO prDAO = new ProductReviewDAO();
 		return prDAO.getProductReviewByProductID(id);
 	}
 	
-	public ProductReview addProductReview(String id, String pid, String prid, String review,double rating) {
+	public ProductReview addProductReview(String pid, String prid, String review,double rating) {
 		
-		ProductReview productReview = prDAO.addProductReview(id, pid, prid, review, rating);
+		ProductReview productReview = prDAO.addProductReview(pid, prid, review, rating);
 		
 		return productReview;
 	}

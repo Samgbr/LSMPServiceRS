@@ -13,7 +13,8 @@ public interface ProductReviewService {
 	//Book review representation and request methods goes here 
 	
 	public ProductReviewRepresentation getProductReview(String id);
-	public Set<ProductReviewRepresentation> getAllProductReviews();
+	public ProductReviewRepresentation getProductReviewByProfileIDandProductID(String id, String pid);
+	public Set<ProductReviewRepresentation> getAllProductReviews(String id);
 	public ProductReviewRepresentation createProductReview(ProductReviewRequest productReviewRequest);
 	public Response updateProductReview(ProductReviewRequest productReviewRequest);
 	public Response deleteProductReview(String productReviewID);

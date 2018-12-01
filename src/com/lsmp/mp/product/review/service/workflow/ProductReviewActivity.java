@@ -13,12 +13,12 @@ public class ProductReviewActivity {
 	
 	public static ProductReviewManager productReviewManager=new ProductReviewManager();
 	
-	public Set<ProductReviewRepresentation> getProductReviews(){
+	public Set<ProductReviewRepresentation> getProductReviews(String id){
 		
 		Set<ProductReview> productReviews=new HashSet<ProductReview>();
 		Set<ProductReviewRepresentation> productReviewRepresentations=new HashSet<ProductReviewRepresentation>();
 		
-		productReviews=productReviewManager.getAllProductReviews();
+		productReviews=productReviewManager.getAllProductReviews(id);
 		
 		Iterator<ProductReview> it=productReviews.iterator();
 		
@@ -54,8 +54,22 @@ public class ProductReviewActivity {
 		return productReviewRepresentation;
 	}
 	
-	public ProductReviewRepresentation addProductReview(String id,String pid,String prid, String review,double rating) {
-		ProductReview productReview=productReviewManager.addProductReview(id, pid, prid, review, rating);
+	public ProductReviewRepresentation getProductReviewByProfileIDandProductID(String id, String pid) {
+		ProductReview productReview=productReviewManager.getProductReviewByProfileIDandProductID(id, pid);
+		
+		ProductReviewRepresentation productReviewRepresentation=new ProductReviewRepresentation();
+		
+		productReviewRepresentation.setProductReviewID(productReview.getProductReviewID());
+		productReviewRepresentation.setProductID(productReview.getProductID());
+		productReviewRepresentation.setProfileID(productReview.getProfileID());
+		productReviewRepresentation.setReview(productReview.getReview());
+		productReviewRepresentation.setRating(productReview.getRating());
+		
+		return productReviewRepresentation;
+	}
+	
+	public ProductReviewRepresentation addProductReview(String pid,String prid, String review,double rating) {
+		ProductReview productReview=productReviewManager.addProductReview(pid, prid, review, rating);
 		
 		ProductReviewRepresentation productReviewRepresentation=new ProductReviewRepresentation();
 		

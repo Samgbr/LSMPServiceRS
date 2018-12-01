@@ -23,16 +23,16 @@ public class ProductReviewResource implements ProductReviewService{
 	//GET,CREATE,DELETE AND UPDATE A Book Review
 	
 	@GET
-	@Produces({"application/xml" , "application/json"})
-	@Path("/productreviews")
-	public Set<ProductReviewRepresentation> getAllProductReviews(){
+	@Produces({"application/json"})
+	@Path("/productreviews/{productId}")
+	public Set<ProductReviewRepresentation> getAllProductReviews(@PathParam("productId") String id){
 		System.out.println("GET METHOD Request for all Product Reviews .............");
 		ProductReviewActivity productReviewActivity=new ProductReviewActivity();
-		return productReviewActivity.getProductReviews();
+		return productReviewActivity.getProductReviews(id);
 	}
 	
 	@GET
-	@Produces({"application/xml" , "application/json"})
+	@Produces({"application/json"})
 	@Path("/productreview/{productId}")
 	public ProductReviewRepresentation getProductReview(@PathParam("productId") String id) {
 		System.out.println("GET METHOD Request from Client with Product review Request String :");
@@ -41,13 +41,13 @@ public class ProductReviewResource implements ProductReviewService{
 	}
 	
 	@POST
-	@Produces({"application/xml" , "application/json"})
-	@Consumes({"application/xml", "application/json"})
+	@Produces({"application/json"})
+	@Consumes({"application/json"})
 	@Path("/productreview")
 	public ProductReviewRepresentation createProductReview(ProductReviewRequest productReviewRequest) {
 		System.out.println("POST METHOD Product review Request from Client with ............." );
 		ProductReviewActivity productReviewActivity=new ProductReviewActivity();
-		return productReviewActivity.addProductReview(productReviewRequest.getProductReviewID(), productReviewRequest.getProductID(), productReviewRequest.getProfileID(), productReviewRequest.getReview(), productReviewRequest.getRating());
+		return productReviewActivity.addProductReview(productReviewRequest.getProductID(), productReviewRequest.getProfileID(), productReviewRequest.getReview(), productReviewRequest.getRating());
 	}
 	/**
 	 * This method updates only review and rating
@@ -79,6 +79,15 @@ public class ProductReviewResource implements ProductReviewService{
 			return Response.status(Status.OK).build();
 		}
 		return null;
+	}
+
+	@GET
+	@Produces({"application/json"})
+	@Path("/productreview/{productId}/{ProfileID}")
+	public ProductReviewRepresentation getProductReviewByProfileIDandProductID(@PathParam("productId") String id, @PathParam("ProfileID") String pid) {
+		System.out.println("GET METHOD Request for all Product Reviews by profileID and productID.............");
+		ProductReviewActivity productReviewActivity=new ProductReviewActivity();
+		return productReviewActivity.getProductReviewByProfileIDandProductID(id, pid);
 	}
 	
 	

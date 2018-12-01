@@ -91,8 +91,8 @@ public final class MarketPlaceServiceClient {
 
 	private static void proRevManager(ProductReviewManager productReviewManager) {
 		//Add book review
-		productReviewManager.addProductReview("PR65452","BO89743", "SH45897", "Great Product", 4.2);
-		productReviewManager.addProductReview("PR65451","BO45459", "SH45897", "Not recommend this book", 2.9);
+		productReviewManager.addProductReview("BO89743", "SH45897", "Great Product", 4.2);
+		productReviewManager.addProductReview("BO45459", "SH45897", "Not recommend this book", 2.9);
 		//update book review
 		productReviewManager.updateProductReview("BO45459", "SH45897", "Not bad after all", 3.7);
 		//Delete book review
