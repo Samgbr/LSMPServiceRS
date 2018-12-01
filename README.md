@@ -3,22 +3,6 @@
  
  Presentation Sildes :
  https://drive.google.com/file/d/191mmLHo50XP2lbPPW4WpOvjfILPA5jao/view?usp=sharing
- 
-## Team Contribution:
-###Samuel:
-+ Server-side DAL, Domain and partly service layer
-+ Client-side Javascript and Login
-+ Operational Model Design
-+ REST Service test using Postman
-###Nassurllah:
-+ Database Design (DDL and ERD)
-+ Partly server-side service layer (including any changes in the DAL and domain layer)
-+ Client side code web page design
-+ REST Service test using Postman
-###Ibrahim:
-+ Prepared wiki and documentation
-+ Prepared Presentation slides
-+ Functional test on client-side
 
 COMP433
 
