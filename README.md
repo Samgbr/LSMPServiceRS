@@ -1,5 +1,6 @@
 # LSMPServiceRS
  Full documentation for the project : https://docs.google.com/document/d/1SMdL4yhRCTgK-X-mUCckdDcWkfEsV4K_LBHGXSmjX38/edit#
+ 
 COMP433
 
 This repository is used to store a market place web service maven project for the course fulfillment of COMP 433 at Loyola University Fall 2018.
