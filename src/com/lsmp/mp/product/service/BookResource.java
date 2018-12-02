@@ -40,13 +40,13 @@ public class BookResource implements BookService {
 	}
 
 	@POST
-	@Produces({"application/xml" , "application/json"})
-	@Consumes({"application/xml", "application/json"})
+	@Produces({"application/json"})
+	@Consumes({"application/json"})
 	@Path("/book")
 	public BookRepresentation createBook(BookRequest bookRequest) {
 		System.out.println("POST METHOD Book Request from Client with ............." );		
 		BookActivity bookActivity=new BookActivity();
-		return bookActivity.createBook(bookRequest.getProductID(),bookRequest.getPurchasePrice(),bookRequest.getSellingPrice()
+		return bookActivity.createBook(bookRequest.getPurchasePrice(),bookRequest.getSellingPrice()
 				, bookRequest.getTitle(), bookRequest.getIsbn(), bookRequest.getPublisher(), bookRequest.getAuthor()
 				, bookRequest.getEdition(),bookRequest.getPartnerID());
 	}

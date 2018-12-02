@@ -91,8 +91,8 @@ public final class MarketPlaceServiceClient {
 
 	private static void proRevManager(ProductReviewManager productReviewManager) {
 		//Add book review
-		productReviewManager.addProductReview("PR65452","BO89743", "SH45897", "Great Product", 4.2);
-		productReviewManager.addProductReview("PR65451","BO45459", "SH45897", "Not recommend this book", 2.9);
+		productReviewManager.addProductReview("BO89743", "SH45897", "Great Product", 4.2);
+		productReviewManager.addProductReview("BO45459", "SH45897", "Not recommend this book", 2.9);
 		//update book review
 		productReviewManager.updateProductReview("BO45459", "SH45897", "Not bad after all", 3.7);
 		//Delete book review
@@ -154,9 +154,9 @@ public final class MarketPlaceServiceClient {
 
 	private static void pManager(ProductManager productManager) {
 		//Book Creation
-		productManager.addBook("BO89743", "fdgknkln22", "Mcgraw hill", "Adam reta", "7th", "Ebook", "XXX", "suspense book", 12.99, 20.99, 0.125, "A Dart","PA95687");
-		productManager.addBook("BO89789", "fdgfjln22", "Mcgraw hill", "Ptr reta", "5th", "paper", "YYY", "psychology book", 10.99, 15.99, 0.115, "The dark knight","");
-		productManager.addBook("BO89999", "fdgfjln22", "Mcgraw hill", "Ptr reta", "5th", "CD", "YYY", "Dude book", 9.99, 12.99, 0.115, "The okay knight","");
+		productManager.addBook("fdgknkln22", "Mcgraw hill", "Adam reta", "7th", "Ebook", "XXX", "suspense book", 12.99, 20.99, 0.125, "A Dart","PA95687");
+		productManager.addBook("fdgfjln22", "Mcgraw hill", "Ptr reta", "5th", "paper", "YYY", "psychology book", 10.99, 15.99, 0.115, "The dark knight","");
+		productManager.addBook("fdgfjln22", "Mcgraw hill", "Ptr reta", "5th", "CD", "YYY", "Dude book", 9.99, 12.99, 0.115, "The okay knight","");
 		//Update book
 		productManager.updateBook("BO89789", "fdgfjln22", "Mcgraw hill", "Ptr reta", "5th", "paper", "YYY", "psychology book", 17.99, 21.99, 0.17, "The dark knight","");
 		//Delete book

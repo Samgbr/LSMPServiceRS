@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
 
 import com.lsmp.dal.DBConnect;
@@ -122,7 +123,7 @@ public class ProductReviewDAO {
 		return productReview;	
 	}  */
 	
-	public Set<ProductReview> getAllProductReviews() {
+	public Set<ProductReview> getAllProductReviews(String id) {
 
 		
 		Connection connection = DBConnect.getDatabaseConnection();
@@ -131,7 +132,7 @@ public class ProductReviewDAO {
 		try {
 			Statement selectStatement = connection.createStatement();
 			
-			String selectQuery = "SELECT * from productReview";
+			String selectQuery = "SELECT * from productReview where productID='" + id +"'";
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			
 			while(resultSet.next()) {
@@ -193,7 +194,11 @@ public class ProductReviewDAO {
 	}  */
 
 	
-	public ProductReview addProductReview(String id, String pid, String prid, String review,double rating) {
+	public ProductReview addProductReview(String pid, String prid, String review,double rating) {
+			
+			Random randomGenerator = new Random();
+			int randomInt = randomGenerator.nextInt(10000);
+			String id = "PR" + randomInt;
 			
 			ProductReview ProductReview = new ProductReview();
 			ProductReview.setProductReviewID(id);

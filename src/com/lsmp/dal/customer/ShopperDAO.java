@@ -35,8 +35,8 @@ public class ShopperDAO {
 	 * @return - shopper model
 	 */
 	public Shopper getShopperProfile(String id) {
-		String profileID="";
-		String loginID=id;
+		String profileID=id;
+		String loginID="";
 		String firstName = "";
 		String middleName = "";
 		String lastName = "";
@@ -51,10 +51,10 @@ public class ShopperDAO {
 		try {
 			Statement selectStatement = connection.createStatement();
 			
-			String selectQuery = "SELECT * from shopper where loginID='" + id +"'";
+			String selectQuery = "SELECT * from shopper where profileID='" + id +"'";
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			resultSet.next();
-			profileID= resultSet.getString("profileID");
+			loginID= resultSet.getString("loginID");
 			lastName = resultSet.getString("lastName");
 			middleName = resultSet.getString("middleName");
 			firstName = resultSet.getString("firstName");

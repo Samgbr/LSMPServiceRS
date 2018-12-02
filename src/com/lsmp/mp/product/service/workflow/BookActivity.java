@@ -84,10 +84,10 @@ public class BookActivity {
 		return "OK";
 	}
 
-	public BookRepresentation createBook(String productID, double purchasePrice, double sellingPrice, String title,
+	public BookRepresentation createBook(double purchasePrice, double sellingPrice, String title,
 			String isbn, String publisher, String author, String edition, String partnerID) {
 		
-		Book book = productManager.addBook(productID, isbn, publisher, author, edition, null, null, null, purchasePrice, sellingPrice, 0.0, title,partnerID);
+		Book book = productManager.addBook(isbn, publisher, author, edition, "N/A", "N/A", "N/A", purchasePrice, sellingPrice, 0.0, title,partnerID);
 		
 		BookRepresentation bookRepresentation=new BookRepresentation();
         

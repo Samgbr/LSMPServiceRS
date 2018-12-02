@@ -20,10 +20,10 @@ private static InventoryDAO iDAO = new InventoryDAO();
 		return bDAO.getAllBooks();
 	}
 	
-	public Book addBook(String productID, String isbn, String publisher, String author, String edition, 
+	public Book addBook(String isbn, String publisher, String author, String edition, 
 			String booktype, String productName, String description, double purchasePrice, double sellingPrice, double discount,String title, String partnerID) {
 		
-		Book book = bDAO.addBook(productID, productName, description, purchasePrice, sellingPrice, discount, title, isbn, publisher, author, edition, booktype,partnerID);
+		Book book = bDAO.addBook(productName, description, purchasePrice, sellingPrice, discount, title, isbn, publisher, author, edition, booktype,partnerID);
 		
 		return book;
 	}
