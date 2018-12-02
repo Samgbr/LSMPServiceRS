@@ -1,5 +1,7 @@
 package com.lsmp.mp.order.service;
 
+import java.util.Set;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -75,6 +77,15 @@ public class OrderResource implements OrderService{
 		System.out.println("POST METHOD Payment Request from Client with ............." );		
 		OrderActivity orderActivity = new OrderActivity();
 		return orderActivity.createPayment(paymentRequest.getOrderID(), paymentRequest.getAmount(), paymentRequest.getBillID());
+	}
+
+	@GET
+	@Produces({"application/json"})
+	@Path("/orders/{profileID}")
+	public Set<OrderRepresentation> getAllOrders(@PathParam("profileID") String id) {
+		System.out.println("GET METHOD Request from Client with Orders Request String ............." + id);
+		OrderActivity orderActivity = new OrderActivity();
+		return orderActivity.getAllOrders(id);
 	}
 
 }

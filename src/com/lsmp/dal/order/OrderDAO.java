@@ -94,7 +94,7 @@ public class OrderDAO {
 		return order;	
 	}
 	
-	public Set<Order> getAllOrders() {
+	public Set<Order> getAllOrders(String id) {
 		
 		Connection connection = DBConnect.getDatabaseConnection();
 		Set<Order> orders = new HashSet<>();
@@ -102,12 +102,12 @@ public class OrderDAO {
 		try {
 			Statement selectStatement = connection.createStatement();
 			
-			String selectQuery = "SELECT * from orderT";
+			String selectQuery = "SELECT * from orderT WHERE profileID='"+id+"'";
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			
 			while(resultSet.next()) {
 				String orderID = resultSet.getString("orderID");
-				Order order = getOrder(orderID);
+				Order order = getOrderWithDetail(orderID);
 				if(order != null) {
 					orders.add(order);
 				}
