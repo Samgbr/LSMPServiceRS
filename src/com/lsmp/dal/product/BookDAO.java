@@ -111,16 +111,16 @@ public class BookDAO {
 		
 	}
 	
-	public Book addBook(String bid,String productName, String description, double purchasePrice, double sellingPrice, 
+	public Book addBook(String productName, String description, double purchasePrice, double sellingPrice, 
 				double discount, String title, String isbn, String publisher, String author, String edition, String bookType, String partnerID) {
 			
 			Book book = new Book();
-			/*
+			
 			Random randomGenerator = new Random();
 		    int randomInt = randomGenerator.nextInt(10000);
-		    String id = "BK" + randomInt; */
+		    String id = "BK" + randomInt; 
 		    
-			book.setProductID(bid);
+			book.setProductID(id);
 			book.setProductName(productName);
 			book.setDescription(description);
 			book.setPurchasePrice(purchasePrice);
@@ -139,7 +139,7 @@ public class BookDAO {
 				Statement insertStatement = connection.createStatement();
 				
 				String insertQuery = "INSERT INTO book(productID,isbn,publisher,author,edition,bookType,productName,description,purchasePrice,sellingPrice,discount,title,partnerID) "
-						+ "VALUES('"+bid+"','"+isbn+"','"+publisher+"','"+author+"','"+edition+"','"+bookType+"','"+productName+"','"+description+"','"+purchasePrice+"','"+sellingPrice+"','"+discount+"','"+title+"','"+partnerID+"')";
+						+ "VALUES('"+id+"','"+isbn+"','"+publisher+"','"+author+"','"+edition+"','"+bookType+"','"+productName+"','"+description+"','"+purchasePrice+"','"+sellingPrice+"','"+discount+"','"+title+"','"+partnerID+"')";
 				insertStatement.executeUpdate(insertQuery);
 			
 				

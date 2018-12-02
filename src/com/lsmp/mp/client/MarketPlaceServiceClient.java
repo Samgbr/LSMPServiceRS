@@ -154,9 +154,9 @@ public final class MarketPlaceServiceClient {
 
 	private static void pManager(ProductManager productManager) {
 		//Book Creation
-		productManager.addBook("BO89743", "fdgknkln22", "Mcgraw hill", "Adam reta", "7th", "Ebook", "XXX", "suspense book", 12.99, 20.99, 0.125, "A Dart","PA95687");
-		productManager.addBook("BO89789", "fdgfjln22", "Mcgraw hill", "Ptr reta", "5th", "paper", "YYY", "psychology book", 10.99, 15.99, 0.115, "The dark knight","");
-		productManager.addBook("BO89999", "fdgfjln22", "Mcgraw hill", "Ptr reta", "5th", "CD", "YYY", "Dude book", 9.99, 12.99, 0.115, "The okay knight","");
+		productManager.addBook("fdgknkln22", "Mcgraw hill", "Adam reta", "7th", "Ebook", "XXX", "suspense book", 12.99, 20.99, 0.125, "A Dart","PA95687");
+		productManager.addBook("fdgfjln22", "Mcgraw hill", "Ptr reta", "5th", "paper", "YYY", "psychology book", 10.99, 15.99, 0.115, "The dark knight","");
+		productManager.addBook("fdgfjln22", "Mcgraw hill", "Ptr reta", "5th", "CD", "YYY", "Dude book", 9.99, 12.99, 0.115, "The okay knight","");
 		//Update book
 		productManager.updateBook("BO89789", "fdgfjln22", "Mcgraw hill", "Ptr reta", "5th", "paper", "YYY", "psychology book", 17.99, 21.99, 0.17, "The dark knight","");
 		//Delete book
