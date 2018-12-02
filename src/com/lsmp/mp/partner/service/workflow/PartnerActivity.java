@@ -32,7 +32,7 @@ public class PartnerActivity {
 		partnerRepresentation.setAddresses(partner.getAddresses());
 		partnerRepresentation.setBillingsInfo(partner.getBillingsInfo());
 		partnerRepresentation.setPhones(partner.getPhones());
-		
+		setLinks(partnerRepresentation);
 		return partnerRepresentation;
 	}
 
@@ -82,8 +82,6 @@ public class PartnerActivity {
         partnerRepresentation.setAddresses(partner.getAddresses());
 		partnerRepresentation.setBillingsInfo(partner.getBillingsInfo());
 		partnerRepresentation.setPhones(partner.getPhones());
-        
-		setLinks(partnerRepresentation);
 		
 		return partnerRepresentation;
 	}
@@ -93,9 +91,7 @@ public class PartnerActivity {
 				"http://localhost:8082/Partner/partnerservice/partner" ,"application/xml");
 		Link deletepartner = new Link("deletepartner", 
 				" http://localhost:8082/Partner/partnerservice/partner/"+ partnerRepresentation.getProfileID() ,"application/xml");
-		Link addproduct = new Link("addproduct", 
-				" http://localhost:8082/BookProduct/bookservice/book" ,"application/xml");
-		partnerRepresentation.setLinks(updatepartner,deletepartner,addproduct);
+		partnerRepresentation.setLinks(updatepartner,deletepartner);
 	}
 
 	public String updatePartner(String id, String loginID, String firstName, String middleName, String lastName,

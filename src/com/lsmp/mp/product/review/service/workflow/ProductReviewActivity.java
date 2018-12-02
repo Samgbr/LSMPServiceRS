@@ -50,7 +50,7 @@ public class ProductReviewActivity {
 		productReviewRepresentation.setProfileID(productReview.getProfileID());
 		productReviewRepresentation.setReview(productReview.getReview());
 		productReviewRepresentation.setRating(productReview.getRating());
-		
+		setLinks(productReviewRepresentation);
 		return productReviewRepresentation;
 	}
 	
@@ -78,8 +78,6 @@ public class ProductReviewActivity {
 		productReviewRepresentation.setProfileID(productReview.getProfileID());
 		productReviewRepresentation.setReview(productReview.getReview());
 		productReviewRepresentation.setRating(productReview.getRating());
-		
-		setLinks(productReviewRepresentation);
 		
 		return productReviewRepresentation;
 	}

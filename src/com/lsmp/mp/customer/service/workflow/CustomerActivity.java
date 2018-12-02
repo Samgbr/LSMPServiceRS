@@ -65,7 +65,7 @@ public class CustomerActivity {
 		customerRepresentation.setAddresses(shopper.getAddresses());
 		customerRepresentation.setBills(shopper.getBillingsInfo());
 		customerRepresentation.setPhones(shopper.getPhones());
-		
+		setLinks(customerRepresentation);
 		return customerRepresentation;
 	}
 	
@@ -106,8 +106,6 @@ public class CustomerActivity {
 		customerRepresentation.setAddresses(shopper.getAddresses());
 		customerRepresentation.setBills(shopper.getBillingsInfo());
 		customerRepresentation.setPhones(shopper.getPhones());
-		
-		setLinks(customerRepresentation);
 		
 		return customerRepresentation;
 	}

@@ -18,6 +18,13 @@ public class OrderRequest {
 	private String profileID;
 	private String orderDate;
 	private String shipAddressID;
+	private double amount;
+	public double getAmount() {
+		return amount;
+	}
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
 	private Set<OrderDetail> orderDetails;
 		
 	public Set<OrderDetail> getOrderDetails() {

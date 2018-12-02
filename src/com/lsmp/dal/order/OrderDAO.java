@@ -24,6 +24,7 @@ public class OrderDAO {
 		String profileID="";
 		String orderDate="";
 		String shipAddressID="";
+		double amount=0.0;
 		Set<OrderDetail> orderDetails = new HashSet<>();
 		
 		Connection connection = DBConnect.getDatabaseConnection();
@@ -38,7 +39,7 @@ public class OrderDAO {
 			profileID= resultSet.getString("profileID");
 			orderDate = resultSet.getString("orderDate");
 			shipAddressID = resultSet.getString("shipAddressID");
-			
+			amount = resultSet.getDouble("amount");
 			orderDetails = orderDetailDAO.getAllOrderDetailsByOrderID(id);
 			
 		}catch(SQLException se) {
@@ -55,6 +56,7 @@ public class OrderDAO {
 		order.setProfileID(profileID);
 		order.setOrderDate(orderDate);
 		order.setShipAddressID(shipAddressID);
+		order.setAmount(amount);
 		order.setOrderDetails(orderDetails);
 		return order;	
 	}
