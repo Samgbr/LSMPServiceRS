@@ -60,8 +60,8 @@ public class CustomerResource implements CustomerService {
 	}
 
 	@DELETE
-	@Produces({"application/xml" , "application/json"})
-	@Consumes({"application/xml", "application/json"})
+	@Produces({"application/json"})
+	@Consumes({"application/json"})
 	@Path("/shopper/{shopperId}")
 	public Response deleteShopper(@PathParam("shopperId") String id) {
 		System.out.println("Delete METHOD Request from Client with customerRequest String ............." + id);

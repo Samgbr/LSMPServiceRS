@@ -24,6 +24,7 @@ public class OrderActivity {
 		orderRepresentation.setOrderDate(order.getOrderDate());
 		orderRepresentation.setProfileID(order.getProfileID());
 		orderRepresentation.setShipAddressID(order.getShipAddressID());
+		orderRepresentation.setAmount(order.getAmount());
 		orderRepresentation.setOrderDetails(order.getOrderDetails());
 		
 		return orderRepresentation;
@@ -45,6 +46,7 @@ public class OrderActivity {
 			orderRepresentation.setOrderDate(order.getOrderDate());
 			orderRepresentation.setProfileID(order.getProfileID());
 			orderRepresentation.setShipAddressID(order.getShipAddressID());
+			orderRepresentation.setAmount(order.getAmount());
 			orderRepresentation.setOrderDetails(order.getOrderDetails());
 			
 			orderRepresentations.add(orderRepresentation);
@@ -73,8 +75,10 @@ public class OrderActivity {
 	private void setLinks(OrderRepresentation orderRepresentation) {
 		Link payment = new Link("payment", 
 				"http://localhost:8082/Order/orderservice/payment" ,"application/xml");
+		Link cancel = new Link("cancel", 
+				"http://localhost:8082/Order/orderservice/order" ,"application/xml");
 					
-		orderRepresentation.setLinks(payment);
+		orderRepresentation.setLinks(payment,cancel);
 	}
 
 	public PaymentRepresentation createPayment(String oid, double amount, String billID) {

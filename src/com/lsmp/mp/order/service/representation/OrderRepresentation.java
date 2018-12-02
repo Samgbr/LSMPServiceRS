@@ -19,8 +19,15 @@ public class OrderRepresentation extends AbstractRepresentation{
 	private String profileID;
 	private String orderDate;
 	private String shipAddressID; 
+	private double amount;
 	private Set<OrderDetail> orderDetails;
 	
+	public double getAmount() {
+		return amount;
+	}
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
 	public Set<OrderDetail> getOrderDetails() {
 		return orderDetails;
 	}
