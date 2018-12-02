@@ -18,8 +18,8 @@ public class OrderManager {
 		return oDAO.getOrder(id);
 	}
 	
-	public Set<Order> getAllOrders() {
-		return oDAO.getAllOrders();
+	public Set<Order> getAllOrders(String id) {
+		return oDAO.getAllOrders(id);
 	}
 	
 	public Order addOrder(String profileID, String orderDate, String shipAddressID, Set<OrderDetail> orderDetails) {

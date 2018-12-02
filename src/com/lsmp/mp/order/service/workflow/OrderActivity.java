@@ -1,5 +1,7 @@
 package com.lsmp.mp.order.service.workflow;
 
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 import com.lsmp.mp.link.Link;
@@ -25,6 +27,30 @@ public class OrderActivity {
 		orderRepresentation.setOrderDetails(order.getOrderDetails());
 		
 		return orderRepresentation;
+	}
+	
+	
+	public Set<OrderRepresentation> getAllOrders(String id) {
+		Set<Order> orders = new HashSet<>();
+		Set<OrderRepresentation> orderRepresentations = new HashSet<OrderRepresentation>();
+		
+		orders = orderManager.getAllOrders(id);
+		
+		Iterator<Order> it = orders.iterator();
+		while(it.hasNext()) {
+          
+			Order order = (Order)it.next();
+			OrderRepresentation orderRepresentation = new OrderRepresentation();
+			orderRepresentation.setOrderID(order.getOrderID());
+			orderRepresentation.setOrderDate(order.getOrderDate());
+			orderRepresentation.setProfileID(order.getProfileID());
+			orderRepresentation.setShipAddressID(order.getShipAddressID());
+			orderRepresentation.setOrderDetails(order.getOrderDetails());
+			
+			orderRepresentations.add(orderRepresentation);
+		}
+		
+		return orderRepresentations;
 	}
 
 	public OrderRepresentation createOrder(String profileID, String orderDate, String shipAddressID,Set<OrderDetail> orderDetails) {
