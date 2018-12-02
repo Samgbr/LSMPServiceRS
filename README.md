@@ -1,8 +1,9 @@
 # LSMPServiceRS
  Full documentation for the project : https://docs.google.com/document/d/1SMdL4yhRCTgK-X-mUCckdDcWkfEsV4K_LBHGXSmjX38/edit#
  
- Presentation Sildes :
- https://drive.google.com/file/d/191mmLHo50XP2lbPPW4WpOvjfILPA5jao/view?usp=sharing
+ Presentation Sildes can be found here:
+
+https://docs.google.com/presentation/d/18iI8px1am2Ux5YtFD6iEYtUEVriX4KVCisV1zdiqHd4/edit#slide=id.p12
 
 COMP433
 
