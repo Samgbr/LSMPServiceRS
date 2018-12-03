@@ -15,6 +15,7 @@ public class ProductReviewDAO {
 	
 	
 	public ProductReview getProductReviewByProfileIDandProductID(String id, String pid) {
+		String previewID="";
 		String productID="";
 		String profileID="";
 		String review="";
@@ -28,6 +29,7 @@ public class ProductReviewDAO {
 			String selectQuery = "SELECT * from productReview where productID='" + id +"' AND profileID='" + pid +"'";
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			resultSet.next();
+			previewID= resultSet.getString("productReviewID");
 			productID= resultSet.getString("productID");
 			profileID = resultSet.getString("profileID");
 			review = resultSet.getString("review");
@@ -47,10 +49,12 @@ public class ProductReviewDAO {
 		productReview.setProfileID(profileID);
 		productReview.setReview(review);
 		productReview.setRating(rating);
+		productReview.setProductReviewID(previewID);
 		return productReview;	
 	}
 	
 	public ProductReview getProductReviewByProductID(String id) {
+		String previewID="";
 		String productID="";
 		String profileID="";
 		String review="";
@@ -64,6 +68,7 @@ public class ProductReviewDAO {
 			String selectQuery = "SELECT * from productReview where productID='" + id +"'";
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			resultSet.next();
+			previewID= resultSet.getString("productReviewID");
 			productID= resultSet.getString("productID");
 			profileID = resultSet.getString("profileID");
 			review = resultSet.getString("review");
@@ -79,6 +84,7 @@ public class ProductReviewDAO {
 			}
 		}
 		ProductReview productReview = new ProductReview();
+		productReview.setProductReviewID(previewID);
 		productReview.setProductID(productID);
 		productReview.setProfileID(profileID);
 		productReview.setReview(review);

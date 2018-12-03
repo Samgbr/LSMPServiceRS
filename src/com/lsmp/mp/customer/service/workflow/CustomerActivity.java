@@ -112,9 +112,9 @@ public class CustomerActivity {
 	
 	private void setLinks(CustomerRepresentation customerRepresentation) {
 		Link updatecustomer = new Link("updatecustomer", 
-				"http://localhost:8082/Customer/shopperservice/shopper" ,"application/xml");
+				"http://localhost:8082/Customer/shopperservice/shopper" ,"application/json");
 		Link deletecustomer = new Link("deletecustomer", 
-				"http://localhost:8082/Customer/shopperservice/shopper/"+ customerRepresentation.getProfileID() ,"application/xml");
+				"http://localhost:8082/Customer/shopperservice/shopper/"+ customerRepresentation.getProfileID() ,"application/json");
 		customerRepresentation.setLinks(updatecustomer,deletecustomer);
 	}
 

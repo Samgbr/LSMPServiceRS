@@ -40,13 +40,17 @@ public class BookActivity {
 		
 		// Set up the activities that can be performed on orders
 		Link check = new Link("check", 
-				"http://localhost:8082/ProductInventory/productinventoryservice/productinventory/"+ bookRepresentation.getProductID() ,"application/xml");
+				"http://localhost:8082/ProductInventory/productinventoryservice/productinventory/"+ bookRepresentation.getProductID() ,"application/json");
 		Link reviews = new Link("reviews", 
-				"http://localhost:8082/ProductReview/productreviewservice/productreview/"+ bookRepresentation.getProductID() ,"application/xml");
+				"http://localhost:8082/ProductReview/productreviewservice/productreview/"+ bookRepresentation.getProductID() ,"application/json");
 		Link createreview = new Link("createreview", 
-				"http://localhost:8082/ProductReview/productreviewservice/productreview" ,"application/xml");
+				"http://localhost:8082/ProductReview/productreviewservice/productreview" ,"application/json");
+		Link updatebook = new Link("updatebook", 
+				"http://localhost:8082/ProductReview/productreviewservice/productreview" ,"application/json");
+		Link deletebook = new Link("deletebook", 
+				"http://localhost:8082/ProductReview/productreviewservice/productreview" ,"application/json");
 		
-		bookRepresentation.setLinks(check,reviews,createreview);
+		bookRepresentation.setLinks(check,reviews,createreview,updatebook,deletebook);
 	}
 
 	public Set<BookRepresentation> getBooks() {
@@ -100,7 +104,7 @@ public class BookActivity {
 		bookRepresentation.setAuthor(book.getAuthor());
 		bookRepresentation.setEdition(book.getEdition());
 		bookRepresentation.setPartnerID(book.getPartnerID());
-		
+		setLinks(bookRepresentation);
 		return bookRepresentation;
 	}
 
