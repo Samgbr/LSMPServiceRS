@@ -74,9 +74,9 @@ public class OrderActivity {
 
 	private void setLinks(OrderRepresentation orderRepresentation) {
 		Link payment = new Link("payment", 
-				"http://localhost:8082/Order/orderservice/payment" ,"application/xml");
+				"http://localhost:8082/Order/orderservice/payment" ,"application/json");
 		Link cancel = new Link("cancel", 
-				"http://localhost:8082/Order/orderservice/order" ,"application/xml");
+				"http://localhost:8082/Order/orderservice/order" ,"application/json");
 					
 		orderRepresentation.setLinks(payment,cancel);
 	}

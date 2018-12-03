@@ -88,9 +88,9 @@ public class PartnerActivity {
 
 	private void setLinks(PartnerRepresentation partnerRepresentation) {
 		Link updatepartner = new Link("updatepartner", 
-				"http://localhost:8082/Partner/partnerservice/partner" ,"application/xml");
+				"http://localhost:8082/Partner/partnerservice/partner" ,"application/json");
 		Link deletepartner = new Link("deletepartner", 
-				" http://localhost:8082/Partner/partnerservice/partner/"+ partnerRepresentation.getProfileID() ,"application/xml");
+				" http://localhost:8082/Partner/partnerservice/partner/"+ partnerRepresentation.getProfileID() ,"application/json");
 		partnerRepresentation.setLinks(updatepartner,deletepartner);
 	}
 

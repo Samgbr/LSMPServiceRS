@@ -33,7 +33,7 @@ public class ProductReviewActivity {
 			productReviewRepresentation.setProfileID(productReview.getProfileID());
 			productReviewRepresentation.setReview(productReview.getReview());
 			productReviewRepresentation.setRating(productReview.getRating());
-			
+			setLinks(productReviewRepresentation);
 			  //now add this representation in the list
 			productReviewRepresentations.add(productReviewRepresentation);
 		}
@@ -50,7 +50,7 @@ public class ProductReviewActivity {
 		productReviewRepresentation.setProfileID(productReview.getProfileID());
 		productReviewRepresentation.setReview(productReview.getReview());
 		productReviewRepresentation.setRating(productReview.getRating());
-		setLinks(productReviewRepresentation);
+		
 		return productReviewRepresentation;
 	}
 	
@@ -84,9 +84,9 @@ public class ProductReviewActivity {
 	
 	private void setLinks(ProductReviewRepresentation productReviewRepresentation) {
 		Link updatereview = new Link("updatereview", 
-				"http://localhost:8082/ProductReview/productreviewservice/productreview" ,"application/xml");
+				"http://localhost:8082/ProductReview/productreviewservice/productreview" ,"application/json");
 		Link deletereview = new Link("deletereview", 
-				"http://localhost:8082/ProductReview/productreviewservice/productreview/" + productReviewRepresentation.getProductReviewID() ,"application/xml");
+				"http://localhost:8082/ProductReview/productreviewservice/productreview/" + productReviewRepresentation.getProductReviewID() ,"application/json");
 		productReviewRepresentation.setLinks(updatereview,deletereview);
 	}
 
