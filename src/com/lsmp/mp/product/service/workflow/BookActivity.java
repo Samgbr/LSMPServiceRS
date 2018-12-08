@@ -42,13 +42,13 @@ public class BookActivity {
 		Link check = new Link("check", 
 				"http://localhost:8082/ProductInventory/productinventoryservice/productinventory/"+ bookRepresentation.getProductID() ,"application/json");
 		Link reviews = new Link("reviews", 
-				"http://localhost:8082/ProductReview/productreviewservice/productreview/"+ bookRepresentation.getProductID() ,"application/json");
+				"http://localhost:8082/ProductReview/productreviewservice/productreviews/"+ bookRepresentation.getProductID() ,"application/json");
 		Link createreview = new Link("createreview", 
 				"http://localhost:8082/ProductReview/productreviewservice/productreview" ,"application/json");
 		Link updatebook = new Link("updatebook", 
-				"http://localhost:8082/ProductReview/productreviewservice/productreview" ,"application/json");
+				"http://localhost:8082/BookProduct/bookservice/book" ,"application/json");
 		Link deletebook = new Link("deletebook", 
-				"http://localhost:8082/ProductReview/productreviewservice/productreview" ,"application/json");
+				"http://localhost:8082/BookProduct/bookservice/book/"+ bookRepresentation.getProductID() ,"application/json");
 		
 		bookRepresentation.setLinks(check,reviews,createreview,updatebook,deletebook);
 	}
