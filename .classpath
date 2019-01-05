@@ -14,5 +14,6 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="jackson-all-1.9.4.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Users/samzi/git/LSMPServiceRS/cxf-rt-rs-security-cors-3.2.7-javadoc.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

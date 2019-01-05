@@ -19,10 +19,10 @@ public class DBConfig {
 	private String databaseName;
 	
 	public DBConfig(){
-		username="mpuser1";
-		password="db$User1";
-		databaseURL="jdbc:mysql://lsmpdb.cq2czhcgvi8n.us-east-2.rds.amazonaws.com:3306";
-		databaseName="LSMPServiceRS";
+		username="User1";
+		password="dbUser1";
+		databaseURL="jdbc:mysql://localhost:3306";
+		databaseName="lsmpservicers";
 	}
 	
 	public String getUsername() {
